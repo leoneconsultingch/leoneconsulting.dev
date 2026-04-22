@@ -27,14 +27,14 @@
   },
   "homepage": "https://leoneconsulting.dev",
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/sitemap": "^3.7.0",
-    "@astrojs/vercel": "^9.0.4",
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/vercel": "^10.0.4",
     "@tailwindcss/vite": "^4.2.4",
-    "astro": "^5.17.1",
+    "astro": "^6.1.8",
     "nodemailer": "^8.0.1",
     "tailwindcss": "^4.2.4",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@types/nodemailer": "^7.0.9",
