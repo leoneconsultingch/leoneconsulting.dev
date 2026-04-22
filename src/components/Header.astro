@@ -10,7 +10,7 @@ const currentPath = Astro.url.pathname;
 const basePath = lang === 'en' ? '/en' : '';
 ---
 
-<header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+<header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-xs border-b border-gray-200">
   <nav class="container mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
       <a href={basePath || '/'} class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
