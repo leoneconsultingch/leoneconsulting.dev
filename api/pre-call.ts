@@ -7,17 +7,17 @@ const submissions = new Map<string, number[]>();
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
   const oneMinuteAgo = now - 60000;
-  
+
   if (!submissions.has(ip)) {
     submissions.set(ip, []);
   }
-  
+
   const times = submissions.get(ip)!.filter(t => t > oneMinuteAgo);
-  
+
   if (times.length >= 5) {
     return true;
   }
-  
+
   times.push(now);
   submissions.set(ip, times);
   return false;
@@ -77,11 +77,12 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       budget: budget ? sanitizeInput(budget) : 'Non specificato',
     };
 
-    // Create email transporter
+    // Create email transporter - OVH Exchange SMTP (porta 587, STARTTLS)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '465'),
-      secure: process.env.SMTP_PORT === '465',
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: false,       // false = STARTTLS (non SSL diretto)
+      requireTLS: true,    // forza STARTTLS, rifiuta connessioni non cifrate
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,

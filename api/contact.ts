@@ -7,17 +7,17 @@ const submissions = new Map<string, number[]>();
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
   const oneMinuteAgo = now - 60000;
-  
+
   if (!submissions.has(ip)) {
     submissions.set(ip, []);
   }
-  
+
   const times = submissions.get(ip)!.filter(t => t > oneMinuteAgo);
-  
+
   if (times.length >= 3) {
     return true;
   }
-  
+
   times.push(now);
   submissions.set(ip, times);
   return false;
@@ -52,10 +52,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   try {
     // Rate limiting
-    const clientIP = (req.headers['x-forwarded-for'] as string)?.split(',')[0] || 
-                    req.socket.remoteAddress || 
-                    'unknown';
-    
+    const clientIP = (req.headers['x-forwarded-for'] as string)?.split(',')[0] ||
+      req.socket.remoteAddress ||
+      'unknown';
+
     if (isRateLimited(clientIP)) {
       return res.status(429).json({ error: 'Too many requests. Try again later.' });
     }
@@ -80,17 +80,16 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       message: sanitizeInput(message)
     };
 
-    // Create transporter using OVH SMTP
+    // Create transporter using OVH Exchange SMTP (porta 587, STARTTLS)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '465'),
-      secure: process.env.SMTP_PORT === '465', // true for 465, false for other ports
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: false,       // false = STARTTLS (non SSL diretto)
+      requireTLS: true,    // forza STARTTLS, rifiuta connessioni non cifrate
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS
       }
-      // TLS configuration removed for security - OVH's certificate should be valid
-      // If you experience SSL issues, verify the certificate chain instead of disabling checks
     });
 
     // Email content

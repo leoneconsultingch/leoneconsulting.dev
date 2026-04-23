@@ -7,17 +7,17 @@ const submissions = new Map<string, number[]>();
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
   const oneHourAgo = now - 3600000;
-  
+
   if (!submissions.has(ip)) {
     submissions.set(ip, []);
   }
-  
+
   const times = submissions.get(ip)!.filter(t => t > oneHourAgo);
-  
+
   if (times.length >= 3) {
     return true;
   }
-  
+
   times.push(now);
   submissions.set(ip, times);
   return false;
@@ -90,11 +90,12 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       nda: !!nda,
     };
 
-    // Create email transporter
+    // Create email transporter - OVH Exchange SMTP (porta 587, STARTTLS)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '465'),
-      secure: process.env.SMTP_PORT === '465',
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: false,       // false = STARTTLS (non SSL diretto)
+      requireTLS: true,    // forza STARTTLS, rifiuta connessioni non cifrate
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -120,7 +121,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
         ${sanitizedData.notes ? `<p><strong>Note:</strong><br>${sanitizedData.notes}</p>` : ''}
         <hr>
         <p><em>Inviato il ${new Date().toLocaleString('it-IT')}</em></p>
-        <p><em>⏰ Deadline: ${new Date(Date.now() + 48*3600000).toLocaleString('it-IT')}</em></p>
+        <p><em>⏰ Deadline: ${new Date(Date.now() + 48 * 3600000).toLocaleString('it-IT')}</em></p>
       `,
     });
 
