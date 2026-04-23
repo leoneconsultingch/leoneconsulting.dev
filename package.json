@@ -37,7 +37,7 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@types/nodemailer": "^7.0.9",
+    "@types/nodemailer": "^8.0.0",
     "@vercel/node": "^4.0.0"
   },
   "overrides": {
