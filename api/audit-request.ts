@@ -1,27 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
-
-// Rate limiting
-const submissions = new Map<string, number[]>();
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const oneHourAgo = now - 3600000;
-
-  if (!submissions.has(ip)) {
-    submissions.set(ip, []);
-  }
-
-  const times = submissions.get(ip)!.filter(t => t > oneHourAgo);
-
-  if (times.length >= 3) {
-    return true;
-  }
-
-  times.push(now);
-  submissions.set(ip, times);
-  return false;
-}
+import { checkRateLimit, getClientIp } from './lib/ratelimit.js';
 
 function sanitizeInput(input: string): string {
   return input
@@ -61,52 +40,48 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return res.status(415).json({ error: 'Unsupported Media Type' });
   }
 
-  // Rate limiting
-  const ip = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown';
-  if (isRateLimited(ip as string)) {
+  const ip = getClientIp(req);
+  const { limited } = await checkRateLimit(ip, 'audit-request', 3, 3600);
+  if (limited) {
     return res.status(429).json({ error: 'Too many requests. Max 3 per hour.' });
   }
 
+  const { name, email, project, objective, materials, notes, nda, terms } = req.body;
+
+  if (!name || !email || !project || !objective || !materials || !terms) {
+    return res.status(400).json({ error: 'Campi obbligatori mancanti' });
+  }
+
+  if (!validateEmail(email)) {
+    return res.status(400).json({ error: 'Email non valida' });
+  }
+
+  if (!validateURL(materials)) {
+    return res.status(400).json({ error: 'URL materiali non valido' });
+  }
+
+  const sanitizedData = {
+    name: sanitizeInput(name),
+    email: sanitizeInput(email),
+    project: sanitizeInput(project),
+    objective: sanitizeInput(objective),
+    materials: sanitizeInput(materials),
+    notes: notes ? sanitizeInput(notes) : '',
+    nda: !!nda,
+  };
+
   try {
-    const { name, email, project, objective, materials, notes, nda, terms } = req.body;
-
-    // Validation
-    if (!name || !email || !project || !objective || !materials || !terms) {
-      return res.status(400).json({ error: 'Campi obbligatori mancanti' });
-    }
-
-    if (!validateEmail(email)) {
-      return res.status(400).json({ error: 'Email non valida' });
-    }
-
-    if (!validateURL(materials)) {
-      return res.status(400).json({ error: 'URL materiali non valido' });
-    }
-
-    // Sanitize
-    const sanitizedData = {
-      name: sanitizeInput(name),
-      email: sanitizeInput(email),
-      project: sanitizeInput(project),
-      objective: sanitizeInput(objective),
-      materials: sanitizeInput(materials),
-      notes: notes ? sanitizeInput(notes) : '',
-      nda: !!nda,
-    };
-
-    // Create email transporter - OVH Exchange SMTP (porta 587, STARTTLS)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false,       // false = STARTTLS (non SSL diretto)
-      requireTLS: true,    // forza STARTTLS, rifiuta connessioni non cifrate
+      secure: false,
+      requireTLS: true,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
     });
 
-    // Email to me
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: process.env.SMTP_TO,
@@ -129,7 +104,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       `,
     });
 
-    // Confirmation email to user
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: sanitizedData.email,
@@ -157,9 +131,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     });
 
     return res.status(200).json({ success: true });
-
   } catch (error) {
     console.error('Error sending email:', error);
-    return res.status(500).json({ error: 'Errore durante l\'invio' });
+    return res.status(500).json({ error: "Errore durante l'invio" });
   }
 };
