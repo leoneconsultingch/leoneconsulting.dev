@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import BookingForm from '../components/BookingForm.astro';
 import { useTranslations } from '../i18n/translations';
 
 const t = useTranslations('it');
@@ -9,9 +10,8 @@ const t = useTranslations('it');
 
 <Layout title="Prenota Consulenza AI e Software | Leone Consulting" description="Prenota una consulenza personalizzata per definire priorità tecniche, rischi e roadmap: scegli servizio, data e orario più adatti al tuo progetto.">
   <Header />
-  
+
   <main>
-    <!-- Hero Section -->
     <section class="pt-32 pb-20 px-6 bg-gradient-to-br from-primary-50 to-white">
       <div class="container mx-auto">
         <div class="max-w-4xl mx-auto text-center">
@@ -23,11 +23,9 @@ const t = useTranslations('it');
       </div>
     </section>
 
-    <!-- Booking Section -->
     <section class="py-20 px-6">
       <div class="container mx-auto">
         <div class="max-w-6xl mx-auto">
-          <!-- Intro Boxes -->
           <div class="grid md:grid-cols-3 gap-8 mb-12">
             <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
               <h2 class="text-xl font-bold text-gray-900 mb-3">Prenota consulenza per il tuo contesto</h2>
@@ -50,8 +48,7 @@ const t = useTranslations('it');
           </div>
 
           <div class="grid md:grid-cols-3 gap-12">
-            <!-- Info Sidebar -->
-            <div class="md:col-span-1">
+            <aside class="md:col-span-1">
               <div class="bg-white p-6 rounded-xl shadow-lg mb-6">
                 <div class="flex items-center space-x-3 mb-4">
                   <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
@@ -69,192 +66,24 @@ const t = useTranslations('it');
               <div class="bg-primary-50 p-6 rounded-xl">
                 <h3 class="text-lg font-bold text-gray-900 mb-3">Servizi Disponibili</h3>
                 <ul class="space-y-3">
-                  <li class="flex items-start space-x-2">
-                    <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="text-sm text-gray-700">AI Engineering</span>
-                  </li>
-                  <li class="flex items-start space-x-2">
-                    <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="text-sm text-gray-700">Sviluppo Software</span>
-                  </li>
-                  <li class="flex items-start space-x-2">
-                    <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="text-sm text-gray-700">Consulenza IT</span>
-                  </li>
+                  {['AI Engineering', 'Sviluppo Software', 'Consulenza IT'].map((service) => (
+                    <li class="flex items-start space-x-2">
+                      <svg class="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-sm text-gray-700">{service}</span>
+                    </li>
+                  ))}
                 </ul>
                 <p class="text-xs text-gray-600 mt-4">
                   Prima consulenza di 30 minuti gratuita
                 </p>
               </div>
-            </div>
+            </aside>
 
-            <!-- Booking Form -->
             <div class="md:col-span-2">
               <div class="bg-white p-8 rounded-xl shadow-lg">
-                <form id="booking-form" class="space-y-6">
-                  <!-- Service Selection -->
-                  <div>
-                    <label for="service" class="block text-sm font-semibold text-gray-900 mb-2">
-                      {t('booking.service.label')} *
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      required
-                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                    >
-                      <option value="">{t('booking.service.placeholder')}</option>
-                      <option value="ai">{t('booking.service.ai')}</option>
-                      <option value="dev">{t('booking.service.dev')}</option>
-                      <option value="consulting">{t('booking.service.consulting')}</option>
-                    </select>
-                  </div>
-
-                  <!-- Date and Time -->
-                  <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label for="date" class="block text-sm font-semibold text-gray-900 mb-2">
-                        {t('booking.date.label')} *
-                      </label>
-                      <input
-                        type="date"
-                        id="date"
-                        name="date"
-                        required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                      />
-                    </div>
-
-                    <div>
-                      <label for="time" class="block text-sm font-semibold text-gray-900 mb-2">
-                        {t('booking.time.label')} *
-                      </label>
-                      <select
-                        id="time"
-                        name="time"
-                        required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                      >
-                        <option value="15-16">{t('booking.time.slot1')}</option>
-                        <option value="16-17">{t('booking.time.slot2')}</option>
-                        <option value="17-18">{t('booking.time.slot3')}</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <!-- Consultation Type -->
-                  <div>
-                    <label class="block text-sm font-semibold text-gray-900 mb-2">
-                      {t('booking.type.label')}
-                    </label>
-                    <p class="text-sm text-gray-700">{t('booking.type.online')}</p>
-                    <input type="hidden" name="type" value="online" />
-                  </div>
-
-                  <!-- Contact Information -->
-                  <div class="pt-4 border-t border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Informazioni di Contatto</h3>
-                    
-                    <div class="space-y-6">
-                      <div>
-                        <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">
-                          {t('booking.form.name')} *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          required
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                        />
-                      </div>
-
-                      <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">
-                            {t('booking.form.email')} *
-                          </label>
-                          <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                          />
-                        </div>
-
-                        <div>
-                          <label for="phone" class="block text-sm font-semibold text-gray-900 mb-2">
-                            {t('booking.form.phone')} *
-                          </label>
-                          <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label for="company" class="block text-sm font-semibold text-gray-900 mb-2">
-                          {t('booking.form.company')}
-                        </label>
-                        <input
-                          type="text"
-                          id="company"
-                          name="company"
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                        />
-                      </div>
-
-                      <div>
-                        <label for="notes" class="block text-sm font-semibold text-gray-900 mb-2">
-                          {t('booking.form.notes')}
-                        </label>
-                        <textarea
-                          id="notes"
-                          name="notes"
-                          rows="4"
-                          placeholder={t('booking.form.notes.placeholder')}
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
-                        ></textarea>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Privacy Checkbox -->
-                  <div class="flex items-start space-x-3">
-                    <input
-                      type="checkbox"
-                      id="privacy"
-                      name="privacy"
-                      required
-                      class="w-4 h-4 mt-1 text-primary-600 focus:ring-primary-500 rounded"
-                    />
-                    <label for="privacy" class="text-sm text-gray-600">
-                      {t('booking.form.privacy')}
-                    </label>
-                  </div>
-
-                  <!-- Submit Button -->
-                  <button
-                    type="submit"
-                    class="w-full px-8 py-4 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                  >
-                    {t('booking.form.submit')}
-                  </button>
-
-                  <!-- Status Messages -->
-                  <div id="status-message" class="hidden p-4 rounded-lg text-center"></div>
-                </form>
+                <BookingForm lang="it" />
               </div>
             </div>
           </div>
@@ -265,101 +94,3 @@ const t = useTranslations('it');
 
   <Footer />
 </Layout>
-
-<script>
-  const form = document.getElementById('booking-form') as HTMLFormElement;
-  const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
-  const statusMessage = document.getElementById('status-message') as HTMLDivElement;
-  const dateInput = document.getElementById('date') as HTMLInputElement;
-
-  if (dateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
-  }
-
-  const submissions = new Map<string, number[]>();
-
-  function sanitizeInput(input: string): string {
-    return input.replace(/[<>'"]/g, '');
-  }
-
-  function checkRate(identifier: string): boolean {
-    const now = Date.now();
-    const limit = 3;
-    const window = 60000;
-    
-    if (!submissions.has(identifier)) {
-      submissions.set(identifier, []);
-    }
-    
-    const times = submissions.get(identifier)!;
-    const recent = times.filter(t => now - t < window);
-    
-    if (recent.length >= limit) {
-      return false;
-    }
-    
-    recent.push(now);
-    submissions.set(identifier, recent);
-    return true;
-  }
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    if (!submitButton || !statusMessage) return;
-
-    const formData = new FormData(form);
-    const email = formData.get('email') as string;
-    
-    if (!checkRate(email)) {
-      statusMessage.textContent = 'Troppi tentativi. Attendi un minuto.';
-      statusMessage.className = 'block p-4 rounded-lg text-center bg-red-100 text-red-700';
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      statusMessage.textContent = 'Email non valida';
-      statusMessage.className = 'block p-4 rounded-lg text-center bg-red-100 text-red-700';
-      return;
-    }
-
-    submitButton.disabled = true;
-    submitButton.textContent = 'Invio in corso...';
-    statusMessage.className = 'hidden';
-
-    const data = {
-      service: sanitizeInput(formData.get('service') as string),
-      date: formData.get('date'),
-      time: sanitizeInput(formData.get('time') as string),
-      type: sanitizeInput(formData.get('type') as string),
-      name: sanitizeInput(formData.get('name') as string),
-      email: email,
-      phone: sanitizeInput(formData.get('phone') as string),
-      company: sanitizeInput(formData.get('company') as string || ''),
-      notes: sanitizeInput(formData.get('notes') as string || ''),
-    };
-
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      console.log('Booking data:', data);
-
-      statusMessage.textContent = 'Prenotazione ricevuta! Ti contatteremo entro 24 ore per confermare.';
-      statusMessage.className = 'block p-4 rounded-lg text-center bg-green-100 text-green-700';
-      
-      form.reset();
-      if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.min = today;
-      }
-    } catch (error) {
-      statusMessage.textContent = 'Si è verificato un errore. Riprova o contattaci direttamente.';
-      statusMessage.className = 'block p-4 rounded-lg text-center bg-red-100 text-red-700';
-    } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = 'Conferma Prenotazione';
-    }
-  });
-</script>
