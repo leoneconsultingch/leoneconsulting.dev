@@ -50,6 +50,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  if (!req.headers['content-type']?.includes('application/json')) {
+    return res.status(415).json({ error: 'Unsupported Media Type' });
+  }
+
   try {
     // Rate limiting
     const clientIP = (req.headers['x-forwarded-for'] as string)?.split(',')[0] ||

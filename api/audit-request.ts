@@ -37,8 +37,8 @@ function validateEmail(email: string): boolean {
 
 function validateURL(url: string): boolean {
   try {
-    new URL(url);
-    return true;
+    const parsed = new URL(url);
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:';
   } catch {
     return false;
   }
@@ -55,6 +55,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  if (!req.headers['content-type']?.includes('application/json')) {
+    return res.status(415).json({ error: 'Unsupported Media Type' });
   }
 
   // Rate limiting

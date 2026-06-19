@@ -7,7 +7,7 @@ Se hai scoperto una vulnerabilità di sicurezza, **non creare una issue pubblica
 ### Come Segnalare
 
 Usa **GitHub Security Advisories**:
-- https://github.com/AstroMarius/leoneconsulting.dev/security/advisories
+- https://github.com/leoneconsultingch/leoneconsulting.dev/security/advisories
 - Oppure invia a: **info@leoneconsulting.dev**
 
 ### Cosa Includere
