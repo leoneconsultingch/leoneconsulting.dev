@@ -1,0 +1,492 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Leone Consulting Logo Leone Consulting" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Leone Consulting Logo" [ref=e6]
+          - generic [ref=e7]: Leone Consulting
+        - generic [ref=e8]:
+          - link "Home" [ref=e9] [cursor=pointer]:
+            - /url: /
+          - link "Chi Siamo" [ref=e10] [cursor=pointer]:
+            - /url: /about
+          - link "Servizi" [ref=e11] [cursor=pointer]:
+            - /url: /services
+          - link "Prenota" [ref=e12] [cursor=pointer]:
+            - /url: /booking
+          - link "Portfolio" [ref=e13] [cursor=pointer]:
+            - /url: /portfolio
+          - link "Contatti" [ref=e14] [cursor=pointer]:
+            - /url: /contact
+          - button "Change language" [ref=e16]:
+            - img [ref=e17]
+            - generic [ref=e19]: it
+            - img [ref=e20]
+  - main [ref=e22]:
+    - generic [ref=e25]:
+      - heading "Trasformo idee AI e dati in prodotti con impatto misurabile" [level=1] [ref=e26]
+      - paragraph [ref=e27]: Aiuto PMI e startup a lanciare MVP, automazioni e pipeline dati con scope chiaro, tempi definiti e metriche condivise fin dal primo sprint.
+      - generic [ref=e28]:
+        - link "Prenota una call gratuita" [ref=e29] [cursor=pointer]:
+          - /url: /prenota
+        - link "Richiedi audit asincrono" [ref=e30] [cursor=pointer]:
+          - /url: /audit-asincrono
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]: Il Nostro Differenziatore
+        - heading "Consulenza AI e sviluppo software per PMI" [level=2] [ref=e37]
+        - paragraph [ref=e38]: "A differenza di molti nel settore, applichiamo rigorosamente il metodo scientifico ai progetti IT e AI. Non opinioni, non mode: solo dati, ipotesi verificabili e risultati misurabili."
+        - paragraph [ref=e39]: Ogni decisione è supportata da evidenze. Ogni soluzione è testata e validata. Questo approccio garantisce investimenti sicuri e risultati concreti, non promesse.
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - img [ref=e42]
+            - generic [ref=e44]:
+              - heading "Analisi basata sui dati" [level=4] [ref=e45]
+              - paragraph [ref=e46]: Raccogliamo e analizziamo dati reali, non assunzioni
+          - generic [ref=e47]:
+            - img [ref=e48]
+            - generic [ref=e50]:
+              - heading "Ipotesi verificabili" [level=4] [ref=e51]
+              - paragraph [ref=e52]: Formuliamo soluzioni testabili con criteri di successo chiari
+          - generic [ref=e53]:
+            - img [ref=e54]
+            - generic [ref=e56]:
+              - heading "Risultati misurabili" [level=4] [ref=e57]
+              - paragraph [ref=e58]: Ogni progetto ha KPI concreti e metriche di successo
+      - generic [ref=e59]:
+        - generic [ref=e60]: 1+2+3
+        - heading "Osserva → Ipotizza → Testa" [level=3] [ref=e61]
+        - paragraph [ref=e62]: "Il ciclo virtuoso che garantisce soluzioni solide e investimenti protetti. Non improvvisiamo: ogni passo è documentato, ogni scelta è motivata."
+        - generic [ref=e63]:
+          - paragraph [ref=e64]: Approccio commerciale
+          - paragraph [ref=e65]: "\"Investire in tecnologia con il metodo scientifico significa avere garanzie concrete, non solo promesse di mercato.\""
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - 'heading "Risultati misurabili: esempi reali" [level=2] [ref=e69]'
+        - paragraph [ref=e70]: Case study con numeri reali, non solo slide
+      - generic [ref=e71]:
+        - article [ref=e72]:
+          - generic [ref=e73]:
+            - generic [ref=e75]: OPERATIONS
+            - heading "Dashboard KPI per Monitoraggio Operations" [level=3] [ref=e76]:
+              - generic [ref=e77]: Dashboard KPI
+              - generic [ref=e78]: per Monitoraggio Operations
+            - generic [ref=e79]:
+              - generic [ref=e80]: PMI settore manifatturiero
+              - generic [ref=e81]: •
+              - generic [ref=e82]: Manufacturing
+            - generic [ref=e83]:
+              - generic [ref=e84]: da 2 giorni/sett a 0
+              - generic [ref=e85]: da 48h a 24h di ritardo
+            - link "Vedi caso completo" [ref=e86] [cursor=pointer]:
+              - /url: /portfolio/dashboard-kpi-operations
+              - text: Vedi caso completo
+              - img [ref=e87]
+        - article [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e92]: AI/ML
+            - heading "Prototipo AI per Classificazione Documenti" [level=3] [ref=e93]:
+              - generic [ref=e94]: Prototipo AI
+              - generic [ref=e95]: per Classificazione Documenti
+            - generic [ref=e96]:
+              - generic [ref=e97]: Scale-up settore legale
+              - generic [ref=e98]: •
+              - generic [ref=e99]: Legal Tech
+            - generic [ref=e100]:
+              - generic [ref=e101]: da 3-4h/giorno a 30min
+              - generic [ref=e102]: 88% su categorie complesse
+            - link "Vedi caso completo" [ref=e103] [cursor=pointer]:
+              - /url: /portfolio/prototipo-ai-classificazione
+              - text: Vedi caso completo
+              - img [ref=e104]
+        - article [ref=e106]:
+          - generic [ref=e107]:
+            - generic [ref=e109]: DATA
+            - heading "Pipeline Dati per Analytics E-commerce" [level=3] [ref=e110]:
+              - generic [ref=e111]: Pipeline Dati
+              - generic [ref=e112]: per Analytics E-commerce
+            - generic [ref=e113]:
+              - generic [ref=e114]: E-commerce B2C medio
+              - generic [ref=e115]: •
+              - generic [ref=e116]: E-commerce
+            - generic [ref=e117]:
+              - generic [ref=e118]: da 2 giorni a real-time
+              - generic [ref=e119]: LTV, CAC, ROI ora disponibili
+            - link "Vedi caso completo" [ref=e120] [cursor=pointer]:
+              - /url: /portfolio/pipeline-analytics-ecommerce
+              - text: Vedi caso completo
+              - img [ref=e121]
+      - link "Case study con risultati" [ref=e124] [cursor=pointer]:
+        - /url: /portfolio
+        - text: Case study con risultati
+        - img [ref=e125]
+    - generic [ref=e128]:
+      - generic [ref=e129]:
+        - 'heading "Come lavoriamo: dal problema al risultato" [level=2] [ref=e130]'
+        - paragraph [ref=e131]: Audit, MVP Sprint e Data Pipeline con deliverable e priorità operative
+      - generic [ref=e132]:
+        - article [ref=e133]:
+          - generic [ref=e134]:
+            - heading "Tech/AI Audit" [level=3] [ref=e135]
+            - paragraph [ref=e136]: Diagnosi tecnica e roadmap in 5 giorni lavorativi
+          - generic [ref=e137]:
+            - generic [ref=e139]: a partire da CHF 2.700
+            - paragraph [ref=e140]: 5 giorni lavorativi
+          - generic [ref=e141]:
+            - heading "Per chi è questo audit?" [level=4] [ref=e142]
+            - list [ref=e143]:
+              - listitem [ref=e144]:
+                - img [ref=e145]
+                - generic [ref=e147]: Hai un'idea o progetto tech/AI ma non sai se è fattibile o da dove iniziare
+              - listitem [ref=e148]:
+                - img [ref=e149]
+                - generic [ref=e151]: Il tuo team interno non ha competenze AI/ML e vuoi una valutazione esterna
+              - listitem [ref=e152]:
+                - img [ref=e153]
+                - generic [ref=e155]: Vuoi un piano chiaro (rischi, quick wins, roadmap 30/60/90 giorni) prima di investire
+          - generic [ref=e156]:
+            - link "Richiedi Tech/AI Audit" [ref=e157] [cursor=pointer]:
+              - /url: /prenota?package=tech-audit
+            - link "Maggiori dettagli" [ref=e158] [cursor=pointer]:
+              - /url: /pacchetti#tech-ai-audit
+        - article [ref=e159]:
+          - generic [ref=e160]:
+            - heading "MVP Sprint" [level=3] [ref=e161]
+            - paragraph [ref=e162]: Prototipo funzionante in 2-4 settimane
+          - generic [ref=e163]:
+            - generic [ref=e165]: CHF 5.500 - CHF 13.000
+            - paragraph [ref=e166]: 2-4 settimane
+          - generic [ref=e167]:
+            - heading "Per chi è questo sprint?" [level=4] [ref=e168]
+            - list [ref=e169]:
+              - listitem [ref=e170]:
+                - img [ref=e171]
+                - generic [ref=e173]: Vuoi validare un'idea con un prototipo reale (non mockup) prima di investire in sviluppo completo
+              - listitem [ref=e174]:
+                - img [ref=e175]
+                - generic [ref=e177]: Hai bisogno di una demo funzionante per presentare a investitori, clienti o stakeholders interni
+              - listitem [ref=e178]:
+                - img [ref=e179]
+                - generic [ref=e181]: Vuoi testare fattibilità tecnica di un'architettura o feature complessa con un PoC rapido
+          - generic [ref=e182]:
+            - link "Richiedi MVP Sprint" [ref=e183] [cursor=pointer]:
+              - /url: /prenota?package=mvp-sprint
+            - link "Maggiori dettagli" [ref=e184] [cursor=pointer]:
+              - /url: /pacchetti#mvp-sprint
+        - article [ref=e185]:
+          - generic [ref=e186]:
+            - heading "Data Pipeline & Dashboard" [level=3] [ref=e187]
+            - paragraph [ref=e188]: Infrastruttura dati da zero a dashboard operativa in 2-6 settimane
+          - generic [ref=e189]:
+            - generic [ref=e191]: CHF 6.500 - CHF 16.000
+            - paragraph [ref=e192]: 2-6 settimane (varia in base a numero fonti dati e complessità)
+          - generic [ref=e193]:
+            - heading "Per chi è questo pacchetto?" [level=4] [ref=e194]
+            - list [ref=e195]:
+              - listitem [ref=e196]:
+                - img [ref=e197]
+                - generic [ref=e199]: Hai dati sparsi in più sistemi (ERP, CRM, fogli Excel, database) e vuoi centralizzarli e visualizzarli
+              - listitem [ref=e200]:
+                - img [ref=e201]
+                - generic [ref=e203]: Fai report manuali che richiedono giorni e vuoi automatizzarli con dashboard real-time
+              - listitem [ref=e204]:
+                - img [ref=e205]
+                - generic [ref=e207]: Vuoi costruire una base dati solida per futuri progetti AI/ML o analytics avanzati
+          - generic [ref=e208]:
+            - link "Richiedi Data Pipeline" [ref=e209] [cursor=pointer]:
+              - /url: /prenota?package=data-pipeline
+            - link "Maggiori dettagli" [ref=e210] [cursor=pointer]:
+              - /url: /pacchetti#data-pipeline-dashboard
+      - link "Vedi tutti i pacchetti" [ref=e212] [cursor=pointer]:
+        - /url: /pacchetti
+        - text: Vedi tutti i pacchetti
+        - img [ref=e213]
+    - generic [ref=e216]:
+      - generic [ref=e217]:
+        - heading "I Nostri Servizi" [level=2] [ref=e218]
+        - paragraph [ref=e219]: Soluzioni complete per le tue esigenze tecnologiche
+      - generic [ref=e220]:
+        - generic [ref=e221]:
+          - img [ref=e223]
+          - heading "AI Engineering" [level=3] [ref=e225]
+          - paragraph [ref=e226]: Sviluppo di sistemi intelligenti, machine learning e soluzioni AI personalizzate per automatizzare e ottimizzare i tuoi processi aziendali.
+          - link "Scopri di più" [ref=e227] [cursor=pointer]:
+            - /url: /services#ai
+            - text: Scopri di più
+            - img [ref=e228]
+        - generic [ref=e230]:
+          - img [ref=e232]
+          - heading "Data Science" [level=3] [ref=e234]
+          - paragraph [ref=e235]: Trasformazione dei dati in insight strategici. Analisi avanzate, modelli predittivi e business intelligence per decisioni consapevoli.
+          - link "Scopri di più" [ref=e236] [cursor=pointer]:
+            - /url: /services#datascience
+            - text: Scopri di più
+            - img [ref=e237]
+        - generic [ref=e239]:
+          - img [ref=e241]
+          - heading "Sviluppo Software" [level=3] [ref=e243]
+          - paragraph [ref=e244]: Applicazioni web, mobile e desktop su misura. Utilizziamo le tecnologie più moderne per creare software scalabile e performante.
+          - link "Scopri di più" [ref=e245] [cursor=pointer]:
+            - /url: /services#development
+            - text: Scopri di più
+            - img [ref=e246]
+        - generic [ref=e248]:
+          - img [ref=e250]
+          - heading "Consulenza IT" [level=3] [ref=e252]
+          - paragraph [ref=e253]: Analisi tecnica, architettura software, code review e strategia tecnologica per guidare il tuo business verso il successo digitale.
+          - link "Scopri di più" [ref=e254] [cursor=pointer]:
+            - /url: /services#consulting
+            - text: Scopri di più
+            - img [ref=e255]
+    - generic [ref=e258]:
+      - generic [ref=e259]:
+        - heading "Come Lavoro" [level=2] [ref=e260]
+        - paragraph [ref=e261]: Un processo collaudato per massimizzare il valore e ridurre i rischi
+      - generic [ref=e263]:
+        - generic [ref=e265]:
+          - generic [ref=e266]: "1"
+          - heading "Discovery Call" [level=3] [ref=e267]
+          - paragraph [ref=e268]: 30 minuti per capire obiettivo, vincoli, urgenza. Niente pitch – solo domande mirate.
+          - generic [ref=e270]: ✓ Gratuito
+        - generic [ref=e272]:
+          - generic [ref=e273]: "2"
+          - heading "Audit/Proposta" [level=3] [ref=e274]
+          - paragraph [ref=e275]: Documento di 5-10 pagine con analisi di fattibilità, rischi, quick wins, e stima ordine grandezza.
+          - generic [ref=e277]: 48-72 ore
+        - generic [ref=e279]:
+          - generic [ref=e280]: "3"
+          - heading "Setup" [level=3] [ref=e281]
+          - paragraph [ref=e282]: Allineamento con stakeholder, accesso a sistemi/dati, definizione acceptance criteria, kickoff call.
+          - generic [ref=e284]: 3-5 giorni
+        - generic [ref=e286]:
+          - generic [ref=e287]: "4"
+          - heading "Execution" [level=3] [ref=e288]
+          - paragraph [ref=e289]: Sprint iterativi con checkpoint settimanali. Deliverable incrementali, feedback loop continuo, track rischi.
+          - generic [ref=e291]: 2-8 settimane
+        - generic [ref=e293]:
+          - generic [ref=e294]: "5"
+          - heading "Handoff" [level=3] [ref=e295]
+          - paragraph [ref=e296]: Documentazione operativa, training del team, supporto post-delivery (30 giorni), follow-up opzionale a 3 mesi.
+          - generic [ref=e298]: 1-2 settimane
+      - generic [ref=e299]:
+        - paragraph [ref=e300]: Preferisci un'analisi preliminare prima di partire?
+        - link "Richiedi Audit Gratuito" [ref=e301] [cursor=pointer]:
+          - /url: /audit-asincrono
+          - text: Richiedi Audit Gratuito
+          - img [ref=e302]
+    - generic [ref=e305]:
+      - generic [ref=e306]:
+        - heading "Perché Scegliere Leone Consulting" [level=2] [ref=e307]
+        - paragraph [ref=e308]: Competenza, innovazione e risultati concreti
+      - generic [ref=e309]:
+        - generic [ref=e310]:
+          - img [ref=e312]
+          - heading "Velocità" [level=3] [ref=e314]
+          - paragraph [ref=e315]: Delivery rapidi senza compromettere la qualità
+        - generic [ref=e316]:
+          - img [ref=e318]
+          - heading "Qualità" [level=3] [ref=e320]
+          - paragraph [ref=e321]: Codice pulito, testato e manutenibile
+        - generic [ref=e322]:
+          - img [ref=e324]
+          - heading "Esperienza" [level=3] [ref=e326]
+          - paragraph [ref=e327]: Anni di esperienza in progetti complessi
+        - generic [ref=e328]:
+          - img [ref=e330]
+          - heading "Partnership" [level=3] [ref=e332]
+          - paragraph [ref=e333]: Un partner affidabile per la crescita del tuo business
+    - generic [ref=e335]:
+      - generic [ref=e336]:
+        - heading "Dicono di Me" [level=2] [ref=e337]
+        - paragraph [ref=e338]: Risultati misurabili per chi vuole costruire, non solo parlare
+      - generic [ref=e339]:
+        - generic [ref=e340]:
+          - generic [ref=e341]:
+            - img [ref=e342]
+            - paragraph [ref=e344]: "\"Avevamo dati sparsi in 3 sistemi diversi e facevamo report Excel manualmente ogni settimana. Mario ha automatizzato tutto in 4 settimane. Ora abbiamo una dashboard sempre aggiornata e abbiamo recuperato 2 giorni di lavoro a settimana.\""
+          - generic [ref=e345]:
+            - generic [ref=e346]: Tempo risparmiato
+            - generic [ref=e347]: 2 giorni/settimana
+          - generic [ref=e348]:
+            - generic [ref=e349]: M
+            - generic [ref=e350]:
+              - generic [ref=e351]: Marco R.
+              - generic [ref=e352]: Operations Manager
+              - generic [ref=e353]: PMI settore manifatturiero
+          - 'link "Vedi il progetto: Data Pipeline & Dashboard" [ref=e355] [cursor=pointer]':
+            - /url: /portfolio
+            - text: "Vedi il progetto: Data Pipeline & Dashboard"
+            - img [ref=e356]
+        - generic [ref=e358]:
+          - generic [ref=e359]:
+            - img [ref=e360]
+            - paragraph [ref=e362]: "\"Non sapevamo se la nostra idea fosse tecnicamente fattibile. L'audit di Mario ci ha dato un piano chiaro, stime realistiche e ci ha fatto evitare 3 scelte architetturali sbagliate. Miglior investimento iniziale possibile.\""
+          - generic [ref=e363]:
+            - generic [ref=e364]: Rischi identificati
+            - generic [ref=e365]: 5 critici
+          - generic [ref=e366]:
+            - generic [ref=e367]: L
+            - generic [ref=e368]:
+              - generic [ref=e369]: Laura M.
+              - generic [ref=e370]: Founder
+              - generic [ref=e371]: Startup B2B SaaS
+          - 'link "Vedi il progetto: Tech/AI Audit" [ref=e373] [cursor=pointer]':
+            - /url: /portfolio
+            - text: "Vedi il progetto: Tech/AI Audit"
+            - img [ref=e374]
+        - generic [ref=e376]:
+          - generic [ref=e377]:
+            - img [ref=e378]
+            - paragraph [ref=e380]: "\"Avevamo bisogno di un prototipo funzionante per presentare agli stakeholders. In 3 settimane Mario ha consegnato un MVP deployato che usiamo ancora oggi come base del prodotto finale. Codice pulito, ben documentato, zero sorprese.\""
+          - generic [ref=e381]:
+            - generic [ref=e382]: Time to demo
+            - generic [ref=e383]: 3 settimane
+          - generic [ref=e384]:
+            - generic [ref=e385]: S
+            - generic [ref=e386]:
+              - generic [ref=e387]: Stefano B.
+              - generic [ref=e388]: Product Manager
+              - generic [ref=e389]: Scale-up tech
+          - 'link "Vedi il progetto: MVP Sprint" [ref=e391] [cursor=pointer]':
+            - /url: /portfolio
+            - text: "Vedi il progetto: MVP Sprint"
+            - img [ref=e392]
+      - generic [ref=e395]:
+        - generic [ref=e396]:
+          - generic [ref=e397]: 4+
+          - generic [ref=e398]: Anni di Esperienza
+        - generic [ref=e399]:
+          - generic [ref=e400]: 15+
+          - generic [ref=e401]: Progetti Completati
+        - generic [ref=e402]:
+          - generic [ref=e403]: 100%
+          - generic [ref=e404]: Clienti Soddisfatti
+    - generic [ref=e406]:
+      - generic [ref=e407]:
+        - heading "Domande Frequenti" [level=2] [ref=e408]
+        - paragraph [ref=e409]: Risposte dirette alle domande che mi fanno più spesso
+      - generic [ref=e410]:
+        - group [ref=e411]:
+          - generic "Quanto tempo serve per vedere risultati concreti?" [ref=e412] [cursor=pointer]:
+            - generic [ref=e413]: Quanto tempo serve per vedere risultati concreti?
+            - img [ref=e414]
+        - group [ref=e416]:
+          - generic "Lavori anche con repo privati e progetti sotto NDA?" [ref=e417] [cursor=pointer]:
+            - generic [ref=e418]: Lavori anche con repo privati e progetti sotto NDA?
+            - img [ref=e419]
+        - group [ref=e421]:
+          - generic "Posso partire anche se non ho dati puliti o ben organizzati?" [ref=e422] [cursor=pointer]:
+            - generic [ref=e423]: Posso partire anche se non ho dati puliti o ben organizzati?
+            - img [ref=e424]
+        - group [ref=e426]:
+          - generic "Che stack tecnologico supporti?" [ref=e427] [cursor=pointer]:
+            - generic [ref=e428]: Che stack tecnologico supporti?
+            - img [ref=e429]
+        - group [ref=e431]:
+          - generic "Cosa succede dopo l'audit o dopo il progetto?" [ref=e432] [cursor=pointer]:
+            - generic [ref=e433]: Cosa succede dopo l'audit o dopo il progetto?
+            - img [ref=e434]
+        - group [ref=e436]:
+          - generic "Perché i prezzi sono a range o 'a partire da'?" [ref=e437] [cursor=pointer]:
+            - generic [ref=e438]: Perché i prezzi sono a range o 'a partire da'?
+            - img [ref=e439]
+        - group [ref=e441]:
+          - generic "Posso fare un audit prima di decidere il budget definitivo?" [ref=e442] [cursor=pointer]:
+            - generic [ref=e443]: Posso fare un audit prima di decidere il budget definitivo?
+            - img [ref=e444]
+        - group [ref=e446]:
+          - generic "Come funziona il processo di collaborazione?" [ref=e447] [cursor=pointer]:
+            - generic [ref=e448]: Come funziona il processo di collaborazione?
+            - img [ref=e449]
+      - generic [ref=e451]:
+        - heading "Altre Domande?" [level=3] [ref=e452]
+        - paragraph [ref=e453]: Prenota una call di 30 minuti – è gratuita e senza impegno.
+        - link "Prenota Discovery Call" [ref=e454] [cursor=pointer]:
+          - /url: /prenota
+          - text: Prenota Discovery Call
+          - img [ref=e455]
+    - generic [ref=e458]:
+      - heading "Vuoi capire il prossimo step più utile?" [level=2] [ref=e459]
+      - paragraph [ref=e460]: In 30 minuti definiamo priorità tecniche, rischi e opzioni concrete. Se non c'è fit, ti propongo l'alternativa migliore.
+      - generic [ref=e461]:
+        - link "Prenota call gratuita" [ref=e462] [cursor=pointer]:
+          - /url: /prenota
+        - link "Richiedi audit asincrono" [ref=e463] [cursor=pointer]:
+          - /url: /audit-asincrono
+  - contentinfo [ref=e464]:
+    - generic [ref=e465]:
+      - generic [ref=e466]:
+        - generic [ref=e467]:
+          - heading "Leone Consulting" [level=3] [ref=e468]
+          - paragraph [ref=e469]: Soluzioni innovative in AI Engineering, sviluppo software e consulenza IT per trasformare la tua visione in realtà.
+        - generic [ref=e470]:
+          - heading "Link Rapidi" [level=4] [ref=e471]
+          - list [ref=e472]:
+            - listitem [ref=e473]:
+              - link "Home" [ref=e474] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e475]:
+              - link "Chi Siamo" [ref=e476] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e477]:
+              - link "Servizi" [ref=e478] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e479]:
+              - link "Portfolio" [ref=e480] [cursor=pointer]:
+                - /url: /portfolio
+            - listitem [ref=e481]:
+              - link "Contatti" [ref=e482] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e483]:
+          - heading "Legale" [level=4] [ref=e484]
+          - list [ref=e485]:
+            - listitem [ref=e486]:
+              - link "Privacy Policy" [ref=e487] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e488]:
+              - link "Termini e Condizioni" [ref=e489] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e490]:
+              - link "Trust Center" [ref=e491] [cursor=pointer]:
+                - /url: /trust
+        - generic [ref=e492]:
+          - heading "Contatti" [level=4] [ref=e493]
+          - list [ref=e494]:
+            - listitem [ref=e495]:
+              - img
+              - link "info@leoneconsulting.dev" [ref=e497] [cursor=pointer]:
+                - /url: mailto:info@leoneconsulting.dev
+            - listitem [ref=e498]:
+              - img [ref=e499]
+              - link "+41 78 406 76 44" [ref=e501] [cursor=pointer]:
+                - /url: tel:+41784067644
+            - listitem [ref=e502]:
+              - img [ref=e503]
+              - generic [ref=e505]: leoneconsulting.dev
+      - paragraph [ref=e507]: © 2026 Leone Consulting. Tutti i diritti riservati.
+  - generic [ref=e509]:
+    - paragraph [ref=e511]:
+      - text: Questo sito utilizza cookie tecnici e di analytics per migliorare l'esperienza utente. Continuando la navigazione accetti l'uso dei cookie secondo la nostra
+      - link "Privacy Policy" [ref=e512] [cursor=pointer]:
+        - /url: /privacy
+      - text: .
+    - generic [ref=e513]:
+      - button "Impostazioni" [ref=e514] [cursor=pointer]
+      - button "Rifiuta" [ref=e515] [cursor=pointer]
+      - button "Accetta" [ref=e516] [cursor=pointer]
+  - generic [ref=e519]:
+    - button "Menu" [ref=e520]:
+      - img [ref=e522]
+      - generic: Menu
+    - button "Inspect" [ref=e526]:
+      - img [ref=e528]
+      - generic: Inspect
+    - button "Audit" [ref=e530]:
+      - generic [ref=e531]:
+        - img [ref=e532]
+        - img [ref=e535]
+      - generic: Audit
+    - button "Settings" [ref=e538]:
+      - img [ref=e540]
+      - generic: Settings
