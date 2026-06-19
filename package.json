@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AstroMarius/leoneconsulting.dev.git"
+    "url": "git+https://github.com/leoneconsultingch/leoneconsulting.dev.git"
   },
   "keywords": [
     "ai",
@@ -23,25 +23,28 @@
   "author": "Leone Consulting",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AstroMarius/leoneconsulting.dev/issues"
+    "url": "https://github.com/leoneconsultingch/leoneconsulting.dev/issues"
   },
   "homepage": "https://leoneconsulting.dev",
   "dependencies": {
     "@astrojs/check": "^0.9.8",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/vercel": "^10.0.4",
+    "@astrojs/vercel": "^10.0.8",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.1.8",
-    "nodemailer": "^8.0.1",
+    "nodemailer": "^9.0.1",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@types/nodemailer": "^7.0.9",
-    "@vercel/node": "^4.0.0"
+    "@vercel/node": "^5.8.17"
   },
   "overrides": {
     "undici": "^6.22.1",
-    "tar": "^7.5.8"
+    "tar": "^7.5.8",
+    "path-to-regexp": "^6.3.0",
+    "esbuild": "^0.28.1",
+    "minimatch": "^10.0.0"
   }
 }
