@@ -28,14 +28,14 @@
   },
   "homepage": "https://leoneconsulting.dev",
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
-    "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/vercel": "^10.0.8",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vercel": "^11.0.8",
     "@tailwindcss/vite": "^4.2.4",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.38.0",
-    "astro": "^6.1.8",
-    "nodemailer": "^9.0.1",
+    "astro": "^7.2.9",
+    "nodemailer": "^9.0.6",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3"
   },
@@ -44,10 +44,12 @@
     "@vercel/node": "^5.8.17"
   },
   "overrides": {
-    "undici": "^6.22.1",
-    "tar": "^7.5.8",
+    "undici": "^6.28.0",
+    "tar": "^7.5.21",
+    "js-yaml": "^4.3.1",
     "path-to-regexp": "^6.3.0",
     "esbuild": "^0.28.1",
-    "minimatch": "^10.0.0"
+    "minimatch": "^10.0.0",
+    "ajv": "^8.20.0"
   }
 }
