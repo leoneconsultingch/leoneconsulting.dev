@@ -8,6 +8,7 @@ import type { Cv } from '../types/cv';
 const data = cv as Cv;
 const lang: 'it' | 'en' = 'it';
 const L = (f: { it: string; en: string }) => f[lang];
+const LS = (f: { it: string; en: string } | string) => (typeof f === 'string' ? f : L(f));
 ---
 
 <Layout title="CV — Mario Leone | AI Engineer & Consulente Software | Leone Consulting" description={`Curriculum di ${data.name}: ${L(data.role)}. Progetti, competenze e esperienza in AI engineering, data pipeline e sviluppo software.`}>
@@ -95,7 +96,7 @@ const L = (f: { it: string; en: string }) => f[lang];
             {data.projects.map((p) => (
               <div class="bg-primary-50 p-6 rounded-lg border border-primary-100">
                 <h3 class="font-bold text-gray-900 mb-2">
-                  {p.url ? <a href={p.url} target={p.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer" class="hover:text-primary-600 transition-colors">{p.name} ↗</a> : p.name}
+                  {p.url ? <a href={p.url} target={p.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer" class="hover:text-primary-600 transition-colors">{LS(p.name)} ↗</a> : LS(p.name)}
                 </h3>
                 <p class="text-gray-600 text-sm mb-3">{L(p.description)}</p>
                 <div class="flex flex-wrap gap-2">

@@ -26,6 +26,7 @@ const LEVELS: Record<string, number> = {
 function buildOnce(lang: 'it' | 'en', S: number): { doc: jsPDF; mainY: number; overflow: boolean } {
   const data = cv as Cv;
   const L = (f: { it: string; en: string }) => f[lang];
+  const LS = (f: { it: string; en: string } | string) => (typeof f === 'string' ? f : L(f));
   const t = {
     profile: lang === 'it' ? 'Profilo' : 'Profile',
     experience: lang === 'it' ? 'Esperienza' : 'Experience',
@@ -238,7 +239,7 @@ function buildOnce(lang: 'it' | 'en', S: number): { doc: jsPDF; mainY: number; o
   mTitle(t.projects);
   for (const p of data.projects) {
     setFont('bold', sz(9.4), INK);
-    const nameLines = wrap(p.name, MAIN_W);
+    const nameLines = wrap(LS(p.name), MAIN_W);
     doc.text(nameLines, MAIN_X, mainY);
     mainY += lh(sz(9.4)) * nameLines.length;
     setFont('normal', sz(6.8), FAINT);

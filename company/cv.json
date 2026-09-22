@@ -255,7 +255,10 @@
       "url": "/portfolio/dashboard-kpi-operations"
     },
     {
-      "name": "Control plane per agenti AI",
+      "name": {
+        "it": "Control plane per agenti AI",
+        "en": "Control plane for AI agents"
+      },
       "description": {
         "it": "Piattaforma self-hosted per governare agenti AI multi-cliente: calendario condiviso, policy per tool, audit trail.",
         "en": "Self-hosted platform to govern multi-client AI agents: shared calendar, tool policies, audit trail."

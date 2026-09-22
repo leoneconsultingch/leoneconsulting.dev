@@ -17,7 +17,7 @@ export interface CvExperience {
 }
 
 export interface CvProject {
-  name: string;
+  name: CvLocalized | string;
   description: CvLocalized;
   tags: string[];
   url?: string;
