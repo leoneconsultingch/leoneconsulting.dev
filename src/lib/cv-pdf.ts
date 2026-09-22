@@ -173,7 +173,7 @@ function buildOnce(lang: 'it' | 'en', S: number): { doc: jsPDF; mainY: number; o
   doc.text(data.name, MAIN_X, mainY);
   mainY += 7 * S;
   setFont('bold', sz(10), ACCENT);
-  doc.text(wrap(L(data.role), MAIN_W), MAIN_X, mainY)[0];
+  doc.text(wrap(L(data.role), MAIN_W), MAIN_X, mainY);
   mainY += lh(sz(10)) * wrap(L(data.role), MAIN_W).length;
   setFont('normal', sz(7.4), FAINT);
   doc.text(`${t.updated}: ${data.updated}`, MAIN_X, mainY + 1);
