@@ -5,7 +5,6 @@
   "sector": "FinTech",
   "published": true,
   "featuredImage": "/img/case-studies/multiagenthft.jpg",
-  
   "problem": {
     "description": "Development of an intelligent system for high-frequency trading integrating autonomous agents, AI dashboards, backtesting, and LLM tooling. The goal was to create a scalable architecture combining low latency (C++) with advanced artificial intelligence (Python).",
     "painPoints": [
@@ -14,7 +13,6 @@
       "Real-time market data management with high reliability"
     ]
   },
-  
   "constraints": {
     "timeline": "Ongoing project",
     "budget": "Internal R&D project",
@@ -27,7 +25,6 @@
       "Security standards for financial trading"
     ]
   },
-  
   "solution": {
     "architecture": "Multi-agent architecture with low-latency C++/Python pipeline. React 18 dashboard for real-time visualization, Python backtesting engine for strategy validation, LLM tooling for code-assist, C++ Market Data API with WebSockets/REST to feed ML pipelines.",
     "keyDecisions": [
@@ -39,7 +36,6 @@
     ],
     "approach": "Iterative development with focus on modularity. First implementation of basic data pipeline, then progressive addition of intelligent agents, dashboards and tooling. Continuous testing on historical data before live deployment."
   },
-  
   "results": {
     "metrics": [
       {
@@ -63,7 +59,6 @@
     ],
     "impact": "Scalable system combining HFT execution speed with AI agent intelligence. Real-time dashboard provides immediate insights, backtesting validates strategies before deployment, LLM tooling accelerates development and maintenance."
   },
-  
   "tech": {
     "stack": [
       "C++",
@@ -84,9 +79,7 @@
       "Tailwind CSS"
     ]
   },
-  
   "testimonial": null,
-  
   "role": [
     "Multi-agent microservices architecture design",
     "C++ execution layer implementation (low-latency)",
@@ -95,15 +88,14 @@
     "Docker/Kubernetes infrastructure setup for deployment",
     "LLM tooling integration for development assistance"
   ],
-  
   "metadata": {
     "duration": "Ongoing project",
     "year": 2025,
     "language": "en"
   },
-  
   "cta": {
     "text": "Want an intelligent trading system?",
     "link": "/en/contact"
-  }
+  },
+  "order": 4
 }

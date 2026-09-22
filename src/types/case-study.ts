@@ -4,6 +4,7 @@ export interface CaseStudy {
   client: string;
   sector: string;
   published: boolean;
+  order?: number;
   featuredImage?: string;
   
   problem: {

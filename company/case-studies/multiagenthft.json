@@ -5,7 +5,6 @@
   "sector": "FinTech",
   "published": true,
   "featuredImage": "/img/case-studies/multiagenthft.jpg",
-  
   "problem": {
     "description": "Sviluppo di un sistema intelligente per trading ad alta frequenza che integra agenti autonomi, dashboard AI, backtesting e LLM tooling. L'obiettivo era creare un'architettura scalabile che combinasse bassa latenza (C++) con intelligenza artificiale avanzata (Python).",
     "painPoints": [
@@ -14,7 +13,6 @@
       "Gestione dati di mercato real-time con alta affidabilità"
     ]
   },
-  
   "constraints": {
     "timeline": "Progetto continuativo",
     "budget": "Progetto R&D interno",
@@ -27,7 +25,6 @@
       "Standard di sicurezza per trading finanziario"
     ]
   },
-  
   "solution": {
     "architecture": "Architettura multi-agent con pipeline C++/Python a bassa latenza. Dashboard React 18 per visualizzazione real-time, engine Python per backtesting e validazione strategie, LLM tooling per code-assist, C++ Market Data API con WebSockets/REST per alimentare pipeline ML.",
     "keyDecisions": [
@@ -39,7 +36,6 @@
     ],
     "approach": "Sviluppo iterativo con focus su modularità. Prima implementazione della pipeline base, poi aggiunta progressiva di agenti intelligenti, dashboard e tooling. Testing continuo su dati storici prima del deployment live."
   },
-  
   "results": {
     "metrics": [
       {
@@ -63,7 +59,6 @@
     ],
     "impact": "Sistema scalabile che combina velocità di esecuzione HFT con intelligenza degli agenti AI. Dashboard real-time fornisce insights immediati, backtesting valida strategie prima del deployment, LLM tooling accelera sviluppo e manutenzione."
   },
-  
   "tech": {
     "stack": [
       "C++",
@@ -84,9 +79,7 @@
       "Tailwind CSS"
     ]
   },
-  
   "testimonial": null,
-  
   "role": [
     "Progettazione architettura microservizi multi-agent",
     "Implementazione execution layer in C++ (low-latency)",
@@ -95,15 +88,14 @@
     "Setup infrastruttura Docker/Kubernetes per deployment",
     "Integrazione LLM tooling per assistenza sviluppo"
   ],
-  
   "metadata": {
     "duration": "Progetto continuativo",
     "year": 2025,
     "language": "it"
   },
-  
   "cta": {
     "text": "Vuoi un sistema trading intelligente?",
     "link": "/contact"
-  }
+  },
+  "order": 4
 }

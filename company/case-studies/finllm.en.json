@@ -5,7 +5,6 @@
   "sector": "AI & Financial Technology",
   "published": true,
   "featuredImage": "/img/case-studies/finllm.jpg",
-  
   "problem": {
     "description": "Adaptation of open-source Large Language Models for specific financial applications: market sentiment analysis, risk assessment, structured report generation. General-purpose LLMs lack deep understanding of financial language and market dynamics.",
     "painPoints": [
@@ -15,7 +14,6 @@
       "Complex integration with trading agents and risk dashboards"
     ]
   },
-  
   "constraints": {
     "timeline": "Collaborative research project",
     "budget": "Fintech R&D budget",
@@ -29,7 +27,6 @@
       "Data privacy on sensitive financial documents"
     ]
   },
-  
   "solution": {
     "architecture": "Domain adaptation pipeline: fine-tuning open-source LLM (Hugging Face Transformers) on financial corpora → semantic document embedding for search → real-time sentiment scoring API → integration with trading agents via REST. Docker deployment with PyTorch backend.",
     "keyDecisions": [
@@ -42,7 +39,6 @@
     ],
     "approach": "Iterative workflow: 1) Financial news + reports data collection, 2) Text preprocessing and cleaning, 3) Incremental LLM fine-tuning with validation set, 4) Evaluation on financial benchmarks (FiQA, FinQA), 5) Integration testing with trading dashboards, 6) Production deployment with hallucination monitoring."
   },
-  
   "results": {
     "metrics": [
       {
@@ -66,7 +62,6 @@
     ],
     "impact": "Finance-tailored LLM provides strategic insights: real-time market sentiment influences trading agents, document semantic search accelerates analyst research, automated report generation saves time (estimated 20h/week per team). Competitive edge in algo trading strategies."
   },
-  
   "tech": {
     "stack": [
       "Python 3.11",
@@ -76,16 +71,15 @@
       "Docker",
       "ClickHouse"
     ],
-    "tools": ["LoRA (efficient fine-tuning)",
+    "tools": [
+      "LoRA (efficient fine-tuning)",
       "Qdrant (vector DB)",
       "Financial news APIs",
       "GitHub Actions (CI/CD)",
       "Weights & Biases (experiment tracking)"
     ]
   },
-  
   "testimonial": null,
-  
   "role": [
     "Financial dataset curation and ground-truth labeling",
     "Open-source LLM fine-tuning (Hugging Face Transformers)",
@@ -94,15 +88,14 @@
     "Integration with existing trading systems (C++/Python)",
     "Drift monitoring and evaluation on financial benchmarks"
   ],
-  
   "metadata": {
     "duration": "Ongoing R&D project",
     "year": 2024,
     "language": "en"
   },
-  
   "cta": {
     "text": "Want custom LLMs for your industry?",
     "link": "/en/contact"
-  }
+  },
+  "order": 6
 }

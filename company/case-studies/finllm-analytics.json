@@ -3,9 +3,8 @@
   "title": "FinLLM - Large Language Model per Analisi Finanziaria",
   "client": "Progetto collaborativo Fintech",
   "sector": "AI & Financial Technology",
-  "published": true,
+  "published": false,
   "featuredImage": "/img/case-studies/finllm.jpg",
-  
   "problem": {
     "description": "Adattamento di Large Language Models open-source per applicazioni finanziarie specifiche: market sentiment analysis, risk assessment, structured report generation. Gli LLM general-purpose mancano di comprensione profonda del linguaggio finanziario e delle dinamiche di mercato.",
     "painPoints": [
@@ -15,7 +14,6 @@
       "Integrazione con trading agents e risk dashboards complessa"
     ]
   },
-  
   "constraints": {
     "timeline": "Progetto di ricerca collaborativo",
     "budget": "Budget R&D Fintech",
@@ -29,7 +27,6 @@
       "Data privacy su documenti finanziari sensibili"
     ]
   },
-  
   "solution": {
     "architecture": "Pipeline domain adaptation: fine-tuning LLM open-source (Hugging Face Transformers) su corpora finanziari → semantic document embedding per search → real-time sentiment scoring API → integration con trading agents via REST. Deploy Docker con PyTorch backend.",
     "keyDecisions": [
@@ -42,7 +39,6 @@
     ],
     "approach": "Workflow iterativo: 1) Data collection financial news + reports, 2) Preprocessing e cleaning testi, 3) Fine-tuning incrementale LLM con validation set, 4) Evaluation su benchmark finanziari (FiQA, FinQA), 5) Integration testing con trading dashboards, 6) Production deployment con monitoring hallucinations."
   },
-  
   "results": {
     "metrics": [
       {
@@ -66,7 +62,6 @@
     ],
     "impact": "LLM tailored su finance fornisce insights strategici: market sentiment real-time influenza trading agents, document semantic search accelera ricerca analisti, report generation automatizzata risparmia tempo (stimato 20h/week per team). Competitive edge su algo trading strategies."
   },
-  
   "tech": {
     "stack": [
       "Python 3.11",
@@ -84,9 +79,7 @@
       "Weights & Biases (experiment tracking)"
     ]
   },
-  
   "testimonial": null,
-  
   "cta": {
     "text": "Vuoi LLM custom per la tua industry?",
     "link": "/contact"

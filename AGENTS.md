@@ -56,6 +56,23 @@ Tipo: `src/types/cv.ts`.
 - Generatore: `src/lib/cv-pdf.ts` (jsPDF, layout A4, stesso `company/cv.json`)
 - Nessuna azione aggiuntiva per rigenerare i PDF: endpoint legge il JSON a runtime
 
+## Portfolio — sync automatico (task ricorrente agente)
+
+Fonte dati: `company/case-studies/*.json` (it = `<slug>.json`, en = `<slug>.en.json`).
+Le pagine caricano via glob (`src/lib/case-studies.ts`): **aggiungere un case study = creare i due JSON**, nessuna modifica ai .astro.
+
+### Fonti per nuovi case study
+1. MissionControl: `list_projects` (repo attivi, ultimo push, linguaggio) + diario progetti
+2. Repo GitHub leoneconsultingch pubblici significativi (non fork, attività negli ultimi 12 mesi)
+
+### Regole (hard)
+- Nuovi case study SEMPRE `published: false` (bozza): visibili solo dopo review di Mario
+- Schema: copiare `company/case-studies/template.json` (stessi campi, it+en completi)
+- MAI inventare metriche, risultati o testimonial: usare `[DA COMPLETARE]` dove il dato manca
+- Progetti privati solo come descrizione generica pubblica-safe (come nel CV)
+- Non modificare i .astro (il glob carica da solo), non toccare `order` dei case study esistenti
+- Aggiornare un case study esistente SOLO per dati di fatto verificati (nuove metriche), mai lo stile
+
 ## Aree vietate — Tier 1 (chiedere prima)
 | File | Motivo |
 |---|---|

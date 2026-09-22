@@ -5,7 +5,6 @@
   "sector": "Legal Tech",
   "published": true,
   "featuredImage": "/img/case-studies/ai-document-classifier.jpg",
-  
   "problem": {
     "description": "Uno studio legale riceveva centinaia di documenti al giorno da classificare manualmente in 15 categorie. Il processo era lento, soggetto a errori e creava colli di bottiglia nel workflow.",
     "painPoints": [
@@ -14,7 +13,6 @@
       "Impossibile scalare con l'aumento del volume"
     ]
   },
-  
   "constraints": {
     "timeline": "3 settimane per MVP funzionante",
     "budget": "Budget startup, focus su validazione rapida",
@@ -28,7 +26,6 @@
       "Audit trail per ogni classificazione"
     ]
   },
-  
   "solution": {
     "architecture": "API FastAPI con modello ML (fine-tuned BERT multilingue) per classificazione automatica. Frontend in React per review umano. Deploy su Railway con CI/CD automatico.",
     "keyDecisions": [
@@ -39,7 +36,6 @@
     ],
     "approach": "MVP in 3 settimane: settimana 1 = data prep + baseline model, settimana 2 = fine-tuning + API, settimana 3 = frontend + integrazione + testing con utenti reali."
   },
-  
   "results": {
     "metrics": [
       {
@@ -63,7 +59,6 @@
     ],
     "impact": "Lo studio ha ridotto drasticamente i tempi di classificazione e può ora processare 3x più documenti con lo stesso team. Il sistema viene ora esteso a nuove categorie e clienti."
   },
-  
   "tech": {
     "stack": [
       "Python 3.11",
@@ -80,7 +75,6 @@
       "GitHub Actions"
     ]
   },
-  
   "role": [
     "Design architettura ML pipeline",
     "Data preparation e labeling strategy",
@@ -89,10 +83,10 @@
     "Setup CI/CD e monitoring",
     "Training del team su utilizzo e manutenzione"
   ],
-  
   "metadata": {
     "duration": "3 settimane",
     "year": 2025,
     "language": "it"
-  }
+  },
+  "order": 2
 }

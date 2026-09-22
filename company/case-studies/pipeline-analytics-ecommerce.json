@@ -5,7 +5,6 @@
   "sector": "E-commerce",
   "published": true,
   "featuredImage": "/img/case-studies/ecommerce-pipeline.jpg",
-  
   "problem": {
     "description": "Un e-commerce in crescita aveva dati sparsi tra Shopify, Google Analytics, Facebook Ads e un CRM custom. I report erano manuali e richiedevano giorni. Impossibile fare analisi cross-piattaforma o calcolare metriche complesse come LTV.",
     "painPoints": [
@@ -15,7 +14,6 @@
       "Decisioni di marketing basate su dati parziali o obsoleti"
     ]
   },
-  
   "constraints": {
     "timeline": "6 settimane",
     "budget": "Budget medio, focus su ROI rapido",
@@ -25,7 +23,6 @@
       "Team tecnico interno limitato (1 developer junior)"
     ]
   },
-  
   "solution": {
     "architecture": "Data pipeline cloud-native: Fivetran per ingestion da Shopify/GA/FB Ads → BigQuery come data warehouse → dbt per transformations → Metabase per visualizzazione. Airflow per orchestrazione e scheduling.",
     "keyDecisions": [
@@ -36,7 +33,6 @@
     ],
     "approach": "Implementazione incrementale: settimana 1-2 = setup infrastruttura + prima fonte (Shopify), settimana 3-4 = aggiunta GA e FB Ads + prime metriche, settimana 5-6 = dbt models complessi (LTV, cohorts) + training team."
   },
-  
   "results": {
     "metrics": [
       {
@@ -66,7 +62,6 @@
     ],
     "impact": "Il team marketing ora prende decisioni basate su dati real-time e completi. Hanno identificato 3 segmenti cliente ad alto LTV prima ignorati, e ottimizzato il budget ads tagliando canali non performanti. Pipeline pronta per ML/predictive analytics."
   },
-  
   "tech": {
     "stack": [
       "Fivetran",
@@ -84,7 +79,6 @@
       "Docker"
     ]
   },
-  
   "role": [
     "Design architettura data pipeline end-to-end",
     "Setup Fivetran connectors e BigQuery",
@@ -93,10 +87,10 @@
     "Documentazione e training del team",
     "Setup monitoring e alerting"
   ],
-  
   "metadata": {
     "duration": "6 settimane",
     "year": 2025,
     "language": "it"
-  }
+  },
+  "order": 3
 }

@@ -5,7 +5,6 @@
   "sector": "Data Science",
   "published": true,
   "featuredImage": "/img/case-studies/predictive-ml.jpg",
-  
   "problem": {
     "description": "Implementazione di pipeline ML scalabili per predizione churn clienti, risk modeling creditizio e forecasting time-series. Le aziende avevano bisogno di modelli predittivi affidabili per decisioni strategiche basate su dati concreti, non su intuizioni.",
     "painPoints": [
@@ -15,7 +14,6 @@
       "Necessità di deploy modelli in production con monitoring"
     ]
   },
-  
   "constraints": {
     "timeline": "6-8 settimane per progetto",
     "budget": "Budget limitato per PMI",
@@ -28,7 +26,6 @@
       "GDPR per dati clienti in churn prediction"
     ]
   },
-  
   "solution": {
     "architecture": "Pipeline end-to-end: preprocessing dati con Pandas, feature engineering custom per dominio, ensemble models (Random Forest, Gradient Boosting, LSTM per time-series). Deploy via Docker con FastAPI per inference. Monitoring drift modelli con logging metriche.",
     "keyDecisions": [
@@ -40,7 +37,6 @@
     ],
     "approach": "Approccio iterativo: 1) EDA approfondita per scoprire anomalie dati, 2) Modello baseline semplice come benchmark, 3) Feature engineering guidata da business insights, 4) Hyperparameter tuning con cross-validation, 5) Deployment incrementale con A/B testing."
   },
-  
   "results": {
     "metrics": [
       {
@@ -64,7 +60,6 @@
     ],
     "impact": "Modelli predittivi scalabili che forniscono insights azionabili. Churn prediction abilita campagne retention mirate, forecasting ottimizza inventario, credit risk model riduce exposure finanziaria. Tutti i modelli documentati e interpretabili per stakeholder business."
   },
-  
   "tech": {
     "stack": [
       "Python 3.11",
@@ -83,9 +78,7 @@
       "PostgreSQL"
     ]
   },
-  
   "testimonial": null,
-  
   "role": [
     "Design end-to-end ML pipeline (preprocessing, training, deployment)",
     "Feature engineering e data preprocessing con Pandas/NumPy",
@@ -94,15 +87,14 @@
     "Containerization Docker per ambienti reproducibili",
     "Setup CI/CD per retraining automatico"
   ],
-  
   "metadata": {
     "duration": "Progetti multipli",
     "year": 2024,
     "language": "it"
   },
-  
   "cta": {
     "text": "Vuoi modelli ML per il tuo business?",
     "link": "/contact"
-  }
+  },
+  "order": 5
 }

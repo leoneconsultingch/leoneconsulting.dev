@@ -5,7 +5,6 @@
   "sector": "Data Science",
   "published": true,
   "featuredImage": "/img/case-studies/predictive-ml.jpg",
-  
   "problem": {
     "description": "Implementation of scalable ML pipelines for customer churn prediction, credit risk modeling, and time-series forecasting. Companies needed reliable predictive models for strategic decisions based on concrete data, not intuition.",
     "painPoints": [
@@ -15,7 +14,6 @@
       "Need to deploy models to production with monitoring"
     ]
   },
-  
   "constraints": {
     "timeline": "6-8 weeks per project",
     "budget": "Limited budget for SMEs",
@@ -28,7 +26,6 @@
       "GDPR for customer data in churn prediction"
     ]
   },
-  
   "solution": {
     "architecture": "End-to-end pipeline: data preprocessing with Pandas, custom feature engineering for domain, ensemble models (Random Forest, Gradient Boosting, LSTM for time-series). Deployment via Docker with FastAPI for inference. Model drift monitoring with metrics logging.",
     "keyDecisions": [
@@ -40,7 +37,6 @@
     ],
     "approach": "Iterative approach: 1) In-depth EDA to discover data anomalies, 2) Simple baseline model as benchmark, 3) Feature engineering guided by business insights, 4) Hyperparameter tuning with cross-validation, 5) Incremental deployment with A/B testing."
   },
-  
   "results": {
     "metrics": [
       {
@@ -64,7 +60,6 @@
     ],
     "impact": "Scalable predictive models providing actionable insights. Churn prediction enables targeted retention campaigns, forecasting optimizes inventory, credit risk model reduces financial exposure. All models documented and interpretable for business stakeholders."
   },
-  
   "tech": {
     "stack": [
       "Python 3.11",
@@ -83,9 +78,8 @@
       "PostgreSQL"
     ]
   },
-  
   "testimonial": null,
-    "role": [
+  "role": [
     "End-to-end ML pipeline design (preprocessing, training, deployment)",
     "Feature engineering and data preprocessing with Pandas/NumPy",
     "Model selection and hyperparameter tuning (XGBoost, LSTM)",
@@ -93,14 +87,14 @@
     "Docker containerization for reproducible environments",
     "CI/CD setup for automated retraining"
   ],
-  
   "metadata": {
     "duration": "Multiple projects",
     "year": 2024,
     "language": "en"
   },
-    "cta": {
+  "cta": {
     "text": "Want ML models for your business?",
     "link": "/en/contact"
-  }
+  },
+  "order": 5
 }

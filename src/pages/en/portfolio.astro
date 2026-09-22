@@ -3,24 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CaseStudyCard from '../../components/CaseStudyCard.astro';
-import type { CaseStudy } from '../../types/case-study';
+import { loadCaseStudies } from '../../lib/case-studies';
 
-// Import case studies (English versions)
-import dashboardOps from '../../../company/case-studies/dashboard-kpi-operations.en.json';
-import aiClassifier from '../../../company/case-studies/prototipo-ai-classificazione.en.json';
-import ecommercePipeline from '../../../company/case-studies/pipeline-analytics-ecommerce.en.json';
-import multiAgentHFT from '../../../company/case-studies/multiagenthft.en.json';
-import predictiveAnalytics from '../../../company/case-studies/predictive-analytics-ml.en.json';
-import finllm from '../../../company/case-studies/finllm.en.json';
-
-const allCaseStudies: CaseStudy[] = [
-  dashboardOps as CaseStudy,
-  aiClassifier as CaseStudy,
-  ecommercePipeline as CaseStudy,
-  multiAgentHFT as CaseStudy,
-  predictiveAnalytics as CaseStudy,
-  finllm as CaseStudy,
-].filter(cs => cs.published);
+const allCaseStudies = await loadCaseStudies('en');
 ---
 
 <Layout 

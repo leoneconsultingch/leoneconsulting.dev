@@ -3,22 +3,16 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import type { CaseStudy } from '../../types/case-study';
+import { loadCaseStudies } from '../../lib/case-studies';
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const caseStudies = [
-    await import('../../../company/case-studies/dashboard-kpi-operations.json'),
-    await import('../../../company/case-studies/prototipo-ai-classificazione.json'),
-    await import('../../../company/case-studies/pipeline-analytics-ecommerce.json'),
-    await import('../../../company/case-studies/multiagenthft.json'),
-    await import('../../../company/case-studies/predictive-analytics-ml.json'),
-    await import('../../../company/case-studies/finllm.json'),
-  ];
+  const caseStudies = await loadCaseStudies('it');
 
   return caseStudies.map((cs) => ({
-    params: { slug: cs.default.slug },
-    props: { caseStudy: cs.default as CaseStudy },
+    params: { slug: cs.slug },
+    props: { caseStudy: cs as CaseStudy },
   }));
 }
 

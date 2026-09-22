@@ -5,7 +5,6 @@
   "sector": "AI & Finance",
   "published": true,
   "featuredImage": "/img/case-studies/finllm.jpg",
-  
   "problem": {
     "description": "Adattamento di Large Language Models open-source per applicazioni finanziarie: analisi sentiment news, generazione report strutturati, supporto decisionale per trading. I modelli LLM generici (GPT, LLaMA) hanno performance limitate su terminologia e contesto finanziario specifico.",
     "painPoints": [
@@ -15,7 +14,6 @@
       "Integrazione real-time con feed news e dati market data"
     ]
   },
-  
   "constraints": {
     "timeline": "Progetto R&D continuativo (6+ mesi)",
     "budget": "Compute budget per fine-tuning (GPU clusters)",
@@ -30,7 +28,6 @@
       "Conformità normative trading algoritmico"
     ]
   },
-  
   "solution": {
     "architecture": "Fine-tuning di LLM open-source (Hugging Face Transformers, LLaMA) su corpora finanziari: earnings calls, financial reports, news articles. Pipeline embedding per semantic search documenti finanziari. Interfaccia REST API (FastAPI) per real-time sentiment scoring da news feed. Integrazione con trading agents e risk dashboards.",
     "keyDecisions": [
@@ -43,7 +40,6 @@
     ],
     "approach": "1) Curation dataset finanziari (earnings, reports, news) con ground-truth labels, 2) Fine-tuning incrementale con validation su financial benchmarks, 3) Evaluazione su task specifici (sentiment, QA, summarization), 4) Integration testing con trading pipeline esistente, 5) Production deployment con monitoring drift."
   },
-  
   "results": {
     "metrics": [
       {
@@ -67,7 +63,6 @@
     ],
     "impact": "LLM specializzato per finance che migliora trading insights e risk evaluation. Sentiment scoring real-time da news permette reazione rapida a market events. Semantic search documenti accelera research quant. Interpretability outputs garantisce compliance audit. Sistema dimostra competitive edge applicando AI all'analisi finanziaria."
   },
-  
   "tech": {
     "stack": [
       "Python 3.11",
@@ -86,9 +81,7 @@
       "CUDA/cuDNN"
     ]
   },
-  
   "testimonial": null,
-  
   "role": [
     "Curation dataset finanziari e ground-truth labeling",
     "Fine-tuning LLM open-source (Hugging Face Transformers)",
@@ -97,15 +90,14 @@
     "Integrazione con trading systems esistenti (C++/Python)",
     "Monitoring e evaluation drift su financial benchmarks"
   ],
-  
   "metadata": {
     "duration": "Progetto R&D continuativo",
     "year": 2024,
     "language": "it"
   },
-  
   "cta": {
     "text": "Vuoi LLM customizzati per il tuo dominio?",
     "link": "/contact"
-  }
+  },
+  "order": 6
 }
