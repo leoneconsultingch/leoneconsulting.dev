@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "updated": "2026-09-22",
+  "name": "Mario Leone",
+  "role": {
+    "it": "AI Engineer & Consulente Software — Founder di Leone Consulting",
+    "en": "AI Engineer & Software Consultant — Founder of Leone Consulting"
+  },
+  "location": "Svizzera",
+  "summary": {
+    "it": "Ingegnere AI e consulente software. Aiuto PMI e startup a trasformare dati e idee in prodotti funzionanti: MVP, pipeline dati, dashboard operative e integrazione LLM. Metodo scientifico applicato allo sviluppo: ipotesi verificabili, test, risultati misurabili. Attivo anche in R&D personale su sistemi multi-agente, osservabilità e automazione dello sviluppo.",
+    "en": "AI engineer and software consultant. I help SMEs and startups turn data and ideas into working products: MVPs, data pipelines, operational dashboards and LLM integration. Scientific method applied to software: testable hypotheses, testing, measurable results. Also active in personal R&D on multi-agent systems, observability and development automation."
+  },
+  "contacts": {
+    "email": "info@leoneconsulting.dev",
+    "phone": "+41 78 406 76 44",
+    "website": "https://leoneconsulting.dev",
+    "github": "https://github.com/leoneconsultingch"
+  },
+  "stats": [
+    { "value": "4+", "label": { "it": "Anni di esperienza", "en": "Years of experience" } },
+    { "value": "15+", "label": { "it": "Progetti consegnati", "en": "Projects delivered" } },
+    { "value": "3", "label": { "it": "Aree core: AI, dati, software", "en": "Core areas: AI, data, software" } }
+  ],
+  "skills": [
+    {
+      "area": { "it": "AI & Machine Learning", "en": "AI & Machine Learning" },
+      "items": [
+        "Integrazione LLM e tooling agentico",
+        "Agenti autonomi e orchestrazione multi-agente",
+        "NLP e classificazione documenti",
+        "scikit-learn, TensorFlow, OpenAI API",
+        "MLOps e valutazione modelli"
+      ]
+    },
+    {
+      "area": { "it": "Sviluppo Software", "en": "Software Development" },
+      "items": [
+        "Python, TypeScript/JavaScript, SQL, C++",
+        "FastAPI, Astro, React, Node.js",
+        "PostgreSQL, ClickHouse",
+        "Test automatizzati, code review, documentazione"
+      ]
+    },
+    {
+      "area": { "it": "Data Engineering", "en": "Data Engineering" },
+      "items": [
+        "Pipeline dati ETL/ELT",
+        "Pandas, dbt, Airflow",
+        "Dashboard e analytics (Metabase, custom)",
+        "Backtesting e analytics real-time"
+      ]
+    },
+    {
+      "area": { "it": "Cloud & DevOps", "en": "Cloud & DevOps" },
+      "items": [
+        "AWS, GCP, Vercel, Railway",
+        "Docker, Kubernetes, CI/CD",
+        "Amministrazione Linux e hardening",
+        "Osservabilità e audit logging"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "period": "2022 — oggi",
+      "role": {
+        "it": "Founder & AI Engineer",
+        "en": "Founder & AI Engineer"
+      },
+      "org": "Leone Consulting",
+      "url": "https://leoneconsulting.dev",
+      "highlights": [
+        {
+          "it": "Tech/AI Audit: diagnosi tecnica e roadmap in 5 giorni per PMI e startup",
+          "en": "Tech/AI Audit: technical diagnosis and roadmap in 5 days for SMEs and startups"
+        },
+        {
+          "it": "MVP Sprint: prototipi funzionanti in 2-4 settimane (AI, web, dati)",
+          "en": "MVP Sprints: working prototypes in 2-4 weeks (AI, web, data)"
+        },
+        {
+          "it": "Pipeline dati e dashboard KPI: da report manuali a dati real-time",
+          "en": "Data pipelines and KPI dashboards: from manual reports to real-time data"
+        },
+        {
+          "it": "Approccio a metodo scientifico: ogni progetto con KPI e criteri di successo condivisi",
+          "en": "Scientific-method approach: every project with shared KPIs and success criteria"
+        }
+      ]
+    },
+    {
+      "period": "continuativo",
+      "role": {
+        "it": "R&D — sistemi multi-agente e automazione sviluppo",
+        "en": "R&D — multi-agent systems and development automation"
+      },
+      "org": "Progetti personali",
+      "url": "https://leoneconsulting.dev/portfolio/multiagenthft",
+      "highlights": [
+        {
+          "it": "Piattaforma multi-agente per HFT: C++ low-latency + Python AI, dashboard real-time",
+          "en": "Multi-agent HFT platform: low-latency C++ + Python AI, real-time dashboard"
+        },
+        {
+          "it": "Piattaforma self-hosted di controllo operativo per agenti AI: calendario condiviso, policy guard, audit trail",
+          "en": "Self-hosted operations control plane for AI agents: shared calendar, policy guards, audit trail"
+        },
+        {
+          "it": "Tooling per osservabilità e plugin per CLI di coding agentico",
+          "en": "Observability tooling and plugins for agentic coding CLIs"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Sistema Multi-Agent HFT",
+      "description": {
+        "it": "Architettura multi-agent per trading ad alta frequenza: C++ per la bassa latenza, Python per AI/ML, ClickHouse per analytics real-time.",
+        "en": "Multi-agent architecture for high-frequency trading: C++ for low latency, Python for AI/ML, ClickHouse for real-time analytics."
+      },
+      "tags": ["C++", "Python", "ClickHouse", "Docker", "React"],
+      "url": "/portfolio/multiagenthft"
+    },
+    {
+      "name": "Dashboard KPI Operations",
+      "description": {
+        "it": "Dashboard KPI per PMI manifatturiera: report da 2 giorni/settimana a dati sempre aggiornati, ritardo dati da 48h a 24h.",
+        "en": "KPI dashboard for manufacturing SME: reports from 2 days/week to always-fresh data, data delay from 48h to 24h."
+      },
+      "tags": ["Data Pipeline", "Dashboard", "SQL"],
+      "url": "/portfolio/dashboard-kpi-operations"
+    },
+    {
+      "name": "Prototipo AI Classificazione Documenti",
+      "description": {
+        "it": "Classificazione documenti per scale-up legale: da 3-4h/giorno a 30 minuti, 88% accuratezza su categorie complesse.",
+        "en": "Document classification for legal scale-up: from 3-4h/day to 30 minutes, 88% accuracy on complex categories."
+      },
+      "tags": ["NLP", "Python", "LLM"],
+      "url": "/portfolio/prototipo-ai-classificazione"
+    },
+    {
+      "name": "Pipeline Analytics E-commerce",
+      "description": {
+        "it": "Pipeline dati real-time per e-commerce B2C: LTV, CAC e ROI disponibili in tempo reale.",
+        "en": "Real-time data pipeline for B2C e-commerce: LTV, CAC and ROI available in real time."
+      },
+      "tags": ["ETL", "Analytics", "dbt"],
+      "url": "/portfolio/pipeline-analytics-ecommerce"
+    },
+    {
+      "name": "Control plane per agenti AI",
+      "description": {
+        "it": "Piattaforma self-hosted per governare agenti AI multi-cliente: calendario condiviso, policy per tool, audit trail, deleghe time-boxed.",
+        "en": "Self-hosted platform to govern multi-client AI agents: shared calendar, tool policies, audit trail, time-boxed delegations."
+      },
+      "tags": ["FastAPI", "React", "MCP", "systemd"]
+    },
+    {
+      "name": "opencode-observability-plugin",
+      "description": {
+        "it": "Plugin di osservabilità open source per CLI di coding agentico.",
+        "en": "Open source observability plugin for agentic coding CLIs."
+      },
+      "tags": ["TypeScript", "Open Source"],
+      "url": "https://github.com/leoneconsultingch/opencode-observability-plugin"
+    }
+  ],
+  "languages": [
+    { "name": { "it": "Italiano", "en": "Italian" }, "level": { "it": "Madrelingua", "en": "Native" } },
+    { "name": { "it": "Inglese", "en": "English" }, "level": { "it": "Professionale", "en": "Professional" } }
+  ]
+}

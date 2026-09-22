@@ -13,6 +13,7 @@ export const ui = {
     'nav.portfolio': 'Portfolio',
     'nav.booking': 'Prenota',
     'nav.contact': 'Contatti',
+    'nav.cv': 'CV',
     
     'hero.title': 'Trasforma le tue idee in',
     'hero.title.highlight': 'soluzioni intelligenti',
@@ -116,6 +117,7 @@ export const ui = {
     'nav.portfolio': 'Portfolio',
     'nav.booking': 'Book',
     'nav.contact': 'Contact',
+    'nav.cv': 'CV',
     
     'hero.title': 'Transform your ideas into',
     'hero.title.highlight': 'intelligent solutions',

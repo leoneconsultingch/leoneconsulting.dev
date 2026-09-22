@@ -43,11 +43,17 @@ const basePath = lang === 'en' ? '/en' : '';
         >
           {t('nav.booking')}
         </a>
-        <a 
+        <a
           href={`${basePath}/portfolio`}
           class={`text-sm font-medium transition-colors ${currentPath === `${basePath}/portfolio` ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}
         >
           {t('nav.portfolio')}
+        </a>
+        <a
+          href={`${basePath}/cv`}
+          class={`text-sm font-medium transition-colors ${currentPath === `${basePath}/cv` ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}
+        >
+          {t('nav.cv')}
         </a>
         <a 
           href={`${basePath}/contact`}
@@ -78,6 +84,7 @@ const basePath = lang === 'en' ? '/en' : '';
         <a href={`${basePath}/services`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.services')}</a>
         <a href={`${basePath}/booking`} class="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors py-2 font-semibold">{t('nav.booking')}</a>
         <a href={`${basePath}/portfolio`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.portfolio')}</a>
+        <a href={`${basePath}/cv`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.cv')}</a>
         <a href={`${basePath}/contact`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.contact')}</a>
         <div class="pt-3 mt-3 border-t border-gray-200">
           <LanguagePicker isMobile={true} />
