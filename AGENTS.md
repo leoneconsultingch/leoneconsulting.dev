@@ -34,9 +34,14 @@ Tipo: `src/types/cv.ts`.
 
 ### Procedura
 1. Aggiorna SOLO `company/cv.json` (bump `updated`, mantieni versione schema)
-2. `npm run build` deve passare
+2. `npm run build` deve passare — SEMPRE su clone pulito (/tmp + npm ci): il build nel repo di sviluppo può mascherare errori `astro check` per cache
 3. Commit + push → deploy Vercel automatico
 4. Registra aggiornamento nel diario MissionControl (project `leoneconsulting.dev`)
+
+### Localizzazione (hard)
+- Campi testuali localizzati `{it, en}`; `items` skills e `name` progetti accettano stringa semplice SOLO se identica in entrambe le lingue (tecnici/brand)
+- Mai parole italiane nei campi/varianti EN (incluse skill items): verificare con grep prima del push
+- PDF generati dallo stesso JSON: la pulizia EN vale per pagina web E PDF
 
 ### Categorie da tenere aggiornate
 - `stats` (anni esperienza, progetti consegnati)
