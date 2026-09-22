@@ -5,7 +5,7 @@ export interface CvLocalized {
 
 export interface CvSkillArea {
   area: CvLocalized;
-  items: string[];
+  items: (CvLocalized | string)[];
 }
 
 export interface CvExperience {

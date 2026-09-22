@@ -63,7 +63,7 @@
       "items": [
         "PyTorch, TensorFlow, scikit-learn, Hugging Face",
         "Deep Learning, Reinforcement Learning",
-        "LLM integration e tooling agentico",
+        "LLM integration and agentic tooling",
         "Financial ML"
       ]
     },
@@ -73,7 +73,7 @@
         "en": "Data Engineering"
       },
       "items": [
-        "Pipeline ETL, data cleaning, data mining",
+        "ETL pipelines, data cleaning, data mining",
         "Dati strutturati e non strutturati",
         "ClickHouse, ZeroMQ",
         "Pandas, dbt, Airflow"
@@ -86,8 +86,8 @@
       },
       "items": [
         "Tableau, Power BI",
-        "Dashboard custom (React)",
-        "Data storytelling, Excel avanzato"
+        "Custom dashboards (React)",
+        "Data storytelling, advanced Excel"
       ]
     },
     {

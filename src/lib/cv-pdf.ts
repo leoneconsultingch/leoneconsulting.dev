@@ -109,7 +109,7 @@ function buildOnce(lang: 'it' | 'en', S: number): { doc: jsPDF; mainY: number; o
       for (const item of area.items) {
         setFont('normal', sz(7.4), SB_TEXT);
         doc.text('\u2013', SB_PAD + 0.4, y);
-        y = sbText(y, item, { size: sz(7.4) });
+        y = sbText(y, LS(item), { size: sz(7.4) });
       }
       y += 1.6;
     }
