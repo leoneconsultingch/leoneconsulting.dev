@@ -6,7 +6,7 @@ export const GET = () => {
     headers: {
       'Content-Type': 'application/pdf',
       'Content-Disposition': 'attachment; filename="CV-Mario-Leone-EN.pdf"',
-      'Cache-Control': 'public, max-age=3600',
+      'Cache-Control': 'public, max-age=60',
     },
   });
 };
