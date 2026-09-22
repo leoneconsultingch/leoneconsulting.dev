@@ -1,15 +1,15 @@
 {
-  "version": 1,
+  "version": 2,
   "updated": "2026-09-22",
   "name": "Mario Leone",
   "role": {
-    "it": "AI Engineer & Consulente Software — Founder di Leone Consulting",
-    "en": "AI Engineer & Software Consultant — Founder of Leone Consulting"
+    "it": "AI Engineer & Data Scientist — Leone Consulting",
+    "en": "AI Engineer & Data Scientist — Leone Consulting"
   },
   "location": "Svizzera",
   "summary": {
-    "it": "Ingegnere AI e consulente software. Aiuto PMI e startup a trasformare dati e idee in prodotti funzionanti: MVP, pipeline dati, dashboard operative e integrazione LLM. Metodo scientifico applicato allo sviluppo: ipotesi verificabili, test, risultati misurabili. Attivo anche in R&D personale su sistemi multi-agente, osservabilità e automazione dello sviluppo.",
-    "en": "AI engineer and software consultant. I help SMEs and startups turn data and ideas into working products: MVPs, data pipelines, operational dashboards and LLM integration. Scientific method applied to software: testable hypotheses, testing, measurable results. Also active in personal R&D on multi-agent systems, observability and development automation."
+    "it": "AI Engineer con solida esperienza in sistemi di trading algoritmico, machine learning e applicazioni data-driven. Progetto e implemento architetture low-latency e dashboard real-time basate su agenti intelligenti, combinando le prestazioni del C++ con modelli AI in Python. Attivo anche in R&D su sistemi multi-agente, osservabilità e automazione dello sviluppo.",
+    "en": "Experienced AI Engineer with a strong background in algorithmic trading systems, machine learning, and data-driven applications. I design and implement low-latency architectures and real-time dashboards powered by intelligent agents, combining C++ performance with Python-based AI models. Also active in R&D on multi-agent systems, observability and development automation."
   },
   "contacts": {
     "email": "info@leoneconsulting.dev",
@@ -18,143 +18,184 @@
     "github": "https://github.com/leoneconsultingch"
   },
   "stats": [
-    { "value": "4+", "label": { "it": "Anni di esperienza", "en": "Years of experience" } },
-    { "value": "15+", "label": { "it": "Progetti consegnati", "en": "Projects delivered" } },
-    { "value": "3", "label": { "it": "Aree core: AI, dati, software", "en": "Core areas: AI, data, software" } }
+    { "value": "15+", "label": { "it": "Anni di esperienza in dati e AI", "en": "Years of experience in data and AI" } },
+    { "value": "2010", "label": { "it": "Primo progetto data freelance", "en": "First freelance data engagement" } },
+    { "value": "4", "label": { "it": "Lingue", "en": "Languages" } }
   ],
   "skills": [
     {
-      "area": { "it": "AI & Machine Learning", "en": "AI & Machine Learning" },
+      "area": { "it": "Programming", "en": "Programming" },
       "items": [
-        "Integrazione LLM e tooling agentico",
-        "Agenti autonomi e orchestrazione multi-agente",
-        "NLP e classificazione documenti",
-        "scikit-learn, TensorFlow, OpenAI API",
-        "MLOps e valutazione modelli"
+        "C++, Python, TypeScript, JavaScript",
+        "R, MATLAB, SQL, C",
+        "Bash, LaTeX"
       ]
     },
     {
-      "area": { "it": "Sviluppo Software", "en": "Software Development" },
+      "area": { "it": "ML & AI", "en": "ML & AI" },
       "items": [
-        "Python, TypeScript/JavaScript, SQL, C++",
-        "FastAPI, Astro, React, Node.js",
-        "PostgreSQL, ClickHouse",
-        "Test automatizzati, code review, documentazione"
+        "PyTorch, TensorFlow, scikit-learn, Hugging Face",
+        "Deep Learning, Reinforcement Learning",
+        "LLM integration e tooling agentico",
+        "Financial ML"
       ]
     },
     {
       "area": { "it": "Data Engineering", "en": "Data Engineering" },
       "items": [
-        "Pipeline dati ETL/ELT",
-        "Pandas, dbt, Airflow",
-        "Dashboard e analytics (Metabase, custom)",
-        "Backtesting e analytics real-time"
+        "Pipeline ETL, data cleaning, data mining",
+        "Dati strutturati e non strutturati",
+        "ClickHouse, ZeroMQ",
+        "Pandas, dbt, Airflow"
+      ]
+    },
+    {
+      "area": { "it": "Visualization", "en": "Visualization" },
+      "items": [
+        "Tableau, Power BI",
+        "Dashboard custom (React)",
+        "Data storytelling, Excel avanzato"
       ]
     },
     {
       "area": { "it": "Cloud & DevOps", "en": "Cloud & DevOps" },
       "items": [
-        "AWS, GCP, Vercel, Railway",
-        "Docker, Kubernetes, CI/CD",
-        "Amministrazione Linux e hardening",
-        "Osservabilità e audit logging"
+        "AWS, Azure",
+        "Docker, Kubernetes, Jenkins",
+        "Git, GitHub Actions, CI/CD",
+        "Linux (Arch), systemd, hardening"
+      ]
+    },
+    {
+      "area": { "it": "Other Tools", "en": "Other Tools" },
+      "items": [
+        "Ollama, Text-Generation-WebUI",
+        "WordPress",
+        "Adobe Illustrator, Photoshop"
       ]
     }
   ],
   "experience": [
     {
-      "period": "2022 — oggi",
+      "period": "2019 — oggi",
       "role": {
-        "it": "Founder & AI Engineer",
-        "en": "Founder & AI Engineer"
+        "it": "AI Engineer · Data Scientist · Full Stack Developer",
+        "en": "AI Engineer · Data Scientist · Full Stack Developer"
       },
-      "org": "Leone Consulting",
+      "org": "Freelance / Leone Consulting",
       "url": "https://leoneconsulting.dev",
       "highlights": [
         {
-          "it": "Tech/AI Audit: diagnosi tecnica e roadmap in 5 giorni per PMI e startup",
-          "en": "Tech/AI Audit: technical diagnosis and roadmap in 5 days for SMEs and startups"
+          "it": "Soluzioni AI end-to-end per trading algoritmico e high-frequency",
+          "en": "Architected and delivered end-to-end AI solutions for algorithmic and high-frequency trading"
         },
         {
-          "it": "MVP Sprint: prototipi funzionanti in 2-4 settimane (AI, web, dati)",
-          "en": "MVP Sprints: working prototypes in 2-4 weeks (AI, web, data)"
+          "it": "Agenti di trading AI con reinforcement learning e deep neural networks",
+          "en": "Designed and deployed AI-powered trading agents integrating reinforcement learning and deep neural networks"
         },
         {
-          "it": "Pipeline dati e dashboard KPI: da report manuali a dati real-time",
-          "en": "Data pipelines and KPI dashboards: from manual reports to real-time data"
+          "it": "Pipeline dati real-time low-latency con ZeroMQ, Docker e ClickHouse",
+          "en": "Built scalable real-time, low-latency data pipelines with ZeroMQ, Docker, and ClickHouse"
         },
         {
-          "it": "Approccio a metodo scientifico: ogni progetto con KPI e criteri di successo condivisi",
-          "en": "Scientific-method approach: every project with shared KPIs and success criteria"
+          "it": "Applicazioni full-stack e dashboard finanziarie interattive (React, Node.js, SQL/NoSQL)",
+          "en": "Developed full-stack applications and interactive financial dashboards (React, Node.js, SQL/NoSQL)"
+        },
+        {
+          "it": "Integrazione LLM per analytics finanziario, risk assessment, sentiment analysis e reporting automatico",
+          "en": "Integrated LLMs for financial analytics, risk assessment, sentiment analysis, and automated reporting"
+        },
+        {
+          "it": "Framework di backtesting e simulazione per valutazione sistematica di strategie",
+          "en": "Implemented backtesting and simulation frameworks for systematic evaluation of trading strategies"
+        },
+        {
+          "it": "Architetture multi-agent C++ (performance) + Python (AI/ML)",
+          "en": "Led multi-agent architectures combining C++ (performance) and Python (AI/ML)"
+        },
+        {
+          "it": "Ottimizzazione carichi GPU (CUDA, NVIDIA RTX, PyTorch/TensorFlow)",
+          "en": "Optimized GPU workloads (CUDA, NVIDIA RTX, PyTorch/TensorFlow)"
+        },
+        {
+          "it": "Consulenza e training su integrazione AI, ML pipeline, data science e full-stack",
+          "en": "Delivered consulting and training on AI integration, ML pipelines, data science workflows, and full-stack development"
         }
       ]
     },
     {
-      "period": "continuativo",
+      "period": "2010 — oggi",
       "role": {
-        "it": "R&D — sistemi multi-agente e automazione sviluppo",
-        "en": "R&D — multi-agent systems and development automation"
+        "it": "Data Analyst / Data Scientist",
+        "en": "Data Analyst / Data Scientist"
       },
-      "org": "Progetti personali",
-      "url": "https://leoneconsulting.dev/portfolio/multiagenthft",
+      "org": "Freelance",
       "highlights": [
         {
-          "it": "Piattaforma multi-agente per HFT: C++ low-latency + Python AI, dashboard real-time",
-          "en": "Multi-agent HFT platform: low-latency C++ + Python AI, real-time dashboard"
+          "it": "Modelli statistici e analisi predittiva per settori finanziari e industriali",
+          "en": "Statistical modeling and predictive analysis for financial and industrial sectors"
         },
         {
-          "it": "Piattaforma self-hosted di controllo operativo per agenti AI: calendario condiviso, policy guard, audit trail",
-          "en": "Self-hosted operations control plane for AI agents: shared calendar, policy guards, audit trail"
+          "it": "Modelli credit risk, churn prediction e time-series forecasting",
+          "en": "Developed credit risk models, churn prediction systems, and time-series forecasting solutions"
         },
         {
-          "it": "Tooling per osservabilità e plugin per CLI di coding agentico",
-          "en": "Observability tooling and plugins for agentic coding CLIs"
+          "it": "Workflow ML dalla preprocessazione alla produzione",
+          "en": "Designed and deployed machine learning workflows from preprocessing to production"
+        },
+        {
+          "it": "Pipeline ETL e dataset su larga scala con qualità e riproducibilità",
+          "en": "Managed ETL pipelines and large-scale datasets ensuring quality and reproducibility"
+        },
+        {
+          "it": "Dashboard AI-driven e decision-support con team cross-funzionali",
+          "en": "Collaborated with cross-functional teams to integrate AI-driven dashboards and decision-support tools"
         }
       ]
     }
   ],
   "projects": [
     {
-      "name": "Sistema Multi-Agent HFT",
+      "name": "MultiAgentHFT",
       "description": {
-        "it": "Architettura multi-agent per trading ad alta frequenza: C++ per la bassa latenza, Python per AI/ML, ClickHouse per analytics real-time.",
-        "en": "Multi-agent architecture for high-frequency trading: C++ for low latency, Python for AI/ML, ClickHouse for real-time analytics."
+        "it": "Sistema multi-agent per trading ad alta frequenza: C++ low-latency, Python AI, ClickHouse, dashboard React real-time.",
+        "en": "Multi-agent system for high-frequency trading: low-latency C++, Python AI, ClickHouse, real-time React dashboard."
       },
-      "tags": ["C++", "Python", "ClickHouse", "Docker", "React"],
+      "tags": ["C++", "Python", "ClickHouse", "React", "Docker"],
       "url": "/portfolio/multiagenthft"
+    },
+    {
+      "name": "FinLLM",
+      "description": {
+        "it": "LLM per analytics finanziario: risk assessment, sentiment analysis, reporting automatico.",
+        "en": "LLMs for financial analytics: risk assessment, sentiment analysis, automated reporting."
+      },
+      "tags": ["LLM", "Python", "Finance"],
+      "url": "/portfolio/finllm"
+    },
+    {
+      "name": "Predictive Analytics ML",
+      "description": {
+        "it": "Modelli predittivi con machine learning: credit risk, churn, forecasting.",
+        "en": "Predictive models with machine learning: credit risk, churn, forecasting."
+      },
+      "tags": ["ML", "scikit-learn", "Forecasting"],
+      "url": "/portfolio/predictive-analytics-ml"
     },
     {
       "name": "Dashboard KPI Operations",
       "description": {
-        "it": "Dashboard KPI per PMI manifatturiera: report da 2 giorni/settimana a dati sempre aggiornati, ritardo dati da 48h a 24h.",
-        "en": "KPI dashboard for manufacturing SME: reports from 2 days/week to always-fresh data, data delay from 48h to 24h."
+        "it": "Dashboard KPI per PMI manifatturiera: report da 2 giorni/settimana a dati sempre aggiornati.",
+        "en": "KPI dashboard for manufacturing SME: reports from 2 days/week to always-fresh data."
       },
       "tags": ["Data Pipeline", "Dashboard", "SQL"],
       "url": "/portfolio/dashboard-kpi-operations"
     },
     {
-      "name": "Prototipo AI Classificazione Documenti",
-      "description": {
-        "it": "Classificazione documenti per scale-up legale: da 3-4h/giorno a 30 minuti, 88% accuratezza su categorie complesse.",
-        "en": "Document classification for legal scale-up: from 3-4h/day to 30 minutes, 88% accuracy on complex categories."
-      },
-      "tags": ["NLP", "Python", "LLM"],
-      "url": "/portfolio/prototipo-ai-classificazione"
-    },
-    {
-      "name": "Pipeline Analytics E-commerce",
-      "description": {
-        "it": "Pipeline dati real-time per e-commerce B2C: LTV, CAC e ROI disponibili in tempo reale.",
-        "en": "Real-time data pipeline for B2C e-commerce: LTV, CAC and ROI available in real time."
-      },
-      "tags": ["ETL", "Analytics", "dbt"],
-      "url": "/portfolio/pipeline-analytics-ecommerce"
-    },
-    {
       "name": "Control plane per agenti AI",
       "description": {
-        "it": "Piattaforma self-hosted per governare agenti AI multi-cliente: calendario condiviso, policy per tool, audit trail, deleghe time-boxed.",
-        "en": "Self-hosted platform to govern multi-client AI agents: shared calendar, tool policies, audit trail, time-boxed delegations."
+        "it": "Piattaforma self-hosted per governare agenti AI multi-cliente: calendario condiviso, policy per tool, audit trail.",
+        "en": "Self-hosted platform to govern multi-client AI agents: shared calendar, tool policies, audit trail."
       },
       "tags": ["FastAPI", "React", "MCP", "systemd"]
     },
@@ -170,6 +211,8 @@
   ],
   "languages": [
     { "name": { "it": "Italiano", "en": "Italian" }, "level": { "it": "Madrelingua", "en": "Native" } },
-    { "name": { "it": "Inglese", "en": "English" }, "level": { "it": "Professionale", "en": "Professional" } }
+    { "name": { "it": "Inglese", "en": "English" }, "level": { "it": "Fluente", "en": "Fluent" } },
+    { "name": { "it": "Francese", "en": "French" }, "level": { "it": "Intermedio", "en": "Intermediate" } },
+    { "name": { "it": "Tedesco", "en": "German" }, "level": { "it": "Base", "en": "Basic" } }
   ]
 }
