@@ -96,7 +96,7 @@ function buildOnce(lang: 'it' | 'en', S: number): { doc: jsPDF; mainY: number; o
     y = sbTitle(y, t.contact);
     y = sbText(y, data.contacts.email, { bold: true, color: SB_HEAD });
     y = sbText(y + 0.4, data.contacts.phone);
-    y = sbText(y + 0.4, data.location);
+    y = sbText(y + 0.4, L(data.location));
     y = sbLink(y + 1.8, data.contacts.website, data.contacts.website.replace('https://', ''));
     if (data.contacts.github) {
       y = sbLink(y + 0.4, data.contacts.github, data.contacts.github.replace('https://github.com/', 'github.com/'));
@@ -206,7 +206,7 @@ function buildOnce(lang: 'it' | 'en', S: number): { doc: jsPDF; mainY: number; o
     doc.text(roleLines, MAIN_X + 5, mainY);
     mainY += lh(sz(9.6)) * roleLines.length;
     setFont('bold', sz(7.6), ACCENT);
-    doc.text(exp.period, MAIN_X + 5, mainY + 0.4);
+    doc.text(L(exp.period), MAIN_X + 5, mainY + 0.4);
     mainY += lh(sz(7.6));
     setFont('italic', sz(8.2), FAINT);
     const orgLines = wrap(exp.org, MAIN_W - 5);

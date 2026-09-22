@@ -9,7 +9,7 @@ export interface CvSkillArea {
 }
 
 export interface CvExperience {
-  period: string;
+  period: CvLocalized;
   role: CvLocalized;
   org: string;
   url?: string;
@@ -28,7 +28,7 @@ export interface Cv {
   updated: string;
   name: string;
   role: CvLocalized;
-  location: string;
+  location: CvLocalized;
   summary: CvLocalized;
   contacts: {
     email: string;

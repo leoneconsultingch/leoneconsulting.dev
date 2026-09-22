@@ -6,7 +6,10 @@
     "it": "AI Engineer & Data Scientist — Leone Consulting",
     "en": "AI Engineer & Data Scientist — Leone Consulting"
   },
-  "location": "Svizzera",
+  "location": {
+    "it": "Svizzera",
+    "en": "Switzerland"
+  },
   "summary": {
     "it": "AI Engineer con solida esperienza in sistemi di trading algoritmico, machine learning e applicazioni data-driven. Progetto e implemento architetture low-latency e dashboard real-time basate su agenti intelligenti, combinando le prestazioni del C++ con modelli AI in Python. Attivo anche in R&D su sistemi multi-agente, osservabilità e automazione dello sviluppo.",
     "en": "Experienced AI Engineer with a strong background in algorithmic trading systems, machine learning, and data-driven applications. I design and implement low-latency architectures and real-time dashboards powered by intelligent agents, combining C++ performance with Python-based AI models. Also active in R&D on multi-agent systems, observability and development automation."
@@ -18,13 +21,34 @@
     "github": "https://github.com/leoneconsultingch"
   },
   "stats": [
-    { "value": "15+", "label": { "it": "Anni di esperienza in dati e AI", "en": "Years of experience in data and AI" } },
-    { "value": "2010", "label": { "it": "Primo progetto data freelance", "en": "First freelance data engagement" } },
-    { "value": "4", "label": { "it": "Lingue", "en": "Languages" } }
+    {
+      "value": "15+",
+      "label": {
+        "it": "Anni di esperienza in dati e AI",
+        "en": "Years of experience in data and AI"
+      }
+    },
+    {
+      "value": "2010",
+      "label": {
+        "it": "Primo progetto data freelance",
+        "en": "First freelance data engagement"
+      }
+    },
+    {
+      "value": "4",
+      "label": {
+        "it": "Lingue",
+        "en": "Languages"
+      }
+    }
   ],
   "skills": [
     {
-      "area": { "it": "Programming", "en": "Programming" },
+      "area": {
+        "it": "Programming",
+        "en": "Programming"
+      },
       "items": [
         "C++, Python, TypeScript, JavaScript",
         "R, MATLAB, SQL, C",
@@ -32,7 +56,10 @@
       ]
     },
     {
-      "area": { "it": "ML & AI", "en": "ML & AI" },
+      "area": {
+        "it": "ML & AI",
+        "en": "ML & AI"
+      },
       "items": [
         "PyTorch, TensorFlow, scikit-learn, Hugging Face",
         "Deep Learning, Reinforcement Learning",
@@ -41,7 +68,10 @@
       ]
     },
     {
-      "area": { "it": "Data Engineering", "en": "Data Engineering" },
+      "area": {
+        "it": "Data Engineering",
+        "en": "Data Engineering"
+      },
       "items": [
         "Pipeline ETL, data cleaning, data mining",
         "Dati strutturati e non strutturati",
@@ -50,7 +80,10 @@
       ]
     },
     {
-      "area": { "it": "Visualization", "en": "Visualization" },
+      "area": {
+        "it": "Visualization",
+        "en": "Visualization"
+      },
       "items": [
         "Tableau, Power BI",
         "Dashboard custom (React)",
@@ -58,7 +91,10 @@
       ]
     },
     {
-      "area": { "it": "Cloud & DevOps", "en": "Cloud & DevOps" },
+      "area": {
+        "it": "Cloud & DevOps",
+        "en": "Cloud & DevOps"
+      },
       "items": [
         "AWS, Azure",
         "Docker, Kubernetes, Jenkins",
@@ -67,7 +103,10 @@
       ]
     },
     {
-      "area": { "it": "Other Tools", "en": "Other Tools" },
+      "area": {
+        "it": "Other Tools",
+        "en": "Other Tools"
+      },
       "items": [
         "Ollama, Text-Generation-WebUI",
         "WordPress",
@@ -77,7 +116,10 @@
   ],
   "experience": [
     {
-      "period": "2019 — oggi",
+      "period": {
+        "it": "2019 — oggi",
+        "en": "2019 — present"
+      },
       "role": {
         "it": "AI Engineer · Data Scientist · Full Stack Developer",
         "en": "AI Engineer · Data Scientist · Full Stack Developer"
@@ -124,7 +166,10 @@
       ]
     },
     {
-      "period": "2010 — oggi",
+      "period": {
+        "it": "2010 — oggi",
+        "en": "2010 — present"
+      },
       "role": {
         "it": "Data Analyst / Data Scientist",
         "en": "Data Analyst / Data Scientist"
@@ -161,7 +206,13 @@
         "it": "Sistema multi-agent per trading ad alta frequenza: C++ low-latency, Python AI, ClickHouse, dashboard React real-time.",
         "en": "Multi-agent system for high-frequency trading: low-latency C++, Python AI, ClickHouse, real-time React dashboard."
       },
-      "tags": ["C++", "Python", "ClickHouse", "React", "Docker"],
+      "tags": [
+        "C++",
+        "Python",
+        "ClickHouse",
+        "React",
+        "Docker"
+      ],
       "url": "/portfolio/multiagenthft"
     },
     {
@@ -170,7 +221,11 @@
         "it": "LLM per analytics finanziario: risk assessment, sentiment analysis, reporting automatico.",
         "en": "LLMs for financial analytics: risk assessment, sentiment analysis, automated reporting."
       },
-      "tags": ["LLM", "Python", "Finance"],
+      "tags": [
+        "LLM",
+        "Python",
+        "Finance"
+      ],
       "url": "/portfolio/finllm"
     },
     {
@@ -179,7 +234,11 @@
         "it": "Modelli predittivi con machine learning: credit risk, churn, forecasting.",
         "en": "Predictive models with machine learning: credit risk, churn, forecasting."
       },
-      "tags": ["ML", "scikit-learn", "Forecasting"],
+      "tags": [
+        "ML",
+        "scikit-learn",
+        "Forecasting"
+      ],
       "url": "/portfolio/predictive-analytics-ml"
     },
     {
@@ -188,7 +247,11 @@
         "it": "Dashboard KPI per PMI manifatturiera: report da 2 giorni/settimana a dati sempre aggiornati.",
         "en": "KPI dashboard for manufacturing SME: reports from 2 days/week to always-fresh data."
       },
-      "tags": ["Data Pipeline", "Dashboard", "SQL"],
+      "tags": [
+        "Data Pipeline",
+        "Dashboard",
+        "SQL"
+      ],
       "url": "/portfolio/dashboard-kpi-operations"
     },
     {
@@ -197,7 +260,12 @@
         "it": "Piattaforma self-hosted per governare agenti AI multi-cliente: calendario condiviso, policy per tool, audit trail.",
         "en": "Self-hosted platform to govern multi-client AI agents: shared calendar, tool policies, audit trail."
       },
-      "tags": ["FastAPI", "React", "MCP", "systemd"]
+      "tags": [
+        "FastAPI",
+        "React",
+        "MCP",
+        "systemd"
+      ]
     },
     {
       "name": "opencode-observability-plugin",
@@ -205,14 +273,53 @@
         "it": "Plugin di osservabilità open source per CLI di coding agentico.",
         "en": "Open source observability plugin for agentic coding CLIs."
       },
-      "tags": ["TypeScript", "Open Source"],
+      "tags": [
+        "TypeScript",
+        "Open Source"
+      ],
       "url": "https://github.com/leoneconsultingch/opencode-observability-plugin"
     }
   ],
   "languages": [
-    { "name": { "it": "Italiano", "en": "Italian" }, "level": { "it": "Madrelingua", "en": "Native" } },
-    { "name": { "it": "Inglese", "en": "English" }, "level": { "it": "Fluente", "en": "Fluent" } },
-    { "name": { "it": "Francese", "en": "French" }, "level": { "it": "Intermedio", "en": "Intermediate" } },
-    { "name": { "it": "Tedesco", "en": "German" }, "level": { "it": "Base", "en": "Basic" } }
+    {
+      "name": {
+        "it": "Italiano",
+        "en": "Italian"
+      },
+      "level": {
+        "it": "Madrelingua",
+        "en": "Native"
+      }
+    },
+    {
+      "name": {
+        "it": "Inglese",
+        "en": "English"
+      },
+      "level": {
+        "it": "Fluente",
+        "en": "Fluent"
+      }
+    },
+    {
+      "name": {
+        "it": "Francese",
+        "en": "French"
+      },
+      "level": {
+        "it": "Intermedio",
+        "en": "Intermediate"
+      }
+    },
+    {
+      "name": {
+        "it": "Tedesco",
+        "en": "German"
+      },
+      "level": {
+        "it": "Base",
+        "en": "Basic"
+      }
+    }
   ]
 }

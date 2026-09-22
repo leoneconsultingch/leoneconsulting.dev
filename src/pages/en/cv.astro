@@ -71,7 +71,7 @@ const L = (f: { it: string; en: string }) => f[lang];
               <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-primary-600">
                 <div class="flex flex-wrap items-baseline justify-between gap-2 mb-3">
                   <h3 class="text-xl font-bold text-gray-900">{L(exp.role)}</h3>
-                  <span class="text-sm font-medium text-primary-600">{exp.period}</span>
+                  <span class="text-sm font-medium text-primary-600">{L(exp.period)}</span>
                 </div>
                 <p class="text-gray-500 font-medium mb-4">
                   {exp.url ? <a href={exp.url} target={exp.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer" class="hover:text-primary-600 transition-colors">{exp.org} ↗</a> : exp.org}
