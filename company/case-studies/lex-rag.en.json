@@ -1,0 +1,114 @@
+{
+  "slug": "lex-rag",
+  "title": "LEX — Semantic RAG for Law Firms",
+  "client": "Law firm (confidential client)",
+  "sector": "AI & Legal Tech",
+  "published": false,
+  "featuredImage": "/img/case-studies/lex-rag.jpg",
+
+  "problem": {
+    "description": "Law firms manage large archives of filings, briefs, contracts, rulings and scanned documents. Research is still mostly manual, and preparing briefs or legal opinions requires hours of cross-reading. Generic LLMs cannot be used as-is: they produce unverifiable statutory and case-law citations, misread legal terminology, and offer no source traceability — unacceptable in a professional domain where every statement must be traceable to a source.",
+    "painPoints": [
+      "Manual search across heterogeneous document archives (paper, PDF, email)",
+      "Generic LLMs hallucinate legal citations with no traceability",
+      "Professional secrecy and GDPR rule out public cloud services",
+      "No automatic distinction between established, disputed and hypothetical facts in case documents"
+    ]
+  },
+
+  "constraints": {
+    "timeline": "Incremental development, phased pipeline with validation at each stage",
+    "budget": "Self-hosted infrastructure, no license cost for core components",
+    "technical": [
+      "Inbound documents are mostly scanned: internal OCR required, no external services",
+      "Italian NLP resources with heterogeneous licenses (commercial, non-commercial, research-only): per-source compliance",
+      "Every generated paragraph must link to a verifiable fact → source → application chain",
+      "Integration with the document editing suite already used in the firm"
+    ],
+    "compliance": [
+      "GDPR and professional secrecy: data never leaves the dedicated infrastructure (EU hosting)",
+      "Mandatory final human review by the lawyer on every output",
+      "Audit trail of sources and retrieval decisions"
+    ]
+  },
+
+  "solution": {
+    "architecture": "Self-hosted platform for a law firm: internal document OCR, hybrid indexing (BM25 full-text + semantic search) over briefs, case files, rulings and codes, and a layered legal semantic engine. Specialized agents (codes and statutes, rulings, general assistance) cooperate through MCP tools routed by the backend, keeping audit, validation and permissions centralized. The LEX layer turns each document chunk into an auditable structure (speech act, event, semantic roles, temporality, factuality) with a declared license policy per resource. A citation validator checks statute and case law before text reaches the lawyer, and an argument miner reconstructs the fact → issue → rule → application → counterargument structure. Final drafting happens in the integrated document suite, with mandatory human approval.",
+    "keyDecisions": [
+      "Verifiable chain for every output: case fact → legal issue → source → principle → application → validated citation → lawyer approval",
+      "Specialized non-autonomous agents: they work only on verifiable sources (source hashing), declare missing sources, and leave critical states pending until human review",
+      "MCP tools routed by the backend, never with direct access to external sources: audit, permissions and validation stay centralized",
+      "Citation validator as a separate component (structural anti-hallucination, not prompt-only)",
+      "Separation between the semantic layer (what the document says) and legal weight (what it means): semantic memory first, legal memory after",
+      "Per-resource NLP source policy (license, commercial use, attribution) verified before runtime enablement",
+      "OCR fully inside the infrastructure to keep confidential documents away from third parties",
+      "Incremental architecture: each pilot phase validates schema and success criteria before the next"
+    ],
+    "approach": "Phased development with deterministic verification: first ingestion and hybrid search over the existing corpus, then the semantic core with chunk registry, then the pilot on Italian semantic repositories. Verified citation drives the whole design: the system must produce drafts and analyses, not generic answers."
+  },
+
+  "results": {
+    "metrics": [
+      {
+        "label": "Document research time",
+        "value": "[TO BE COMPLETED]",
+        "isProxy": false,
+        "description": "To be measured: brief preparation time before/after"
+      },
+      {
+        "label": "Indexed corpus coverage",
+        "value": "[TO BE COMPLETED]",
+        "isProxy": false,
+        "description": "Documents/rulings/codes indexed in the system"
+      },
+      {
+        "label": "Validated citations",
+        "value": "[TO BE COMPLETED]",
+        "isProxy": false,
+        "description": "Share of citations passing the validator without corrections"
+      }
+    ],
+    "impact": "[TO BE COMPLETED after firm feedback: drafting time reduction, source retrieval quality, lawyer adoption]"
+  },
+
+  "tech": {
+    "stack": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "PaddleOCR",
+      "Hybrid full-text + embeddings search",
+      "OnlyOffice",
+      "React / Vite",
+      "Docker"
+    ],
+    "tools": [
+      "Internal document OCR pipeline",
+      "Chunk registry with hashing and source tracking",
+      "Statutory and case-law citation validator",
+      "Argument miner (Fact / Issue / Rule / Analysis / Conclusion)",
+      "Multi-agent architecture with MCP tools routed by the backend",
+      "Italian semantic repositories (frames, speech acts, roles, temporality)"
+    ]
+  },
+
+  "role": [
+    "End-to-end platform architecture (backend, AI pipeline, frontend)",
+    "Multi-agent architecture and MCP tool design (codes, rulings, assistance agents)",
+    "Legal semantic engine and verifiability chain design",
+    "OCR + ingestion + hybrid indexing pipeline implementation",
+    "Citation validation and argument mining",
+    "Italian semantic repository pilot with per-resource license analysis",
+    "Integration with document drafting and the lawyer approval flow"
+  ],
+
+  "links": {
+    "screenshots": []
+  },
+
+  "metadata": {
+    "duration": "Ongoing (incremental development)",
+    "year": 2026,
+    "language": "en"
+  }
+}

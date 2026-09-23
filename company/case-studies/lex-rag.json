@@ -1,0 +1,114 @@
+{
+  "slug": "lex-rag",
+  "title": "LEX — RAG semantico per studi legali",
+  "client": "Studio legale (cliente riservato)",
+  "sector": "AI & Legal Tech",
+  "published": false,
+  "featuredImage": "/img/case-studies/lex-rag.jpg",
+
+  "problem": {
+    "description": "Gli studi legali gestiscono archivi voluminosi di atti, memorie, contratti, sentenze e documenti scannerizzati. La ricerca è ancora prevalentemente manuale e la preparazione di memorie e pareri richiede ore di lettura incrociata. Gli LLM generici non sono utilizzabili direttamente: producono citazioni normative e giurisprudenziali non verificabili, jargon giuridico mal interpretato e nessuna tracciabilità delle fonti — inaccettabile in un dominio professionale dove ogni affermazione deve essere riconducibile a una fonte.",
+    "painPoints": [
+      "Ricerca manuale in archivi documentali eterogenei (cartaceo, PDF, email)",
+      "LLM generici generano citazioni legali allucinate e non tracciabili",
+      "Segreto professionale e GDPR impediscono l'uso di servizi cloud pubblici",
+      "Nessuna distinzione automatica tra fatti certi, contestati e ipotetici nei documenti di causa"
+    ]
+  },
+
+  "constraints": {
+    "timeline": "Sviluppo incrementale, pipeline per fasi con validazione a ogni stadio",
+    "budget": "Infrastruttura self-hosted, niente costi di licenza per componente core",
+    "technical": [
+      "Documenti in ingresso prevalentemente scannerizzati: serve OCR interno, no servizi esterni",
+      "Risorse NLP italiane con licenze eterogenee (commerciali, non-commercial, research-only): conformità da garantire per sorgente",
+      "Ogni paragrafo prodotto deve essere collegato a una catena verificabile fatto → fonte → applicazione",
+      "Integrazione con la superficie di redazione documentale già in uso nello studio"
+    ],
+    "compliance": [
+      "GDPR e segreto professionale: dati mai fuori dall'infrastruttura dedicata (hosting UE)",
+      "Controllo umano finale del legale obbligatorio su ogni output",
+      "Audit trail delle fonti e delle decisioni di retrieval"
+    ]
+  },
+
+  "solution": {
+    "architecture": "Piattaforma self-hosted per studio legale: OCR documentale interno, indicizzazione ibrida (full-text BM25 + ricerca semantica) su memorie, documenti di pratica, sentenze e codici, e un motore semantico legale a livelli. Agenti specializzati (norme e codici, sentenze, assistenza generale) cooperano tramite tool MCP instradati dal backend, così audit, validazioni e permessi restano centralizzati. Il layer LEX trasforma ogni chunk di documento in una struttura auditabile (atto linguistico, evento, ruoli semantici, temporalità, fattualità) con policy di licenza dichiarata per ogni risorsa. Un validatore di citazioni verifica norma e giurisprudenza prima che il testo raggiunga il legale, e un argument miner ricostruisce la struttura fatto → questione → norma → applicazione → controargomento. La redazione finale avviene nella suite documentale integrata, con approvazione umana obbligatoria.",
+    "keyDecisions": [
+      "Catena verificabile per ogni output: fatto del caso → questione giuridica → fonte → principio → applicazione → citazione validata → approvazione del legale",
+      "Agenti specializzati non autonomi: lavorano solo su fonti verificabili (source hash), dichiarano quando una fonte manca e lasciano gli stati critici in pending fino alla revisione umana",
+      "Tool MCP instradati dal backend, mai con accesso diretto alle fonti esterne: audit, permessi e validazioni restano centralizzati",
+      "Validatore di citazioni come componente separato (anti-allucinazione strutturale, non solo prompt)",
+      "Separazione tra layer semantico (che cosa dice il documento) e valore giuridico (che peso ha): prima la memoria semantica, poi quella legale",
+      "Source policy per risorsa NLP (licenza, uso commerciale, attribuzione) verificata prima dell'abilitazione in runtime",
+      "OCR completamente interno all'infrastruttura per non esporre documenti riservati a terzi",
+      "Architettura incrementale: ogni fase del pilot valida schema e criteri di successo prima della successiva"
+    ],
+    "approach": "Sviluppo per fasi con verifica deterministica: prima l'ingestion e la ricerca ibrida su corpus esistente, poi il semantic core con registry dei chunk, quindi il pilot sui repertori semantici italiani. Il requisito di citazione verificata guida tutta la progettazione: il sistema deve produrre bozze e analisi, non risposte generiche."
+  },
+
+  "results": {
+    "metrics": [
+      {
+        "label": "Tempo ricerca documentale",
+        "value": "[DA COMPLETARE]",
+        "isProxy": false,
+        "description": "Da misurare: tempo di preparazione di una memoria prima/dopo"
+      },
+      {
+        "label": "Copertura corpus indicizzato",
+        "value": "[DA COMPLETARE]",
+        "isProxy": false,
+        "description": "Documenti/sentenze/codici indicizzati nel sistema"
+      },
+      {
+        "label": "Citazioni validate",
+        "value": "[DA COMPLETARE]",
+        "isProxy": false,
+        "description": "Percentuale di citazioni passate dal validatore senza correzioni"
+      }
+    ],
+    "impact": "[DA COMPLETARE dopo feedback dello studio: riduzione tempi di redazione, qualità del reperimento delle fonti, adozione da parte dei legali]"
+  },
+
+  "tech": {
+    "stack": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "PaddleOCR",
+      "Ricerca ibrida full-text + embeddings",
+      "OnlyOffice",
+      "React / Vite",
+      "Docker"
+    ],
+    "tools": [
+      "Pipeline OCR documentale interna",
+      "Chunk registry con hash e tracciamento fonti",
+      "Citation validator normativo e giurisprudenziale",
+      "Argument miner (Fact / Issue / Rule / Analysis / Conclusion)",
+      "Architettura multi-agente con tool MCP instradati dal backend",
+      "Repertori semantici italiani (frame, atti linguistici, ruoli, temporalità)"
+    ]
+  },
+
+  "role": [
+    "Architettura end-to-end della piattaforma (backend, pipeline AI, frontend)",
+    "Design architettura multi-agente e tool MCP (agenti codici, sentenze, assistenza)",
+    "Design del motore semantico legale e della catena di verificabilità",
+    "Implementazione pipeline OCR + ingestion + indicizzazione ibrida",
+    "Validatore citazioni e argument mining",
+    "Pilot repertori semantici italiani con analisi licenze per risorsa",
+    "Integrazione con la redazione documentale e il flusso di approvazione del legale"
+  ],
+
+  "links": {
+    "screenshots": []
+  },
+
+  "metadata": {
+    "duration": "In corso (sviluppo incrementale)",
+    "year": 2026,
+    "language": "it"
+  }
+}
