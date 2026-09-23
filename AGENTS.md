@@ -51,10 +51,11 @@ Tipo: `src/types/cv.ts`.
 - `languages`: SOLO su indicazione esplicita di Mario
 - `education`: NON USATO (rimosso su richiesta Mario 22/09 — non riaggiungerlo)
 
-### PDF
-- Endpoint SSR: `/cv.pdf` (italiano) e `/en/cv.pdf` (inglese) — `src/pages/cv.pdf.ts`, `src/pages/en/cv.pdf.ts`
-- Generatore: `src/lib/cv-pdf.ts` (jsPDF, layout A4, stesso `company/cv.json`)
-- Nessuna azione aggiuntiva per rigenerare i PDF: endpoint legge il JSON a runtime
+### PDF e DOCX
+- Endpoint SSR PDF: `/cv.pdf` (italiano) e `/en/cv.pdf` (inglese) — `src/pages/cv.pdf.ts`, `src/pages/en/cv.pdf.ts`
+- Endpoint SSR DOCX: `/cv.docx` e `/en/cv.docx` — `src/pages/cv.docx.ts`, `src/pages/en/cv.docx.ts` (aggiunti 23/09, dipendenza `docx` approvata da Mario)
+- Generatori: `src/lib/cv-pdf.ts` (jsPDF) e `src/lib/cv-docx.ts` (docx) — entrambi leggono lo stesso `company/cv.json`
+- Nessuna azione aggiuntiva per rigenerare: gli endpoint leggono il JSON a runtime (cache 60s)
 
 ## Portfolio — sync automatico (task ricorrente agente)
 
@@ -72,6 +73,11 @@ Le pagine caricano via glob (`src/lib/case-studies.ts`): **aggiungere un case st
 - Progetti privati solo come descrizione generica pubblica-safe (come nel CV)
 - Non modificare i .astro (il glob carica da solo), non toccare `order` dei case study esistenti
 - Aggiornare un case study esistente SOLO per dati di fatto verificati (nuove metriche), mai lo stile
+
+### Case study lex-rag — metriche pendenti (da 23/09)
+Pubblicato con `metrics: []` e impatto "in rilevazione durante il pilot" (progetto in corso).
+Quando arrivano dati reali verificati, reinserire le tre metriche originali in entrambe le lingue:
+tempo ricerca documentale, copertura corpus indicizzato, percentuale citazioni validate.
 
 ## Aree vietate — Tier 1 (chiedere prima)
 | File | Motivo |
