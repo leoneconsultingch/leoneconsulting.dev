@@ -27,6 +27,7 @@ const LS = (f: { it: string; en: string } | string) => (typeof f === 'string' ? 
           <p class="text-lg text-gray-600 leading-relaxed mb-8 max-w-3xl">{L(data.summary)}</p>
           <div class="flex flex-wrap gap-4 text-sm">
             <a href="/en/cv.pdf" download class="px-5 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium">⬇ Download PDF</a>
+            <a href="/en/cv.docx" download class="px-5 py-2.5 border-2 border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-all font-medium">⬇ Download DOCX</a>
             <a href={`mailto:${data.contacts.email}`} class="px-5 py-2.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium">{data.contacts.email}</a>
             <a href={`tel:${data.contacts.phone.replace(/\s/g, '')}`} class="px-5 py-2.5 border-2 border-primary-600 text-primary-600 rounded-lg hover:bg-primary-600 hover:text-white transition-all font-medium">{data.contacts.phone}</a>
             {data.contacts.github && <a href={data.contacts.github} target="_blank" rel="noreferrer" class="px-5 py-2.5 border-2 border-gray-300 text-gray-700 rounded-lg hover:border-gray-500 transition-all font-medium">GitHub ↗</a>}
