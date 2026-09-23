@@ -3,7 +3,7 @@
   "title": "LEX — Semantic RAG for Law Firms",
   "client": "Law firm (confidential client)",
   "sector": "AI & Legal Tech",
-  "published": false,
+  "published": true,
   "featuredImage": "/img/case-studies/lex-rag.jpg",
 
   "problem": {
@@ -48,27 +48,8 @@
   },
 
   "results": {
-    "metrics": [
-      {
-        "label": "Document research time",
-        "value": "[TO BE COMPLETED]",
-        "isProxy": false,
-        "description": "To be measured: brief preparation time before/after"
-      },
-      {
-        "label": "Indexed corpus coverage",
-        "value": "[TO BE COMPLETED]",
-        "isProxy": false,
-        "description": "Documents/rulings/codes indexed in the system"
-      },
-      {
-        "label": "Validated citations",
-        "value": "[TO BE COMPLETED]",
-        "isProxy": false,
-        "description": "Share of citations passing the validator without corrections"
-      }
-    ],
-    "impact": "[TO BE COMPLETED after firm feedback: drafting time reduction, source retrieval quality, lawyer adoption]"
+    "metrics": [],
+    "impact": "Ongoing project (incremental development): measurable results — document research time, indexed corpus coverage, share of validated citations — are being collected during the pilot, with validation at each phase before the next one starts."
   },
 
   "tech": {

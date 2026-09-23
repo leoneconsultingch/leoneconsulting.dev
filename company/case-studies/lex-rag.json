@@ -3,7 +3,7 @@
   "title": "LEX — RAG semantico per studi legali",
   "client": "Studio legale (cliente riservato)",
   "sector": "AI & Legal Tech",
-  "published": false,
+  "published": true,
   "featuredImage": "/img/case-studies/lex-rag.jpg",
 
   "problem": {
@@ -48,27 +48,8 @@
   },
 
   "results": {
-    "metrics": [
-      {
-        "label": "Tempo ricerca documentale",
-        "value": "[DA COMPLETARE]",
-        "isProxy": false,
-        "description": "Da misurare: tempo di preparazione di una memoria prima/dopo"
-      },
-      {
-        "label": "Copertura corpus indicizzato",
-        "value": "[DA COMPLETARE]",
-        "isProxy": false,
-        "description": "Documenti/sentenze/codici indicizzati nel sistema"
-      },
-      {
-        "label": "Citazioni validate",
-        "value": "[DA COMPLETARE]",
-        "isProxy": false,
-        "description": "Percentuale di citazioni passate dal validatore senza correzioni"
-      }
-    ],
-    "impact": "[DA COMPLETARE dopo feedback dello studio: riduzione tempi di redazione, qualità del reperimento delle fonti, adozione da parte dei legali]"
+    "metrics": [],
+    "impact": "Progetto in corso (sviluppo incrementale): i risultati misurabili — tempo di ricerca documentale, copertura del corpus indicizzato, percentuale di citazioni validate — sono in fase di rilevazione durante il pilot, con validazione a ogni fase prima di procedere alla successiva."
   },
 
   "tech": {
