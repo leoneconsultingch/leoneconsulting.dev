@@ -11,8 +11,8 @@
     "en": "Switzerland"
   },
   "summary": {
-    "it": "AI Engineer con solida esperienza in sistemi di trading algoritmico, machine learning e applicazioni data-driven, anche per il settore legale. Progetto e implemento architetture low-latency e dashboard real-time basate su agenti intelligenti, combinando le prestazioni del C++ con modelli AI in Python. Attivo anche in R&D su sistemi multi-agente, osservabilità e automazione dello sviluppo.",
-    "en": "Experienced AI Engineer with a strong background in algorithmic trading systems, machine learning, and data-driven applications, including the legal domain. I design and implement low-latency architectures and real-time dashboards powered by intelligent agents, combining C++ performance with Python-based AI models. Also active in R&D on multi-agent systems, observability and development automation."
+    "it": "AI Engineer con solida esperienza in sistemi di trading algoritmico, machine learning e applicazioni data-driven, anche per il settore legale. Progetto e implemento architetture low-latency e dashboard real-time basate su agenti intelligenti, combinando le prestazioni del C++ con modelli AI in Python. Filone dedicato a RAG e biblioteche digitali LLM: ricerca ibrida, catalogazione semantica e gestione dell'informazione con fonti verificate. Attivo anche in R&D su sistemi multi-agente, osservabilità e automazione dello sviluppo.",
+    "en": "Experienced AI Engineer with a strong background in algorithmic trading systems, machine learning, and data-driven applications, including the legal domain. I design and implement low-latency architectures and real-time dashboards powered by intelligent agents, combining C++ performance with Python-based AI models. Dedicated track on RAG and LLM-powered digital libraries: hybrid search, semantic cataloging and information management with verified sources. Also active in R&D on multi-agent systems, observability and development automation."
   },
   "contacts": {
     "email": "info@leoneconsulting.dev",
@@ -65,6 +65,7 @@
         "Deep Learning, Reinforcement Learning",
         "LLM integration, agentic tooling, MCP",
         "RAG, hybrid search, OCR pipelines",
+        "Digital libraries & LLM knowledge management",
         "Financial ML"
       ]
     },
@@ -159,6 +160,10 @@
         {
           "it": "Ottimizzazione carichi GPU (CUDA, NVIDIA RTX, PyTorch/TensorFlow)",
           "en": "Optimized GPU workloads (CUDA, NVIDIA RTX, PyTorch/TensorFlow)"
+        },
+        {
+          "it": "Biblioteche digitali e knowledge base LLM: RAG ibrido full-text + semantico, OCR, catalogazione tassonomica e fonti citabili per governare l'informazione",
+          "en": "Built LLM-powered digital libraries and knowledge bases: hybrid full-text + semantic RAG, OCR, taxonomy-driven cataloging and citable sources to govern information"
         },
         {
           "it": "Piattaforma AI self-hosted per studi legali: RAG semantico su atti e sentenze, architettura multi-agente con tool MCP, citazioni validate, audit trail e controllo finale del legale",
@@ -287,6 +292,22 @@
         "FastAPI",
         "MCP",
         "Legal Tech"
+      ]
+    },
+    {
+      "name": {
+        "it": "Biblioteca digitale LLM",
+        "en": "LLM Digital Library"
+      },
+      "description": {
+        "it": "Knowledge base con catalogo tassonomico (UDC), versioning e quality gate in CI, affiancata da RAG ibrido locale (BM25 + embedding) su wiki e documenti: l'informazione organizzata, tracciata e interrogabile con fonti verificabili.",
+        "en": "Knowledge base with taxonomy-driven catalog (UDC), versioning and CI quality gates, paired with local hybrid RAG (BM25 + embeddings) over wikis and documents: information organized, tracked and queryable with verifiable sources."
+      },
+      "tags": [
+        "RAG",
+        "Knowledge Management",
+        "Python",
+        "CI/CD"
       ]
     },
     {
