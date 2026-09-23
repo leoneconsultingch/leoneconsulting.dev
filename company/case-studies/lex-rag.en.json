@@ -78,6 +78,8 @@
       "PostgreSQL",
       "PaddleOCR",
       "Hybrid full-text + embeddings search",
+      "LangChain",
+      "LangGraph",
       "OnlyOffice",
       "React / Vite",
       "Docker"
@@ -85,6 +87,9 @@
     "tools": [
       "Internal document OCR pipeline",
       "Chunk registry with hashing and source tracking",
+      "RAG chunking strategies driven by document structure (instrument, article, paragraph), evaluated per source type",
+      "RAG pipeline and agent orchestration with LangChain / LangGraph",
+      "Hands-on LLM evaluation: retrieval quality and citation accuracy at each stage",
       "Statutory and case-law citation validator",
       "Argument miner (Fact / Issue / Rule / Analysis / Conclusion)",
       "Multi-agent architecture with MCP tools routed by the backend",
