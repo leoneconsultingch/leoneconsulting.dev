@@ -15,7 +15,7 @@ const MUTED = '4B5563';
 const FAINT = '9CA3AF';
 const ACCENT = '2563EB';
 
-export async function buildCvDocx(lang: 'it' | 'en'): Promise<Uint8Array> {
+export async function buildCvDocx(lang: 'it' | 'en'): Promise<ArrayBuffer> {
   const data = cv as Cv;
   const L = (f: { it: string; en: string }) => f[lang];
   const LS = (f: { it: string; en: string } | string) => (typeof f === 'string' ? f : L(f));
@@ -181,5 +181,6 @@ export async function buildCvDocx(lang: 'it' | 'en'): Promise<Uint8Array> {
     ],
   });
 
-  return new Uint8Array(await Packer.toBuffer(doc));
+  const buffer = await Packer.toBuffer(doc);
+  return buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength) as ArrayBuffer;
 }
