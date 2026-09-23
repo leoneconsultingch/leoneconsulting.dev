@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated": "2026-09-22",
+  "updated": "2026-09-23",
   "name": "Mario Leone",
   "role": {
     "it": "AI Engineer & Data Scientist — Leone Consulting",
@@ -11,8 +11,8 @@
     "en": "Switzerland"
   },
   "summary": {
-    "it": "AI Engineer con solida esperienza in sistemi di trading algoritmico, machine learning e applicazioni data-driven. Progetto e implemento architetture low-latency e dashboard real-time basate su agenti intelligenti, combinando le prestazioni del C++ con modelli AI in Python. Attivo anche in R&D su sistemi multi-agente, osservabilità e automazione dello sviluppo.",
-    "en": "Experienced AI Engineer with a strong background in algorithmic trading systems, machine learning, and data-driven applications. I design and implement low-latency architectures and real-time dashboards powered by intelligent agents, combining C++ performance with Python-based AI models. Also active in R&D on multi-agent systems, observability and development automation."
+    "it": "AI Engineer con solida esperienza in sistemi di trading algoritmico, machine learning e applicazioni data-driven, anche per il settore legale. Progetto e implemento architetture low-latency e dashboard real-time basate su agenti intelligenti, combinando le prestazioni del C++ con modelli AI in Python. Attivo anche in R&D su sistemi multi-agente, osservabilità e automazione dello sviluppo.",
+    "en": "Experienced AI Engineer with a strong background in algorithmic trading systems, machine learning, and data-driven applications, including the legal domain. I design and implement low-latency architectures and real-time dashboards powered by intelligent agents, combining C++ performance with Python-based AI models. Also active in R&D on multi-agent systems, observability and development automation."
   },
   "contacts": {
     "email": "info@leoneconsulting.dev",
@@ -64,6 +64,7 @@
         "PyTorch, TensorFlow, scikit-learn, Hugging Face",
         "Deep Learning, Reinforcement Learning",
         "LLM integration and agentic tooling",
+        "RAG, hybrid search, OCR pipelines",
         "Financial ML"
       ]
     },
@@ -158,6 +159,10 @@
         {
           "it": "Ottimizzazione carichi GPU (CUDA, NVIDIA RTX, PyTorch/TensorFlow)",
           "en": "Optimized GPU workloads (CUDA, NVIDIA RTX, PyTorch/TensorFlow)"
+        },
+        {
+          "it": "Piattaforma AI self-hosted per studi legali: RAG semantico su atti e sentenze con citazioni validate, audit trail e controllo finale del legale",
+          "en": "Built a self-hosted AI platform for law firms: semantic RAG over filings and rulings with validated citations, audit trail and final lawyer review"
         },
         {
           "it": "Consulenza e training su integrazione AI, ML pipeline, data science e full-stack",
@@ -268,6 +273,19 @@
         "React",
         "MCP",
         "systemd"
+      ]
+    },
+    {
+      "name": "LEX",
+      "description": {
+        "it": "RAG semantico per studi legali: OCR documentale, ricerca ibrida, validazione citazioni e redazione assistita con approvazione del legale.",
+        "en": "Semantic RAG for law firms: document OCR, hybrid search, citation validation and assisted drafting with lawyer approval."
+      },
+      "tags": [
+        "RAG",
+        "Python",
+        "FastAPI",
+        "Legal Tech"
       ]
     },
     {
