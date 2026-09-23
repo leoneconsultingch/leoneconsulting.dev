@@ -63,7 +63,7 @@
       "items": [
         "PyTorch, TensorFlow, scikit-learn, Hugging Face",
         "Deep Learning, Reinforcement Learning",
-        "LLM integration and agentic tooling",
+        "LLM integration, agentic tooling, MCP",
         "RAG, hybrid search, OCR pipelines",
         "Financial ML"
       ]
@@ -161,8 +161,8 @@
           "en": "Optimized GPU workloads (CUDA, NVIDIA RTX, PyTorch/TensorFlow)"
         },
         {
-          "it": "Piattaforma AI self-hosted per studi legali: RAG semantico su atti e sentenze con citazioni validate, audit trail e controllo finale del legale",
-          "en": "Built a self-hosted AI platform for law firms: semantic RAG over filings and rulings with validated citations, audit trail and final lawyer review"
+          "it": "Piattaforma AI self-hosted per studi legali: RAG semantico su atti e sentenze, architettura multi-agente con tool MCP, citazioni validate, audit trail e controllo finale del legale",
+          "en": "Built a self-hosted AI platform for law firms: semantic RAG over filings and rulings, multi-agent architecture with MCP tools, validated citations, audit trail and final lawyer review"
         },
         {
           "it": "Consulenza e training su integrazione AI, ML pipeline, data science e full-stack",
@@ -278,13 +278,14 @@
     {
       "name": "LEX",
       "description": {
-        "it": "RAG semantico per studi legali: OCR documentale, ricerca ibrida, validazione citazioni e redazione assistita con approvazione del legale.",
-        "en": "Semantic RAG for law firms: document OCR, hybrid search, citation validation and assisted drafting with lawyer approval."
+        "it": "RAG semantico per studi legali su architettura multi-agente: OCR documentale, ricerca ibrida, agenti specializzati via MCP, validazione citazioni e redazione assistita con approvazione del legale.",
+        "en": "Semantic RAG for law firms on a multi-agent architecture: document OCR, hybrid search, specialized agents via MCP, citation validation and assisted drafting with lawyer approval."
       },
       "tags": [
         "RAG",
         "Python",
         "FastAPI",
+        "MCP",
         "Legal Tech"
       ]
     },
