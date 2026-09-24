@@ -46,18 +46,28 @@ const organizationSchema = {
   },
   address: {
     '@type': 'PostalAddress',
-    addressCountry: 'IT',
-    addressRegion: 'Nord Italia',
+    addressCountry: 'CH',
+    addressRegion: 'Ticino',
   },
   sameAs: [
     'https://github.com/AstroMarius',
     'https://www.linkedin.com/in/mario-leone-data-engineer',
   ],
-  areaServed: {
-    '@type': 'Place',
-    name: 'Italia',
-  },
-  priceRange: 'CHF CHF-CHF CHF CHF',
+  areaServed: [
+    {
+      '@type': 'Place',
+      name: 'Svizzera',
+    },
+    {
+      '@type': 'Place',
+      name: 'Ticino',
+    },
+    {
+      '@type': 'Place',
+      name: 'Italia',
+    },
+  ],
+  priceRange: 'CHF 2700-CHF 16000',
 };
 
 // Combine schemas if custom schema provided
