@@ -37,7 +37,7 @@
     "astro": "^7.2.9",
     "docx": "^9.7.1",
     "jspdf": "^4.2.1",
-    "nodemailer": "^9.0.6",
+    "nodemailer": "^10.0.10",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3"
   },
