@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@types/nodemailer": "^7.0.9",
-    "@vercel/node": "^5.8.17"
+    "@vercel/node": "^15.0.0"
   },
   "overrides": {
     "undici": "^6.28.0",
