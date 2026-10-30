@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import './helpers/api-imports.mjs';
 
-import {
+const {
   buildBookingEmail,
   sanitizeBookingInput,
   validateBookingPayload,
-} from '../api/booking.ts';
+} = await import('../api/booking.ts');
 
 test('validates required booking fields and email format', () => {
   assert.deepEqual(validateBookingPayload({}), {

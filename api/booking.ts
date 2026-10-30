@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
+import { createMailTransport, escapeHtml } from './lib/mail.js';
+import { enforceRateLimit } from './lib/ratelimit.js';
 
 type BookingPayload = {
   service?: unknown;
@@ -31,8 +32,6 @@ type ValidationResult = {
   error?: string;
 };
 
-const submissions = new Map<string, number[]>();
-
 function valueToString(value: unknown): string {
   return typeof value === 'string' ? value : '';
 }
@@ -50,28 +49,6 @@ function validateEmail(email: string): boolean {
 
 function isValidDate(value: string): boolean {
   return /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(`${value}T00:00:00Z`));
-}
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const oneHourAgo = now - 3600000;
-  const times = (submissions.get(ip) || []).filter((time) => time > oneHourAgo);
-
-  if (times.length >= 5) {
-    submissions.set(ip, times);
-    return true;
-  }
-
-  times.push(now);
-  submissions.set(ip, times);
-  return false;
-}
-
-function escapeHtml(input: string): string {
-  return input
-    .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
 }
 
 export function validateBookingPayload(payload: BookingPayload): ValidationResult {
@@ -173,10 +150,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const clientIP = (req.headers['x-forwarded-for'] as string)?.split(',')[0] || req.socket.remoteAddress || 'unknown';
-  if (isRateLimited(clientIP)) {
-    return res.status(429).json({ error: 'Too many requests. Try again later.' });
+  if (!req.headers['content-type']?.includes('application/json')) {
+    return res.status(415).json({ error: 'Unsupported Media Type' });
   }
+
+  if (!await enforceRateLimit(req, res, 'booking', 5, 3600)) return;
 
   const validation = validateBookingPayload(req.body || {});
   if (!validation.valid) {
@@ -189,15 +167,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const sanitizedData = sanitizeBookingInput(req.body);
     const emailContent = buildBookingEmail(sanitizedData);
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '465', 10),
-      secure: process.env.SMTP_PORT === '465',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const transporter = createMailTransport();
 
     const info = await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
@@ -210,8 +180,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     console.log('Booking email sent successfully:', info.messageId);
     return res.status(200).json({ success: true, message: 'Booking sent successfully' });
-  } catch (error) {
-    console.error('Booking form error:', error);
+  } catch {
+    console.error('Email delivery failed', { endpoint: 'booking' });
     return res.status(500).json({ error: 'Failed to send booking' });
   }
 }

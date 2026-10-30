@@ -1,17 +1,17 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
-import { checkRateLimit, getClientIp } from './lib/ratelimit.js';
+import { createMailTransport, escapeHtml } from './lib/mail.js';
+import { enforceRateLimit } from './lib/ratelimit.js';
 
-function sanitizeInput(input: string): string {
-  return input
+function sanitizeInput(input: unknown): string {
+  return (typeof input === 'string' ? input : '')
     .trim()
     .substring(0, 1000)
     .replace(/[<>]/g, '');
 }
 
-function validateEmail(email: string): boolean {
+function validateEmail(email: unknown): email is string {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email) && email.length < 255;
+  return typeof email === 'string' && regex.test(email) && email.length < 255;
 }
 
 export default async (req: VercelRequest, res: VercelResponse) => {
@@ -31,15 +31,15 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return res.status(415).json({ error: 'Unsupported Media Type' });
   }
 
-  const ip = getClientIp(req);
-  const { limited } = await checkRateLimit(ip, 'pre-call', 3, 60);
-  if (limited) {
-    return res.status(429).json({ error: 'Too many requests' });
+  if (!await enforceRateLimit(req, res, 'pre-call', 3, 60)) return;
+
+  if (!req.body || typeof req.body !== 'object' || Array.isArray(req.body)) {
+    return res.status(400).json({ error: 'Invalid request body' });
   }
 
   const { name, email, objective, situation, dataStatus, timeline, budget } = req.body;
 
-  if (!name || !email || !objective || !situation || !dataStatus || !timeline) {
+  if ([name, email, objective, situation, dataStatus, timeline].some((value) => !sanitizeInput(value))) {
     return res.status(400).json({ error: 'Campi obbligatori mancanti' });
   }
 
@@ -58,16 +58,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   };
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false,
-      requireTLS: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const transporter = createMailTransport();
 
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
@@ -75,42 +66,47 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       subject: `🎯 Pre-Call Form - ${sanitizedData.name}`,
       html: `
         <h2>Nuova Richiesta Pre-Call</h2>
-        <p><strong>Nome:</strong> ${sanitizedData.name}</p>
-        <p><strong>Email:</strong> ${sanitizedData.email}</p>
-        <p><strong>Obiettivo:</strong> ${sanitizedData.objective}</p>
+        <p><strong>Nome:</strong> ${escapeHtml(sanitizedData.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(sanitizedData.email)}</p>
+        <p><strong>Obiettivo:</strong> ${escapeHtml(sanitizedData.objective)}</p>
         <hr>
         <p><strong>Situazione Attuale:</strong></p>
-        <p>${sanitizedData.situation}</p>
+        <p>${escapeHtml(sanitizedData.situation)}</p>
         <hr>
-        <p><strong>Dati Esistenti:</strong> ${sanitizedData.dataStatus}</p>
-        <p><strong>Timeline:</strong> ${sanitizedData.timeline}</p>
-        <p><strong>Budget:</strong> ${sanitizedData.budget}</p>
+        <p><strong>Dati Esistenti:</strong> ${escapeHtml(sanitizedData.dataStatus)}</p>
+        <p><strong>Timeline:</strong> ${escapeHtml(sanitizedData.timeline)}</p>
+        <p><strong>Budget:</strong> ${escapeHtml(sanitizedData.budget)}</p>
         <hr>
         <p><em>Inviato il ${new Date().toLocaleString('it-IT')}</em></p>
       `,
     });
 
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: sanitizedData.email,
-      subject: 'Grazie per la tua richiesta - Leone Consulting',
-      html: `
-        <h2>Ciao ${sanitizedData.name}!</h2>
-        <p>Grazie per aver compilato il form pre-call.</p>
-        <p>Ho ricevuto le tue informazioni e ti ricontatterò entro 24 ore per fissare una call di 30 minuti.</p>
-        <h3>Cosa Preparare per la Call:</h3>
-        <ul>
-          <li>Brief di 1-2 pagine (se possibile)</li>
-          <li>Sample dati o screenshot (se applicabile)</li>
-          <li>Lista di domande o dubbi specifici</li>
-        </ul>
-        <p>A presto,<br>Mario Leone<br><a href="https://leoneconsulting.dev">leoneconsulting.dev</a></p>
-      `,
-    });
+    // The request is already accepted; confirmation failure must not invite a duplicate.
+    try {
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM || process.env.SMTP_USER,
+        to: sanitizedData.email,
+        subject: 'Grazie per la tua richiesta - Leone Consulting',
+        html: `
+          <h2>Ciao ${escapeHtml(sanitizedData.name)}!</h2>
+          <p>Grazie per aver compilato il form pre-call.</p>
+          <p>Ho ricevuto le tue informazioni e ti ricontatterò entro 24 ore per fissare una call di 30 minuti.</p>
+          <h3>Cosa Preparare per la Call:</h3>
+          <ul>
+            <li>Brief di 1-2 pagine (se possibile)</li>
+            <li>Sample dati o screenshot (se applicabile)</li>
+            <li>Lista di domande o dubbi specifici</li>
+          </ul>
+          <p>A presto,<br>Mario Leone<br><a href="https://leoneconsulting.dev">leoneconsulting.dev</a></p>
+        `,
+      });
+    } catch {
+      console.warn('Confirmation email delivery failed', { endpoint: 'pre-call' });
+    }
 
     return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('Error sending email:', error);
+  } catch {
+    console.error('Email delivery failed', { endpoint: 'pre-call' });
     return res.status(500).json({ error: "Errore durante l'invio" });
   }
 };

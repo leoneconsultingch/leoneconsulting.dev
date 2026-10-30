@@ -1,17 +1,17 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import nodemailer from 'nodemailer';
-import { checkRateLimit, getClientIp } from './lib/ratelimit.js';
+import { createMailTransport, escapeHtml } from './lib/mail.js';
+import { enforceRateLimit } from './lib/ratelimit.js';
 
-function sanitizeInput(input: string): string {
-  return input
+function sanitizeInput(input: unknown): string {
+  return (typeof input === 'string' ? input : '')
     .trim()
     .substring(0, 500)
     .replace(/[<>]/g, '');
 }
 
-function validateEmail(email: string): boolean {
+function validateEmail(email: unknown): email is string {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email) && email.length < 255;
+  return typeof email === 'string' && regex.test(email) && email.length < 255;
 }
 
 export default async (req: VercelRequest, res: VercelResponse) => {
@@ -31,15 +31,15 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return res.status(415).json({ error: 'Unsupported Media Type' });
   }
 
-  const ip = getClientIp(req);
-  const { limited } = await checkRateLimit(ip, 'contact', 3, 60);
-  if (limited) {
-    return res.status(429).json({ error: 'Too many requests. Try again later.' });
+  if (!await enforceRateLimit(req, res, 'contact', 3, 60)) return;
+
+  if (!req.body || typeof req.body !== 'object' || Array.isArray(req.body)) {
+    return res.status(400).json({ error: 'Invalid request body' });
   }
 
   const { name, email, company, service, message } = req.body;
 
-  if (!name || !email || !message) {
+  if ([name, email, message].some((value) => !sanitizeInput(value))) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -56,26 +56,17 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   };
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false,
-      requireTLS: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const transporter = createMailTransport();
 
     const htmlContent = `
       <h2>Nuovo messaggio da Leone Consulting</h2>
-      <p><strong>Nome:</strong> ${sanitizedData.name}</p>
-      <p><strong>Email:</strong> ${sanitizedData.email}</p>
-      <p><strong>Azienda:</strong> ${sanitizedData.company || 'N/A'}</p>
-      <p><strong>Servizio:</strong> ${sanitizedData.service}</p>
+      <p><strong>Nome:</strong> ${escapeHtml(sanitizedData.name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(sanitizedData.email)}</p>
+      <p><strong>Azienda:</strong> ${escapeHtml(sanitizedData.company || 'N/A')}</p>
+      <p><strong>Servizio:</strong> ${escapeHtml(sanitizedData.service)}</p>
       <hr />
       <p><strong>Messaggio:</strong></p>
-      <p>${sanitizedData.message.replace(/\n/g, '<br>')}</p>
+      <p>${escapeHtml(sanitizedData.message).replace(/\n/g, '<br>')}</p>
     `;
 
     const info = await transporter.sendMail({
@@ -89,11 +80,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
     console.log('Email sent successfully:', info.messageId);
     return res.status(200).json({ success: true, message: 'Email sent successfully' });
-  } catch (error) {
-    console.error('Contact form error:', error);
+  } catch {
+    console.error('Email delivery failed', { endpoint: 'contact' });
     return res.status(500).json({
       error: 'Failed to send email',
-      details: process.env.NODE_ENV === 'development' ? String(error) : undefined,
     });
   }
 };

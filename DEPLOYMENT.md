@@ -82,12 +82,33 @@ File: `.github/workflows/deploy.yml.disabled`
 
 ## Variabili d'Ambiente
 
-Attualmente il sito non richiede variabili d'ambiente. Se in futuro aggiungi integrazioni (es. form, analytics), aggiungile qui:
+I quattro form usano funzioni Vercel e richiedono queste variabili nello scope
+Production (e separatamente in Preview, se si vogliono provare i form):
 
-```env
-# Esempio
-PUBLIC_ANALYTICS_ID=xxx
-```
+- `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `SMTP_TO`: obbligatorie.
+- `SMTP_FROM`: facoltativa, usa `SMTP_USER` se assente.
+- `SMTP_PORT`: default 587 con STARTTLS obbligatorio; 465 usa TLS immediato.
+- `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`: obbligatorie per il
+  rate-limit distribuito di tutti i form, incluse le prenotazioni.
+
+Non inserire valori o credenziali nel repository. Le modifiche alle variabili
+Vercel richiedono un nuovo deploy per diventare effettive.
+
+Se Upstash è assente, non risolve il DNS o non risponde entro due secondi,
+le API restituiscono `503` con `Retry-After: 60` senza tentare l'invio SMTP.
+Il superamento della quota restituisce invece `429`. Non rimuovere le variabili
+Upstash per aggirare un guasto: verificare che il database sia attivo e che
+l'endpoint configurato sia quello corrente. I log applicativi riportano la
+fase e l'endpoint senza includere credenziali o contenuto dei messaggi.
+
+I form inviano JSON (`Content-Type: application/json`). Il form audit, in
+entrambe le lingue, richiede nome, email, progetto, obiettivo, un URL HTTP(S)
+dei materiali e accettazione delle condizioni.
+
+Per pre-call e audit, l'accettazione SMTP della richiesta operativa determina
+il successo. Se la successiva email di conferma fallisce, l'API mantiene il
+successo e registra un avviso, così il visitatore non viene invitato a duplicare
+una richiesta già ricevuta.
 
 ## Build Locale
 
@@ -130,7 +151,7 @@ Il sito è ottimizzato per:
 
 ## Prossimi Passi
 
-1. Configura un form backend (es. Formspree, Netlify Forms)
+1. Verifica periodicamente consegna SMTP e disponibilità Upstash
 2. Aggiungi Google Analytics o Plausible
 3. Configura il sottodominio portfolio
-4. Setup booking system (quando richiesto)
+4. Verifica il flusso prenotazioni dopo modifiche SMTP o al rate-limit
