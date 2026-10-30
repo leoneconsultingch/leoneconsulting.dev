@@ -28,9 +28,9 @@
   },
   "homepage": "https://leoneconsulting.dev",
   "dependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/sitemap": "^3.7.3",
-    "@astrojs/vercel": "^11.0.8",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/vercel": "^11.0.16",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^7.4.4",
     "docx": "^9.7.1",
