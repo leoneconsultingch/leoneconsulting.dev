@@ -33,7 +33,7 @@
     "@astrojs/vercel": "^11.0.8",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^7.2.9",
-    "docx": "^9.7.1",
+    "docx": "^9.7.2",
     "jspdf": "^4.2.1",
     "nodemailer": "^9.0.6",
     "tailwindcss": "^4.2.4",
