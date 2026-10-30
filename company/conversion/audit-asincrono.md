@@ -97,8 +97,8 @@ Offerta alternativa alla call per lead che:
 
 ### Post-Submit
 - Thank you page: "Ricevuto! Ti rispondo entro 48h a [email]"
-- Email conferma immediata: "Ho ricevuto la tua richiesta, sto analizzando i materiali"
-- Email follow-up (entro 48h): Feedback PDF attached + proposta prossimi passi
+- Conferma immediata nel browser; nessuna ricevuta email automatica all’indirizzo inserito.
+- Email follow-up manuale (entro 48h): Feedback PDF attached + proposta prossimi passi
 
 ---
 

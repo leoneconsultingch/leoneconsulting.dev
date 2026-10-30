@@ -61,6 +61,11 @@ Opzioni:
 
 ## Post-Submit Flow
 
+Il sito conferma la ricezione nel browser e invia la richiesta soltanto al
+destinatario aziendale configurato. Le email descritte negli scenari e nel
+template seguente sono follow-up manuali, dopo la valutazione della richiesta;
+non sono invii automatici a indirizzi non verificati.
+
 ### Scenario A: Good Fit
 - **Trigger:** Obiettivo chiaro + Timeline ragionevole + Budget in range
 - **Action:** Redirect a pagina booking con slot disponibili

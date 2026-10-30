@@ -81,29 +81,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       `,
     });
 
-    // The request is already accepted; confirmation failure must not invite a duplicate.
-    try {
-      await transporter.sendMail({
-        from: process.env.SMTP_FROM || process.env.SMTP_USER,
-        to: sanitizedData.email,
-        subject: 'Grazie per la tua richiesta - Leone Consulting',
-        html: `
-          <h2>Ciao ${escapeHtml(sanitizedData.name)}!</h2>
-          <p>Grazie per aver compilato il form pre-call.</p>
-          <p>Ho ricevuto le tue informazioni e ti ricontatterò entro 24 ore per fissare una call di 30 minuti.</p>
-          <h3>Cosa Preparare per la Call:</h3>
-          <ul>
-            <li>Brief di 1-2 pagine (se possibile)</li>
-            <li>Sample dati o screenshot (se applicabile)</li>
-            <li>Lista di domande o dubbi specifici</li>
-          </ul>
-          <p>A presto,<br>Mario Leone<br><a href="https://leoneconsulting.dev">leoneconsulting.dev</a></p>
-        `,
-      });
-    } catch {
-      console.warn('Confirmation email delivery failed', { endpoint: 'pre-call' });
-    }
-
     return res.status(200).json({ success: true });
   } catch {
     console.error('Email delivery failed', { endpoint: 'pre-call' });

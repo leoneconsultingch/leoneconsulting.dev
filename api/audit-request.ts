@@ -96,37 +96,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       `,
     });
 
-    // The request is already accepted; confirmation failure must not invite a duplicate.
-    try {
-      await transporter.sendMail({
-        from: process.env.SMTP_FROM || process.env.SMTP_USER,
-        to: sanitizedData.email,
-        subject: 'Richiesta Audit Ricevuta - Leone Consulting',
-        html: `
-          <h2>Ciao ${escapeHtml(sanitizedData.name)}!</h2>
-          <p>Ho ricevuto la tua richiesta di audit asincrono per il progetto <strong>${escapeHtml(sanitizedData.project)}</strong>.</p>
-          ${sanitizedData.nda ? '<p>✅ Ho preso nota della richiesta di NDA. Ti invierò il documento da firmare prima di procedere.</p>' : ''}
-          <h3>Prossimi Passi:</h3>
-          <ol>
-            <li>Analizzo i materiali che hai condiviso</li>
-            <li>Preparo il documento di feedback (5-10 pagine)</li>
-            <li>Te lo invio entro <strong>48 ore</strong> a questa email</li>
-          </ol>
-          <h3>Il Feedback Include:</h3>
-          <ul>
-            <li>✅ Valutazione di fattibilità (Go/No-Go)</li>
-            <li>⚠️ Rischi tecnici identificati</li>
-            <li>⚡ Quick wins actionable</li>
-            <li>💰 Stima ordine grandezza (tempo, budget, complessità)</li>
-          </ul>
-          <p>Se hai domande o materiali aggiuntivi da condividere nel frattempo, rispondi a questa email.</p>
-          <p>A presto,<br>Mario Leone<br><a href="https://leoneconsulting.dev">leoneconsulting.dev</a></p>
-        `,
-      });
-    } catch {
-      console.warn('Confirmation email delivery failed', { endpoint: 'audit-request' });
-    }
-
     return res.status(200).json({ success: true });
   } catch {
     console.error('Email delivery failed', { endpoint: 'audit-request' });

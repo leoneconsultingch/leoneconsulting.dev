@@ -74,7 +74,7 @@ for (const { name, handler } of handlers) {
     assert.equal(res.body.success, true);
     assert.equal(transport.secure, true);
     assert.equal(sent[0].to, 'owner@example.com');
-    assert.equal(sent.length, ['pre-call', 'audit-request'].includes(name) ? 2 : 1);
+    assert.equal(sent.length, 1);
   });
 
   test(`${name}: honeypot submission is acknowledged without SMTP`, async () => {
@@ -135,20 +135,46 @@ for (const { name, handler } of handlers) {
 }
 
 for (const { name, handler } of handlers.filter(({ name }) => ['pre-call', 'audit-request'].includes(name))) {
-  test(`${name}: confirmation failure does not duplicate an accepted request`, async () => {
+  test(`${name}: unverified requester addresses never receive an automated email`, async () => {
     smtpEnv();
-    mock.method(console, 'warn', () => {});
-    mock.method(console, 'error', () => {});
-    const accepted = [];
+    const sent = [];
     mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => {
-      if (mail.to === 'alice@example.com') throw new Error('Confirmation rejected');
-      accepted.push(mail);
-      return {};
+      sent.push(mail);
+      return { messageId: 'test-id' };
+    } }));
+    for (const email of ['victim@example.net', 'victim+tag@example.net']) {
+      const body = { ...payload(name), email, name: 'Untrusted request text' };
+      if (name === 'audit-request') body.project = 'Attacker-chosen project text';
+      const req = request(body, name);
+      delete req.headers.origin;
+      req.url = `/api/${name}/?source=regression`;
+      const res = response();
+      await handler(req, res);
+      assert.equal(res.statusCode, 200);
+      assert.equal(res.body.success, true);
+    }
+    assert.equal(sent.length, 2);
+    for (const mail of sent) {
+      assert.equal(mail.to, 'owner@example.com');
+      assert.equal(mail.cc, undefined);
+      assert.equal(mail.bcc, undefined);
+      assert.equal(mail.envelope, undefined);
+    }
+  });
+
+  test(`${name}: operator delivery failure stays an error with no secondary send`, async () => {
+    smtpEnv();
+    mock.method(console, 'error', () => {});
+    const attempted = [];
+    mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => {
+      attempted.push(mail.to);
+      throw new Error('provider-private-error');
     } }));
     const res = response();
     await handler(request(payload(name), name), res);
-    assert.equal(res.statusCode, 200);
-    assert.equal(accepted.length, 1);
+    assert.equal(res.statusCode, 500);
+    assert.deepEqual(attempted, ['owner@example.com']);
+    assert.doesNotMatch(JSON.stringify(res.body), /provider-private-error/);
   });
 }
 
@@ -180,7 +206,7 @@ test('audit accepts a multilingual request within every advertised field limit',
   const res = response();
   await handlers[3].handler(request(body, 'audit-request'), res);
   assert.equal(res.statusCode, 200);
-  assert.equal(sent.length, 2);
+  assert.equal(sent.length, 1);
 });
 
 test('SMTP 587 and the default port require STARTTLS', async () => {

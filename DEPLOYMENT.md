@@ -159,9 +159,12 @@ l'attesa di 10 minuti. Il campo honeypot è opzionale per compatibilità; il
 consenso privacy dei contatti viene ora verificato server-side e inviato dalla
 nuova pagina. Una pagina contatti vecchia in cache deve essere ricaricata.
 
-Per pre-call e audit, l'accettazione SMTP della richiesta operativa determina
-il successo. Se la successiva conferma fallisce, l'API mantiene il successo e
-registra un avviso. Credenziali, PII e dettagli del provider non vengono loggati.
+Per tutti e quattro i form, l'accettazione SMTP della richiesta operativa
+al solo destinatario configurato in `SMTP_TO` determina il successo. Pre-call
+e audit non inviano ricevute automatiche all'indirizzo indicato dal chiamante:
+la conferma compare nel browser, mentre il follow-up resta manuale.
+Questo impedisce l'invio di messaggi personalizzati a caselle non verificate.
+Credenziali, PII e dettagli del provider non vengono loggati.
 
 Verifica periodica: eventi WAF, errori SMTP e prova di consegna concordata.
 Nessun job keepalive o invio automatico a terzi è stato configurato. Per
@@ -183,7 +186,8 @@ npm run preview
 
 ### Build Fallisce
 
-1. Verifica di avere Node.js >= 18
+1. Verifica di avere Node.js >= 22.23.4 (requisito Astro 7.4.4).
+   Il runtime Vercel verificato per questo progetto è Node.js 24.
 2. Cancella `node_modules` e reinstalla:
    ```bash
    rm -rf node_modules package-lock.json
