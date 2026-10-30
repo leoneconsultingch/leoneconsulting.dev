@@ -32,8 +32,6 @@
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/vercel": "^11.0.8",
     "@tailwindcss/vite": "^4.2.4",
-    "@upstash/ratelimit": "^2.0.8",
-    "@upstash/redis": "^1.38.0",
     "astro": "^7.2.9",
     "docx": "^9.7.1",
     "jspdf": "^4.2.1",

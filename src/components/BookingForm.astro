@@ -1,4 +1,5 @@
 ---
+import FormHoneypot from './FormHoneypot.astro';
 interface Props {
   lang?: 'it' | 'en';
 }
@@ -11,7 +12,7 @@ const text = {
     success: 'Prenotazione ricevuta. Ti contatteremo entro 24 ore per confermare.',
     error: 'Si è verificato un errore. Riprova o contattaci direttamente.',
     invalidEmail: 'Email non valida',
-    tooMany: 'Troppi tentativi. Attendi un minuto.',
+    tooMany: 'Invio temporaneamente bloccato. Attendi 10 minuti prima di riprovare.',
     sending: 'Invio in corso...',
     submit: 'Conferma Prenotazione',
   },
@@ -20,7 +21,7 @@ const text = {
     success: 'Booking received. We will contact you within 24 hours to confirm.',
     error: 'An error occurred. Please try again or contact us directly.',
     invalidEmail: 'Invalid email address',
-    tooMany: 'Too many attempts. Please wait a minute.',
+    tooMany: 'Submission temporarily blocked. Please wait 10 minutes before trying again.',
     sending: 'Sending...',
     submit: 'Confirm Booking',
   },
@@ -28,6 +29,7 @@ const text = {
 ---
 
 <form id={`booking-form-${lang}`} class="space-y-6" data-lang={lang}>
+  <FormHoneypot id={`booking-${lang}`} />
   <div>
     <label for={`service-${lang}`} class="block text-sm font-semibold text-gray-900 mb-2">
       {lang === 'en' ? 'Service' : 'Servizio'} *
@@ -98,6 +100,7 @@ const text = {
           name="name"
           required
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+          maxlength="150"
         />
       </div>
 
@@ -112,6 +115,7 @@ const text = {
             name="email"
             required
             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+            maxlength="254"
           />
         </div>
 
@@ -125,6 +129,7 @@ const text = {
             name="phone"
             required
             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+            maxlength="80"
           />
         </div>
       </div>
@@ -138,6 +143,7 @@ const text = {
           id={`company-${lang}`}
           name="company"
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+          maxlength="150"
         />
       </div>
 
@@ -151,6 +157,7 @@ const text = {
           rows="4"
           placeholder={lang === 'en' ? 'Project context, goals, constraints...' : 'Contesto progetto, obiettivi, vincoli...'}
           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+          maxlength="2000"
         ></textarea>
       </div>
     </div>
@@ -190,7 +197,7 @@ const text = {
 
     const messages = {
       it: {
-        tooMany: 'Troppi tentativi. Attendi un minuto.',
+        tooMany: 'Invio temporaneamente bloccato. Attendi 10 minuti prima di riprovare.',
         invalidEmail: 'Email non valida',
         sending: 'Invio in corso...',
         submit: 'Conferma Prenotazione',
@@ -198,7 +205,7 @@ const text = {
         error: 'Si è verificato un errore. Riprova o contattaci direttamente.',
       },
       en: {
-        tooMany: 'Too many attempts. Please wait a minute.',
+        tooMany: 'Submission temporarily blocked. Please wait 10 minutes before trying again.',
         invalidEmail: 'Invalid email address',
         sending: 'Sending...',
         submit: 'Confirm Booking',
@@ -240,6 +247,7 @@ const text = {
         company: formData.get('company') || '',
         notes: formData.get('notes') || '',
         privacy: formData.get('privacy') === 'on',
+        website: String(formData.get('website') || ''),
       };
 
       try {
@@ -248,6 +256,12 @@ const text = {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
+
+        if (response.status === 429 || response.status === 403) {
+          statusMessage.textContent = lang === 'en' ? 'Submission temporarily blocked. Please wait 10 minutes before trying again.' : 'Invio temporaneamente bloccato. Attendi 10 minuti prima di riprovare.';
+          statusMessage.className = 'block p-4 rounded-lg bg-red-100 text-red-800';
+          return;
+        }
 
         if (!response.ok) {
           throw new Error(`Booking request failed: ${response.status}`);

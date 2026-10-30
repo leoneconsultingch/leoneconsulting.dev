@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createMailTransport, escapeHtml } from './lib/mail.js';
-import { enforceRateLimit } from './lib/ratelimit.js';
+import { enforceFormRequest } from './lib/form-guard.js';
 
 function sanitizeInput(input: unknown): string {
   return (typeof input === 'string' ? input : '')
@@ -31,7 +31,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return res.status(415).json({ error: 'Unsupported Media Type' });
   }
 
-  if (!await enforceRateLimit(req, res, 'contact', 3, 60)) return;
+  if (!enforceFormRequest(req, res, 'contact')) return;
 
   if (!req.body || typeof req.body !== 'object' || Array.isArray(req.body)) {
     return res.status(400).json({ error: 'Invalid request body' });

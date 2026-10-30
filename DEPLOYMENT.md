@@ -88,27 +88,87 @@ Production (e separatamente in Preview, se si vogliono provare i form):
 - `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `SMTP_TO`: obbligatorie.
 - `SMTP_FROM`: facoltativa, usa `SMTP_USER` se assente.
 - `SMTP_PORT`: default 587 con STARTTLS obbligatorio; 465 usa TLS immediato.
-- `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`: obbligatorie per il
-  rate-limit distribuito di tutti i form, incluse le prenotazioni.
 
 Non inserire valori o credenziali nel repository. Le modifiche alle variabili
 Vercel richiedono un nuovo deploy per diventare effettive.
 
-Se Upstash è assente, non risolve il DNS o non risponde entro due secondi,
-le API restituiscono `503` con `Retry-After: 60` senza tentare l'invio SMTP.
-Il superamento della quota restituisce invece `429`. Non rimuovere le variabili
-Upstash per aggirare un guasto: verificare che il database sia attivo e che
-l'endpoint configurato sia quello corrente. I log applicativi riportano la
-fase e l'endpoint senza includere credenziali o contenuto dei messaggi.
+### Migrazione antiabuso senza Redis — rilascio subordinato al WAF
 
-I form inviano JSON (`Content-Type: application/json`). Il form audit, in
-entrambe le lingue, richiede nome, email, progetto, obiettivo, un URL HTTP(S)
-dei materiali e accettazione delle condizioni.
+La patch sostituisce Upstash con il rate-limit del firewall Vercel. Non ci sono
+contatori in memoria, database da tenere attivi o nuove dipendenze runtime.
+**Non pubblicare la rimozione Redis finché la regola WAF non è attiva e verificata.**
+
+Configurazioni reviewabili:
+
+- `security/form-rate-limit.observe.json`: conta e registra, senza bloccare.
+- `security/form-rate-limit.enforce.json`: esempio API per `429` oltre la quota.
+  Nella dashboard attuale l’azione `Deny` sul blocco Rate Limit restituisce
+  invece `403`; i moduli gestiscono entrambi gli status senza cancellare i dati.
+
+La regola corrisponde a `POST` e percorso che inizia con `/api/`, senza filtri
+sul dominio: copre i quattro form, gli alias del progetto e futuri endpoint
+POST sotto lo stesso prefisso. Quota condivisa: 5 richieste per 600 secondi per
+IP **per regione**, finestra fissa. Anche richieste invalide o invii falliti
+consumano quota. Utenti dietro NAT condividono il limite. Non è un tetto globale
+agli invii e non arresta da sola bot distribuiti su molti IP.
+
+I limiti precedenti (3/minuto, 3/ora o 5/ora per endpoint) non sono equivalenti
+alla nuova quota condivisa. Hobby supporta una sola regola rate-limit e una
+finestra massima di 10 minuti: verificare il piano e le regole già occupate prima di
+applicare la configurazione. Non sovrascrivere altre regole o attivare piani a
+pagamento implicitamente.
+
+Procedura, dal progetto corretto nella dashboard Vercel:
+
+1. Firewall → Configure: verificare regole, bypass e bozze già presenti. Creare
+   la regola in osservazione con i valori sopra. Review Changes → Publish è
+   un'azione dell'operatore. Leggere gli eventi e verificare che corrispondano
+   solo ai POST API previsti.
+2. Provare il blocco su un deployment Preview. Con una sola regola disponibile,
+   modificare la stessa aggiungendo `Environment = Preview` e azione `429`:
+   durante questa fase la produzione mantiene il controllo Redis vigente,
+   non la nuova patch. Non dichiarare che resta in osservazione WAF se la
+   condizione esclude Production. Verificare condizioni ed eventi del WAF.
+3. Dopo la review, rimuovere il filtro Preview dalla stessa regola, attivare il
+   rate-limit in Production e verificare il readback della regola. Usare
+   payload vuoti o il campo anti-bot, senza email reali.
+   Una risposta `429` da sola non prova l'azione del WAF: richiedere un evento
+   firewall attribuito alla regola e al deployment corretti.
+4. Testare percorsi canonici, query, slash finale, slash duplicati, maiuscole e
+   percent-encoding; ripetere per tutti e quattro gli endpoint e gli alias.
+   Un percorso alternativo deve essere contato dal WAF oppure rifiutato dal
+   backend (`404`), senza raggiungere SMTP. Il guardiano locale accetta solo
+   il percorso canonico del proprio handler, con slash finale opzionale.
+5. Solo ora pubblicare la patch senza Redis e provare un invio legittimo con
+   destinatario concordato. Confermare ricezione, non solo HTTP 200.
+6. Conservare temporaneamente le vecchie variabili Upstash per il rollback;
+   rimuoverle separatamente dalla console, senza copiarle in log o documenti.
+
+L'accesso API al firewall ha restituito `404 Seawall Config not found` per
+lettura, inserimento e inizializzazione: non è stata creata una bozza remota né
+certificata una regola attiva. Se ricorre, verificare dalla dashboard progetto,
+abilitazione e accesso; non considerare i JSON locali come protezione attiva.
+
+Il WAF protegge l'accesso prima delle funzioni. Il guardiano applicativo applica
+schema per endpoint, limiti stringhe e body JSON (64 KiB), consenso, mailbox
+singola, controllo Origin quando presente e honeypot opzionale `website`.
+Origin/honeypot non autenticano il mittente e non sostituiscono il WAF. Il limite
+post-parsing limita il lavoro applicativo, non l'allocazione del parser Vercel.
+I form inviano JSON; un WAF `429` o `403`, anche non JSON, mantiene i dati e mostra
+l'attesa di 10 minuti. Il campo honeypot è opzionale per compatibilità; il
+consenso privacy dei contatti viene ora verificato server-side e inviato dalla
+nuova pagina. Una pagina contatti vecchia in cache deve essere ricaricata.
 
 Per pre-call e audit, l'accettazione SMTP della richiesta operativa determina
-il successo. Se la successiva email di conferma fallisce, l'API mantiene il
-successo e registra un avviso, così il visitatore non viene invitato a duplicare
-una richiesta già ricevuta.
+il successo. Se la successiva conferma fallisce, l'API mantiene il successo e
+registra un avviso. Credenziali, PII e dettagli del provider non vengono loggati.
+
+Verifica periodica: eventi WAF, errori SMTP e prova di consegna concordata.
+Nessun job keepalive o invio automatico a terzi è stato configurato. Per
+rollback usare una versione con un limiter funzionante oppure sospendere gli
+invii; non disabilitare il WAF lasciando aperti gli endpoint.
+
+Riferimenti: https://vercel.com/docs/vercel-firewall/vercel-waf/rate-limiting
 
 ## Build Locale
 
@@ -155,3 +215,9 @@ Il sito è ottimizzato per:
 2. Aggiungi Google Analytics o Plausible
 3. Configura il sottodominio portfolio
 4. Verifica il flusso prenotazioni dopo modifiche SMTP o al rate-limit
+
+Verifica operativa 30/10/2026: dopo la pubblicazione manuale dell’azione
+Deny, sei POST vuoti consecutivi a `/api/contact` hanno restituito cinque
+`503` dal vecchio limiter Redis e poi un `403 Forbidden` della piattaforma.
+Il blocco a soglia è stato osservato; il connettore firewall resta in errore
+404 e non consente il readback della configurazione. Nessuna email inviata.

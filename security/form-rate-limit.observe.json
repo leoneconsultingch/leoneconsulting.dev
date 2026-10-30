@@ -1,0 +1,35 @@
+{
+  "name": "Email forms — shared IP limit",
+  "description": "Shared POST /api/ quota across project hosts; counters are per region.",
+  "active": true,
+  "conditionGroup": [
+    {
+      "conditions": [
+        {
+          "type": "path",
+          "op": "pre",
+          "value": "/api/"
+        },
+        {
+          "type": "method",
+          "op": "eq",
+          "value": "POST"
+        }
+      ]
+    }
+  ],
+  "action": {
+    "mitigate": {
+      "action": "rate_limit",
+      "rateLimit": {
+        "algo": "fixed_window",
+        "window": 600,
+        "limit": 5,
+        "keys": [
+          "ip"
+        ],
+        "action": "log"
+      }
+    }
+  }
+}

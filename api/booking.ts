@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createMailTransport, escapeHtml } from './lib/mail.js';
-import { enforceRateLimit } from './lib/ratelimit.js';
+import { enforceFormRequest } from './lib/form-guard.js';
 
 type BookingPayload = {
   service?: unknown;
@@ -154,7 +154,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(415).json({ error: 'Unsupported Media Type' });
   }
 
-  if (!await enforceRateLimit(req, res, 'booking', 5, 3600)) return;
+  if (!enforceFormRequest(req, res, 'booking')) return;
 
   const validation = validateBookingPayload(req.body || {});
   if (!validation.valid) {

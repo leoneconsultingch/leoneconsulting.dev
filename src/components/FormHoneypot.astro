@@ -1,0 +1,19 @@
+---
+interface Props { id: string }
+const { id } = Astro.props;
+---
+
+<div class="form-honeypot" aria-hidden="true">
+  <label for={`${id}-website`}>Website</label>
+  <input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off" maxlength="2048" />
+</div>
+
+<style>
+  .form-honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>

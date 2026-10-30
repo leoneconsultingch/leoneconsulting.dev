@@ -1,4 +1,5 @@
 ---
+import FormHoneypot from '../components/FormHoneypot.astro';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -133,6 +134,7 @@ import Footer from '../components/Footer.astro';
               <h2 class="text-3xl font-bold text-gray-900 mb-8">Raccontaci il tuo caso</h2>
               
               <form id="contact-form" class="space-y-6">
+                <FormHoneypot id={'contact-it'} />
                 <div>
                   <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">
                     Nome *
@@ -144,6 +146,7 @@ import Footer from '../components/Footer.astro';
                     required
                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                     placeholder="Il tuo nome"
+                    maxlength="150"
                   />
                 </div>
 
@@ -158,6 +161,7 @@ import Footer from '../components/Footer.astro';
                     required
                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                     placeholder="tua.email@esempio.com"
+                    maxlength="254"
                   />
                 </div>
 
@@ -171,6 +175,7 @@ import Footer from '../components/Footer.astro';
                     name="company"
                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
                     placeholder="Nome azienda (opzionale)"
+                    maxlength="500"
                   />
                 </div>
 
@@ -203,6 +208,7 @@ import Footer from '../components/Footer.astro';
                     rows="6"
                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
                     placeholder="Obiettivo, stato attuale, vincoli di tempo/budget e risultato atteso..."
+                    maxlength="500"
                   ></textarea>
                 </div>
 
@@ -287,30 +293,11 @@ import Footer from '../components/Footer.astro';
   const messageDiv = document.getElementById('form-message');
 
   function sanitizeInput(input: string): string {
-    const div = document.createElement('div');
-    div.textContent = input;
-    return div.innerHTML;
+    return input.trim();
   }
-
-  let submissionCount = 0;
-  let lastSubmissionTime = 0;
-  const MAX_SUBMISSIONS = 3;
-  const RATE_LIMIT_WINDOW = 60000;
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    const now = Date.now();
-    if (now - lastSubmissionTime > RATE_LIMIT_WINDOW) {
-      submissionCount = 0;
-    }
-    
-    if (submissionCount >= MAX_SUBMISSIONS) {
-      messageDiv?.classList.remove('hidden', 'bg-green-100', 'text-green-800');
-      messageDiv?.classList.add('bg-red-100', 'text-red-800');
-      messageDiv!.textContent = 'Troppi tentativi. Attendi un minuto prima di riprovare.';
-      return;
-    }
     
     // Show loading state
     const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
@@ -324,7 +311,9 @@ import Footer from '../components/Footer.astro';
       email: sanitizeInput(formData.get('email') as string),
       company: sanitizeInput(formData.get('company') as string || ''),
       service: sanitizeInput(formData.get('service') as string || ''),
-      message: sanitizeInput(formData.get('message') as string)
+      message: sanitizeInput(formData.get('message') as string),
+      privacy: formData.get('privacy') === 'on',
+      website: String(formData.get('website') || ''),
     };
 
     if (!sanitizedData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
@@ -336,8 +325,6 @@ import Footer from '../components/Footer.astro';
       return;
     }
     
-    submissionCount++;
-    lastSubmissionTime = now;
     
     try {
       const response = await fetch('/api/contact', {
@@ -347,6 +334,12 @@ import Footer from '../components/Footer.astro';
         },
         body: JSON.stringify(sanitizedData)
       });
+
+      if (response.status === 429 || response.status === 403) {
+        messageDiv!.textContent = 'Invio temporaneamente bloccato. Attendi 10 minuti prima di riprovare.';
+        messageDiv!.className = 'block p-4 rounded-lg bg-red-100 text-red-800';
+        return;
+      }
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));

@@ -31,18 +31,21 @@ function response() {
   };
 }
 
-function payload() {
-  return {
-    name: 'Alice', email: 'alice@example.com', company: 'Example', service: 'ai',
-    message: 'A project question', date: '2026-12-01', time: '15-16', type: 'online',
-    phone: '+41000000000', privacy: true, objective: 'Review architecture',
-    situation: 'Planning', dataStatus: 'Available', timeline: 'Next month',
-    project: 'Example', materials: 'https://example.com/repo', terms: 'on',
-  };
+function payload(name = 'contact') {
+  const base = { name: 'Alice', email: 'alice@example.com', website: '' };
+  if (name === 'booking') return { ...base, service: 'ai', date: '2026-12-01', time: '15-16',
+    type: 'online', phone: '+41000000000', company: '', notes: '', privacy: true };
+  if (name === 'pre-call') return { ...base, objective: 'audit', situation: 'Planning',
+    dataStatus: 'none', timeline: 'short', budget: '' };
+  if (name === 'audit-request') return { ...base, project: 'Example', objective: 'Review',
+    materials: 'https://example.com/repo', terms: 'on' };
+  return { ...base, company: 'Example', service: 'ai', message: 'A project question', privacy: true };
 }
 
-function request(body = payload()) {
-  return { method: 'POST', headers: { 'content-type': 'application/json', 'x-real-ip': '192.0.2.1' }, body, socket: {} };
+function request(body = payload(), name = 'contact') {
+  return { method: 'POST', url: `/api/${name}`, headers: {
+    'content-type': 'application/json', origin: 'https://leoneconsulting.dev',
+  }, body, socket: {} };
 }
 
 function smtpEnv() {
@@ -53,40 +56,12 @@ function smtpEnv() {
   });
 }
 
-function redisReply(remaining = 2) {
-  mock.method(globalThis, 'fetch', async () => new Response(JSON.stringify([{ result: [remaining, 3] }]), {
-    status: 200, headers: { 'content-type': 'application/json' },
-  }));
-}
-
 for (const { name, handler } of handlers) {
-  test(`${name}: absent rate-limit configuration returns 503 without sending email`, async () => {
+  test(`${name}: valid request works without Redis or any network rate-limit lookup`, async () => {
+    smtpEnv();
     delete process.env.UPSTASH_REDIS_REST_URL;
     delete process.env.UPSTASH_REDIS_REST_TOKEN;
     mock.method(console, 'error', () => {});
-    mock.method(console, 'warn', () => {});
-    const sent = [];
-    mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => { sent.push(mail); return {}; } }));
-    const res = response();
-    await handler(request(), res);
-    assert.equal(res.statusCode, 503);
-    assert.deepEqual(sent, []);
-    assert.equal(res.headers['Retry-After'], '60');
-  });
-
-  test(`${name}: Redis DNS failure becomes a controlled 503`, async () => {
-    smtpEnv();
-    mock.method(console, 'error', () => {});
-    mock.method(globalThis, 'fetch', async () => { throw new Error('getaddrinfo ENOTFOUND redis.example.com'); });
-    const res = response();
-    await handler(request(), res);
-    assert.equal(res.statusCode, 503);
-    assert.equal(res.body.error, 'Service temporarily unavailable. Please try again later.');
-  });
-
-  test(`${name}: valid request sends mail with implicit TLS on 465`, async () => {
-    smtpEnv();
-    redisReply();
     const sent = [];
     let transport;
     mock.method(nodemailer, 'createTransport', (config) => {
@@ -94,46 +69,74 @@ for (const { name, handler } of handlers) {
       return { sendMail: async (mail) => { sent.push(mail); return { messageId: 'test-id' }; } };
     });
     const res = response();
-    await handler(request(), res);
+    await handler(request(payload(name), name), res);
     assert.equal(res.statusCode, 200);
     assert.equal(res.body.success, true);
-    assert.equal(transport.port, 465);
     assert.equal(transport.secure, true);
     assert.equal(sent[0].to, 'owner@example.com');
-    assert.equal(sent.length, name === 'pre-call' || name === 'audit-request' ? 2 : 1);
+    assert.equal(sent.length, ['pre-call', 'audit-request'].includes(name) ? 2 : 1);
   });
-}
 
-for (const { name, handler } of handlers.filter(({ name }) => name !== 'booking')) {
-  test(`${name}: required fields cannot become empty after sanitization`, async () => {
+  test(`${name}: honeypot submission is acknowledged without SMTP`, async () => {
     smtpEnv();
-    redisReply();
+    mock.method(console, 'error', () => {});
     const sent = [];
     mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => { sent.push(mail); return {}; } }));
-    for (const invalidName of [{}, '   ', '<>']) {
+    const res = response();
+    await handler(request({ ...payload(name), website: 'https://spam.example' }, name), res);
+    assert.equal(res.statusCode, 200);
+    assert.equal(res.body.success, true);
+    assert.deepEqual(sent, []);
+  });
+
+  test(`${name}: malformed, unknown, overlength and empty fields cannot reach SMTP`, async () => {
+    smtpEnv();
+    mock.method(console, 'error', () => {});
+    const sent = [];
+    mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => { sent.push(mail); return {}; } }));
+    for (const body of [null, [], { ...payload(name), name: {} }, { ...payload(name), name: '   ' },
+      { ...payload(name), name: '<>' }, { ...payload(name), name: 'a'.repeat(2001) },
+      { ...payload(name), injected: 'unexpected' }, { ...payload(name), email: 'victim<@example.com' }]) {
       const res = response();
-      await handler(request({ ...payload(), name: invalidName }), res);
+      await handler(request(body, name), res);
       assert.equal(res.statusCode, 400);
     }
     assert.deepEqual(sent, []);
   });
+
+  test(`${name}: actual body limit cannot be bypassed with a small Content-Length`, async () => {
+    const req = request({ ...payload(name), name: 'a'.repeat(70000) }, name);
+    req.headers['content-length'] = '1';
+    const res = response();
+    mock.method(console, 'error', () => {});
+    await handler(req, res);
+    assert.equal(res.statusCode, 413);
+  });
+
+  test(`${name}: cross-site request is rejected before SMTP`, async () => {
+    const req = request(payload(name), name);
+    req.headers.origin = 'https://attacker.example';
+    const res = response();
+    mock.method(console, 'error', () => {});
+    await handler(req, res);
+    assert.equal(res.statusCode, 403);
+  });
+
+  test(`${name}: noncanonical API paths cannot bypass the firewall selector`, async () => {
+    for (const path of [`/API/${name}`, `/api%2f${name}`, `/%61pi/${name}`, `/api//${name}`]) {
+      const req = request(payload(name), name);
+      req.url = path;
+      const res = response();
+      mock.method(console, 'error', () => {});
+      await handler(req, res);
+      assert.equal(res.statusCode, 404);
+    }
+  });
 }
 
-test('audit requires explicit acceptance rather than a truthy terms value', async () => {
-  smtpEnv();
-  redisReply();
-  const res = response();
-  const sent = [];
-  mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => { sent.push(mail); return {}; } }));
-  await handlers.find(({ name }) => name === 'audit-request').handler(request({ ...payload(), terms: 'false' }), res);
-  assert.equal(res.statusCode, 400);
-  assert.deepEqual(sent, []);
-});
-
-for (const { name, handler } of handlers.filter(({ name }) => name === 'pre-call' || name === 'audit-request')) {
-  test(`${name}: a failed confirmation does not report an already accepted request as failed`, async () => {
+for (const { name, handler } of handlers.filter(({ name }) => ['pre-call', 'audit-request'].includes(name))) {
+  test(`${name}: confirmation failure does not duplicate an accepted request`, async () => {
     smtpEnv();
-    redisReply();
     mock.method(console, 'warn', () => {});
     mock.method(console, 'error', () => {});
     const accepted = [];
@@ -143,39 +146,42 @@ for (const { name, handler } of handlers.filter(({ name }) => name === 'pre-call
       return {};
     } }));
     const res = response();
-    await handler(request(), res);
-    assert.equal(accepted.length, 1);
+    await handler(request(payload(name), name), res);
     assert.equal(res.statusCode, 200);
-    assert.equal(res.body.success, true);
+    assert.equal(accepted.length, 1);
   });
 }
 
-test('audit email encodes quotes in material links rather than creating attributes', async () => {
+test('audit requires explicit terms acceptance', async () => {
+  const res = response();
+  mock.method(console, 'error', () => {});
+  await handlers[3].handler(request({ ...payload('audit-request'), terms: 'false' }, 'audit-request'), res);
+  assert.equal(res.statusCode, 400);
+});
+
+test('audit material URL cannot create HTML attributes', async () => {
   smtpEnv();
-  redisReply();
   const sent = [];
   mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => { sent.push(mail); return {}; } }));
-  const body = payload();
-  body.materials = 'https://example.com/" style="color:red';
+  const body = { ...payload('audit-request'), materials: 'https://example.com/" style="color:red' };
   const res = response();
-  await handlers.find(({ name }) => name === 'audit-request').handler(request(body), res);
+  await handlers[3].handler(request(body, 'audit-request'), res);
   assert.equal(res.statusCode, 200);
   assert.doesNotMatch(sent[0].html, /href="https:\/\/example.com\/" style=/);
   assert.match(sent[0].html, /%22/);
 });
 
-for (const { name, handler } of handlers) {
-  test(`${name}: quota exhaustion returns 429 without SMTP`, async () => {
-    smtpEnv();
-    redisReply(-1);
-    const sent = [];
-    mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => { sent.push(mail); return {}; } }));
-    const res = response();
-    await handler(request(), res);
-    assert.equal(res.statusCode, 429);
-    assert.deepEqual(sent, []);
-  });
-}
+test('audit accepts a multilingual request within every advertised field limit', async () => {
+  smtpEnv();
+  const sent = [];
+  mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => { sent.push(mail); return {}; } }));
+  const body = { ...payload('audit-request'), name: '界'.repeat(150), project: '界'.repeat(2000),
+    objective: '界'.repeat(500), materials: 'https://example.com/' + '界'.repeat(1980), notes: '界'.repeat(2000) };
+  const res = response();
+  await handlers[3].handler(request(body, 'audit-request'), res);
+  assert.equal(res.statusCode, 200);
+  assert.equal(sent.length, 2);
+});
 
 test('SMTP 587 and the default port require STARTTLS', async () => {
   const { createMailTransport } = await import('../api/lib/mail.ts');
@@ -193,21 +199,8 @@ test('SMTP 587 and the default port require STARTTLS', async () => {
   }
 });
 
-test('a rate-limit timeout never authorizes an email', async () => {
-  smtpEnv();
-  mock.method(console, 'error', () => {});
-  mock.method(globalThis, 'fetch', async () => new Promise(() => {}));
-  const sent = [];
-  mock.method(nodemailer, 'createTransport', () => ({ sendMail: async (mail) => { sent.push(mail); return {}; } }));
-  const res = response();
-  await handlers[0].handler(request(), res);
-  assert.equal(res.statusCode, 503);
-  assert.deepEqual(sent, []);
-});
-
 test('SMTP failures return an error without disclosing provider details', async () => {
   smtpEnv();
-  redisReply();
   const logged = [];
   mock.method(console, 'error', (...args) => logged.push(args));
   mock.method(nodemailer, 'createTransport', () => ({ sendMail: async () => { throw new Error('private-provider-detail'); } }));
@@ -255,4 +248,41 @@ test('English audit form sends a compatible JSON request and displays success', 
   assert.equal(JSON.parse(submitted.body).terms, 'on');
   assert.equal(elements['audit-form'].wasReset, true);
   assert.equal(elements['submit-btn'].disabled, false);
+});
+
+for (const wafStatus of [429, 403]) {
+test(`English audit form explains a non-JSON WAF ${wafStatus} without resetting fields`, async () => {
+  const page = await readFile(new URL('../src/pages/en/async-audit.astro', import.meta.url), 'utf8');
+  const script = page.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const elements = Object.fromEntries(['audit-form', 'submit-btn', 'success-msg', 'error-msg'].map((id) => [id, {
+    action: '/api/audit-request', classList: { add() {}, remove() {} },
+    addEventListener(_event, callback) { this.submit = callback; },
+    reset() { this.wasReset = true; },
+  }]));
+  vm.runInNewContext(ts.transpileModule(script, { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText, {
+    document: { getElementById: (id) => elements[id] },
+    FormData: class { entries() { return []; } },
+    fetch: async () => ({ status: wafStatus, ok: false, json: async () => { throw new Error('WAF HTML'); } }),
+  });
+  await elements['audit-form'].submit({ preventDefault() {} });
+  assert.match(elements['error-msg'].textContent, /10 minutes/);
+  assert.equal(elements['audit-form'].wasReset, undefined);
+  assert.equal(elements['submit-btn'].disabled, false);
+});
+
+}
+
+test('JSON media type is exact and declared body size is checked', async () => {
+  for (const contentType of ['text/plain; application/json', 'application/jsonp', 'multipart/form-data']) {
+    const req = request();
+    req.headers['content-type'] = contentType;
+    const res = response();
+    await handlers[0].handler(req, res);
+    assert.equal(res.statusCode, 415);
+  }
+  const req = request();
+  req.headers['content-length'] = '70000';
+  const res = response();
+  await handlers[0].handler(req, res);
+  assert.equal(res.statusCode, 413);
 });
