@@ -33,7 +33,7 @@ Artefatti privati in `<state>/inbox/<hash-reportId>/`: report, evidenze, bozza,
 anteprima e ricevuta con hash. La stessa consegna riusa i risultati senza altra
 inferenza; un contenuto cambiato richiede un nuovo `reportId`. Gli URL già usati
 da altri import completati nella stessa directory di stato vengono esclusi;
-questa deduplicazione non comprende il flusso RSS settimanale o le modifiche a una
+questa deduplicazione non comprende il flusso RSS giornaliero o le modifiche a una
 pagina già vista. Per rivalutarla serve un percorso di revisione esplicito.
 Il lock è condiviso con il runner RSS quando usano la stessa directory di stato.
 
@@ -44,11 +44,11 @@ mostrano “Non indicata” / “Not specified”, senza inventare date. La data
 verifica deriva dal recupero effettivo, non dal report.
 
 Questo comando **non installa timer** e non attiva sincronizzazioni Desktop/cloud.
-La snapshot del runner settimanale già attiva non viene aggiornata. Il prossimo
+La snapshot del runner già attiva non viene aggiornata. Il prossimo
 collaudo deve partire dalla chat reale e produrre un ID restituito dal plugin.
 Approvazione, import nel sito, build e deploy restano passaggi distinti.
 
-## Flusso settimanale
+## Flusso giornaliero
 
 1. Il runner raccoglie gli ultimi sette giorni dai feed ufficiali in `sources.json`
    (OpenAI, Google AI, Hugging Face). Il registro è estendibile, non una copertura
@@ -104,7 +104,7 @@ backend e modello. Dopo verifica systemd avvia una rassegna reale. **Il timer vi
 abilitato soltanto dopo il successo della prova.** La ricevuta con modello,
 revisione e prossima scadenza è in `~/.local/state/leone-editorial/activation.json`.
 
-Lunedì 09:00 Europe/Rome, jitter massimo 15 minuti, recupero run mancati. Il servizio mantiene `NoNewPrivileges`. Per Codex si usa la sandbox nativa in
+Ogni giorno alle 09:00 Europe/Rome, jitter massimo 15 minuti, recupero run mancati. Il servizio mantiene `NoNewPrivileges`. Per Codex si usa la sandbox nativa in
 lettura sola: i namespace filesystem delle unit utente rimappano il proprietario
 root del registro e fanno rifiutare il launcher canonico. Il profilo Codex evita
 quei namespace senza alterare il registro o i suoi controlli. Il controller scrive
