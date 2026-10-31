@@ -1,0 +1,7 @@
+---
+import BlogPage from '../../../components/BlogPage.astro';
+import { loadBlogPosts } from '../../../lib/blog-content';
+export const prerender = true;
+const posts = loadBlogPosts();
+---
+<BlogPage lang="en" posts={posts} />

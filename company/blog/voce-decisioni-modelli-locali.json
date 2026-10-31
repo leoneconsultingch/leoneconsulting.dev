@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "slug": "voce-decisioni-modelli-locali",
+  "title": {
+    "it": "Dalla voce alla decisione: come valutare modelli locali per una PMI",
+    "en": "From speech to decisions: how an SME can assess local models"
+  },
+  "summary": {
+    "it": "Trascrizione e classificazione su piattaforme Apple: una novità da valutare con un pilot circoscritto.",
+    "en": "Transcription and classification on Apple platforms: a development to assess through a focused pilot."
+  },
+  "topic": {
+    "it": "Modelli locali e automazione",
+    "en": "Local models and automation"
+  },
+  "eventDate": null,
+  "updatedAt": "2026-10-31",
+  "publishedAt": "2026-10-31",
+  "published": true,
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-10-31",
+    "digest": "bd85f899fb06736dd46b46ec8a295e52688abaf6e5e06c87e44abcef71587e7d"
+  },
+  "sources": [
+    {
+      "id": "speech-decisions",
+      "title": "Introducing AnySpeechRecognizer and AnyDecisionModel: Open Models for Speech and Decisions on Apple Platforms",
+      "url": "https://huggingface.co/blog/anydecisionmodel",
+      "publisher": "Hugging Face",
+      "publishedAt": "2026-10-29",
+      "checkedAt": "2026-10-31"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "fact",
+      "heading": {
+        "it": "Due strumenti per compiti diversi",
+        "en": "Two tools for different tasks"
+      },
+      "paragraphs": {
+        "it": [
+          "AnySpeechRecognizer e AnyDecisionModel sono pacchetti Swift per trascrivere il parlato e classificare richieste con risposte strutturate e probabilità. Possono eseguire modelli aperti sul dispositivo. La diarizzazione distingue chi parla nel tempo. L’esempio seguente è una proposta di pilot da validare."
+        ],
+        "en": [
+          "AnySpeechRecognizer and AnyDecisionModel are Swift packages for speech transcription and classification with structured answers and probabilities. They can run open models on the device. Diarization identifies who speaks when. The following example is a proposed pilot that requires validation."
+        ]
+      },
+      "sourceIds": [
+        "speech-decisions"
+      ]
+    },
+    {
+      "kind": "analysis",
+      "heading": {
+        "it": "Un possibile flusso per l'assistenza",
+        "en": "A possible support workflow"
+      },
+      "paragraphs": {
+        "it": [
+          "Per una PMI che riceve richieste vocali, un caso da esplorare è la trascrizione seguita da una proposta di classificazione: per esempio distinguere una richiesta commerciale da una domanda di assistenza. La categoria suggerita potrebbe aiutare un operatore a indirizzare la richiesta, lasciando a lui la verifica prima di qualsiasi inoltro.",
+          "Conviene partire da categorie poche e ben definite, con un'opzione per i casi incerti. Una trascrizione errata può infatti compromettere anche la classificazione successiva: i due passaggi vanno esaminati separatamente, oltre che come flusso completo."
+        ],
+        "en": [
+          "For an SME receiving spoken requests, one case to explore is transcription followed by a proposed classification: for example, distinguishing a sales enquiry from a support question. The suggested category could help an employee route the request, with that person checking it before any forwarding takes place.",
+          "It makes sense to start with a small set of clearly defined categories and an option for uncertain cases. A transcription error can also affect the subsequent classification, so the two steps should be examined separately as well as together."
+        ]
+      },
+      "sourceIds": [
+        "speech-decisions"
+      ]
+    },
+    {
+      "kind": "analysis",
+      "heading": {
+        "it": "Cosa verificare nel pilot",
+        "en": "What to check in a pilot"
+      },
+      "paragraphs": {
+        "it": [
+          "Prima della prova, l'azienda può raccogliere, con le autorizzazioni appropriate, un insieme di esempi rappresentativi dei propri interlocutori e delle condizioni audio abituali. Le persone che gestiscono le richieste possono preparare trascrizioni e categorie di riferimento, includendo casi ambigui e registrazioni difficili.",
+          "Il confronto dovrebbe considerare errori di trascrizione, classificazioni corrette, casi da rivedere e tempo complessivo di gestione. Anche le probabilità associate alle risposte meritano una verifica sui dati del caso d'uso: da sole non stabiliscono se una decisione sia affidabile."
+        ],
+        "en": [
+          "Before testing, the company can assemble, with appropriate permissions, a representative set of examples covering its callers and usual audio conditions. The people handling requests can prepare reference transcripts and categories, including ambiguous cases and difficult recordings.",
+          "The comparison should consider transcription errors, correct classifications, cases needing review and total handling time. The probabilities attached to answers also need checking against the use-case data: on their own, they do not establish whether a decision is reliable."
+        ]
+      },
+      "sourceIds": [
+        "speech-decisions"
+      ]
+    },
+    {
+      "kind": "analysis",
+      "heading": {
+        "it": "Dalla prova all'integrazione",
+        "en": "From pilot to integration"
+      },
+      "paragraphs": {
+        "it": [
+          "L'esecuzione sul dispositivo è una possibilità tecnica da valutare insieme al processo completo: occorre stabilire dove siano conservati audio e trascrizioni, chi possa consultarli e quando debbano essere eliminati. La scelta locale, da sola, non definisce queste regole.",
+          "Prima di collegare il pilot agli strumenti aziendali, suggeriamo di verificare compatibilità, licenze dei singoli modelli e gestione degli errori. La disponibilità dei pacchetti non garantisce che tutti i backend siano combinabili nello stesso progetto. Se la qualità osservata non basta, il flusso può restare un supporto alla revisione umana oppure richiedere una soluzione diversa."
+        ],
+        "en": [
+          "On-device execution is a technical option to assess alongside the complete workflow: the company still needs to establish where audio and transcripts are stored, who can access them and when they should be deleted. Choosing local execution alone does not define those rules.",
+          "Before connecting the pilot to business tools, we suggest checking compatibility, individual model licences and error handling. The availability of the packages does not guarantee that every backend can be combined in the same project. If observed quality is insufficient, the workflow can remain an aid to human review or require a different solution."
+        ]
+      },
+      "sourceIds": [
+        "speech-decisions"
+      ]
+    }
+  ]
+}

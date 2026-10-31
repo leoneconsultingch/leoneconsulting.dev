@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { type BlogPost, type Language } from '../lib/blog';
+
+interface Props { lang: Language; posts?: BlogPost[]; post?: BlogPost; }
+const { lang, posts = [], post } = Astro.props;
+const en = lang === 'en';
+const base = en ? '/en' : '';
+const formatDate = (value: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'it-IT', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
+const title = post ? post.title[lang] : en ? 'AI in practice: news and business applications' : 'AI in pratica: novità e applicazioni per le aziende';
+const description = post ? post.summary[lang] : en
+  ? 'AI news explained through primary sources, practical applications and limitations for SMEs.'
+  : 'Novità AI spiegate con fonti primarie, applicazioni concrete e limiti per le PMI.';
+const schema = post ? {
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title[lang],
+  description: post.summary[lang], datePublished: post.publishedAt, dateModified: post.updatedAt,
+  inLanguage: lang, citation: post.sources.map(source => source.url),
+  author: { '@type': 'Organization', name: 'Leone Consulting' },
+  mainEntityOfPage: `https://leoneconsulting.dev${base}/blog/${post.slug}`,
+} : undefined;
+---
+<Layout title={title} description={description} ogType={post ? 'article' : 'website'} noindex={!post && posts.length === 0} schema={schema}>
+  <Header />
+  <main class="pt-32 pb-20 px-6">
+    <div class="container mx-auto max-w-5xl">
+      {post ? (
+        <article>
+          <a href={`${base}/blog`} class="text-primary-700 font-semibold underline underline-offset-4">{en ? 'All articles' : 'Tutti gli articoli'}</a>
+          <header class="mt-8 mb-12 max-w-3xl">
+            <p class="text-sm font-semibold text-primary-700 mb-4">{post.topic[lang]}</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">{post.title[lang]}</h1>
+            <p class="text-xl text-gray-600 leading-relaxed mb-6">{post.summary[lang]}</p>
+            <dl class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-gray-600">
+              <div><dt class="font-semibold">{en ? 'Published' : 'Pubblicato'}</dt><dd><time datetime={post.publishedAt!}>{formatDate(post.publishedAt!)}</time></dd></div>
+              <div><dt class="font-semibold">{en ? 'Updated' : 'Aggiornato'}</dt><dd><time datetime={post.updatedAt}>{formatDate(post.updatedAt)}</time></dd></div>
+              {post.eventDate && <div><dt class="font-semibold">{en ? 'Event date' : 'Data della novità'}</dt><dd><time datetime={post.eventDate}>{formatDate(post.eventDate)}</time></dd></div>}
+            </dl>
+          </header>
+          <div class="max-w-3xl space-y-10">
+            {post.sections.map((section, index) => (
+              <section aria-labelledby={`section-${index}`}>
+                <p class="text-xs font-semibold uppercase tracking-wide text-primary-700 mb-2">{section.kind === 'fact' ? (en ? 'From the sources' : 'Dalle fonti') : (en ? 'Our analysis' : 'La nostra analisi')}</p>
+                <h2 id={`section-${index}`} class="text-2xl font-bold text-gray-900 mb-4">{section.heading[lang]}</h2>
+                <div class="space-y-4 text-lg text-gray-700 leading-relaxed">{section.paragraphs[lang].map(paragraph => <p>{paragraph}</p>)}</div>
+                <p class="mt-4 text-sm text-gray-600">{en ? 'Sources: ' : 'Fonti: '}{section.sourceIds.map(id => <a href={`#source-${id}`} class="inline-block mr-3 text-primary-700 underline underline-offset-4">{post.sources.find(source => source.id === id)?.publisher} [{post.sources.findIndex(source => source.id === id) + 1}]</a>)}</p>
+              </section>
+            ))}
+          </div>
+          <aside aria-labelledby="sources-title" class="mt-12 max-w-3xl rounded-xl bg-gray-50 border border-gray-200 p-6">
+            <h2 id="sources-title" class="text-2xl font-bold text-gray-900 mb-6">{en ? 'Sources and verification' : 'Fonti e verifica'}</h2>
+            <ol class="space-y-5 list-decimal pl-5">{post.sources.map(source => (
+              <li id={`source-${source.id}`} class="scroll-mt-28 pl-1">
+                <a href={source.url} rel="noopener noreferrer" class="text-primary-700 underline underline-offset-4 font-semibold">{source.title}</a>
+                <p class="text-sm text-gray-600 mt-1">{source.publisher} · {en ? 'Source date' : 'Data della fonte'}: {source.publishedAt ? formatDate(source.publishedAt) : (en ? 'Not specified' : 'Non indicata')} · {en ? 'Checked' : 'Verificata'}: {formatDate(source.checkedAt)}</p>
+              </li>
+            ))}</ol>
+          </aside>
+        </article>
+      ) : (
+        <>
+          <header class="max-w-3xl mb-12">
+            <p class="text-primary-700 font-semibold mb-4">Blog · Leone Consulting</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">{title}</h1>
+            <p class="text-xl text-gray-600 leading-relaxed">{description}</p>
+          </header>
+          {posts.length === 0 ? (
+            <section class="rounded-xl border border-primary-100 bg-primary-50 p-8 max-w-3xl">
+              <h2 class="text-2xl font-bold text-gray-900 mb-3">{en ? 'The first articles are being prepared' : 'I primi articoli sono in preparazione'}</h2>
+              <p class="text-gray-600 leading-relaxed">{en ? 'We publish reviewed content with sources, dates and practical implications. In the meantime, explore our approach to document AI.' : 'Pubblichiamo contenuti revisionati con fonti, date e implicazioni pratiche. Nel frattempo puoi esplorare il nostro approccio all’AI documentale.'}</p>
+            </section>
+          ) : (
+            <div class="grid md:grid-cols-2 gap-6">{posts.map(item => (
+              <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                <p class="text-sm font-semibold text-primary-700 mb-3">{item.topic[lang]}</p>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4"><a href={`${base}/blog/${item.slug}`} class="hover:text-primary-700">{item.title[lang]}</a></h2>
+                <p class="text-gray-600 leading-relaxed mb-5">{item.summary[lang]}</p>
+                <time datetime={item.publishedAt!} class="text-sm text-gray-500">{formatDate(item.publishedAt!)}</time>
+              </article>
+            ))}</div>
+          )}
+        </>
+      )}
+      <section aria-labelledby="blog-next-step" class="mt-16 rounded-xl bg-primary-50 p-8">
+        <h2 id="blog-next-step" class="text-2xl font-bold text-gray-900 mb-4">{en ? 'What could AI change in your workflow?' : 'Cosa potrebbe cambiare l’AI nel tuo lavoro?'}</h2>
+        <div class="flex flex-col sm:flex-row gap-5">
+          <a href={`${base}/services#${en ? 'document-ai' : 'ai-documentale'}`} class="text-primary-700 font-semibold underline underline-offset-4">{en ? 'Explore document AI' : 'Scopri l’AI documentale'}</a>
+          <a href={`${base}/${en ? 'book-call' : 'prenota'}`} class="text-primary-700 font-semibold underline underline-offset-4">{en ? 'Discuss your project' : 'Parliamo del tuo progetto'}</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>

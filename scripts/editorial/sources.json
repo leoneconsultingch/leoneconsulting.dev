@@ -1,0 +1,5 @@
+[
+  { "publisher": "OpenAI", "feed": "https://openai.com/news/rss.xml", "origins": ["https://openai.com"] },
+  { "publisher": "Google", "feed": "https://blog.google/technology/ai/rss/", "origins": ["https://blog.google"] },
+  { "publisher": "Hugging Face", "feed": "https://huggingface.co/blog/feed.xml", "origins": ["https://huggingface.co"] }
+]

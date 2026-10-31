@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "slug": "assistente-vocale-pmi-dalla-demo-al-pilot",
+  "title": {
+    "it": "Assistenti vocali per PMI: dalla dimostrazione al pilot",
+    "en": "Voice assistants for SMEs: from demonstration to pilot"
+  },
+  "summary": {
+    "it": "Un progetto interattivo mostra come combinare riconoscimento vocale, generazione delle risposte e sintesi audio. Per una PMI, il passaggio a un servizio richiede verifiche sul processo e sui suoi limiti.",
+    "en": "An interactive project shows how speech recognition, response generation and audio synthesis can be combined. For an SME, turning a demonstration into a service requires checks on the workflow and its limits."
+  },
+  "topic": {
+    "it": "Assistenti vocali",
+    "en": "Voice assistants"
+  },
+  "eventDate": null,
+  "updatedAt": "2026-10-31",
+  "publishedAt": "2026-10-31",
+  "published": true,
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-10-31",
+    "digest": "75604ebd9fa55ce95030e85f5a0f904c50d4a3267930c5f54515c60f7cc49594"
+  },
+  "sources": [
+    {
+      "id": "nvidia-voice",
+      "title": "Building a Haunted House with NVIDIA Nemotron Open Models",
+      "url": "https://huggingface.co/blog/nvidia/nemotron-halloween",
+      "publisher": "Hugging Face",
+      "publishedAt": "2026-10-30",
+      "checkedAt": "2026-10-31"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "fact",
+      "heading": {
+        "it": "Un esempio dimostrativo",
+        "en": "A demonstration"
+      },
+      "paragraphs": {
+        "it": [
+          "Un articolo pubblicato su Hugging Face descrive MonsterHouse, un'installazione interattiva che ascolta i visitatori e risponde con una voce sintetica. Il progetto combina riconoscimento vocale, un modello linguistico e sintesi vocale; l'autore dichiara di lavorare per NVIDIA."
+        ],
+        "en": [
+          "An article published on Hugging Face describes MonsterHouse, an interactive installation that listens to visitors and responds with a synthetic voice. The project combines speech recognition, a language model and speech synthesis; the author states that he works for NVIDIA."
+        ]
+      },
+      "sourceIds": [
+        "nvidia-voice"
+      ]
+    },
+    {
+      "kind": "fact",
+      "heading": {
+        "it": "I componenti dell'esperienza",
+        "en": "The components behind the experience"
+      },
+      "paragraphs": {
+        "it": [
+          "Secondo l'articolo, un agente coordina i componenti su una workstation. Il progetto comprende anche animazione, controlli per l'operatore e risposte registrate; una modalità microfono consente all'operatore di parlare direttamente attraverso il personaggio."
+        ],
+        "en": [
+          "According to the article, an agent coordinates the components on a workstation. The project also includes animation, operator controls and recorded responses; a microphone mode lets the operator speak directly through the character."
+        ]
+      },
+      "sourceIds": [
+        "nvidia-voice"
+      ]
+    },
+    {
+      "kind": "analysis",
+      "heading": {
+        "it": "Cosa verificare in una PMI",
+        "en": "What an SME should check"
+      },
+      "paragraphs": {
+        "it": [
+          "Un pilot potrebbe partire da domande frequenti circoscritte, con risposte verificabili e passaggio a una persona quando la richiesta esce dall'ambito previsto. Accenti, rumore, interruzioni e informazioni incomplete sono casi da provare con gli utenti del processo.",
+          "Prima dell'uso, occorre definire quali dati possono essere trattati, chi controlla le risposte e come segnalare errori o interrompere la conversazione."
+        ],
+        "en": [
+          "A pilot could start with a narrow set of frequently asked questions, verifiable answers and a handoff to a person when a request falls outside the intended scope. Accents, noise, interruptions and incomplete information are cases to test with the people using the process.",
+          "Before use, the business should define which data may be processed, who checks responses and how to report errors or stop a conversation."
+        ]
+      },
+      "sourceIds": [
+        "nvidia-voice"
+      ]
+    },
+    {
+      "kind": "analysis",
+      "heading": {
+        "it": "Dalla demo al servizio",
+        "en": "From demonstration to service"
+      },
+      "paragraphs": {
+        "it": [
+          "L'installazione illustra una possibile combinazione di componenti, ma non dimostra l'affidabilità di un servizio aziendale. La decisione richiede prove nel contesto reale, valutando qualità delle risposte, interventi umani, gestione dei guasti e risorse necessarie."
+        ],
+        "en": [
+          "The installation illustrates one possible combination of components, but does not establish the reliability of a business service. A decision requires testing in the actual setting, assessing response quality, human intervention, failure handling and the resources needed."
+        ]
+      },
+      "sourceIds": [
+        "nvidia-voice"
+      ]
+    }
+  ]
+}

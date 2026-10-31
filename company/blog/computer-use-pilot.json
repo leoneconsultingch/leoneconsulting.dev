@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "slug": "computer-use-pilot",
+  "title": {
+    "it": "AI che usa le applicazioni: cosa verificare prima di un pilot",
+    "en": "AI that operates applications: what to check before a pilot"
+  },
+  "summary": {
+    "it": "I nuovi modelli portano attenzione sull'automazione delle interfacce. Per una PMI, il primo passo è scegliere un processo circoscritto e definire come controllarne l'esecuzione.",
+    "en": "New models are drawing attention to interface automation. For an SME, the first step is to choose a focused process and define how its execution will be checked."
+  },
+  "topic": {
+    "it": "Automazione aziendale",
+    "en": "Business automation"
+  },
+  "eventDate": "2026-10-26",
+  "updatedAt": "2026-10-31",
+  "publishedAt": null,
+  "published": false,
+  "approval": null,
+  "sources": [
+    {
+      "id": "release",
+      "title": "Introducing GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+      "publisher": "OpenAI",
+      "publishedAt": "2026-10-26",
+      "checkedAt": "2026-10-31"
+    },
+    {
+      "id": "notes",
+      "title": "Model Release Notes — GPT-6.1 Terra",
+      "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+      "publisher": "OpenAI",
+      "publishedAt": "2026-10-26",
+      "checkedAt": "2026-10-31"
+    }
+  ],
+  "sections": [
+    {
+      "kind": "fact",
+      "heading": {
+        "it": "La novità annunciata",
+        "en": "What was announced"
+      },
+      "paragraphs": {
+        "it": [
+          "Il 26 ottobre OpenAI ha presentato GPT-6.1 Terra, con capacità di ragionamento visivo, utilizzo del computer e scrittura. L'annuncio ha descritto attività professionali che attraversano documenti e interfacce. Si tratta delle caratteristiche dichiarate dal fornitore, non di risultati misurati sui processi dei nostri clienti."
+        ],
+        "en": [
+          "On October 26, OpenAI introduced GPT-6.1 Terra, with visual reasoning, computer use and writing capabilities. The announcement described professional tasks spanning documents and interfaces. These are the provider's stated capabilities, not results measured on our clients' workflows."
+        ]
+      },
+      "sourceIds": [
+        "release",
+        "notes"
+      ]
+    },
+    {
+      "kind": "analysis",
+      "heading": {
+        "it": "La nostra lettura per una PMI",
+        "en": "Our interpretation for an SME"
+      },
+      "paragraphs": {
+        "it": [
+          "Un possibile pilot consiste nel trasferire dati da un documento a un modulo di prova. Prima di svilupparlo, proponiamo di definire i campi ammessi, gli errori tollerabili, i passaggi che richiedono conferma e il tempo necessario oggi per completare il lavoro.",
+          "La capacità di interagire con un'interfaccia va valutata insieme alla stabilità del processo. Variazioni del layout, documenti incompleti e messaggi inattesi diventano casi di test da preparare con chi svolge l'attività."
+        ],
+        "en": [
+          "One possible pilot is transferring data from a document into a test form. Before building it, we suggest defining the permitted fields, acceptable errors, steps requiring confirmation and the time the task currently takes.",
+          "The ability to interact with an interface needs to be assessed alongside process stability. Layout changes, incomplete documents and unexpected messages become test cases to prepare with the people doing the work."
+        ]
+      },
+      "sourceIds": [
+        "release"
+      ]
+    },
+    {
+      "kind": "analysis",
+      "heading": {
+        "it": "Come prendere una decisione",
+        "en": "How to make a decision"
+      },
+      "paragraphs": {
+        "it": [
+          "Nel pilot misureremmo completamento corretto, interventi umani, tempo totale e costo per attività. Confronteremmo questi risultati con il processo attuale e con un'integrazione diretta, se disponibile. Nessun risparmio è dato per acquisito prima della prova.",
+          "Gli effetti esterni, come invii o modifiche a dati aziendali, richiedono confini e approvazioni espliciti. La scelta finale dipende da utilità, affidabilità e costo osservati nel caso concreto; le condizioni di disponibilità del modello vanno ricontrollate prima dell'adozione."
+        ],
+        "en": [
+          "In the pilot, we would measure correct completion, human interventions, total time and cost per task. We would compare the results with the current process and with a direct integration where available. No saving is assumed before the test.",
+          "External effects, such as submissions or changes to company data, require explicit boundaries and approvals. The final decision depends on usefulness, reliability and cost observed in the specific case; model availability conditions should be checked again before adoption."
+        ]
+      },
+      "sourceIds": [
+        "release",
+        "notes"
+      ]
+    }
+  ]
+}

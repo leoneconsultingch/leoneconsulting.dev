@@ -108,4 +108,4 @@ const finalSchema = schema
 <meta name="revisit-after" content="7 days" />
 
 <!-- Schema.org JSON-LD -->
-<script type="application/ld+json" is:inline set:html={JSON.stringify(finalSchema)} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(finalSchema).replace(/</g, '\\u003c')} />

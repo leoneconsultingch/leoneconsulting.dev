@@ -18,7 +18,7 @@ const basePath = lang === 'en' ? '/en' : '';
         <span class="text-2xl font-bold text-primary-600">Leone Consulting</span>
       </a>
       
-      <div class="hidden md:flex items-center space-x-6">
+      <div class="hidden xl:flex items-center space-x-6">
         <a 
           href={basePath || '/'} 
           class={`text-sm font-medium transition-colors ${currentPath === (basePath || '/') ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}
@@ -49,6 +49,7 @@ const basePath = lang === 'en' ? '/en' : '';
         >
           {t('nav.portfolio')}
         </a>
+        <a href={`${basePath}/blog`} class={`text-sm font-medium transition-colors ${currentPath.startsWith(`${basePath}/blog`) ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}>Blog</a>
         <a
           href={`${basePath}/cv`}
           class={`text-sm font-medium transition-colors ${currentPath === `${basePath}/cv` ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}
@@ -67,7 +68,7 @@ const basePath = lang === 'en' ? '/en' : '';
       <!-- Mobile menu button -->
       <button 
         id="mobile-menu-button"
-        class="md:hidden text-gray-600 hover:text-primary-600 transition-colors"
+        class="xl:hidden text-gray-600 hover:text-primary-600 transition-colors"
         aria-label="Toggle menu"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,13 +78,14 @@ const basePath = lang === 'en' ? '/en' : '';
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+    <div id="mobile-menu" class="hidden xl:hidden pt-4 pb-2">
       <div class="flex flex-col space-y-3">
         <a href={basePath || '/'} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.home')}</a>
         <a href={`${basePath}/about`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.about')}</a>
         <a href={`${basePath}/services`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.services')}</a>
         <a href={`${basePath}/booking`} class="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors py-2 font-semibold">{t('nav.booking')}</a>
         <a href={`${basePath}/portfolio`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.portfolio')}</a>
+        <a href={`${basePath}/blog`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">Blog</a>
         <a href={`${basePath}/cv`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.cv')}</a>
         <a href={`${basePath}/contact`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.contact')}</a>
         <div class="pt-3 mt-3 border-t border-gray-200">

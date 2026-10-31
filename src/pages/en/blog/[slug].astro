@@ -1,0 +1,10 @@
+---
+import BlogPage from '../../../components/BlogPage.astro';
+import { loadBlogPosts } from '../../../lib/blog-content';
+export const prerender = true;
+export function getStaticPaths() {
+  return loadBlogPosts().map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+---
+<BlogPage lang="en" post={post} />

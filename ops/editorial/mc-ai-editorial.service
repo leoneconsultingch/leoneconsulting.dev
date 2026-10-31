@@ -1,0 +1,19 @@
+[Unit]
+Description=Leone Consulting AI editorial drafts — MissionControl
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/.local/share/leone-editorial/app
+ExecStart=/usr/bin/node scripts/editorial/run.mjs run
+Environment=EDITORIAL_STATE_DIR=%h/.local/state/leone-editorial
+# Configure model and gateway socket in a local runtime.conf drop-in (no keys).
+TimeoutStartSec=8min
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/state/leone-editorial
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
