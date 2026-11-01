@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-01",
+    "digest": "ffbf5f495dd1a1ee35e8fa8136e3f1132d844998c85644f7a83372b5fb401bb8"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-01",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What the source presents",
+        "it": "Cosa presenta la fonte"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Hugging Face describes Mistral Large 4 as a multilingual, multimodal model from Mistral: it accepts text and images and produces text. The source reports approximately one trillion total parameters, 49 billion active parameters and a one-million-token context window.",
+          "The model is distributed with available weights under the Mistral Ecosystem Open-Weight License, which places limitations on model-as-a-service offerings. The article identifies two official variants and additional community-created formats. These characteristics describe the model; they do not establish its effectiveness on a particular company's documents."
+        ],
+        "it": [
+          "Hugging Face descrive Mistral Large 4 come un modello multilingue e multimodale di Mistral: riceve testo e immagini e produce testo. La fonte indica circa mille miliardi di parametri totali, 49 miliardi attivi e una finestra di contesto di un milione di token.",
+          "Il modello è distribuito con pesi disponibili secondo la Mistral Ecosystem Open-Weight License, che prevede limitazioni per le offerte di modello come servizio. L'articolo segnala due varianti ufficiali e formati aggiuntivi prodotti dalla comunità. Queste caratteristiche descrivono il modello; non dimostrano la sua efficacia su documenti aziendali specifici."
+        ]
+      },
+      "sourceIds": [
+        "mistral-large4"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Choose a focused use case",
+        "it": "Un caso d'uso da circoscrivere"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For an SME, one possible experiment is to ask the model to locate information in a limited set of documents and present it in an agreed structure. First, select authorised documents, define the fields to find and decide what should happen when information is missing or ambiguous.",
+          "Text and images can appear in the same document, but support for both modes does not guarantee correct reading. A trial should include different layouts, difficult scans and tables, with every answer checked against the original document. People using the result need a way to find the relevant passage and correct errors. If checking takes too much work, reconsider the process before expanding it. Keep each result under review until the responsible people have also examined less frequent cases."
+        ],
+        "it": [
+          "Per una PMI, un possibile esperimento è chiedere al modello di individuare informazioni in un gruppo limitato di documenti e presentarle in una struttura concordata. Prima occorre scegliere documenti autorizzati, definire i campi da cercare e stabilire cosa fare quando un'informazione manca o è ambigua.",
+          "Testo e immagini possono comparire nello stesso documento, ma la presenza di entrambe le modalità non garantisce una lettura corretta. Una prova dovrebbe includere impaginazioni diverse, scansioni difficili e tabelle, confrontando ogni risposta con il documento originale. Chi usa il risultato deve poter risalire al punto verificato e correggere gli errori. Se questa verifica richiede troppo lavoro, il processo va ripensato prima di estenderlo. Ogni risultato dovrebbe restare in revisione finché le persone responsabili non hanno controllato anche i casi meno frequenti."
+        ]
+      },
+      "sourceIds": [
+        "mistral-large4"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Available weights do not mean immediate deployment",
+        "it": "Pesi disponibili non significa installazione immediata"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Available weights allow a company to assess running the model in its own environment, but that choice needs technical validation. Model size, selected variant, computing capacity and expected response times must be considered together: the active parameter count alone cannot establish whether a solution fits an SME's resources.",
+          "Before using real documents, define access, file retention and operational responsibilities. The licence also needs to be reviewed for the intended use, especially if the service will be offered to third parties. A specific legal or technical assessment can resolve open questions. An initial trial can use a limited set of authorised examples, with criteria agreed before considering wider use."
+        ],
+        "it": [
+          "La disponibilità dei pesi consente di valutare una gestione del modello nel proprio ambiente, ma la scelta richiede una verifica tecnica. Dimensioni del modello, variante scelta, capacità di calcolo e tempi di risposta attesi vanno esaminati insieme: il numero di parametri attivi, da solo, non basta a stabilire se una soluzione sia adatta alle risorse di una PMI.",
+          "Prima di usare documenti reali, è opportuno definire accessi, conservazione dei file e responsabilità operative. Va inoltre letta la licenza per il caso d'uso previsto, soprattutto se il servizio sarà offerto a terzi. Una valutazione legale o tecnica specifica può chiarire i punti non risolti. La prova iniziale può usare esempi autorizzati e limitati, con criteri concordati prima di considerare un impiego più ampio."
+        ]
+      },
+      "sourceIds": [
+        "mistral-large4"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to decide after the trial",
+        "it": "Come decidere dopo la prova"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "We would compare answers with a reference checked by knowledgeable staff, recording correct information, omissions, errors and review time. The comparison should include the current process and, where relevant, tools already available in the company. A large context window does not replace checks on the relevance of returned information.",
+          "Only after the trial would it make sense to assess integration with other systems. Initially, we suggest reviewable outputs and human confirmation before changing data or sending communications. The decision depends on observed quality, review effort, required resources and licence conditions, without assuming savings or reliability in advance."
+        ],
+        "it": [
+          "Confronteremmo le risposte con un riferimento controllato da persone competenti, registrando informazioni corrette, omissioni, errori e tempo necessario alla revisione. Il confronto dovrebbe includere il processo attuale e, se pertinente, strumenti già disponibili in azienda. Una finestra di contesto ampia non sostituisce il controllo sulla pertinenza delle informazioni restituite.",
+          "Solo dopo la prova avrebbe senso valutare un'integrazione con altri sistemi. All'inizio, suggeriamo risultati consultabili e conferma umana prima di modificare dati o inviare comunicazioni. La decisione dipende dalla qualità osservata, dal lavoro di controllo, dalle risorse necessarie e dalle condizioni di licenza, senza assumere risparmi o affidabilità in anticipo."
+        ]
+      },
+      "sourceIds": [
+        "mistral-large4"
+      ]
+    }
+  ],
+  "slug": "mistral-large-4-documenti-valutazione-pmi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-01",
+      "id": "mistral-large4",
+      "publishedAt": "2026-10-29",
+      "publisher": "Hugging Face",
+      "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
+      "url": "https://huggingface.co/blog/mistral-large4"
+    }
+  ],
+  "summary": {
+    "en": "Mistral Large 4 accepts text and images and generates text. For an SME, the availability of model weights opens a practical assessment of answer quality, licence conditions and required resources.",
+    "it": "Mistral Large 4 accetta testo e immagini e genera testo. Per una PMI, la disponibilità dei pesi apre una valutazione pratica su qualità delle risposte, condizioni di licenza e risorse necessarie."
+  },
+  "title": {
+    "en": "Mistral Large 4 and business documents: how to assess a multimodal model",
+    "it": "Mistral Large 4 e documenti aziendali: come valutare un modello multimodale"
+  },
+  "topic": {
+    "en": "Document AI and local models",
+    "it": "AI documentale e modelli locali"
+  },
+  "updatedAt": "2026-11-01"
+}
