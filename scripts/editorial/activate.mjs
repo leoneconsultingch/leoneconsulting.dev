@@ -10,7 +10,7 @@ import { CODEX_LAUNCHER, codexEnvironment } from './codex.mjs';
 const execute = promisify(execFile);
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const endpoint = 'http://127.0.0.1:18000';
-const files = ['scripts/editorial/run.mjs', 'scripts/editorial/codex.mjs', 'scripts/editorial/sources.json',
+const files = ['scripts/editorial/run.mjs', 'scripts/editorial/codex.mjs', 'scripts/editorial/delivery.mjs', 'scripts/editorial/sources.json',
   'src/lib/blog.ts', 'company/blog/computer-use-pilot.json'];
 
 export function selectEditorialModel(config, requested) {
