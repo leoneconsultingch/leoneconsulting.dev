@@ -5,6 +5,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { contentDigest, validatePost } from '../../src/lib/blog.ts';
 import { codexComplete } from './codex.mjs';
+import { deliverDraft, retryPendingDeliveries, markHistoryRecorded } from './delivery.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const MAX_BYTES = 1_000_000;
@@ -156,6 +157,18 @@ export async function run({ stateDir, collectOnly = false, fetcher = fetch, comp
   catch (error) { if (error.code === 'EEXIST') throw new Error('Editorial run already locked; inspect stale lock before retrying'); throw error; }
   let runDir;
   try {
+    if (!collectOnly) {
+      const recovered = await retryPendingDeliveries(state);
+      if (recovered.length) {
+        let previous = [];
+        try { previous = JSON.parse(await readFile(join(state, 'history.json'), 'utf8')); }
+        catch (error) { if (error.code !== 'ENOENT') throw error; }
+        if (!Array.isArray(previous) || !previous.every(url => typeof url === 'string')) throw new Error('Invalid editorial history');
+        await writeFile(join(state, 'history.json'), JSON.stringify([...new Set([...previous, ...recovered.flatMap(entry => entry.post.sources.map(source => source.url))])]), {mode: 0o600});
+        for (const entry of recovered) await markHistoryRecorded(entry.runDir);
+        return {status: 'delivery-recovered', items: recovered.map(entry => entry.item)};
+      }
+    }
     const config = JSON.parse(await readFile(join(here, 'sources.json'), 'utf8'));
     const digest = await collect(config, fetcher);
     runDir = join(state, `${today()}-${randomUUID().slice(0, 8)}`);
@@ -201,9 +214,13 @@ export async function run({ stateDir, collectOnly = false, fetcher = fetch, comp
     const post = prepareDraft(generated, evidence);
     const draftFile = join(runDir, `${post.slug}.json`);
     await writeFile(draftFile, `${JSON.stringify(post, null, 2)}\n`, { flag: 'wx', mode: 0o600 });
-    await diary('Bozza blog AI pronta per revisione', `Titolo: ${post.title.it}. Run: ${runDir.split('/').pop()}. Fonti: ${post.sources.map(source => source.url).join(' ')}. Pubblicazione subordinata a revisione Mario; nessun commit o deploy.`);
+    const delivery = await deliverDraft({post, id: runDir.split('/').pop(), runDir});
     await writeFile(join(state, 'history.json'), JSON.stringify([...new Set([...history, ...post.sources.map(source => source.url)])]), { mode: 0o600 });
-    return { status: 'draft-ready', runDir, draftFile };
+    await markHistoryRecorded(runDir);
+    let warning;
+    try { await diary('Bozza blog AI pronta per revisione', `Titolo: ${post.title.it}. Run: ${runDir.split('/').pop()}. Proposta: ${delivery.id}. Consegnata alla pagina /redazione; nessuna pubblicazione.`); }
+    catch { warning = 'Bozza consegnata alla Redazione; traccia nel diario non disponibile.'; }
+    return { status: 'draft-ready', runDir, draftFile, itemId: delivery.id, ...(warning ? {warning} : {}) };
   } finally { await rmdir(lock); }
 }
 export async function approve(candidate, repo, reviewer) {

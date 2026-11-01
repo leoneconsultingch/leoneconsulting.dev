@@ -168,3 +168,49 @@ rate limit e quota. Nessun fallback automatico a provider alternativi.
 La generazione non-Codex è configurata con `EDITORIAL_BACKEND=gateway`,
 `MISSIONCONTROL_GATEWAY_SOCKET` e `EDITORIAL_MODEL` nel drop-in locale. Non abilitare
 contemporaneamente timer editoriali di account diversi.
+
+## Consegna diretta e recupero errori
+
+La snapshot include `delivery.mjs`. Installare prima l'ingresso MissionControl
+compatibile; verificare patch e test prima dell'upgrade della snapshot. Il codice
+sorgente modificato non cambia il runner già installato o il timer.
+
+Ogni bozza è salvata prima della consegna. `delivery.json` registra pending,
+failed oppure delivered e l'ID di coda. Timeout, HTTP non riuscito, redirect e
+ricevuta non valida producono errore visibile nel journal e uscita non-zero;
+nessun contenuto del provider viene registrato nell'errore. Al run successivo,
+prima di raccogliere fonti o chiamare un modello, il runner ritenta la bozza
+salvata con lo stesso ID. Lo stesso ID con contenuto diverso resta bloccato.
+La history è aggiornata dopo conferma; un arresto prima del completamento viene
+riconciliato senza creare una nuova proposta. Il diario non è un requisito di
+successo della consegna; un suo errore compare come warning nell'esito del run.
+
+Il canale crea soltanto bozze non approvate. Non registra né usa autorizzazioni
+YubiKey, non invia decisioni e non esegue pubblicazione, commit o push.
+
+## Pubblicazione da MissionControl dopo YubiKey
+
+Il publisher `scripts/editorial/publish.mjs` è il consumer deterministico del sito.
+Riceve dall'outbox privata del servizio soltanto un incarico approvato e verificato.
+Non legge automaticamente le normali bozze dal diario e non esegue inferenza.
+L'uso manuale di JSON non autenticati non è il flusso autorizzato.
+
+Prepare verifica il digest e produce il JSON finale senza alterare il testo IT/EN.
+Submit usa mc-gh per un solo percorso company/blog/<slug>.json sul repository
+fisso; l'API GitHub effettua il commit e l'integrazione Vercel esistente esegue la
+build. Non viene toccato il checkout di sviluppo o la sua cronologia GitButler.
+La delega di Mario copre commit/push del solo articolo approvato con una NUOVA
+azione Approva e pubblica con YubiKey. Non copre modifiche agli altri file.
+
+Le protezioni di main vengono lette e rispettate anche per account admin; richieste
+di PR/review/check non supportate bloccano l'operazione. Nessun force push.
+Conflitti su uno slug esistente vengono fermati; un aggiornamento è ammesso solo
+contro il documento precedente conosciuto e lo SHA remoto. Un timeout dopo PUT
+richiede riconciliazione in sola lettura, mai un nuovo commit cieco.
+
+Inspect legge la ricevuta del progetto Vercel atteso e il deployment Production
+esatto. Il worker backend controlla anche il contenuto delle pagine pubbliche
+italiana e inglese prima di indicare Pubblicato e mostrare i link in Redazione.
+Non servono nuovi token Vercel o dipendenze npm per il publisher.
+
+Il publisher installato usa publisher-owner.json root-owned con UID Mario e perimetro repository/ramo. La CLI di produzione e le scritture remote richiedono questa identità; la copia sorgente priva del file non concede una pubblicazione tramite JSON. `access-check` verifica solo in lettura accesso e collegamento Vercel.

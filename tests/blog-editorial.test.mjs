@@ -201,7 +201,12 @@ test('complete run records a private candidate and diary entry; untrusted output
   let logged = 0;
   try {
     process.env.MISSIONCONTROL_GATEWAY_SOCKET = '/test/socket'; process.env.EDITORIAL_MODEL = 'test';
-    globalThis.fetch = async (_url, options) => { logged++; assert.equal(JSON.parse(options.body).project, 'leoneconsulting.dev'); return new Response('{}'); };
+    globalThis.fetch = async (url, options) => {
+      logged++;
+      const body = JSON.parse(options.body);
+      if (url.endsWith('/api/editorial/deliver')) return Response.json({id: 'queued-item', delivery_id: body.delivery_id, version: 1, status: 'pending'});
+      assert.equal(body.project, 'leoneconsulting.dev'); return new Response('{}');
+    };
     const draft = copy();
     draft.sources = [{ ...draft.sources[0], id: 's1', url: 'https://openai.com/news/a' }];
     draft.sections.forEach(section => { section.sourceIds = ['s1']; });
@@ -211,7 +216,8 @@ test('complete run records a private candidate and diary entry; untrusted output
     assert.equal(result.status, 'draft-ready');
     const candidate = JSON.parse(await readFile(result.draftFile, 'utf8'));
     assert.equal(candidate.published, false); assert.equal(candidate.approval, null);
-    assert.equal(logged, 1);
+    assert.equal(logged, 2);
+    assert.equal(result.itemId, 'queued-item');
     assert.deepEqual(JSON.parse(await readFile(join(temp, 'history.json'), 'utf8')), ['https://openai.com/news/a']);
     assert.equal((await run({ stateDir: temp, fetcher: async () => new Response(feed) })).status, 'no-news');
   } finally {
