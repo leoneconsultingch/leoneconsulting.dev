@@ -1,0 +1,97 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-01",
+    "digest": "328dd9aef828be355f17e6c1401f1ee6f348d512a4c9718ed42841d8f4ec7349"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-01",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What IBM announced",
+        "it": "Cosa annuncia IBM"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "IBM presents Granite Switch 4.1.1 as an update to version 4.1 and states that it is backward compatible. Its architecture combines a base model with specialized adapters; IBM says the base model remained unchanged for this release.",
+          "The update includes a multilingual speech transcription model and an adapter for decision tasks. IBM reports an improvement for the latter on its own test set; that does not automatically demonstrate better performance in an individual company’s workflows."
+        ],
+        "it": [
+          "IBM presenta Granite Switch 4.1.1 come aggiornamento della versione 4.1 e lo dichiara retrocompatibile. L’architettura combina un modello di base con adapter specializzati; per questa versione, IBM riferisce che il modello di base è rimasto invariato.",
+          "L’aggiornamento include un modello di trascrizione vocale multilingue e un adapter per attività decisionali. IBM segnala un miglioramento di quest’ultimo su un proprio insieme di test: il dato non dimostra automaticamente un miglioramento nei processi di una singola azienda."
+        ]
+      },
+      "sourceIds": [
+        "granite"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A focused test for an SME",
+        "it": "Una prova circoscritta per la PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "An SME evaluating transcription could start with authorized sample recordings and compare the output with a transcript checked by a person. The samples should include company terminology, product names and passages that are difficult to hear, with errors requiring correction recorded.",
+          "The text could then feed a draft summary or an internal classification. Transcription and the subsequent output should be checked separately: an early error can change the meaning of an entire passage. Before testing, the company should define which data may be used, who is authorized and how long material will be retained."
+        ],
+        "it": [
+          "Una PMI che valuta la trascrizione potrebbe partire da registrazioni di prova autorizzate e confrontare il testo prodotto con una trascrizione verificata da una persona. Conviene includere lessico aziendale, nomi di prodotti e passaggi difficili da ascoltare, registrando gli errori che rendono necessaria una correzione.",
+          "Il testo potrebbe poi alimentare una bozza di riepilogo o una classificazione interna. Anche in questo caso, occorre verificare separatamente trascrizione e risultato successivo: un errore iniziale può cambiare il significato dell’intero passaggio. Prima della prova vanno definiti dati utilizzabili, persone autorizzate e tempi di conservazione."
+        ]
+      },
+      "sourceIds": [
+        "granite"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to manage an update",
+        "it": "Come gestire un aggiornamento"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "The stated backward compatibility is a starting point for integration; it does not replace a behavioral check. Before adopting a version, the team can rerun the same cases used previously and compare output quality, human corrections and total time.",
+          "It is useful to record the component versions tested and plan how to return to the previous configuration if problems arise. For tasks that produce decisions or change company data, a person should review results and authorize consequential steps. The choice should depend on tests of the actual workflow, not the announcement alone."
+        ],
+        "it": [
+          "La retrocompatibilità dichiarata è un punto di partenza per l’integrazione, non sostituisce una verifica del comportamento. Prima di adottare una versione, il team può rieseguire gli stessi casi di prova usati in precedenza e confrontare qualità degli output, interventi umani e tempo complessivo.",
+          "È utile annotare quali versioni dei componenti sono state provate e prevedere come tornare alla configurazione precedente se emergono problemi. Per attività che producono decisioni o modificano dati aziendali, una persona dovrebbe verificare i risultati e autorizzare i passaggi rilevanti. La scelta dipenderà dalle prove sul processo concreto, non dal solo annuncio."
+        ]
+      },
+      "sourceIds": [
+        "granite"
+      ]
+    }
+  ],
+  "slug": "granite-switch-aggiornamenti-modelli",
+  "sources": [
+    {
+      "checkedAt": "2026-11-01",
+      "id": "granite",
+      "publishedAt": "2026-10-29",
+      "publisher": "Hugging Face",
+      "title": "Granite Switch 4.1.1 — Update models like you update software",
+      "url": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1-1"
+    }
+  ],
+  "summary": {
+    "en": "Granite Switch 4.1.1 updates speech and decision components. For an SME, it is an opportunity to consider how to validate a new version without assuming that results will remain unchanged.",
+    "it": "Granite Switch 4.1.1 introduce aggiornamenti a componenti vocali e decisionali. Per una PMI, l’occasione è valutare come verificare una nuova versione senza dare per scontata la continuità dei risultati."
+  },
+  "title": {
+    "en": "Updating a modular AI model: what an SME should evaluate",
+    "it": "Aggiornare un modello AI modulare: cosa valutare in una PMI"
+  },
+  "topic": {
+    "en": "AI models and integration",
+    "it": "Modelli AI e integrazione"
+  },
+  "updatedAt": "2026-11-01"
+}
