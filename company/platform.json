@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "brandId": "leone-consulting",
+  "features": {
+    "guides": true,
+    "subscriptions": false,
+    "products": false,
+    "externalAffiliates": false,
+    "referrals": false,
+    "admin": false,
+    "ads": false,
+    "clickTracking": false
+  },
+  "plans": [
+    { "id": "FREE", "available": true, "monthly": null, "annual": null },
+    { "id": "PRO", "available": false, "monthly": null, "annual": null },
+    { "id": "BUSINESS", "available": false, "monthly": null, "annual": null }
+  ],
+  "products": [],
+  "externalPrograms": [],
+  "affiliateLinks": [],
+  "referralPolicy": null
+}

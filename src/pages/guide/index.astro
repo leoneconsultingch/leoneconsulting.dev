@@ -1,0 +1,7 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import { loadPublicGuides } from '../../lib/guide-content';
+export const prerender = true;
+const guides = loadPublicGuides();
+---
+<GuidePage lang="it" guides={guides} />

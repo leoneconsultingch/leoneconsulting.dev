@@ -1,0 +1,10 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import { loadPublicGuides } from '../../lib/guide-content';
+export const prerender = true;
+export function getStaticPaths() {
+  return loadPublicGuides().map(guide => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+const { guide } = Astro.props;
+---
+<GuidePage lang="it" guide={guide} />

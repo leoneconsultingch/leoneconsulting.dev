@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { publicGuides, type Guide } from '../lib/guides';
+import { platform } from '../lib/guide-content';
+import type { Language } from '../lib/blog';
+
+interface Props { lang: Language; guides?: Guide[]; guide?: Guide; }
+const { lang, guides = [], guide } = Astro.props;
+const en = lang === 'en';
+const base = en ? '/en' : '';
+const visible = platform.features.guides ? publicGuides(guide ? [guide] : guides, platform.brandId) : [];
+if (guide && visible.length !== 1) throw new Error('Guide is not publicly available');
+const title = guide ? guide.title[lang] : en ? 'Practical guides' : 'Guide pratiche';
+const description = guide ? guide.summary[lang] : en
+  ? 'Practical steps and checklists for planning AI, automation and software projects, from the first question to verification.'
+  : 'Passaggi pratici e checklist per progettare AI, automazioni e software: dalla prima domanda alla verifica dei risultati.';
+const levels = {
+  introductory: en ? 'Getting started' : 'Per iniziare',
+  intermediate: en ? 'Intermediate' : 'Intermedio',
+  advanced: en ? 'Advanced' : 'Avanzato',
+};
+const formatDate = (value: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'it-IT', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
+const schema = guide ? {
+  '@context': 'https://schema.org', '@type': 'Article', headline: title,
+  description, inLanguage: lang, datePublished: guide.publishedAt, dateModified: guide.updatedAt,
+  isAccessibleForFree: true, author: { '@type': 'Organization', name: 'Leone Consulting' },
+  mainEntityOfPage: `https://leoneconsulting.dev${base}/guide/${guide.slug}`,
+} : undefined;
+---
+<Layout title={title} description={description} ogType={guide ? 'article' : 'website'} schema={schema} noindex={!guide && visible.length === 0}>
+  <Header />
+  <main class="pt-32 pb-20 px-6">
+    <div class="container mx-auto max-w-6xl">
+      {guide ? (
+        <article>
+          <nav aria-label={en ? 'Breadcrumb' : 'Percorso'} class="mb-8 text-sm">
+            <a href={`${base}/guide`} class="text-primary-700 font-semibold underline underline-offset-4">{en ? 'All guides' : 'Tutte le guide'}</a>
+          </nav>
+          <header class="max-w-3xl mb-10">
+            <p class="text-sm font-semibold text-primary-700 mb-4">{guide.category[lang]} · {en ? 'Free guide' : 'Guida gratuita'}</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">{title}</h1>
+            <p class="text-xl text-gray-600 leading-relaxed mb-6">{description}</p>
+            <dl class="flex flex-wrap gap-x-8 gap-y-4 text-sm text-gray-600">
+              <div><dt class="font-semibold">{en ? 'Level' : 'Livello'}</dt><dd>{levels[guide.level]}</dd></div>
+              <div><dt class="font-semibold">{en ? 'Reading time' : 'Lettura'}</dt><dd>{guide.readingMinutes} min</dd></div>
+              <div><dt class="font-semibold">{en ? 'Updated' : 'Aggiornamento'}</dt><dd><time datetime={guide.updatedAt}>{formatDate(guide.updatedAt)}</time></dd></div>
+            </dl>
+          </header>
+          <div class="grid lg:grid-cols-[minmax(0,1fr)_17rem] gap-10 lg:gap-16">
+            <div class="min-w-0">
+              <section aria-labelledby="before-starting" class="rounded-2xl border border-primary-100 bg-primary-50 p-6 sm:p-8 mb-10">
+                <h2 id="before-starting" class="text-2xl font-bold text-gray-900 mb-4">{en ? 'Before you start' : 'Prima di iniziare'}</h2>
+                {guide.prerequisites[lang].length > 0 ? (
+                  <ul class="list-disc pl-5 space-y-2 text-gray-700">{guide.prerequisites[lang].map(item => <li>{item}</li>)}</ul>
+                ) : <p class="text-gray-700">{en ? 'No specific prerequisites.' : 'Nessun prerequisito specifico.'}</p>}
+                <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-3">{en ? 'What you will take away' : 'Cosa porterai con te'}</h3>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">{guide.outcomes[lang].map(item => <li>{item}</li>)}</ul>
+              </section>
+              <div class="space-y-12">
+                {guide.sections.map(section => (
+                  <section aria-labelledby={section.id}>
+                    <h2 id={section.id} class="scroll-mt-28 text-2xl font-bold text-gray-900 mb-5">{section.heading[lang]}</h2>
+                    <div class="space-y-4 text-lg text-gray-700 leading-relaxed">{section.paragraphs[lang].map(paragraph => <p>{paragraph}</p>)}</div>
+                    {section.steps[lang].length > 0 && (
+                      <ol class="mt-6 list-decimal pl-6 space-y-3 text-gray-700 marker:text-primary-700 marker:font-semibold">{section.steps[lang].map(step => <li class="pl-2">{step}</li>)}</ol>
+                    )}
+                  </section>
+                ))}
+              </div>
+            </div>
+            <aside class="row-start-1 lg:col-start-2 lg:row-start-auto">
+              <nav aria-labelledby="guide-contents" class="lg:sticky lg:top-28 rounded-2xl border border-gray-200 p-6">
+                <h2 id="guide-contents" class="font-bold text-gray-900 mb-4">{en ? 'In this guide' : 'In questa guida'}</h2>
+                <ol class="space-y-4 text-sm">{guide.sections.map(section => (
+                  <li><a href={`#${section.id}`} class="text-gray-600 hover:text-primary-700 underline underline-offset-4">{section.heading[lang]}</a></li>
+                ))}</ol>
+              </nav>
+            </aside>
+          </div>
+        </article>
+      ) : (
+        <>
+          <header class="max-w-3xl mb-12">
+            <p class="text-primary-700 font-semibold mb-4">{en ? 'Resources · Leone Consulting' : 'Risorse · Leone Consulting'}</p>
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">{title}</h1>
+            <p class="text-xl text-gray-600 leading-relaxed">{description}</p>
+          </header>
+          {visible.length === 0 ? (
+            <section class="rounded-2xl border border-primary-100 bg-primary-50 p-8 max-w-3xl">
+              <h2 class="text-2xl font-bold text-gray-900 mb-3">{en ? 'New guides are being prepared' : 'Le nuove guide sono in preparazione'}</h2>
+              <p class="text-gray-600">{en ? 'Explore the articles or tell us about the process you want to improve.' : 'Esplora gli articoli o raccontaci il processo che vuoi migliorare.'}</p>
+              <a href={`${base}/blog`} class="inline-block mt-5 text-primary-700 font-semibold underline underline-offset-4">{en ? 'Read the blog' : 'Leggi il blog'}</a>
+            </section>
+          ) : (
+            <div class="grid md:grid-cols-2 gap-6">{visible.map(item => (
+              <article class="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm flex flex-col">
+                <div class="flex flex-wrap items-center gap-3 mb-5 text-sm">
+                  <span class="font-semibold text-primary-700">{item.category[lang]}</span>
+                  <span class="rounded-full bg-primary-50 text-primary-700 px-3 py-1">{en ? 'Free' : 'Gratuita'}</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 leading-snug mb-4"><a href={`${base}/guide/${item.slug}`} class="hover:text-primary-700">{item.title[lang]}</a></h2>
+                <p class="text-gray-600 leading-relaxed mb-6">{item.summary[lang]}</p>
+                <p class="mt-auto text-sm text-gray-500">{levels[item.level]} · {item.readingMinutes} min · <time datetime={item.updatedAt}>{formatDate(item.updatedAt)}</time></p>
+                <a href={`${base}/guide/${item.slug}`} aria-label={`${en ? 'Read the guide' : 'Leggi la guida'}: ${item.title[lang]}`} class="mt-6 text-primary-700 font-semibold underline underline-offset-4">{en ? 'Read the guide' : 'Leggi la guida'} <span aria-hidden="true">→</span></a>
+              </article>
+            ))}</div>
+          )}
+        </>
+      )}
+      <section aria-labelledby="guide-contact" class="mt-16 rounded-2xl bg-gray-900 text-white p-8 sm:p-10">
+        <h2 id="guide-contact" class="text-2xl font-bold mb-4">{en ? 'Apply this to your project' : 'Porta questi passaggi nel tuo progetto'}</h2>
+        <p class="text-gray-300 max-w-2xl mb-6">{en ? 'We can help you define scope, constraints and checks for an automation or software pilot.' : 'Possiamo aiutarti a definire perimetro, vincoli e verifiche per un pilot di automazione o sviluppo software.'}</p>
+        <a href={`${base}/${en ? 'book-call' : 'prenota'}`} class="inline-block rounded-lg bg-white px-5 py-3 text-primary-700 font-semibold hover:bg-primary-50">{en ? 'Discuss your project' : 'Parliamo del tuo progetto'}</a>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  a:focus-visible { outline: 2px solid var(--color-primary-600, #2563eb); outline-offset: 4px; }
+</style>
