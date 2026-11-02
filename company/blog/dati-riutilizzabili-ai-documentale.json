@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-02",
+    "digest": "8e253869e02062b7d1348777eee6d64708119f0ce39b3029c105edfad093798e"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-02",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "The initiative",
+        "it": "L’iniziativa"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Hugging Face describes Project ProtoStar as an initiative bringing together universities, research organizations, businesses and the open science community. Its stated aim is to make publicly funded research datasets, models and code easier to access and reuse, including through formats usable by AI systems.",
+          "The announcement notes that public availability alone does not ensure reuse: resources spread across different systems or lacking documentation, metadata and provenance can be difficult to interpret and combine."
+        ],
+        "it": [
+          "Hugging Face presenta Project ProtoStar come un’iniziativa che riunisce università, organizzazioni di ricerca, imprese e comunità open science. L’obiettivo dichiarato è facilitare l’accesso e il riuso di dati, modelli e codice della ricerca finanziata pubblicamente, anche attraverso formati utilizzabili dai sistemi AI.",
+          "L’annuncio osserva che la disponibilità pubblica, da sola, non garantisce il riuso: risorse distribuite tra sistemi diversi o prive di documentazione, metadati e informazioni sulla provenienza possono essere difficili da interpretare e combinare."
+        ]
+      },
+      "sourceIds": [
+        "protostar"
+      ]
+    },
+    {
+      "heading": {
+        "en": "The lesson for business documents",
+        "it": "La lezione per i documenti aziendali"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Scientific research differs from an SME’s operations, but the underlying problem offers a useful prompt. A searchable archive is not necessarily ready to answer operational questions: first, the business needs to know which documents to use, which version is valid and who owns it.",
+          "For an initial experiment, a company could choose a limited collection, such as approved internal procedures. For each document, it can identify the title, version, update date, owner and intended scope. Missing information should be flagged: filling gaps with assumptions would make retrieval less dependable."
+        ],
+        "it": [
+          "Il contesto scientifico è diverso da quello di una PMI, ma il problema offre uno spunto utile. Un archivio consultabile non è necessariamente pronto per rispondere a domande operative: prima occorre capire quali documenti usare, quale versione sia valida e chi ne sia responsabile.",
+          "Per un primo esperimento si può scegliere una raccolta circoscritta, come procedure interne approvate. Per ogni documento conviene identificare titolo, versione, data di aggiornamento, responsabile e ambito di utilizzo. Se un’informazione manca, va segnalata: riempire i vuoti con supposizioni renderebbe meno affidabile la consultazione."
+        ]
+      },
+      "sourceIds": [
+        "protostar"
+      ]
+    },
+    {
+      "heading": {
+        "en": "From content to a verifiable answer",
+        "it": "Dal contenuto alla risposta verificabile"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "A document AI pilot can start with real questions gathered from the people who use the procedures. Each answer should point to the relevant document, allowing the reader to check the context and whether the source still applies.",
+          "The trial should include questions that the material cannot answer, documents with conflicting versions and ambiguously worded requests. In these cases, the team can check whether the system flags the limitation or asks for clarification instead of presenting an uncertain answer as final. Access to content should follow company permissions."
+        ],
+        "it": [
+          "Un pilot di AI documentale può partire da domande reali raccolte con le persone che usano le procedure. Ogni risposta dovrebbe rimandare al documento pertinente, così chi legge può controllare il contesto e verificare se la fonte è ancora applicabile.",
+          "La prova dovrebbe includere domande senza risposta nei materiali, documenti con versioni discordanti e richieste formulate in modo ambiguo. In questi casi è utile verificare che il sistema segnali il limite o chieda chiarimenti, invece di presentare una risposta incerta come definitiva. L’accesso ai contenuti va definito in base alle autorizzazioni aziendali."
+        ]
+      },
+      "sourceIds": [
+        "protostar"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to decide the next step",
+        "it": "Come decidere il passo successivo"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before expanding the system, the working group can review a sample of answers, check their references and record errors, omissions and required interventions. Comparing the trial with the current method helps establish whether retrieval is more useful in daily work.",
+          "If recurring problems appear, the next step may be to correct documents or clarify ownership before changing the model. Integration with other repositories should be assessed once updates, access and verification of the additional sources have been defined."
+        ],
+        "it": [
+          "Prima di estendere il sistema, il gruppo di lavoro può rivedere un campione di risposte, controllare i riferimenti e annotare errori, omissioni e interventi necessari. Il confronto con il metodo attuale aiuta a capire se la ricerca è davvero più utile nel lavoro quotidiano.",
+          "Se emergono problemi ricorrenti, il passo successivo potrebbe essere correggere i documenti o chiarire le responsabilità, prima ancora di cambiare modello. L’integrazione con altri archivi andrebbe valutata solo dopo aver definito aggiornamenti, accessi e modalità di verifica delle nuove fonti."
+        ]
+      },
+      "sourceIds": [
+        "protostar"
+      ]
+    }
+  ],
+  "slug": "dati-riutilizzabili-ai-documentale",
+  "sources": [
+    {
+      "checkedAt": "2026-11-02",
+      "id": "protostar",
+      "publishedAt": "2026-10-29",
+      "publisher": "Hugging Face",
+      "title": "Announcing Project ProtoStar: Making Publicly Funded Science AI-Ready",
+      "url": "https://huggingface.co/blog/announcing-project-protostar"
+    }
+  ],
+  "summary": {
+    "en": "Project ProtoStar aims to make scientific datasets, models and code more accessible and reusable. For an SME, the principle offers a practical starting point: prepare content and metadata before integrating them into a document AI system.",
+    "it": "Project ProtoStar punta a rendere più accessibili e riutilizzabili dati, modelli e codice scientifici. Per una PMI, il principio offre uno spunto pratico: preparare contenuti e metadati prima di integrarli in un sistema di AI documentale."
+  },
+  "title": {
+    "en": "AI-ready data: what SMEs can learn from Project ProtoStar",
+    "it": "Dati pronti per l’AI: cosa può imparare una PMI da Project ProtoStar"
+  },
+  "topic": {
+    "en": "Document AI and data quality",
+    "it": "AI documentale e qualità dei dati"
+  },
+  "updatedAt": "2026-11-02"
+}
