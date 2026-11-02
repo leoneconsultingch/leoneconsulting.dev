@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "brandId": "leone-consulting",
+  "slug": "preparare-un-automazione",
+  "title": { "it": "Preparare un’automazione: dal processo al primo test", "en": "Preparing an automation: from process to first test" },
+  "summary": { "it": "Una checklist pratica per chiarire input, risultati attesi, eccezioni e verifiche prima di scegliere gli strumenti di automazione.", "en": "A practical checklist for defining inputs, expected results, exceptions and checks before choosing automation tools." },
+  "category": { "it": "Automazione", "en": "Automation" },
+  "level": "introductory",
+  "readingMinutes": 5,
+  "access": "FREE",
+  "published": true,
+  "publishedAt": "2026-11-02",
+  "updatedAt": "2026-11-02",
+  "prerequisites": {
+    "it": ["Un’attività ripetitiva che conosci direttamente.", "Esempi anonimi o sintetici dei dati in ingresso e del risultato atteso."],
+    "en": ["A repetitive task you know first-hand.", "Anonymous or synthetic examples of the inputs and expected results."]
+  },
+  "outcomes": {
+    "it": ["Una scheda del processo con confini chiari.", "Casi di prova per risultato corretto, errore e dati mancanti.", "Criteri per decidere se avviare un piccolo pilot."],
+    "en": ["A process brief with clear boundaries.", "Test cases for correct results, failures and missing data.", "Criteria for deciding whether to start a small pilot."]
+  },
+  "sections": [
+    {
+      "id": "scope",
+      "heading": { "it": "1. Delimita una sola attività", "en": "1. Define one task" },
+      "paragraphs": {
+        "it": ["Scegli un passaggio osservabile, con un inizio e una fine. Per esempio: ricevere una richiesta, verificare che i campi obbligatori siano presenti e preparare una bozza di risposta. Il primo pilot può fermarsi alla bozza, lasciando l’invio a una persona.", "Scrivi chi è responsabile del processo e chi può approvare il risultato. Se non sai riconoscere un risultato corretto, chiarisci prima il processo."],
+        "en": ["Choose an observable step with a clear start and finish. For example: receive a request, check that required fields are present and prepare a draft response. The first pilot can stop at the draft, leaving a person to send it.", "Write down who owns the process and who can approve the result. If you cannot recognise a correct result, clarify the process first."]
+      },
+      "steps": { "it": ["Descrivi l’evento che avvia il lavoro.", "Indica il risultato finale e il suo destinatario.", "Elenca le azioni escluse dal pilot."], "en": ["Describe the event that starts the work.", "Identify the final output and its recipient.", "List the actions excluded from the pilot."] }
+    },
+    {
+      "id": "inputs",
+      "heading": { "it": "2. Rendi espliciti input e controlli", "en": "2. Make inputs and checks explicit" },
+      "paragraphs": {
+        "it": ["Elenca i dati necessari e la loro provenienza. Distingui i campi obbligatori da quelli facoltativi. Per ciascuno specifica formato, valori ammessi e comportamento quando manca.", "Per la prova iniziale usa dati sintetici o anonimizzati. Non copiare credenziali, documenti riservati o dati personali in strumenti non autorizzati."],
+        "en": ["List the required data and its sources. Distinguish mandatory fields from optional ones. For each field, specify its format, allowed values and what should happen when it is missing.", "Use synthetic or anonymised data for the initial test. Do not copy credentials, confidential documents or personal data into unauthorised tools."]
+      },
+      "steps": { "it": ["Prepara un esempio valido.", "Prepara un esempio incompleto.", "Decidi quali errori bloccano il flusso e quali richiedono revisione."], "en": ["Prepare a valid example.", "Prepare an incomplete example.", "Decide which errors stop the workflow and which require review."] }
+    },
+    {
+      "id": "exceptions",
+      "heading": { "it": "3. Progetta il comportamento in caso di errore", "en": "3. Plan for failure" },
+      "paragraphs": {
+        "it": ["Un servizio può non rispondere e una richiesta può arrivare due volte. Prima di automatizzare un’azione, decidi come riconoscere duplicati e come riprendere il lavoro senza ripetere effetti indesiderati.", "Definisci un punto di controllo umano per le operazioni che impegnano denaro, inviano comunicazioni o modificano dati importanti. Registra esito e motivo degli errori, evitando contenuti riservati nei log."],
+        "en": ["A service may not respond, and a request may arrive twice. Before automating an action, decide how to recognise duplicates and resume work without repeating unwanted effects.", "Define a human checkpoint for operations that commit money, send messages or change important data. Record outcomes and error reasons while keeping confidential content out of logs."]
+      },
+      "steps": { "it": ["Indica chi riceve l’avviso di errore.", "Definisci quando un tentativo può essere ripetuto.", "Prevedi un modo per fermare il flusso e tornare alla procedura manuale."], "en": ["Identify who receives failure alerts.", "Define when an attempt can be repeated.", "Provide a way to stop the workflow and return to the manual procedure."] }
+    },
+    {
+      "id": "verification",
+      "heading": { "it": "4. Verifica prima di collegare il processo reale", "en": "4. Verify before connecting the real process" },
+      "paragraphs": {
+        "it": ["Esegui i casi di prova in un ambiente separato. Per ogni input confronta il risultato con quello atteso e annota gli scostamenti. Prova anche dati mancanti, duplicati e un servizio indisponibile.", "Il pilot è pronto per una revisione quando sai spiegare cosa è stato verificato e quali limiti restano. Un singolo esempio riuscito non basta a descrivere il comportamento negli altri casi."],
+        "en": ["Run the test cases in a separate environment. For each input, compare the output with the expected result and record differences. Also test missing data, duplicates and an unavailable service.", "The pilot is ready for review when you can explain what was verified and which limitations remain. One successful example does not establish how other cases behave."]
+      },
+      "steps": { "it": ["Controlla risultato, errori e assenza di effetti esterni non previsti.", "Fai rivedere i risultati al responsabile del processo.", "Concorda criteri di accettazione e condizioni di arresto."], "en": ["Check results, errors and the absence of unintended external effects.", "Have the process owner review the results.", "Agree on acceptance criteria and stop conditions."] }
+    },
+    {
+      "id": "next-step",
+      "heading": { "it": "5. Scegli gli strumenti sulla base dei vincoli", "en": "5. Choose tools based on constraints" },
+      "paragraphs": {
+        "it": ["Con la scheda del processo puoi confrontare una semplice integrazione, un workflow visuale o uno script. Valuta accessi richiesti, gestione degli errori, manutenzione e costi ricorrenti. L’AI è un’opzione da verificare quando il compito richiede interpretazione; per una regola deterministica può bastare codice convenzionale.", "Conserva scheda, esempi e risultati delle prove insieme al progetto. Ti serviranno per stimare il lavoro successivo e controllare che le modifiche non rompano i casi già verificati."],
+        "en": ["Use the process brief to compare a simple integration, a visual workflow or a script. Consider required access, error handling, maintenance and recurring costs. AI is an option to evaluate when the task requires interpretation; a deterministic rule may only need conventional code.", "Keep the brief, examples and test results with the project. They will help you estimate the next steps and check that changes do not break previously verified cases."]
+      },
+      "steps": { "it": [], "en": [] }
+    }
+  ],
+  "productIds": [],
+  "affiliateLinkIds": []
+}

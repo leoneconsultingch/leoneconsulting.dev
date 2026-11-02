@@ -1,10 +1,13 @@
 ---
 import LanguagePicker from './LanguagePicker.astro';
+import platformConfig from '../../company/platform.json';
+import { validatePlatformConfig } from '../lib/platform';
 import { getLangFromUrl, useTranslations } from '../i18n/translations';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
+const platform = validatePlatformConfig(platformConfig);
 
 // Create language-aware paths
 const basePath = lang === 'en' ? '/en' : '';
@@ -50,6 +53,7 @@ const basePath = lang === 'en' ? '/en' : '';
           {t('nav.portfolio')}
         </a>
         <a href={`${basePath}/blog`} class={`text-sm font-medium transition-colors ${currentPath.startsWith(`${basePath}/blog`) ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}>Blog</a>
+        {platform.features.guides && <a href={`${basePath}/guide`} aria-current={/^\/(en\/)?guide(?:\/|$)/.test(currentPath) ? 'page' : undefined} class={`text-sm font-medium transition-colors ${/^\/(en\/)?guide(?:\/|$)/.test(currentPath) ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}>{lang === 'en' ? 'Guides' : 'Guide'}</a>}
         <a
           href={`${basePath}/cv`}
           class={`text-sm font-medium transition-colors ${currentPath === `${basePath}/cv` ? 'text-primary-600' : 'text-gray-600 hover:text-primary-600'}`}
@@ -86,6 +90,7 @@ const basePath = lang === 'en' ? '/en' : '';
         <a href={`${basePath}/booking`} class="text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors py-2 font-semibold">{t('nav.booking')}</a>
         <a href={`${basePath}/portfolio`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.portfolio')}</a>
         <a href={`${basePath}/blog`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">Blog</a>
+        {platform.features.guides && <a href={`${basePath}/guide`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{lang === 'en' ? 'Guides' : 'Guide'}</a>}
         <a href={`${basePath}/cv`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.cv')}</a>
         <a href={`${basePath}/contact`} class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors py-2">{t('nav.contact')}</a>
         <div class="pt-3 mt-3 border-t border-gray-200">

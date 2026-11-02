@@ -1,10 +1,13 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/translations';
+import platformConfig from '../../company/platform.json';
+import { validatePlatformConfig } from '../lib/platform';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const currentYear = new Date().getFullYear();
 const basePath = lang === 'en' ? '/en' : '';
+const platform = validatePlatformConfig(platformConfig);
 ---
 
 <footer class="bg-gray-900 text-gray-300">
@@ -27,6 +30,7 @@ const basePath = lang === 'en' ? '/en' : '';
           <li><a href={`${basePath}/services`} class="hover:text-primary-400 transition-colors">{t('nav.services')}</a></li>
           <li><a href={`${basePath}/portfolio`} class="hover:text-primary-400 transition-colors">{t('nav.portfolio')}</a></li>
           <li><a href={`${basePath}/blog`} class="hover:text-primary-400 transition-colors">Blog</a></li>
+          {platform.features.guides && <li><a href={`${basePath}/guide`} class="hover:text-primary-400 transition-colors">{lang === 'en' ? 'Guides' : 'Guide'}</a></li>}
           <li><a href={`${basePath}/cv`} class="hover:text-primary-400 transition-colors">{t('nav.cv')}</a></li>
           <li><a href={`${basePath}/contact`} class="hover:text-primary-400 transition-colors">{t('nav.contact')}</a></li>
         </ul>
