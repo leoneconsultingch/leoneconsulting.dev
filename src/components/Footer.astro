@@ -42,6 +42,7 @@ const platform = validatePlatformConfig(platformConfig);
         <ul class="space-y-2 text-sm">
           <li><a href={`${basePath}/privacy`} class="hover:text-primary-400 transition-colors">{t('footer.privacy')}</a></li>
           <li><a href={`${basePath}/terms`} class="hover:text-primary-400 transition-colors">{t('footer.terms')}</a></li>
+          <li><button type="button" id="cookie-reopen" class="cursor-pointer text-left hover:text-primary-400 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4">{lang === 'en' ? 'Cookie preferences' : 'Preferenze cookie'}</button></li>
           <li><a href={`${basePath}/trust`} class="hover:text-primary-400 transition-colors">{t('footer.trust')}</a></li>
         </ul>
       </div>
