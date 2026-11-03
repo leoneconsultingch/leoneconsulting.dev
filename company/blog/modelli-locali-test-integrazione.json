@@ -1,0 +1,101 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-03",
+    "digest": "206c449a865330b4f12e8ee8201bb8e407a5325d432c4de4899a5b287877cb5b"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-03",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "The Hugging Face proposal",
+        "it": "La proposta di Hugging Face"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Hugging Face describes a proposal called Model Integration Contracts for checking model behavior in the Transformers library. Each contract combines a reduced test model, a runnable example and reference results reviewed by a person. The check compares the current run with those results.",
+          "The article also describes a regression affecting UMT5 during training without causing the program to crash. According to Hugging Face, a check using the reduced model identified the problem when commits were replayed. The provider states that these checks do not replace full integration tests."
+        ],
+        "it": [
+          "Hugging Face descrive una proposta chiamata Model Integration Contracts per verificare il comportamento dei modelli nella libreria Transformers. Ogni contratto combina un modello di prova ridotto, un esempio eseguibile e risultati di riferimento revisionati da una persona. La verifica confronta l'esecuzione corrente con quei risultati.",
+          "L'articolo racconta anche una regressione che interessava UMT5 durante l'addestramento senza provocare un arresto del programma. Secondo Hugging Face, una verifica con il modello ridotto ha individuato il problema nella ricostruzione dei commit. Il fornitore precisa che queste verifiche non sostituiscono i test di integrazione completi."
+        ]
+      },
+      "sourceIds": [
+        "mic"
+      ]
+    },
+    {
+      "heading": {
+        "en": "What this means for an SME",
+        "it": "Cosa significa per una PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "This kind of check may be useful when a company updates a local model or a library used to process documents. A program starting successfully does not, by itself, show that it still handles documents as expected. It therefore makes sense to select representative tasks and keep examples with approved results.",
+          "For a data extraction process, a test could include sample documents with present, missing or hard-to-read fields. The people who know the workflow define the expected results and review differences after each update. Examples should be suitable for the test environment and handled under the company's data rules.",
+          "A reduced model can help find problems in the path being checked, but it does not automatically demonstrate the behavior of the model actually used. The test should therefore be paired with checks on the model and workflow intended for business use."
+        ],
+        "it": [
+          "Una verifica di questo tipo può essere utile quando un'azienda aggiorna un modello locale o una libreria usata per elaborare documenti. Un programma che si avvia correttamente non dimostra, da solo, che continui a trattare i documenti nel modo atteso. Conviene quindi scegliere alcune attività rappresentative e conservarne esempi e risultati approvati.",
+          "Per un processo di estrazione dati, una prova potrebbe includere documenti campione con campi presenti, mancanti o difficili da leggere. Chi conosce il processo definisce i risultati attesi e controlla le differenze dopo ogni aggiornamento. Gli esempi dovrebbero essere adatti all'ambiente di test e gestiti secondo le regole aziendali sui dati.",
+          "Un modello ridotto può aiutare a trovare problemi nel percorso verificato, ma non dimostra automaticamente il comportamento del modello effettivamente utilizzato. Per questo la prova va affiancata a controlli sul modello e sul flusso di lavoro previsti per l'uso aziendale."
+        ]
+      },
+      "sourceIds": [
+        "mic"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to organize a test",
+        "it": "Come organizzare una prova"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Start with one workflow, such as reading fields from incoming documents, and record which components take part in the test. Before the update, the process owner approves a set of reference results; after the update, the team runs the same cases and reviews the differences.",
+          "Not every difference is necessarily an error: some may result from an intentional change. A review should distinguish acceptable changes from regressions, record the decision and establish when to repeat the test. Cases that change business data deserve checks in a test environment before operational use.",
+          "The decision to adopt an update still depends on the specific workflow. Alongside automated results, it is useful to observe the corrections people need to make and check that integrations and review steps continue to work. If unexplained differences appear, the team can investigate them before release."
+        ],
+        "it": [
+          "Si può iniziare da un solo flusso, per esempio la lettura di campi da documenti in ingresso, e registrare quali componenti partecipano alla prova. Prima dell'aggiornamento, il referente del processo approva un insieme di risultati di riferimento; dopo l'aggiornamento, il team esegue gli stessi casi e valuta le differenze.",
+          "Non tutte le differenze sono necessariamente errori: alcune possono derivare da una modifica intenzionale. Serve una revisione che distingua i cambiamenti accettabili dalle regressioni, documenti la decisione e stabilisca quando ripetere la prova. I casi che comportano modifiche a dati aziendali meritano una verifica in un ambiente di test prima dell'uso operativo.",
+          "La decisione di adottare l'aggiornamento resta legata al processo concreto. Oltre ai risultati automatici, è utile osservare le correzioni richieste alle persone e verificare che integrazioni e passaggi di controllo continuino a funzionare. Se emergono differenze non spiegate, il team può approfondirle prima del rilascio."
+        ]
+      },
+      "sourceIds": [
+        "mic"
+      ]
+    }
+  ],
+  "slug": "modelli-locali-test-integrazione",
+  "sources": [
+    {
+      "checkedAt": "2026-11-03",
+      "id": "mic",
+      "publishedAt": "2026-11-03",
+      "publisher": "Hugging Face",
+      "title": "Transformers Model Integration Contracts",
+      "url": "https://huggingface.co/blog/transformers-mic"
+    }
+  ],
+  "summary": {
+    "en": "Hugging Face proposes integration contracts built around small test models. For an SME using document AI, the idea suggests a practical way to check updates before bringing them into business workflows.",
+    "it": "Hugging Face propone contratti di integrazione basati su piccoli modelli di prova. Per una PMI che usa AI documentale, l'idea suggerisce un modo pratico per controllare gli aggiornamenti prima di portarli nei processi aziendali."
+  },
+  "title": {
+    "en": "Local AI models: how to check updates before release",
+    "it": "Modelli AI locali: come verificare gli aggiornamenti prima del rilascio"
+  },
+  "topic": {
+    "en": "Local models and integration",
+    "it": "Modelli locali e integrazione"
+  },
+  "updatedAt": "2026-11-03"
+}
