@@ -7,14 +7,14 @@ const { lang = 'it' } = Astro.props;
 
 const texts = {
   it: {
-    message: "Questo sito utilizza cookie tecnici e di analytics per migliorare l'esperienza utente. Continuando la navigazione accetti l'uso dei cookie secondo la nostra",
+    message: "Utilizziamo Google Analytics solo con il tuo consenso per misurare le visite. Puoi accettare, rifiutare o modificare la scelta in qualsiasi momento. Dettagli nella",
     privacy: "Privacy Policy",
     accept: "Accetta",
     decline: "Rifiuta",
     settings: "Impostazioni"
   },
   en: {
-    message: "This site uses technical and analytics cookies to improve user experience. By continuing to browse you accept the use of cookies according to our",
+    message: "We use Google Analytics only with your consent to measure visits. You can accept, decline or change your choice at any time. Details in our",
     privacy: "Privacy Policy",
     accept: "Accept",
     decline: "Decline",
@@ -40,6 +40,8 @@ const privacyUrl = lang === 'it' ? '/privacy' : '/en/privacy';
     </div>
   </div>
 </div>
+
+<button id="cookie-reopen" style="position:fixed;bottom:0.5rem;left:0.5rem;z-index:9998;background:white;padding:0.5rem;border:1px solid #d1d5db;border-radius:0.5rem;font-size:0.75rem;">{lang === 'it' ? 'Preferenze cookie' : 'Cookie preferences'}</button>
 
 <!-- Settings Modal -->
 <div id="cookie-modal" class="cookie-modal hidden">
@@ -301,9 +303,15 @@ const privacyUrl = lang === 'it' ? '/privacy' : '/en/privacy';
 
 <script>
   // Check if user has already made a choice
-  const cookieConsent = localStorage.getItem('cookieConsent');
+  const consentKey = 'ga4ConsentV1';
+  const cookieConsent = localStorage.getItem(consentKey);
   const banner = document.getElementById('cookie-banner');
   const modal = document.getElementById('cookie-modal');
+  const measurementId = 'G-RR472M1V04';
+  const analyticsWindow = window as unknown as Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; [key: `ga-disable-${string}`]: boolean };
+  document.getElementById('cookie-reopen')?.addEventListener('click', () => {
+    banner?.classList.remove('hidden');
+  });
 
   if (!cookieConsent && banner) {
     banner.classList.remove('hidden');
@@ -313,6 +321,7 @@ const privacyUrl = lang === 'it' ? '/privacy' : '/en/privacy';
   document.getElementById('cookie-accept')?.addEventListener('click', () => {
     localStorage.setItem('cookieConsent', 'all');
     localStorage.setItem('analyticsEnabled', 'true');
+    localStorage.setItem(consentKey, 'granted');
     banner?.classList.add('hidden');
     enableAnalytics();
   });
@@ -321,6 +330,7 @@ const privacyUrl = lang === 'it' ? '/privacy' : '/en/privacy';
   document.getElementById('cookie-decline')?.addEventListener('click', () => {
     localStorage.setItem('cookieConsent', 'essential');
     localStorage.setItem('analyticsEnabled', 'false');
+    localStorage.setItem(consentKey, 'denied');
     banner?.classList.add('hidden');
     disableAnalytics();
   });
@@ -329,7 +339,7 @@ const privacyUrl = lang === 'it' ? '/privacy' : '/en/privacy';
   document.getElementById('cookie-settings')?.addEventListener('click', () => {
     modal?.classList.remove('hidden');
     // Load current analytics preference
-    const analyticsEnabled = localStorage.getItem('analyticsEnabled') !== 'false';
+    const analyticsEnabled = localStorage.getItem(consentKey) === 'granted';
     const analyticsCheckbox = document.getElementById('cookie-analytics') as HTMLInputElement;
     if (analyticsCheckbox) {
       analyticsCheckbox.checked = analyticsEnabled;
@@ -355,6 +365,7 @@ const privacyUrl = lang === 'it' ? '/privacy' : '/en/privacy';
     
     localStorage.setItem('cookieConsent', 'custom');
     localStorage.setItem('analyticsEnabled', analyticsEnabled.toString());
+    localStorage.setItem(consentKey, analyticsEnabled ? 'granted' : 'denied');
     
     if (analyticsEnabled) {
       enableAnalytics();
@@ -367,19 +378,42 @@ const privacyUrl = lang === 'it' ? '/privacy' : '/en/privacy';
   });
 
   function enableAnalytics() {
-    // Add your analytics initialization here (Google Analytics, Plausible, etc.)
-    console.log('Analytics enabled');
-    // Example: window.gtag && window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    analyticsWindow[`ga-disable-${measurementId}`] = false;
+    if (document.getElementById('ga4-tag')) {
+      window.location.reload();
+      return;
+    }
+    analyticsWindow.dataLayer = [];
+    analyticsWindow.gtag = function () { analyticsWindow.dataLayer!.push(arguments); };
+    analyticsWindow.gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    analyticsWindow.gtag('js', new Date());
+    analyticsWindow.gtag('config', measurementId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+      page_location: window.location.origin + window.location.pathname,
+      page_referrer: document.referrer.split('?')[0].split('#')[0],
+    });
+    const script = document.createElement('script');
+    script.id = 'ga4-tag';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    document.head.append(script);
   }
 
   function disableAnalytics() {
-    // Disable analytics here
-    console.log('Analytics disabled');
-    // Example: window.gtag && window.gtag('consent', 'update', { 'analytics_storage': 'denied' });
+    analyticsWindow[`ga-disable-${measurementId}`] = true;
+    for (const cookie of document.cookie.split(';')) {
+      const name = cookie.split('=')[0].trim();
+      if (name !== '_ga' && !name.startsWith('_ga_')) continue;
+      for (const domain of ['', window.location.hostname, '.' + window.location.hostname]) {
+        document.cookie = `${name}=; Max-Age=0; path=/;${domain ? ` domain=${domain};` : ''}`;
+      }
+    }
+    if (document.getElementById('ga4-tag')) window.location.reload();
   }
 
   // Initialize analytics if user has already consented
-  if (localStorage.getItem('analyticsEnabled') === 'true') {
+  if (cookieConsent === 'granted') {
     enableAnalytics();
   }
 </script>
