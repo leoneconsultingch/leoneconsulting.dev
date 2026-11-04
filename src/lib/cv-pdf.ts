@@ -253,6 +253,20 @@ function buildOnce(lang: 'it' | 'en', S: number): { doc: jsPDF; mainY: number; o
     mainY += lh(sz(8.6)) * dLines.length + 2.6 * S;
   }
 
+  mTitle(lang === 'it' ? 'Formazione' : 'Education and Training');
+  for (const entry of data.education) {
+    setFont('bold', sz(9.4), INK);
+    const titleLines = wrap(L(entry.title), MAIN_W);
+    ensure(lh(sz(9.4)) * titleLines.length);
+    doc.text(titleLines, MAIN_X, mainY);
+    mainY += lh(sz(9.4)) * titleLines.length;
+    setFont('normal', sz(8.6), MUTED);
+    const detailLines = wrap(`${L(entry.institution)} · ${L(entry.period)}. ${L(entry.description)}`, MAIN_W);
+    ensure(lh(sz(8.6)) * detailLines.length);
+    doc.text(detailLines, MAIN_X, mainY);
+    mainY += lh(sz(8.6)) * detailLines.length + 2.6 * S;
+  }
+
   // Footer
   setFont('normal', sz(6.8), FAINT);
   doc.text(`${data.contacts.website.replace('https://', '')}`, MAIN_X, PAGE_H - 5);

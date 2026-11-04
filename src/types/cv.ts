@@ -41,5 +41,6 @@ export interface Cv {
   skills: CvSkillArea[];
   experience: CvExperience[];
   projects: CvProject[];
+  education: { period: CvLocalized; title: CvLocalized; institution: CvLocalized; description: CvLocalized }[];
   languages: { name: CvLocalized; level: CvLocalized }[];
 }
