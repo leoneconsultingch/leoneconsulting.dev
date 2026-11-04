@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated": "2026-10-15",
+  "updated": "2026-11-04",
   "name": "Mario Leone",
   "role": {
     "it": "AI & Data Engineer · Data Scientist — Leone Consulting",
@@ -403,6 +403,80 @@
       "level": {
         "it": "Base",
         "en": "Basic"
+      }
+    }
+  ],
+  "education": [
+    {
+      "period": {
+        "it": "dicembre 2023 – dicembre 2024",
+        "en": "December 2023 – December 2024"
+      },
+      "title": {
+        "it": "Abilitazione all’insegnamento per i licei — didattica della fisica e della matematica",
+        "en": "Upper secondary teaching qualification — physics and mathematics education"
+      },
+      "institution": {
+        "it": "Università di Padova",
+        "en": "University of Padua"
+      },
+      "description": {
+        "it": "Riconoscimento CDPE (Svizzera).",
+        "en": "CDPE recognition (Switzerland)."
+      }
+    },
+    {
+      "period": {
+        "it": "2010 – 2013",
+        "en": "2010 – 2013"
+      },
+      "title": {
+        "it": "Laurea magistrale in Astrofisica",
+        "en": "Master of Science in Astrophysics"
+      },
+      "institution": {
+        "it": "Università di Padova",
+        "en": "University of Padua"
+      },
+      "description": {
+        "it": "Fisica nucleare e astrofisica nucleare, analisi dei dati, data mining, machine learning e statistica.",
+        "en": "Nuclear physics and nuclear astrophysics, data analysis, data mining, machine learning and statistics."
+      }
+    },
+    {
+      "period": {
+        "it": "2004 – 2009",
+        "en": "2004 – 2009"
+      },
+      "title": {
+        "it": "Laurea triennale in Astrofisica",
+        "en": "Bachelor’s degree in Astrophysics"
+      },
+      "institution": {
+        "it": "Università di Padova",
+        "en": "University of Padua"
+      },
+      "description": {
+        "it": "",
+        "en": ""
+      }
+    },
+    {
+      "period": {
+        "it": "ottobre 2007 – settembre 2008",
+        "en": "October 2007 – September 2008"
+      },
+      "title": {
+        "it": "Stage di formazione professionale in astrofisica",
+        "en": "Professional training internship in astrophysics"
+      },
+      "institution": {
+        "it": "Università degli Studi di Padova — Asiago/Padova",
+        "en": "University of Padua — Asiago/Padua"
+      },
+      "description": {
+        "it": "Progetto di stage in astrofisica della Comunità Europea.",
+        "en": "European Community astrophysics internship project."
       }
     }
   ]

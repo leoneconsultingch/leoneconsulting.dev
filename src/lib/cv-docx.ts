@@ -133,6 +133,13 @@ export async function buildCvDocx(lang: 'it' | 'en'): Promise<ArrayBuffer> {
     children.push(new Paragraph({ spacing: { after: 100 }, children: [] }));
   }
 
+  children.push(heading(lang === 'it' ? 'Formazione' : 'Education and Training'));
+  for (const entry of data.education) {
+    children.push(text(L(entry.title), { bold: true, size: 21, color: INK }));
+    children.push(text(`${L(entry.institution)} · ${L(entry.period)}`, { size: 18, color: FAINT }));
+    children.push(text(L(entry.description), { size: 20 }));
+  }
+
   // Competenze
   children.push(heading(t.skills));
   for (const area of data.skills) {
