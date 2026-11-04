@@ -1,0 +1,101 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-04",
+    "digest": "8b76f85aa9b1e6d6e45b930033007bd00fa446daa64eb00a95de612f0442d8c8"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-04",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What StateBench measures",
+        "it": "Che cosa misura StateBench"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Ai2 presents StateBench as a benchmark for assessing whether language models can follow changing information in long texts. Its tests distinguish four levels, from retrieving an unchanged value to following chains of updates that depend on other values.",
+          "According to the authors, in their tests some recurrent and hybrid models trained directly on the tasks generalise further than transformers; advanced models also struggle with harder cases as inputs grow longer. These are benchmark findings, not a measure of reliability on a specific company’s documents."
+        ],
+        "it": [
+          "Ai2 presenta StateBench come un benchmark per valutare se i modelli linguistici riescono a seguire informazioni che cambiano in testi lunghi. Le prove distinguono quattro livelli: dal recupero di un valore invariato fino a catene di aggiornamenti che dipendono da altri valori.",
+          "Secondo gli autori, nelle loro prove alcuni modelli ricorrenti e ibridi addestrati direttamente sui compiti generalizzano più lontano dei transformer; anche modelli avanzati incontrano difficoltà nei casi più complessi quando gli input si allungano. Sono risultati del benchmark, non una misura dell’affidabilità su documenti aziendali specifici."
+        ]
+      },
+      "sourceIds": [
+        "statebench"
+      ]
+    },
+    {
+      "heading": {
+        "en": "What this means for an SME",
+        "it": "La lettura per una PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "An apparently simple question, such as identifying the current condition in a file, may require several passages to be connected. An initial document may be followed by amendments, exceptions and references to other attachments. Finding a relevant sentence is insufficient if a later communication changes its meaning.",
+          "To evaluate a document assistant, an SME can start with a focused process and collect representative examples: straightforward cases, subsequent corrections, missing information and ambiguous passages. For each one, a knowledgeable person can prepare the expected answer and identify the documents needed to support it.",
+          "The test should also ask the system to flag when it lacks sufficient evidence. A fluent answer alone does not demonstrate that every update was considered; human review is especially useful when an answer informs a decision or an action affecting others."
+        ],
+        "it": [
+          "Una domanda apparentemente semplice, come individuare la condizione attuale in un fascicolo, può richiedere di collegare più passaggi. Un documento iniziale può essere seguito da modifiche, eccezioni e riferimenti ad altri allegati. Trovare una frase pertinente non basta, se una comunicazione successiva ne cambia il significato.",
+          "Per valutare un assistente documentale, conviene quindi partire da un processo circoscritto e raccogliere esempi rappresentativi: casi lineari, correzioni successive, informazioni mancanti e passaggi ambigui. Per ciascuno, una persona competente può preparare la risposta attesa e indicare i documenti necessari a sostenerla.",
+          "La prova dovrebbe chiedere al sistema anche di segnalare quando non dispone di elementi sufficienti. Una risposta fluida non dimostra da sola che tutti gli aggiornamenti siano stati considerati; il controllo umano resta particolarmente utile quando la risposta orienta una decisione o un’azione verso terzi."
+        ]
+      },
+      "sourceIds": [
+        "statebench"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to design a useful trial",
+        "it": "Come impostare una prova utile"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before a pilot, define which documents are in scope, who determines the correct answer and which errors require review. Examples can include both short documents and more involved files, keeping cases used to configure the system separate from those reserved for evaluation.",
+          "During the trial, compare answers with the expected results and record omissions, incorrect references, requests for clarification and human interventions. It is also useful to check whether reviewers can trace an answer to the relevant passages without reconstructing the entire file each time.",
+          "The results can help determine where the assistant may support research and where systematic review is needed. Choosing a model, including a locally run one, requires testing the actual process: the benchmark suggests questions to ask, but it guarantees no outcome and does not replace evaluation using the documents people actually work with."
+        ],
+        "it": [
+          "Prima del pilot, definiamo quali documenti rientrano nel perimetro, chi stabilisce la risposta corretta e quali errori richiedono una revisione. Gli esempi possono includere sia documenti brevi sia fascicoli più articolati, mantenendo separati i casi usati per configurare il sistema da quelli riservati alla verifica.",
+          "Durante la prova, confrontiamo le risposte con quelle attese e registriamo omissioni, riferimenti errati, richieste di chiarimento e interventi umani. È utile verificare anche se chi controlla la risposta riesce a risalire ai passaggi pertinenti senza ricostruire ogni volta l’intero fascicolo.",
+          "I risultati aiutano a decidere dove l’assistente può supportare la ricerca e dove serve una revisione sistematica. La scelta di un modello, anche locale, richiede una prova sul processo concreto: il benchmark suggerisce domande da porre, ma non garantisce risultati né sostituisce la valutazione dei documenti effettivamente utilizzati."
+        ]
+      },
+      "sourceIds": [
+        "statebench"
+      ]
+    }
+  ],
+  "slug": "ai-documentale-verificare-cambiamenti",
+  "sources": [
+    {
+      "checkedAt": "2026-11-04",
+      "id": "statebench",
+      "publishedAt": "2026-11-03",
+      "publisher": "Hugging Face",
+      "title": "StateBench: Testing how language models track state changes over long documents",
+      "url": "https://huggingface.co/blog/allenai/statebench"
+    }
+  ],
+  "summary": {
+    "en": "An Ai2 benchmark examines how language models follow changing information in long documents. For an SME, it offers a starting point for testing versions, exceptions and linked updates before relying on a document AI system for decisions.",
+    "it": "Un benchmark di Ai2 esamina come i modelli linguistici seguono informazioni che cambiano nei documenti lunghi. Per una PMI, è uno spunto per progettare prove su versioni, eccezioni e passaggi collegati, prima di affidare decisioni a un sistema documentale."
+  },
+  "title": {
+    "en": "Document AI: how to check changes across long texts",
+    "it": "AI documentale: come verificare i cambiamenti nei testi lunghi"
+  },
+  "topic": {
+    "en": "Document AI",
+    "it": "AI documentale"
+  },
+  "updatedAt": "2026-11-04"
+}
