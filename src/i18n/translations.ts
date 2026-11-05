@@ -8,7 +8,7 @@ export const defaultLang = 'it';
 export const ui = {
   it: {
     'nav.home': 'Home',
-    'nav.about': 'Chi Siamo',
+    'nav.about': 'Profilo',
     'nav.services': 'Servizi',
     'nav.portfolio': 'Portfolio',
     'nav.booking': 'Prenota',
@@ -61,11 +61,11 @@ export const ui = {
     'footer.trust': 'Trust Center',
     'footer.rights': 'Tutti i diritti riservati.',
     
-    'about.title': 'Chi Siamo',
-    'about.subtitle': 'Siamo un team di professionisti appassionati di tecnologia, specializzati in AI Engineering, sviluppo software e consulenza IT.',
-    'about.mission.title': 'La Nostra Missione',
-    'about.values.title': 'I Nostri Valori',
-    'about.expertise.title': 'Le Nostre Competenze',
+    'about.title': 'Mario Leone',
+    'about.subtitle': 'Consulenza AI, architetture MCP e sviluppo software con Mario Leone.',
+    'about.mission.title': 'Come lavoro',
+    'about.values.title': 'Il mio approccio',
+    'about.expertise.title': 'Competenze',
     
     'contact.title': 'Contattaci',
     'contact.subtitle': 'Hai un progetto in mente o vuoi semplicemente fare una chiacchierata? Compila il form o scrivici direttamente.',
@@ -112,7 +112,7 @@ export const ui = {
   },
   en: {
     'nav.home': 'Home',
-    'nav.about': 'About',
+    'nav.about': 'Profile',
     'nav.services': 'Services',
     'nav.portfolio': 'Portfolio',
     'nav.booking': 'Book',
@@ -165,11 +165,11 @@ export const ui = {
     'footer.trust': 'Trust Center',
     'footer.rights': 'All rights reserved.',
     
-    'about.title': 'About Us',
-    'about.subtitle': 'We are a team of technology-passionate professionals, specialized in AI Engineering, software development and IT consulting.',
-    'about.mission.title': 'Our Mission',
-    'about.values.title': 'Our Values',
-    'about.expertise.title': 'Our Expertise',
+    'about.title': 'Mario Leone',
+    'about.subtitle': 'AI consulting, MCP architectures and software development with Mario Leone.',
+    'about.mission.title': 'How I work',
+    'about.values.title': 'My approach',
+    'about.expertise.title': 'Expertise',
     
     'contact.title': 'Contact Us',
     'contact.subtitle': 'Have a project in mind or simply want to chat? Fill out the form or write to us directly.',
