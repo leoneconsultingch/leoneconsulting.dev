@@ -1,0 +1,14 @@
+{
+  "schema_version": 2,
+  "name": "leoneconsulting.dev",
+  "domain": "portfolio",
+  "description": "Lettura del portfolio pubblico Leone Consulting in italiano e inglese.",
+  "command": ["node", "mcp/leone/server.mjs"],
+  "cwd": ".",
+  "env": {},
+  "agent_env_var": "MISSIONCONTROL_AGENT",
+  "policy_hint": {
+    "read_tools": ["site_info", "portfolio_list", "portfolio_get"],
+    "default": "deny"
+  }
+}
