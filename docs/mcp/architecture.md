@@ -1,111 +1,91 @@
 # Architettura MCP Leone Consulting
 
-**Stato:** proposta, non implementata. **Ambito:** consultazione e analisi editoriale del sito pubblico. **Fuori ambito:** ogni funzionalità che tratta denaro, clienti o autorizzazioni premium.
+**Stato:** server v1 e adapter sorgente implementati nei working tree; aggiornamento runtime e prova ChatGPT ancora da completare.
+**Direzione autorizzata:** MissionControl → MCP Leone. Il MCP Leone non chiama MissionControl e non riceve credenziali MissionControl.
 
-## Obiettivi
-
-1. Esporre a ChatGPT Desktop strumenti editoriali tipizzati, con input e output limitati.
-2. Riutilizzare contenuti e validatori già presenti nel repository.
-3. Tenere separati MCP Leone, sito Astro/Vercel e MCP MissionControl.
-4. Rendere impossibili pubblicazione e operazioni commerciali attraverso il MCP.
-5. Avviare la prima versione senza database né servizi commerciali.
-
-## Componenti e confini
+## Flusso
 
 ```mermaid
 flowchart LR
-    U[Utente] --> H[ChatGPT Desktop / plugin MCP]
-    H -->|tools MCP| L[MCP Leone]
-    H -->|tool MCP separati| M[MCP MissionControl]
-    L --> S[Editorial Service]
-    S --> C[Cataloghi pubblici approvati]
-    C --> G[Guide JSON e moduli editoriali]
-    C --> W[Contenuti pubblici del sito]
-    W --> V[Sito Astro su Vercel]
+    U[Utente] --> G[ChatGPT]
+    G -->|MCP MissionControl| MC[MissionControl]
+    MC -->|child MCP stdio, tool allowlistati| L[MCP Leone]
+    L --> C[Case study pubblicati]
+    C --> R[company/case-studies/*.json]
 ```
 
-ChatGPT Desktop è il client/host che invoca gli strumenti. Il MCP Leone non si connette a ChatGPT. Per la prima versione, ChatGPT può usare anche MissionControl tramite il suo MCP esistente: non serve concatenare due server MCP né dare al MCP Leone accesso generale a MissionControl.
+ChatGPT usa il connettore MissionControl. MissionControl avvia il server Leone
+come child MCP locale e inoltra solo le operazioni portfolio approvate. Non viene
+esposto un proxy MCP generico: ChatGPT non sceglie repository, comando, percorso o
+tool arbitrario.
 
-Il MCP è un processo separato dal runtime Astro/Vercel. La separazione evita di aggiungere endpoint MCP pubblici al sito e mantiene fuori dal piano di deploy editoriale un servizio con un diverso perimetro di fiducia. Il codice del server non deve importare o eseguire un percorso generico del filesystem; un servizio editoriale fornisce soltanto operazioni di lettura su record già filtrati e validati.
+Un collegamento diretto ChatGPT → MCP Leone via tunnel/HTTPS resta un'opzione
+separata; non serve per il flusso v1 richiesto e non è configurato. Nessun endpoint
+pubblico, servizio o tunnel viene attivato dal codice di questo repository.
 
-### Moduli logici
+## Componenti
 
-| Modulo | Responsabilità | Limite |
+| Modulo | Responsabilità | Confine |
 |---|---|---|
-| MCP transport | Handshake MCP e dispatch degli strumenti | Nessuna logica editoriale o accesso diretto ai file |
-| Tool handlers | Validazione input, limiti, invocazione del servizio | Solo tool allowlisted; nessuna shell o URL arbitraria |
-| Editorial service | Elenco, lettura e audit deterministico | Solo contenuti pubblici pubblicati e approvati |
-| Content adapter | Lettura dei JSON e metadati del sito | Schema noto; niente lettura di file per path richiesto dal client |
-| MissionControl | Contesto e diario del progetto tramite il MCP esistente | Connessione indipendente nella prima versione |
-| Human review | Decisione editoriale e pubblicazione | Rimane fuori dal server MCP |
+| `mcp/manifest.json` | Dichiara il child MCP per MissionControl | Comando fisso Node; nessun segreto o env file |
+| `mcp/leone/server.mjs` | Handshake MCP stdio e tool portfolio | Nessun accesso a MissionControl, shell, rete o deploy |
+| `mcp/leone/catalog.mjs` | Lettura e proiezione dati pubblici | Directory fissa, file JSON pubblicati, campi espliciti |
+| MissionControl | Identità chiamante, allowlist, audit e inoltro | Policy per `chatgpt` e tool `leoneconsulting.dev` |
+| ChatGPT | Interfaccia e orchestrazione della richiesta | Non sostituisce i controlli server-side |
 
-Nel codice, i moduli dovranno essere separati in modo che l’eventuale aggiunta futura di una sorgente (per esempio il catalogo delle bozze) non allarghi implicitamente i permessi del transport o dei tool.
+Il server usa `@modelcontextprotocol/server` v2 e il trasporto stdio supportato
+dal child MCP MissionControl. Il processo scrive esclusivamente protocollo su
+stdout; eventuali log devono andare su stderr e non includere contenuti completi.
 
-## Trasporto e collocazione
+## Tool v1
 
-Il trasporto è una decisione aperta, da provare con il plugin e il client Desktop effettivi:
+- `site_info`: versione del contratto, lingue e capacità read-only.
+- `portfolio_list`: metadati di case study pubblicati in `it` o `en`.
+- `portfolio_get`: proiezione pubblica di un singolo case study.
 
-1. **Processo locale via stdio**, se il plugin Desktop scelto supporta un’app MCP locale. Il processo parte con accesso di sola lettura a una sorgente editoriale circoscritta.
-2. **Streamable HTTP remoto**, se serve un’app MCP raggiungibile dal servizio ChatGPT. Un processo su macchina privata deve essere raggiunto tramite un tunnel sicuro e autenticato; non esporre una porta MCP anonima su Internet.
-
-La registrazione locale in una configurazione MCP non dimostra da sola che lo strumento sia invocabile nella specifica superficie ChatGPT. La prova d’integrazione deve coprire handshake, enumerazione tool, chiamata effettiva e identità/controlli del trasporto scelto. Le app MCP remote, le app locali dentro un plugin Desktop e i piani ChatGPT hanno requisiti diversi; ricontrollarli prima dell’attivazione nelle [istruzioni OpenAI](https://help.openai.com/en/articles/12584461-developer-mode-and-full-mcp-connectors-in-chatgpt) e nella documentazione dei [plugin](https://help.openai.com/en/articles/20001256-plugins-in-chatgpt).
-
-Non è ancora deciso se eseguire il processo su workstation, Synology o altro host. La scelta dipende dal trasporto verificato, dall’accessibilità stabile della sorgente e dalla possibilità di mantenerlo aggiornato. Nessun servizio o tunnel è stato predisposto.
-
-## Sorgenti editoriali
-
-La sorgente iniziale è il repository, non il database:
-
-- Guide: `company/guides/` e contratto in `src/lib/guides.ts`.
-- Pagine pubbliche: catalogo pubblico noto al servizio editoriale; la versione implementata dovrà dichiarare esattamente quali route indicizza.
-- Contenuti generati: solo elementi pubblicabili secondo i validatori esistenti e non futuri.
-
-Per le guide si riusano `validateGuide` e `publicGuides`. Il MCP non deve esporre bozze, contenuto premium, file non pubblici o associazioni commerciali non ancora implementate. L’audit lavora sui dati pubblici e restituisce riferimenti e codici di problema, non scansioni arbitrarie del repository.
+Il catalogo usa la stessa regola di visibilità del sito (`published: true`) e
+seleziona i file per lingua. Ogni risposta espone solo titolo, settore, sfida,
+architettura e approccio pubblicati, risultati, stack/strumenti e ruolo. Esclude
+campi cliente, budget/vincoli, testimonial, collegamenti repository/demo e dati
+non presenti nella proiezione pubblica MCP. Limiti di input e output sono applicati
+server-side.
 
 ## MissionControl
 
-### Prima versione
+Il manifest rende il server individuabile come child `leoneconsulting.dev`.
+MissionControl deve mantenere la policy `default deny` e consentire all'identità
+`chatgpt` solo `site_info`, `portfolio_list` e `portfolio_get`. Il catalogo del
+child viene scoperto dal manager MissionControl; l'abilitazione effettiva richiede
+anche la policy operativa nel suo ambiente.
 
-MissionControl resta un MCP distinto. ChatGPT può chiamare il MCP Leone per informazioni editoriali e il MCP MissionControl per contesto o diario, mantenendo visibili le due autorizzazioni. Il MCP Leone non riceve token MissionControl e non eredita i permessi degli strumenti di MissionControl.
+Il connettore ChatGPT MissionControl è curato e non inoltra i child MCP generici.
+Nel working tree MissionControl sono stati aggiunti tre tool nominati (`leone_site_info`,
+`leone_portfolio_list`, `leone_portfolio_get`) che inoltrano al child MCP. Non
+esporre a ChatGPT `call_child_tool` generico né credenziali operatore. Le modifiche
+MissionControl non sono ancora committate, attivate o verificate dal connettore.
+Il repository Leone non può impostare policy o stato runtime MissionControl.
 
-### Possibile adapter futuro
+Non esistono chiamate inverse: il server Leone non importa client MissionControl,
+non apre connessioni verso MissionControl e non riceve token, URL o identità MC.
 
-Se l’orchestrazione server-to-server diventa necessaria, introdurre un adapter esplicito dietro un’interfaccia di servizio con sole operazioni nominate, ad esempio lettura del contesto del progetto `leoneconsulting.dev` e registrazione di un riepilogo editoriale. L’adapter dovrà usare un’identità di servizio e credenziali custodite fuori dal modello, non un client generico, e fallire chiuso se progetto o permesso non corrispondono. Questa estensione richiede una decisione separata e non è inclusa nei tool v1.
+## Avvio locale
 
-## Contratto MCP
+Da root repository:
 
-- Nome logico server: `leone-editorial`.
-- Namespace contratto applicativo: `leone.mcp.v1`.
-- Prima versione: tools soltanto; nessuna resource o prompt che allarghi l’accesso.
-- Ogni tool ha schema input chiuso, enum espliciti, limiti di lunghezza e quantità, output bounded e descrizione del fatto che i contenuti sono dati non attendibili.
-- Risposte applicative includono versione schema, request ID, esito e risultato tipizzato; errori non contengono stack trace, path locali o segreti.
-- Aggiunte compatibili sono opzionali; modifiche breaking richiedono una nuova versione del contratto e il riesame del connettore ChatGPT.
+```bash
+npm run mcp:leone
+```
 
-Dettagli: [Tool v1](tools-v1.md).
+Per il child MissionControl il comando è dichiarato in `mcp/manifest.json`.
+La registrazione locale non equivale alla disponibilità nel connettore ChatGPT;
+la prova completa deve passare dal tool MissionControl e arrivare a una scheda
+nota del portfolio.
 
-## Stato e persistenza
+## Controlli di completamento
 
-La prima versione è stateless e read-only: non richiede database, account utente, sessioni applicative o archiviazione di report. Eventuali dati di audit sono minimizzati e non contengono prompt o copie integrali delle guide. Qualsiasi successivo strumento di bozza avrà un archivio privato esplicito, retention definita e un flusso di revisione; non userà il JSON pubblico come staging.
-
-## Flusso editoriale futuro
-
-La capacità di preparare bozze è fuori dalla v1. Se approvata in seguito:
-
-1. Il MCP crea una proposta non approvata in staging privato con ID/hash.
-2. Il validatore verifica struttura, lingua e fonti consentite.
-3. MissionControl riceve al massimo riferimento e riepilogo, senza diventare autorità di pubblicazione.
-4. Una persona revisiona contenuto e fonti.
-5. Un flusso di pubblicazione autorizzato e distinto importa solo il candidato approvato.
-
-Il flusso `scripts/editorial/` già presente riguarda il blog e contiene i propri gate di review e pubblicazione; non va esteso alle guide implicitamente. Qualsiasi integrazione per le guide va progettata e autorizzata separatamente.
-
-## Decisioni aperte
-
-| ID | Decisione | Criterio di chiusura |
-|---|---|---|
-| D1 | Superficie ChatGPT Desktop e trasporto | Prova reale del plugin/app selezionato; supporto, auth e piano documentati |
-| D2 | Host MCP | Sorgente accessibile, aggiornamenti controllati, isolamento e disponibilità adeguati |
-| D3 | Confine delle pagine indicizzate | Elenco route pubbliche IT/EN approvato |
-| D4 | Audit log | Campi minimizzati, accesso e retention definiti |
-| D5 | Adapter MissionControl futuro | Motivazione concreta, API/identità autorizzate e test di isolamento |
-
+1. Handshake MCP e discovery dei tre tool dal processo child.
+2. Chiamate portfolio IT/EN attraverso MissionControl con identità `chatgpt`.
+3. Test negativo su bozze, slug traversal, schema extra, symlink e limiti.
+4. Verifica che nessun tool, codice o configurazione nel MCP Leone consenta
+   letture o scritture MissionControl.
+5. Nessun publish/deploy finché collegamento e policy non sono verificati.

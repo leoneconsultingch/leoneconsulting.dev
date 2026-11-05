@@ -1,58 +1,49 @@
 # Confini di sicurezza — MCP Leone
 
-**Stato:** requisiti architetturali proposti; non è un audit del server, che non è ancora implementato.
+**Direzione:** MissionControl può invocare il MCP Leone; il MCP Leone non accede a MissionControl.
+**Sorgente:** case study pubblici già marcati `published: true`.
 
-## Classi di dati
+## Dati esposti
 
 | Classe | Esempi | MCP v1 |
 |---|---|---|
-| Pubblico approvato | Guide FREE pubblicate, pagine del sito, metadati SEO visibili | Lettura allowlisted |
-| Editoriale non pubblico | Bozze, note, revisioni, fonti non pubblicate | Escluso |
-| Premium | Corpo guide PRO/BUSINESS, download protetti e permessi | Escluso |
-| Commerciale/finanziario | Prezzi, checkout, ordini, pagamenti, abbonamenti, commissioni, ricavi | Escluso in modo permanente dal MCP Leone |
-| Dati cliente | Identità, email, sessioni, acquisti e storico | Escluso in modo permanente dal MCP Leone |
-| Segreti e controllo | Token, chiavi, variabili d’ambiente, deploy e credenziali VCS | Escluso |
+| Portfolio pubblico | Titolo, settore, descrizione, soluzione, risultati, stack e ruolo | Lettura tramite proiezione nominata |
+| Editoriale non pubblico | Bozze, note, revisioni | Escluso |
+| Dati commerciali/personali | Clienti, budget, prezzi, pagamenti, account | Escluso |
+| Controllo e segreti | Token, chiavi, deploy, VCS, configurazione privata | Escluso |
 
-## Controlli richiesti
+La proiezione omette campi opzionali e non serializza direttamente il JSON
+sorgente. Il server legge da una directory fissa; slug, lingua e dimensione sono
+validati prima di ogni accesso. I file symlink e sorgenti oltre il limite sono
+rifiutati.
 
-### Trasporto e identità
+## Direzione MissionControl → Leone
 
-- Usare solo un trasporto supportato dal client scelto e provarne l’identità end-to-end.
-- Per un processo locale, avviare il server con permessi OS di sola lettura sulla sorgente allowlisted.
-- Per un server remoto, richiedere autenticazione e tunnel sicuro ove il server resti su rete privata; nessun endpoint MCP anonimo esposto pubblicamente.
-- Le credenziali restano lato host/secret store e non compaiono nei parametri o risultati MCP.
-- Configurare timeout, limiti di concorrenza e dimensione massima dei messaggi.
+- MissionControl avvia `mcp/manifest.json` come processo stdio e mantiene identità, policy e audit.
+- La policy MissionControl resta deny-by-default e abilita per ChatGPT soltanto `site_info`, `portfolio_list` e `portfolio_get`.
+- Il connettore ChatGPT deve esporre tool Leone nominati; nessun proxy generico `call_child_tool` viene dato a ChatGPT.
+- Nessuna credenziale operatore o variabile segreta viene passata al child.
+- L’assenza di policy, sorgente o child produce errore; nessun fallback a contenuto privato.
 
-### Autorizzazione e sorgenti
+## Direzione Leone → MissionControl
 
-- Ogni handler chiama un servizio editoriale ristretto; il modello non sceglie il percorso sorgente.
-- Filtrare stato, lingua, brand e access tier sul server a ogni richiesta.
-- Per le guide riusare `validateGuide` e `publicGuides`; negare default se validazione o sorgente falliscono.
-- Nessun accesso ai file arbitrari, shell, rete generica, URL forniti dall’utente, DB o storage commerciale.
-- Non considerare la conferma UI di ChatGPT una sostituzione dell’autorizzazione del server.
+Non implementata e vietata: nessun client, endpoint, tool, token, URL o richiesta
+verso MissionControl è presente nel server Leone.
 
-### Contenuti non attendibili
+## Contenuti e protocollo
 
-Guide, pagine, snippet e fonti possono contenere prompt injection o markup ostile. Trattarli come dati opachi; escapare l’output testuale/HTML secondo il client; non seguire istruzioni incorporate, non attivare tool aggiuntivi e non propagare il contenuto come policy di sistema.
+I testi pubblici possono contenere istruzioni ostili o prompt injection. Sono
+restituiti come dati e non attivano altri tool. Il trasporto è stdio: stdout è
+riservato al protocollo; errori interni non includono stack trace o path.
 
-### Logging e disponibilità
+Gli strumenti dichiarano `readOnlyHint: true`, `destructiveHint: false` e
+`openWorldHint: false`. Queste annotazioni non sostituiscono validazione e
+allowlist server-side.
 
-- Registrare il minimo necessario: timestamp, request ID, tool, esito e durata.
-- Non registrare prompt completi, segreti, header di autenticazione o contenuti integrali.
-- Stabilire retention e accesso ai log prima di abilitare un endpoint remoto.
-- Se MissionControl o una sorgente secondaria non sono disponibili, il server non amplia scope né usa fonti alternative non approvate.
-- Gli errori non includono stack trace, percorsi locali o valori di configurazione.
+## Gate d’integrazione
 
-## Non-obiettivi di sicurezza
-
-Questa specifica non abilita autenticazione utenti del sito, accesso a guide premium, storage privato, pagamenti, referral o funzioni amministrative. Le future funzionalità commerciali richiederanno servizi, identità e autorizzazioni server-side separati; non verranno aggiunte come estensione implicita del MCP.
-
-## Gate prima di un rilascio
-
-1. Test negativo: bozze, premium, dati cliente e campi commerciali non appaiono in nessuna risposta.
-2. Test di schema: input extra, slug/path traversal, lingua non valida, output e query fuori limite vengono rifiutati.
-3. Test del trasporto sul client Desktop effettivo, inclusi autenticazione e disconnessione.
-4. Test di indisponibilità sorgente: fallimento chiuso, senza fallback a dati privati.
-5. Review indipendente di permessi OS, rete, log, tool esposti e collegamento MissionControl.
-6. Verifica che nessuna route, variabile, dipendenza o deployment Vercel sia stata aggiunta per errore allo scope editoriale.
-
+1. Discovery dei soli tre tool dal processo MissionControl.
+2. Policy operativa verificata per l’identità `chatgpt`.
+3. Chiamate IT/EN riuscite attraverso il connettore MissionControl.
+4. Negativi per bozze, slug traversal, chiavi extra, symlink e output fuori limite.
+5. Conferma che nessun flusso inverso o tool di scrittura è raggiungibile.

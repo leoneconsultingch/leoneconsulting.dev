@@ -2,17 +2,18 @@
 
 ## Stato
 
-**Architettura proposta; MCP non implementato.** Questi documenti definiscono perimetro e contratti candidati. Non attestano che un server, un connettore ChatGPT o un collegamento a MissionControl sia già attivo.
+**MCP portfolio e adapter MissionControl implementati nei working tree.** Il connettore/runtime MissionControl non è ancora stato aggiornato né provato con ChatGPT. Nessun endpoint pubblico o tunnel è attivo.
 
 ## Scopo
 
-Consentire a ChatGPT Desktop di consultare e analizzare i contenuti pubblici di Leone Consulting tramite strumenti MCP espliciti e limitati. Il MCP è un’interfaccia editoriale: non è il backend commerciale del sito e non sostituisce il flusso umano di revisione e pubblicazione.
+Consentire a MissionControl e, attraverso il suo connettore, a ChatGPT di consultare le schede portfolio pubbliche di Leone Consulting tramite strumenti MCP espliciti e limitati. MissionControl può invocare il MCP Leone; il MCP Leone non accede a MissionControl.
 
 ## Documenti
 
+- [Piano di realizzazione](implementation-plan.md): roadmap aggiornata concordata con Mario; prima MCP, poi integrazione MissionControl e agenti blog giornaliero, guide settimanali e CV mensile. Le capacità di scrittura restano future e separate dalla v1.
 - [Architettura](architecture.md): componenti, trasporti, MissionControl, flussi e fasi.
-- [Tool v1](tools-v1.md): strumenti read-only proposti e contratti di risposta.
-- [Confini di sicurezza](security-boundaries.md): dati inclusi/esclusi e controlli richiesti.
+- [Tool v1](tools-v1.md): strumenti read-only implementati e contratti di risposta.
+- [Confini di sicurezza](security-boundaries.md): dati inclusi/esclusi e controlli di integrazione.
 
 ## Vincoli invarianti
 
@@ -27,10 +28,11 @@ Consentire a ChatGPT Desktop di consultare e analizzare i contenuti pubblici di 
 | Decisione | Stato |
 |---|---|
 | Perimetro editoriale e commerciale escluso | Proposto |
-| Tool read-only iniziali | Proposti |
-| Trasporto verso ChatGPT Desktop | Da verificare sul plugin/client effettivo |
-| Integrazione con MissionControl | Separata nella prima versione; adapter ristretto da valutare |
-| Hosting del processo MCP | Da decidere dopo la prova del trasporto |
+| Tool portfolio read-only | Implementati; handshake e chiamata stdio verificati |
+| Child MCP MissionControl | Manifest e adapter sorgente aggiunti; runtime non aggiornato |
+| ChatGPT tramite MissionControl | Da verificare dopo aggiornamento del connettore |
+| Connessione ChatGPT diretta | Non configurata; tunnel/HTTPS non necessario al flusso previsto |
+| Hosting del processo MCP | Processo stdio avviato dal child MCP MissionControl |
 | Database | Non necessario per la prima versione |
 
 ## Fonti tecniche
