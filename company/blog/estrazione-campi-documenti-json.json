@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-05",
+    "digest": "1c67e95e817dcdc6853a5c202d373e401bc3c44c903e4ab661b8135da7ad1930"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-05",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What the provider presents",
+        "it": "Che cosa presenta il fornitore"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Dharma-AI describes Field Extractor as a two-billion-parameter model that receives document images and returns fields as JSON. A request can leave field discovery to the model or specify a schema with expected names and types.",
+          "The provider says the same checkpoint handles different document types and that, in its tests, it outperformed every frontier general-purpose model compared. These are provider claims; the available excerpt does not allow us to assess the comparison in detail here."
+        ],
+        "it": [
+          "Dharma-AI descrive Field Extractor come un modello da due miliardi di parametri che riceve immagini di documenti e restituisce campi in formato JSON. La richiesta può lasciare al modello l’individuazione dei campi oppure specificare uno schema con nomi e tipi attesi.",
+          "Il fornitore dichiara che il modello usa lo stesso checkpoint per tipi di documento differenti e che, nei test svolti, ha superato tutti i modelli generalisti di frontiera confrontati. Sono dichiarazioni del fornitore: l’estratto disponibile non permette di valutare qui il dettaglio del confronto."
+        ]
+      },
+      "sourceIds": [
+        "dharma"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Start with a defined workflow",
+        "it": "Partire da un processo preciso"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For an SME, supplier invoice entry could be a starting point. Before choosing a model, list the fields actually needed, the people who check them and the system that will receive them. A shared schema helps clarify, for example, how dates, amounts and invoice lines should be represented.",
+          "Collect documents that reflect everyday variation: different layouts, hard-to-read images, missing fields and multipage documents. A sample prepared with the people doing the work makes the trial more representative of the actual workflow. Test documents should be selected and handled under the applicable company rules."
+        ],
+        "it": [
+          "Per una PMI, il punto di partenza può essere la registrazione delle fatture fornitori. Prima di scegliere il modello, conviene elencare i campi realmente necessari, le persone che li controllano e il sistema che li riceverà. Uno schema condiviso aiuta a chiarire, per esempio, come rappresentare date, importi e righe della fattura.",
+          "È utile raccogliere documenti rappresentativi delle variazioni affrontate ogni giorno: impaginazioni diverse, immagini poco leggibili, campi assenti e documenti con più pagine. Un campione preparato con chi svolge il lavoro rende la prova più vicina al processo reale. I documenti usati nel test devono essere scelti e gestiti secondo le regole aziendali applicabili."
+        ]
+      },
+      "sourceIds": [
+        "dharma"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Check the result before integration",
+        "it": "Controllare il risultato prima dell’integrazione"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "JSON with the expected structure does not guarantee that its values are correct. In a pilot, we would compare each extracted field with the original document, distinguishing incorrect values, missing values and values assigned to the wrong field. For table rows, we would also check that descriptions, quantities and amounts remain correctly associated.",
+          "Before sending data to a business system, we would check formats and required fields and arrange human review for uncertain cases. Corrections should be recorded so the team can identify recurring errors and decide whether to broaden the trial."
+        ],
+        "it": [
+          "Un JSON con la struttura attesa non garantisce che i valori siano corretti. Nel pilot confronteremmo ogni campo estratto con il documento originale, distinguendo valori errati, mancanti e attribuiti al campo sbagliato. Per le righe tabellari controlleremmo anche che descrizioni, quantità e importi restino associati correttamente.",
+          "Prima di inviare i dati a un gestionale, prevederemmo controlli sui formati e sui campi obbligatori, oltre a una revisione umana dei casi dubbi. Le correzioni dovrebbero essere registrate in modo da capire quali errori si ripetono e decidere se ampliare la prova."
+        ]
+      },
+      "sourceIds": [
+        "dharma"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Decide on the evidence from the trial",
+        "it": "Decidere sulla base della prova"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "The comparison should include the current workflow and available alternatives, considering total time, required corrections and the resources needed to maintain the integration. Results should be examined by document type and field: a good average can conceal frequent errors in the most important data.",
+          "Before adoption, we would clarify where documents are processed and stored, who can access them and how errors or interruptions are handled. The final choice depends on results observed against the company’s own documents and constraints; the provider’s stated benchmark is not a guarantee for an individual workflow."
+        ],
+        "it": [
+          "Il confronto dovrebbe includere il processo attuale e le alternative disponibili, considerando il tempo complessivo, le correzioni richieste e le risorse necessarie per mantenere l’integrazione. I risultati vanno letti per tipo di documento e per campo: una buona media potrebbe nascondere errori frequenti proprio nei dati più importanti.",
+          "Prima dell’adozione, chiariremmo dove vengono elaborati e conservati i documenti, chi può accedervi e come gestire errori o interruzioni. La scelta finale dipende dai risultati osservati sui documenti e sui vincoli dell’azienda; il benchmark dichiarato dal fornitore non costituisce una garanzia per il singolo processo."
+        ]
+      },
+      "sourceIds": [
+        "dharma"
+      ]
+    }
+  ],
+  "slug": "estrazione-campi-documenti-json",
+  "sources": [
+    {
+      "checkedAt": "2026-11-05",
+      "id": "dharma",
+      "publishedAt": "2026-11-04",
+      "publisher": "Hugging Face",
+      "title": "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out",
+      "url": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor"
+    }
+  ],
+  "summary": {
+    "en": "Dharma-AI presents a model specialized in extracting fields from document images. For an SME, the decision also depends on data quality, checks and integration with the existing workflow.",
+    "it": "Dharma-AI presenta un modello specializzato nell’estrazione di campi da immagini di documenti. Per una PMI, la scelta dipende anche dalla qualità dei dati, dai controlli e dall’integrazione con il processo esistente."
+  },
+  "title": {
+    "en": "From documents to structured data: how to assess AI extraction",
+    "it": "Dai documenti ai dati strutturati: come valutare un’estrazione AI"
+  },
+  "topic": {
+    "en": "Document AI and integration",
+    "it": "AI documentale e integrazione"
+  },
+  "updatedAt": "2026-11-05"
+}
