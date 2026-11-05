@@ -189,6 +189,7 @@ const text = {
 </form>
 
 <script>
+  import { trackSuccessfulLead } from '../lib/analytics';
   document.querySelectorAll<HTMLFormElement>('form[id^="booking-form-"]').forEach((form) => {
     const lang = form.dataset.lang === 'en' ? 'en' : 'it';
     const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
@@ -267,6 +268,7 @@ const text = {
           throw new Error(`Booking request failed: ${response.status}`);
         }
 
+        void trackSuccessfulLead(response, 'booking');
         statusMessage.textContent = messages.success;
         statusMessage.className = 'block p-4 rounded-lg text-center bg-green-100 text-green-700';
         form.reset();

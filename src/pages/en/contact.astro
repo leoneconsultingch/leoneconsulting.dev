@@ -271,6 +271,7 @@ import Footer from '../../components/Footer.astro';
 </Layout>
 
 <script>
+  import { trackSuccessfulLead } from '../../lib/analytics';
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const messageDiv = document.getElementById('form-message');
 
@@ -329,6 +330,7 @@ import Footer from '../../components/Footer.astro';
         throw new Error(errorData.error || 'Failed to send email');
       }
 
+      void trackSuccessfulLead(response, 'contact');
       messageDiv?.classList.remove('hidden', 'bg-red-100', 'text-red-800');
       messageDiv?.classList.add('bg-green-100', 'text-green-800');
       messageDiv!.textContent = 'Message sent successfully! We will reply soon.';

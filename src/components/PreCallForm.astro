@@ -241,6 +241,7 @@ const text = t[lang];
 </form>
 
 <script>
+  import { trackSuccessfulLead } from '../lib/analytics';
   const form = document.getElementById('pre-call-form') as HTMLFormElement;
   const statusDiv = document.getElementById('form-status') as HTMLDivElement;
   const lang = form?.dataset.lang || 'it';
@@ -326,6 +327,7 @@ const text = t[lang];
       }
 
       if (response.ok) {
+        void trackSuccessfulLead(response, 'pre_call');
         statusDiv.textContent = t.success;
         statusDiv.className = 'p-4 rounded-lg bg-green-100 text-green-800 border border-green-300';
         statusDiv.classList.remove('hidden');

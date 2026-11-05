@@ -358,6 +358,7 @@ import Footer from '../../components/Footer.astro';
 </Layout>
 
 <script>
+  import { trackSuccessfulLead } from '../../lib/analytics';
   const form = document.getElementById('audit-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
   const successMsg = document.getElementById('success-msg') as HTMLDivElement;
@@ -387,6 +388,7 @@ import Footer from '../../components/Footer.astro';
         return;
       }
 
+      void trackSuccessfulLead(response, 'audit');
       const data = await response.json();
 
       if (response.ok && data.success) {
