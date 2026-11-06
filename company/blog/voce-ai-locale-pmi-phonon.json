@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-06",
+    "digest": "8bacdbdf6937e63d99bf1d4e75e2f81f73375fc2ec45885201ebdcacd7ba90d4"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-06",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What the source presents",
+        "it": "Che cosa presenta la fonte"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "The authors describe Phonon as a family of speech synthesis models that run on a device without a server or network connection. The weights are open. Phonon 31m supports English and uses the Apache 2.0 license; Phonon 40m covers English, French, German, Spanish and Portuguese under a non-commercial license.",
+          "The source also reports a Transformers integration and support for several device categories, including computers and phones. The authors report favorable results on Hugging Face’s Open TTS Leaderboard. These refer to the cited evaluations and do not guarantee results in every application."
+        ],
+        "it": [
+          "Gli autori descrivono Phonon come una famiglia di modelli di sintesi vocale eseguibili sul dispositivo, senza server o connessione di rete. I pesi sono aperti. Phonon 31m supporta l’inglese ed è distribuito con licenza Apache 2.0; Phonon 40m copre inglese, francese, tedesco, spagnolo e portoghese con licenza non commerciale.",
+          "La fonte indica inoltre un’integrazione con Transformers e la possibilità di eseguire il modello su diverse categorie di dispositivi, inclusi computer e telefoni. Gli autori riportano risultati favorevoli nella classifica Open TTS di Hugging Face: sono dati riferiti alle prove citate, non una garanzia per ogni applicazione."
+        ]
+      },
+      "sourceIds": [
+        "phonon"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Where an SME might use it",
+        "it": "Dove può essere utile a una PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "One use case to explore is reading approved operating instructions or training material aloud. Local execution may be useful when text must remain on the device while speech is generated, or when playback must work without a network. That property should be checked across the complete application, not inferred from the model alone.",
+          "Language is an immediate filter: Italian is not among those listed in the source. For material intended for Italian users, an SME should therefore assess another solution or check for updates before starting. The license must also be reviewed against the intended use: the multilingual variant described is not presented as freely available for commercial products. To make an informed choice, both content owners and intended listeners should help define the requirements."
+        ],
+        "it": [
+          "Un caso da esplorare è la lettura ad alta voce di istruzioni operative o di contenuti formativi già approvati. L’esecuzione locale può essere interessante quando il testo deve restare sul dispositivo durante la generazione della voce, oppure quando la lettura deve funzionare senza rete. Questa caratteristica va verificata nell’intera applicazione, non dedotta dal solo modello.",
+          "La lingua è un primo filtro concreto: l’italiano non compare tra quelle elencate nella fonte. Per contenuti destinati a utenti italiani occorre quindi valutare un’altra soluzione o verificare eventuali aggiornamenti prima di avviare il progetto. Anche la licenza va esaminata in rapporto all’uso previsto: la variante multilingue descritta non è indicata come liberamente utilizzabile in prodotti commerciali. Per una scelta consapevole, chi prepara i contenuti e chi li ascolterà dovrebbe partecipare alla definizione dei requisiti."
+        ]
+      },
+      "sourceIds": [
+        "phonon"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A small, testable pilot",
+        "it": "Un pilot piccolo e verificabile"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "A pilot can start with a limited set of approved texts in a supported language suited to the use case. The sample should include short and long sentences, product names, dates, numbers and codes that actually appear in the material. People familiar with the process can listen for incorrect pronunciation, unclear passages and places where a synthetic voice is unsuitable.",
+          "The test should also account for the time needed to prepare text, correct errors and integrate playback into the existing workflow. Check operation on the intended devices and decide how listeners will access the original text. Compare the findings with the current process: improvements in time or quality should not be assumed before testing."
+        ],
+        "it": [
+          "Si può iniziare con un insieme limitato di testi approvati, nella lingua supportata e adatta al caso d’uso. Il campione dovrebbe includere frasi brevi e lunghe, nomi di prodotto, date, numeri e codici effettivamente presenti nei materiali. Chi conosce il processo può ascoltare le letture e segnalare pronunce errate, passaggi poco comprensibili e punti in cui una voce sintetica non è appropriata.",
+          "La prova dovrebbe considerare anche il tempo necessario per preparare i testi, correggere gli errori e integrare la lettura nel flusso esistente. Conviene verificare il funzionamento sui dispositivi previsti e decidere come rendere disponibile il testo originale. I risultati vanno confrontati con il processo attuale: nessun miglioramento di tempo o qualità è acquisito prima della verifica."
+        ]
+      },
+      "sourceIds": [
+        "phonon"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Criteria for a decision",
+        "it": "Criteri per decidere"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before adoption, we suggest defining who approves content, how spoken versions are updated and how users report errors. For important material, providing the written document and having a person review readings can reduce the risk of ambiguous communication.",
+          "The final choice depends on language suitability, usage rights, intelligibility and the effort needed to maintain the integration. If any of these fails to meet the requirements, the pilot can still provide useful evidence for comparing other options."
+        ],
+        "it": [
+          "Prima di adottare la soluzione, suggeriamo di chiarire chi approva i contenuti, come si aggiornano le versioni lette e come gli utenti segnalano errori. Per testi importanti, la disponibilità del documento scritto e una revisione umana delle letture possono ridurre il rischio di comunicazioni ambigue.",
+          "La scelta finale dipende dall’adeguatezza della lingua, dai diritti d’uso, dalla comprensibilità e dall’impegno necessario per mantenere l’integrazione. Se uno di questi elementi non soddisfa i requisiti, il pilot fornisce comunque indicazioni utili per confrontare altre opzioni."
+        ]
+      },
+      "sourceIds": [
+        "phonon"
+      ]
+    }
+  ],
+  "slug": "voce-ai-locale-pmi-phonon",
+  "sources": [
+    {
+      "checkedAt": "2026-11-06",
+      "id": "phonon",
+      "publishedAt": "2026-11-05",
+      "publisher": "Hugging Face",
+      "title": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.",
+      "url": "https://huggingface.co/blog/phonon-tts"
+    }
+  ],
+  "summary": {
+    "en": "Phonon offers speech synthesis that runs on the device. For an SME, assessment starts with language, licensing and reading quality on the texts actually used.",
+    "it": "Phonon propone la sintesi vocale eseguita sul dispositivo. Per una PMI, la valutazione parte da lingua, licenza e qualità della lettura sui testi realmente utilizzati."
+  },
+  "title": {
+    "en": "On-device AI speech: how SMEs can assess a local model",
+    "it": "Voce AI sul dispositivo: come valutare un modello locale per la PMI"
+  },
+  "topic": {
+    "en": "Local models and speech synthesis",
+    "it": "Modelli locali e sintesi vocale"
+  },
+  "updatedAt": "2026-11-06"
+}
