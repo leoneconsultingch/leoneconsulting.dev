@@ -1,0 +1,298 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-07",
+    "digest": "6e30ce816ca4c05339038085ecf3ff3251b9e7703b7262d3abe1cfb69ea02e70"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-07",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "The starting point: what attention actually costs",
+        "it": "Il punto di partenza: cosa costa davvero l’attenzione"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "This is a selective reading of literature available on 7 November 2026, not an exhaustive review. We start with the 2017 foundations and 2022 FlashAttention, then examine 2026 proposals. The common thread is how to allocate memory, communication and computation. The outlook is our inference, not an announcement about proprietary model architectures.",
+          "For one self-attention head, Q and K are n × dₖ matrices and V is n × dᵥ: n counts tokens; dₖ and dᵥ are representation dimensions. The operator is Y = softmax(QKᵀ / √dₖ + M)V. Softmax acts row by row; in the causal mask M, future positions have value −∞ and allowed positions zero.",
+          "At fixed dimensions, query–key products and value aggregation require work quadratic in n. A naive implementation materialises n² scores per head. FlashAttention instead computes the same dense attention in tiles, reducing memory transfers: it avoids that materialisation without making dense attention arithmetically linear. Mathematical equivalence does not imply bitwise identity in floating-point arithmetic.",
+          "An essential distinction follows: reducing intermediate memory, reducing operations and changing the information retained are different goals. Attention cost also differs from total model cost: projections, feed-forward networks, communication and weight accesses remain."
+        ],
+        "it": [
+          "Questa è una lettura selettiva della letteratura disponibile al 7 novembre 2026, non una rassegna esaustiva. Partiamo dai fondamenti del 2017 e da FlashAttention del 2022, per arrivare a proposte del 2026. Il filo conduttore è come distribuire memoria, comunicazione e calcolo. Le prospettive finali sono nostre inferenze, non annunci sulle architetture di modelli proprietari.",
+          "Per una testa di self-attention, Q e K sono matrici n × dₖ, V è n × dᵥ: n conta i token; dₖ e dᵥ sono le dimensioni delle rappresentazioni. L’operatore è Y = softmax(QKᵀ / √dₖ + M)V. La softmax opera per riga; nella maschera causale M, le posizioni future valgono −∞ e quelle consentite zero.",
+          "Per dimensioni fissate, i prodotti tra query e chiavi e la combinazione dei valori richiedono lavoro quadratico in n. Una realizzazione ingenua materializza n² punteggi per testa. FlashAttention calcola invece la stessa attenzione densa per blocchi, riducendo i trasferimenti di memoria: evita quella materializzazione, senza trasformare il problema denso in attenzione a costo aritmetico lineare. L’equivalenza matematica non implica identità bit per bit in virgola mobile.",
+          "Ne segue una distinzione essenziale: ridurre memoria intermedia, ridurre operazioni e cambiare l’informazione conservata sono obiettivi diversi. Inoltre, il costo dell’attenzione non coincide con quello dell’intero modello: restano proiezioni, reti feed-forward, comunicazione e accessi ai pesi."
+        ]
+      },
+      "sourceIds": [
+        "attention",
+        "flash"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Recurrent states: the delta rule with forgetting",
+        "it": "Stati ricorrenti: la regola delta con dimenticanza"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Gated DeltaNet, in its ICLR 2025 camera-ready version, combines adaptive decay with targeted updates to a matrix memory. The authors also study hybrids with other mechanisms, including windowed attention. This does not demonstrate that attention can always be removed.",
+          "The rule, rewritten equivalently, is Sₜ = αₜSₜ₋₁ + βₜ(vₜ − αₜSₜ₋₁kₜ)kₜᵀ. Here S has dimension dᵥ × dₖ; k and v are column vectors; α controls decay and β update strength. A query q is read as yₜ = Sₜqₜ.",
+          "The subtraction corrects what the state already predicts for the current key. At fixed dimensions, recurrent state size does not grow with the sequence; however, it compresses associations. In hybrid models, attention components retain their own costs. Compact state does not guarantee exact recall of arbitrarily many facts.",
+          "Original teaching example: S₀ = 0, k₁ = (1,0)ᵀ, v₁ = (2,3)ᵀ and β₁ = 1. After writing, S₁ has first column (2,3)ᵀ and a zero second column. In the limiting case α₂ = β₂ = 1, with the same key and v₂ = (5,7)ᵀ, the first column becomes (5,7)ᵀ, not (7,10)ᵀ: the update corrects the association instead of adding indiscriminately."
+        ],
+        "it": [
+          "Gated DeltaNet, nella versione camera-ready ICLR 2025, combina decadimento adattivo e aggiornamenti mirati di una memoria matriciale. Gli autori studiano anche varianti ibride con altri meccanismi, inclusa l’attenzione a finestra. Il risultato non va letto come una dimostrazione che l’attenzione sia sempre eliminabile.",
+          "La regola, riscritta in forma equivalente, è Sₜ = αₜSₜ₋₁ + βₜ(vₜ − αₜSₜ₋₁kₜ)kₜᵀ. Qui S ha dimensione dᵥ × dₖ; k e v sono vettori colonna; α controlla il decadimento e β l’intensità dell’aggiornamento. Una query q si legge come yₜ = Sₜqₜ.",
+          "La sottrazione nel termine di aggiornamento corregge ciò che lo stato già predice per la chiave corrente. A dimensioni fissate, lo stato ricorrente non cresce con la sequenza; però comprime le associazioni. Nei modelli ibridi, le componenti di attenzione conservano i propri costi. Uno stato compatto non è una garanzia di richiamo esatto per un numero arbitrario di fatti.",
+          "Esempio didattico originale: S₀ = 0, k₁ = (1,0)ᵀ, v₁ = (2,3)ᵀ e β₁ = 1. Dopo la scrittura, la prima colonna di S₁ è (2,3)ᵀ e la seconda è nulla. Nel caso limite α₂ = β₂ = 1, usando la stessa chiave e v₂ = (5,7)ᵀ, la prima colonna diventa (5,7)ᵀ, non (7,10)ᵀ: l’aggiornamento corregge l’associazione anziché sommare senza controllo."
+        ]
+      },
+      "sourceIds": [
+        "delta"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Engram: separating pattern lookup from computation",
+        "it": "Engram: separare il recupero di pattern dal calcolo"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Engram proposes conditional memory made of embeddings indexed by n-grams, with hashing and context-dependent integration. We consulted the July 2026 arXiv revision. The module complements the backbone rather than replacing the whole Transformer.",
+          "A teaching schematic, not the complete implementation, is eₜ = E[hash(xₜ₋ₙ₊₁,…,xₜ)] and h′ₜ = hₜ + gₜW eₜ. E is a learned table; W projects the memory; g is a context-dependent gate. The paper includes additional components beyond this simplification.",
+          "The stated O(1) lookup concerns indexed access under a fixed configuration: it does not make the whole model or physical memory cost constant. A larger table needs capacity and bandwidth. Collisions and contextual ambiguity still require handling.",
+          "The operational distinction is between conversation state, learned memory and documents retrieved from an external system. These are different objects. For a document application, retaining an association does not itself provide a verifiable source, validity date or deletion procedure."
+        ],
+        "it": [
+          "Engram propone una memoria condizionale di embedding indicizzati tramite n-grammi, con hashing e integrazione dipendente dal contesto. Abbiamo consultato la revisione arXiv di luglio 2026. Il modulo affianca il backbone: non sostituisce l’intero Transformer.",
+          "Uno schema didattico, non l’implementazione completa, è eₜ = E[hash(xₜ₋ₙ₊₁,…,xₜ)] e h′ₜ = hₜ + gₜW eₜ. E è una tabella appresa; W proietta la memoria; g è un gate dipendente dal contesto. Il lavoro include più componenti rispetto a questa semplificazione.",
+          "Il lookup O(1) dichiarato riguarda l’accesso indicizzato, con configurazione fissata: non rende costante il costo dell’intero modello o della memoria fisica. Una tabella più grande richiede capacità e banda. Le collisioni e l’ambiguità del contesto restano problemi da gestire.",
+          "La distinzione operativa è tra stato della conversazione, memoria appresa e documenti recuperati da un sistema esterno. Sono tre oggetti diversi. Per un’applicazione documentale, il fatto che un modello conservi un’associazione non offre da solo una fonte verificabile, una data di validità o una procedura di cancellazione."
+        ]
+      },
+      "sourceIds": [
+        "engram"
+      ]
+    },
+    {
+      "heading": {
+        "en": "EngramEdit: updating knowledge without rewriting everything",
+        "it": "EngramEdit: aggiornare conoscenze senza riscrivere tutto"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "The 7 October 2026 EngramEdit preprint studies knowledge updates through conditional memory while keeping the backbone fixed. Different expressions can share embeddings: modifying an entry can affect unrelated facts. This is an experimental proposal, not a general guarantee of safe editing.",
+          "For sum aggregation, update allocation is U* = argmin_U {||AU − B||²_F + Σⱼ λⱼ||uⱼ||²₂}. A describes which embeddings participate in the expressions; B the desired shifts; rows uⱼ of U are updates. The symbol ||·||_F denotes the Frobenius norm, the square root of the sum of squared entries.",
+          "With Λ = diag(λⱼ), the normal equations are (AᵀA + Λ)U = AᵀB. Positive regularisation makes the system invertible; operationally, solve the system without requiring an explicit inverse. The paper distinguishes sum aggregation from gated aggregation: this formula does not automatically describe every variant.",
+          "Dimension check: with p expressions, q embeddings and dimension d, A is p × q, U is q × d and B is p × d. For every nonzero vector z, zᵀ(AᵀA + Λ)z = ||Az||²₂ + Σⱼ λⱼzⱼ² > 0 when all λⱼ are positive. This establishes uniqueness and invertibility, not the semantic correctness of the targets.",
+          "Original algebraic example: with A = [1], B = [2] and λ = 1, the solution is u* = 1 rather than 2. The penalty reduces update magnitude but does not prove that other facts remain correct. Evaluation needs paraphrases, unedited facts and reasoning that uses the revised knowledge."
+        ],
+        "it": [
+          "Il preprint EngramEdit del 7 ottobre 2026 studia aggiornamenti di conoscenza attraverso la memoria condizionale, mantenendo fisso il backbone. Espressioni diverse possono condividere embedding: modificare una voce rischia di influenzare fatti non interessati. È una proposta sperimentale, non una garanzia generale di editing sicuro.",
+          "Nel caso con aggregazione per somma, il problema di allocazione degli aggiornamenti è U* = argmin_U {||AU − B||²_F + Σⱼ λⱼ||uⱼ||²₂}. A descrive quali embedding partecipano alle espressioni; B gli spostamenti desiderati; le righe uⱼ di U sono gli aggiornamenti. Il simbolo ||·||_F indica la norma di Frobenius, cioè la radice della somma dei quadrati degli elementi.",
+          "Con Λ = diag(λⱼ), le equazioni normali sono (AᵀA + Λ)U = AᵀB. La regolarizzazione positiva rende invertibile il sistema; operativamente si risolve il sistema, senza richiedere un’inversa esplicita. Il paper distingue l’aggregazione per somma da quella con gating: questa formula non descrive automaticamente tutte le varianti.",
+          "Controllo dimensionale: con p espressioni, q embedding e dimensione d, A è p × q, U è q × d e B è p × d. Per ogni vettore z non nullo, zᵀ(AᵀA + Λ)z = ||Az||²₂ + Σⱼ λⱼzⱼ² > 0 quando tutti i λⱼ sono positivi. Questo giustifica unicità e invertibilità, non la correttezza semantica dei target.",
+          "Esempio algebrico originale: con A = [1], B = [2] e λ = 1, si ottiene u* = 1 anziché 2. La penalità riduce l’ampiezza dell’intervento, ma non prova che altri fatti restino corretti. Nel collaudo servono parafrasi, fatti non modificati e ragionamenti che usano la conoscenza aggiornata."
+        ]
+      },
+      "sourceIds": [
+        "edit"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Depth is changing: mHC and Attention Residuals",
+        "it": "La profondità cambia: mHC e Attention Residuals"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "A standard residual connection is xₗ₊₁ = xₗ + Fₗ(xₗ). In its January 2026 revision, mHC expands residual streams and constrains their mixing through doubly stochastic matrices. Attention Residuals, a March 2026 technical report, instead studies attention-based selection among earlier layer contributions. These modify connections in different ways; they are not new names for token attention.",
+          "For mHC’s residual matrix P, the ideal constraint is Pᵢⱼ ≥ 0, P1 = 1 and Pᵀ1 = 1. The vector 1 has all entries equal to one. The method uses Sinkhorn-Knopp normalisation; finite iterations satisfy the constraint only approximately in numerical computation.",
+          "Teaching derivation of the constraint: a doubly stochastic matrix is a convex combination of permutations, P = Σᵣ θᵣΠᵣ, with θᵣ ≥ 0 and Σᵣθᵣ = 1. Since ||Πᵣ||₂ = 1, the triangle inequality gives ||P||₂ ≤ 1. For fixed P, this limits amplification in linear mixing. If P depends on the input, the total Jacobian also includes that dependence: this calculation does not establish stability of the entire network or its gradients under every condition.",
+          "For Full Attention Residuals, a layer input can be written hₗ = Σᵢ₌₀ˡ⁻¹ aᵢ→ₗvᵢ, with aᵢ→ₗ = softmaxᵢ(wₗᵀ RMSNorm(vᵢ)). Here v₀ is the embedding and the remaining vᵢ are earlier outputs; wₗ is a learned per-layer query. Softmax acts across depth, separately at each position.",
+          "The Block AttnRes variant groups contributions to reduce memory and communication overhead. The interesting direction is selective reuse of representations. This differs from increasing layer count or the context available to the model."
+        ],
+        "it": [
+          "Un collegamento residuo standard ha forma xₗ₊₁ = xₗ + Fₗ(xₗ). mHC, nella revisione di gennaio 2026, amplia i flussi residui e vincola il loro mescolamento tramite matrici doppiamente stocastiche. Attention Residuals, report tecnico di marzo 2026, studia invece una selezione con attenzione tra contributi degli strati precedenti. Sono interventi diversi sulle connessioni, non nuovi nomi per l’attenzione tra token.",
+          "Per la matrice residua P di mHC, il vincolo ideale è Pᵢⱼ ≥ 0, P1 = 1 e Pᵀ1 = 1. Il vettore 1 ha tutte le componenti uguali a uno. Il metodo usa normalizzazioni Sinkhorn-Knopp; con iterazioni finite il vincolo è soddisfatto numericamente in modo approssimato.",
+          "Derivazione didattica del vincolo: una matrice doppiamente stocastica è una combinazione convessa di permutazioni, P = Σᵣ θᵣΠᵣ, con θᵣ ≥ 0 e Σᵣθᵣ = 1. Poiché ||Πᵣ||₂ = 1, la disuguaglianza triangolare dà ||P||₂ ≤ 1. A P fissata, questo limita l’amplificazione del mescolamento lineare. Se P dipende dall’input, il Jacobiano totale include anche tale dipendenza: il conto non dimostra la stabilità dell’intera rete o dei suoi gradienti in ogni condizione.",
+          "Per Full Attention Residuals, l’input di uno strato può essere scritto hₗ = Σᵢ₌₀ˡ⁻¹ aᵢ→ₗvᵢ, con aᵢ→ₗ = softmaxᵢ(wₗᵀ RMSNorm(vᵢ)). v₀ è l’embedding e gli altri vᵢ sono uscite precedenti; wₗ è una query appresa per strato. La softmax agisce sulla profondità, separatamente per posizione.",
+          "La variante Block AttnRes raggruppa i contributi per ridurre l’onere di memoria e comunicazione. La direzione interessante è rendere selettivo il riuso delle rappresentazioni. È distinto dall’aumentare il numero di strati o il contesto disponibile al modello."
+        ]
+      },
+      "sourceIds": [
+        "mhc",
+        "attnres"
+      ]
+    },
+    {
+      "heading": {
+        "en": "More reasoning also means allocating compute better",
+        "it": "Più ragionamento significa anche allocare meglio il calcolo"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Snell and coauthors study how to allocate inference-time computation across search, verification and response revision strategies. Effectiveness depends on problem difficulty. This does not imply that generating more tokens always improves an answer, or that spending more inference compute requires an architectural change.",
+          "An original probability example separates producing a solution from selecting it. If each attempt has probability p of being correct and attempts are independent, the probability that at least one of m attempts succeeds is 1 − (1 − p)ᵐ. With p = 0.2 and m = 4, this is 0.5904, or 59.04%.",
+          "This is the probability of having a correct solution in the group, not the accuracy of the selected answer. Matching it would require a perfect selector; correlated errors and fallible verifiers change the practical result. Verification costs also belong in the budget.",
+          "For a problem with a checkable solution, such as a program assessed by relevant tests, extra computation can have an observable stopping criterion. For an open factual answer, the quality of checking remains part of the problem. This is an operational consequence of the probability model, not a product promise."
+        ],
+        "it": [
+          "Snell e coautori studiano come distribuire il calcolo durante l’inferenza, tra strategie di ricerca, verifica e revisione delle risposte. L’efficacia dipende dalla difficoltà del problema. Non ne segue che generare più token migliori sempre una risposta, né che sia necessario cambiare l’architettura per spendere più calcolo in inferenza.",
+          "Un esempio probabilistico originale chiarisce la differenza tra produrre e scegliere una soluzione. Se ogni tentativo ha probabilità p di essere corretto e i tentativi sono indipendenti, la probabilità che almeno uno di m tentativi riesca è 1 − (1 − p)ᵐ. Con p = 0,2 e m = 4 vale 0,5904, cioè 59,04%.",
+          "Questa è la probabilità di avere una soluzione corretta nel gruppo, non l’accuratezza della risposta selezionata. Per eguagliarla servirebbe un selettore perfetto; nella pratica errori correlati e verificatori fallibili cambiano il risultato. Anche il costo della verifica va incluso nel budget.",
+          "Per un problema con soluzione controllabile, come un programma verificato da test pertinenti, il calcolo aggiuntivo può avere un criterio di arresto osservabile. Per una risposta fattuale aperta, la qualità del controllo resta parte del problema. Questa è una conseguenza operativa del modello probabilistico, non una promessa su un prodotto."
+        ]
+      },
+      "sourceIds": [
+        "compute"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A concrete calculation: attention, cache and state are different memories",
+        "it": "Un conto concreto: attenzione, cache e stato non sono la stessa memoria"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "These are independent examples, not measurements of a specific model. Materialising a score matrix for one head with n = 32,768 tokens and two bytes per entry requires n² × 2 = 2,147,483,648 bytes, or 2 GiB. At 65,536 tokens it reaches 8 GiB. Squaring doubles the factor twice; a tiled algorithm can avoid retaining the full matrix.",
+          "The KV cache instead reuses previously computed keys and values during autoregressive generation. For a standard uncompressed cache with equal key and value dimensions, a byte estimate is M_KV = 2 × B × L × n × h_KV × d_h × b. Here B is batch size; L layer count; h_KV key/value heads; d_h dimension per head; and b bytes per entry. The first factor 2 counts keys and values.",
+          "With B = 1, L = 32, n = 32,768, h_KV = 8, d_h = 128 and b = 2, this gives 4 GiB for the KV cache alone. Doubling n gives 8 GiB, not 16. Weights, buffers and other states are excluded; compressed, windowed or otherwise different caches require a different calculation.",
+          "Timing also needs separation. Prefill processes the prompt; during cached decoding, a new query consults retained keys. For dense attention at fixed dimensions, that single query’s work grows linearly with the current context. Charging every generated token the full quadratic cost of processing the prompt again is incorrect."
+        ],
+        "it": [
+          "I conti seguenti sono esempi autonomi, non misure di uno specifico modello. Materializzare una matrice di punteggi per una testa con n = 32.768 token e due byte per elemento richiede n² × 2 = 2.147.483.648 byte, cioè 2 GiB. Con 65.536 token si arriva a 8 GiB. Il quadrato raddoppia due volte; un algoritmo a blocchi può evitare di conservare quella matrice completa.",
+          "La KV cache serve invece a riutilizzare chiavi e valori già calcolati nella generazione autoregressiva. Per una cache standard non compressa, con uguale dimensione delle chiavi e dei valori, una stima in byte è M_KV = 2 × B × L × n × h_KV × d_h × b. B è il batch; L gli strati; h_KV le teste di chiavi e valori; d_h la dimensione per testa; b i byte per elemento. Il primo fattore 2 conta chiavi e valori.",
+          "Con B = 1, L = 32, n = 32.768, h_KV = 8, d_h = 128 e b = 2, il conto dà 4 GiB di sola KV cache. Raddoppiare n porta a 8 GiB, non a 16. Sono esclusi pesi, buffer e altri stati; architetture con compressione, finestre o cache differenti richiedono un altro conto.",
+          "Anche i tempi vanno separati. Nel prefill si elabora il prompt; durante il decoding con cache, una nuova query consulta le chiavi già conservate. Per attenzione densa e dimensioni fissate, il lavoro di quella singola query cresce linearmente con il contesto corrente. Non è corretto attribuire a ogni token generato l’intero costo quadratico di una nuova elaborazione del prompt."
+        ]
+      },
+      "sourceIds": [
+        "attention",
+        "flash",
+        "delta"
+      ]
+    },
+    {
+      "heading": {
+        "en": "What to expect, and what the papers do not establish",
+        "it": "Cosa aspettarsi, e cosa i paper non dimostrano"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Our inference is that models will keep differentiating across several axes: information selection, memory, inter-layer connections and inference budgets. These eight papers do not establish a universally superior Transformer replacement. Hybrid combinations are plausible, not a certain prediction about the next commercial release.",
+          "For technical evaluation, I would ask for quality at matched budgets, prefill latency separated from decoding latency, total memory and results on context that is actually useful. Comparisons using different data, hardware and protocols do not support a reliable ranking. Fewer FLOPs alone do not establish lower elapsed time or cost.",
+          "For editable memory, examine preservation of unedited facts; for compressed states, information recall; for reasoning, verifier quality and total cost. Longer context does not guarantee correct use of documents. A new residual connection does not guarantee factual correctness.",
+          "Evidence status: Gated DeltaNet is labelled ICLR 2025 camera-ready. For Engram, EngramEdit, mHC and Attention Residuals we used the listed manuscript or report versions; we do not assume an unverified peer-review outcome. Conference publication also does not replace independent reproduction or evaluation on a particular use case. Source dates refer to the consulted version, not necessarily the initial proposal."
+        ],
+        "it": [
+          "La nostra inferenza è che i modelli continueranno a differenziarsi lungo più assi: selezione dell’informazione, memoria, collegamenti tra strati e budget di inferenza. Non emerge da questi otto lavori un sostituto universalmente migliore del Transformer. Le combinazioni ibride sono una prospettiva plausibile; non una previsione certa sulla prossima uscita commerciale.",
+          "Per una valutazione tecnica, chiederei qualità a parità di budget, latenza del prefill distinta da quella del decoding, memoria totale e risultati sul contesto effettivamente utile. Confronti su dati, hardware e protocolli differenti non permettono una classifica affidabile. Una riduzione dei FLOP non prova da sola un risparmio di tempo o di denaro.",
+          "Per la memoria modificabile, guarderei la preservazione dei fatti non aggiornati; per gli stati compressi, il richiamo delle informazioni; per il ragionamento, la qualità del verificatore e il costo complessivo. Un contesto più lungo non garantisce uso corretto dei documenti. Una nuova connessione residua non garantisce correttezza fattuale.",
+          "Stato delle evidenze: Gated DeltaNet è indicato come camera-ready ICLR 2025. Per Engram, EngramEdit, mHC e Attention Residuals abbiamo usato i manoscritti o report nelle versioni elencate; non assumiamo un esito di peer review che non abbiamo verificato. Neppure la pubblicazione in conferenza sostituisce una riproduzione indipendente o una prova sul proprio caso d’uso. Le date delle fonti riportano la versione consultata, non necessariamente la prima proposta."
+        ]
+      },
+      "sourceIds": [
+        "delta",
+        "engram",
+        "edit",
+        "mhc",
+        "attnres",
+        "compute"
+      ]
+    }
+  ],
+  "slug": "frontiere-transformer-ricerca-nuovi-modelli",
+  "sources": [
+    {
+      "checkedAt": "2026-11-07",
+      "id": "attention",
+      "publishedAt": "2017-06-12",
+      "publisher": "Vaswani et al.",
+      "title": "Attention Is All You Need — arXiv v1",
+      "url": "https://arxiv.org/abs/1706.03762v1"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "flash",
+      "publishedAt": "2022-06-23",
+      "publisher": "Dao et al.",
+      "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness — arXiv v2",
+      "url": "https://arxiv.org/abs/2205.14135v2"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "delta",
+      "publishedAt": "2025-03-06",
+      "publisher": "Yang, Kautz & Hatamizadeh",
+      "title": "Gated Delta Networks: Improving Mamba2 with Delta Rule — ICLR 2025, arXiv v3",
+      "url": "https://arxiv.org/abs/2412.06464v3"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "engram",
+      "publishedAt": "2026-07-12",
+      "publisher": "Cheng et al.",
+      "title": "Conditional Memory via Scalable Lookup: A New Axis of Sparsity for Large Language Models — arXiv v2",
+      "url": "https://arxiv.org/abs/2601.07372v2"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "edit",
+      "publishedAt": "2026-10-07",
+      "publisher": "Cai et al.",
+      "title": "EngramEdit: Decoupled Knowledge Updates in LLMs through Conditional Memory — arXiv v1",
+      "url": "https://arxiv.org/abs/2610.10533v1"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "mhc",
+      "publishedAt": "2026-01-05",
+      "publisher": "Xie et al.",
+      "title": "mHC: Manifold-Constrained Hyper-Connections — arXiv v2",
+      "url": "https://arxiv.org/abs/2512.24880v2"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "attnres",
+      "publishedAt": "2026-03-16",
+      "publisher": "Kimi Team",
+      "title": "Attention Residuals — technical report, arXiv v1",
+      "url": "https://arxiv.org/abs/2603.15031v1"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "compute",
+      "publishedAt": "2024-08-06",
+      "publisher": "Snell et al.",
+      "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters — arXiv v1",
+      "url": "https://arxiv.org/abs/2408.03314v1"
+    }
+  ],
+  "summary": {
+    "en": "From quadratic attention to editable memory: a mathematical reading of eight publications, including 2026 research, with verifiable examples and limits on what we can expect from upcoming models.",
+    "it": "Dall’attenzione quadratica alla memoria modificabile: una lettura matematica di otto pubblicazioni, con lavori del 2026, esempi verificabili e limiti di ciò che possiamo aspettarci dai prossimi modelli."
+  },
+  "title": {
+    "en": "The frontiers of Transformers: memory, depth and compute in new models",
+    "it": "Le frontiere dei Transformer: memoria, profondità e calcolo nei nuovi modelli"
+  },
+  "topic": {
+    "en": "Transformer architectures and model research",
+    "it": "Architetture Transformer e ricerca sui modelli"
+  },
+  "updatedAt": "2026-11-07"
+}
