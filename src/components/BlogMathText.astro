@@ -1,0 +1,18 @@
+---
+import 'katex/dist/katex.min.css';
+import { renderMathText } from '../lib/blog-math';
+interface Props { text: string }
+const { text } = Astro.props;
+---
+<p class="blog-math-text" set:html={renderMathText(text)} />
+
+<style>
+  .blog-math-text { min-width: 0; overflow-wrap: anywhere; }
+  .blog-math-text :global(.katex-display) {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 0.5em;
+  }
+  .blog-math-text :global(.katex) { font-size: 1.05em; }
+</style>

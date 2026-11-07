@@ -6,6 +6,7 @@ import BlogCard from './BlogCard.astro';
 import BlogSectionNav from './BlogSectionNav.astro';
 import BlogFilters from './BlogFilters.astro';
 import BlogNextSteps from './BlogNextSteps.astro';
+import BlogMathText from './BlogMathText.astro';
 import { type BlogPost, type Language } from '../lib/blog';
 import { sectionIds, sectionLabels, sectionUrl, metadataFor, formatLabels, levelLabels, readingMinutes, relatedPosts, topicLabels, type SectionId } from '../lib/blog-editorial';
 
@@ -61,7 +62,7 @@ const schema = post ? {
               <section aria-labelledby={`section-${index}`}>
                 <p class="text-xs font-semibold uppercase tracking-wide text-primary-700 mb-2">{section.kind === 'fact' ? (en ? 'From the sources' : 'Dalle fonti') : (en ? 'Our analysis' : 'La nostra analisi')}</p>
                 <h2 id={`section-${index}`} class="scroll-mt-28 text-2xl font-bold text-gray-900 mb-4">{section.heading[lang]}</h2>
-                <div class="space-y-4 text-lg text-gray-700 leading-relaxed">{section.paragraphs[lang].map(paragraph => <p>{paragraph}</p>)}</div>
+                <div class="space-y-4 text-lg text-gray-700 leading-relaxed">{section.paragraphs[lang].map(paragraph => <BlogMathText text={paragraph} />)}</div>
                 <p class="mt-4 text-sm text-gray-600">{en ? 'Sources: ' : 'Fonti: '}{section.sourceIds.map(id => <a href={`#source-${id}`} class="inline-block mr-3 text-primary-700 underline underline-offset-4">{post.sources.find(source => source.id === id)?.publisher} [{post.sources.findIndex(source => source.id === id) + 1}]</a>)}</p>
               </section>
             ))}

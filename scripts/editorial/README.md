@@ -1,5 +1,25 @@
 # Blog AI e agente editoriale MissionControl
 
+## Formule matematiche nei paragrafi
+
+Il corpo degli articoli supporta LaTeX con KaTeX durante la build: `\(x^2\)`
+per formule nel testo, `\[E = mc^2\]` oppure `$$E = mc^2$$` per formule centrate.
+Il singolo `$` rimane testo, così gli importi non diventano formule. Titoli,
+sommari e metadati restano testo semplice. Nei JSON ogni backslash va raddoppiato:
+
+```json
+"La formula è \\(x^2\\). Segue \\[\\frac{a}{b}\\]."
+```
+
+HTML, MathML e font vengono serviti dal sito, senza CDN o script matematici nel
+browser. Le formule larghe scorrono nel proprio spazio su mobile. Un delimitatore
+non chiuso o una formula non valida interrompe la build: correggere prima della
+pubblicazione. Il testo ordinario viene sempre escapato; i comandi KaTeX che
+caricano risorse o abilitano HTML non sono autorizzati (`trust: false`).
+
+Il renderer non modifica JSON o digest: aggiungere LaTeX a un articolo già firmato
+è una modifica del contenuto e richiede la normale nuova revisione editoriale.
+
 Il sito carica i JSON bilingui in `company/blog/`. Le pagine articolo IT/EN vengono
 generate solo per contenuti approvati, pubblicati e con data non futura. La review
 è legata al contenuto tramite SHA-256: una modifica successiva invalida la review.
