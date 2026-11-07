@@ -1,0 +1,236 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-07",
+    "digest": "bf238b8cbbe1afbc295b6f903d857963ed7dd76806e105482eb5405d7a949460"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-07",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "Deloitte: speed and revenue measure different things",
+        "it": "Deloitte: velocità e ricavi sono misure diverse"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "In its 29 October 2026 release, Deloitte reports faster decision-making and execution at 81% of surveyed companies; 28% report revenue gains from AI. The survey, conducted in May and June 2026, involved 3,500 leaders across 25 countries.",
+          "These are self-reported findings in a consultancy’s enterprise survey: neither a verified average ROI nor a representative sample of Italian or Swiss SMEs."
+        ],
+        "it": [
+          "Nel comunicato del 29 ottobre 2026, Deloitte riporta decisioni ed esecuzione più rapide per l’81% delle aziende intervistate; il 28% dichiara aumenti dei ricavi attribuiti all’AI. La rilevazione, svolta tra maggio e giugno 2026, ha coinvolto 3.500 dirigenti in 25 Paesi.",
+          "Sono risposte dichiarate in una survey aziendale di una società di consulenza: non un ROI medio verificato né un campione rappresentativo delle PMI italiane o svizzere."
+        ]
+      },
+      "sourceIds": [
+        "deloitte"
+      ]
+    },
+    {
+      "heading": {
+        "en": "OECD: what SMEs report",
+        "it": "OCSE: cosa dichiarano le PMI"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "The November 2025 OECD report analysed over 5,000 SMEs surveyed in late 2024 across seven countries, excluding Italy and Switzerland. Among generative AI users, 65% reported improved employee performance and 26% reported increased revenue.",
+          "These percentages describe how many firms reported a benefit, not the size of productivity or sales growth. They are self-reported assessments, not causal measures of profitability."
+        ],
+        "it": [
+          "Il rapporto OCSE del novembre 2025 ha analizzato oltre 5.000 PMI intervistate a fine 2024 in sette Paesi, esclusi Italia e Svizzera. Tra quelle che usano AI generativa, il 65% ha dichiarato miglioramenti delle prestazioni dei dipendenti e il 26% aumenti dei ricavi.",
+          "Le percentuali indicano quante imprese hanno segnalato un beneficio: non quanto siano cresciute produttività o vendite. Sono percezioni dichiarate, non misure causali di redditività."
+        ]
+      },
+      "sourceIds": [
+        "oecd"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Academic research: a specific result, not a promise",
+        "it": "Ricerca accademica: un risultato specifico, non una promessa"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "In their manuscript revised on 6 November 2024, Brynjolfsson, Li and Raymond studied an AI assistant introduced among 5,172 customer support agents. They estimated a 15% average increase in issues resolved per hour, with substantial differences across workers.",
+          "This measures a particular support workflow: it is not company ROI and does not automatically transfer to an SME’s document processing."
+        ],
+        "it": [
+          "Nel manoscritto aggiornato del 6 novembre 2024, Brynjolfsson, Li e Raymond hanno studiato l’introduzione di un assistente AI tra 5.172 addetti all’assistenza clienti. Hanno stimato un aumento medio del 15% dei problemi risolti per ora, con differenze importanti tra lavoratori.",
+          "La misura riguarda uno specifico processo di assistenza: non equivale al ROI dell’impresa e non si trasferisce automaticamente alla gestione documentale di una PMI."
+        ]
+      },
+      "sourceIds": [
+        "research"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Choose a workflow and measure the baseline",
+        "it": "Partire da un processo e misurare il punto di partenza"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For an SME, the useful question is: what does completing a case correctly cost today, and what would it cost with AI? The approach in the following sections is Leone Consulting’s own analysis; its formulas, assumptions and simulations are not findings from the cited sources.",
+          "Consider supplier document processing. Before a pilot, record monthly volumes, minutes per document, corrections, exceptions and the cost of the work involved. Include the whole journey until usable data reaches the business system. Comparing automated extraction alone with the entire manual workflow would create an artificial advantage.",
+          "Use test documents that reflect everyday difficulties and are comparable with the baseline sample. Measure both total time and quality: incorrect data, documents needing rework and cases requiring human intervention. Fast output that creates additional corrections may worsen the outcome.",
+          "Released hours become cash savings only when they reduce an actual expense, such as overtime or external services. If they allow existing staff to handle more work, they provide additional capacity. Assigning a financial benefit requires real demand and measurable contribution margin; multiplying hours by a salaried employee’s hourly cost is insufficient."
+        ],
+        "it": [
+          "Per una PMI, la domanda utile è: quanto costa oggi completare correttamente una pratica, e quanto costerebbe con l’AI? Il percorso proposto nelle sezioni seguenti è un’elaborazione di Leone Consulting; formule, ipotesi e simulazioni non sono risultati delle fonti citate.",
+          "Prendiamo la gestione dei documenti fornitori. Prima del pilot, registriamo volumi mensili, minuti per documento, correzioni, eccezioni e costo del lavoro coinvolto. Il tempo deve comprendere l’intero percorso fino al dato utilizzabile nel gestionale. Confrontare la sola estrazione automatica con l’intero lavoro manuale produrrebbe un vantaggio artificiale.",
+          "Nel test, usiamo documenti rappresentativi delle difficoltà quotidiane e confrontabili con il campione iniziale. Misuriamo sia il tempo complessivo sia la qualità: dati errati, documenti da rilavorare e casi che richiedono un intervento umano. Una risposta veloce che genera correzioni può peggiorare il risultato.",
+          "Le ore liberate diventano un risparmio monetario soltanto se riducono una spesa effettiva, per esempio straordinari o prestazioni esterne. Se permettono di assorbire più lavoro con lo stesso personale, rappresentano capacità aggiuntiva. Per attribuirle un beneficio economico servono domanda reale e un margine misurabile: non basta moltiplicarle per il costo orario dello stipendio."
+        ]
+      },
+      "sourceIds": [
+        "deloitte",
+        "oecd",
+        "research"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Include all costs and state the formula",
+        "it": "Contare tutti i costi e dichiarare la formula"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Separate setup from recurring costs. Setup includes process analysis, data preparation, integration, acceptance testing and training. Recurring costs include licences, usage, infrastructure, maintenance, monitoring and additional review work. Internal staff time also has an economic cost even when it does not create a new invoice.",
+          "For a simple 12-month comparison: ROI = (incremental economic benefits over 12 months − total incremental costs over 12 months) / total incremental costs over 12 months × 100. The denominator includes setup and operation. Value additional revenue at contribution margin after the costs needed to deliver it. Do not add saved hours to margin generated by those same hours: that would count the benefit twice.",
+          "Simplified payback is: initial cost / (monthly benefit − monthly recurring cost), provided the monthly balance is positive and constant. A zero or negative balance means no payback under this model. For a project with a ramp-up period, use actual monthly cash flows and identify when their cumulative balance recovers the initial outlay."
+        ],
+        "it": [
+          "Separiamo l’avvio dai costi ricorrenti. Nell’avvio includiamo analisi del processo, preparazione dei dati, integrazione, collaudo e formazione. Nei costi ricorrenti contiamo licenze, consumi, infrastruttura, manutenzione, monitoraggio e lavoro di revisione aggiuntivo. Anche le ore interne hanno un costo economico, pur senza generare una nuova fattura.",
+          "Per un confronto semplice a 12 mesi: ROI = (benefici economici incrementali nei 12 mesi − costi incrementali totali nei 12 mesi) / costi incrementali totali nei 12 mesi × 100. Il denominatore comprende avvio e gestione. Ricavi aggiuntivi vanno valorizzati al margine, sottraendo i costi necessari a produrli. Non sommiamo ore risparmiate e margine generato dalle stesse ore: sarebbe un doppio conteggio.",
+          "Il tempo di recupero semplificato è: costo iniziale / (beneficio mensile − costo ricorrente mensile), purché il saldo mensile sia positivo e costante. Con un saldo nullo o negativo non c’è recupero in questo modello. Per un progetto con mesi di avviamento, usiamo invece i flussi mensili effettivi e cerchiamo quando il cumulato recupera l’esborso iniziale."
+        ]
+      },
+      "sourceIds": [
+        "deloitte",
+        "oecd"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Illustrative example: 1,200 documents per month",
+        "it": "Esempio simulato: 1.200 documenti al mese"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "The following example is entirely illustrative: it does not describe a client, a quote or an observed return. All amounts are in euros. Assume 1,200 documents per month and five minutes saved per document after including checks and corrections: 1,200 × 5 / 60 = 100 hours released monthly.",
+          "Suppose half of those hours actually eliminate external services billed at €30 per hour, with no contractual minimum or exit cost. The cash benefit is therefore 100 × 50% × 30 = €1,500 per month. The other 50 hours remain available capacity and are excluded from the financial benefit. If external spending does not fall, this assumption does not hold.",
+          "Assume a total initial cost of €6,000 and incremental recurring costs of €600 per month, covering all relevant items. Over twelve months, benefits = €18,000; costs = €6,000 + €7,200 = €13,200; net benefit = €4,800. First-year ROI is approximately 36.4%. Simplified payback is €6,000 / (€1,500 − €600) = approximately 6.7 months.",
+          "This calculation assumes twelve months at full operation from the start, constant volumes and initial costs incurred before launch. It excludes tax, VAT, financing and discounting. It is an initial operational assessment: delays, seasonality or additional costs change the outcome and belong in the monthly plan."
+        ],
+        "it": [
+          "Quello che segue è un esempio interamente simulato: non descrive un cliente, un preventivo o un rendimento osservato. Tutti gli importi sono in euro. Ipotizziamo 1.200 documenti al mese e cinque minuti risparmiati per documento, dopo aver incluso controlli e correzioni: 1.200 × 5 / 60 = 100 ore mensili liberate.",
+          "Supponiamo che metà delle ore liberate elimini realmente prestazioni esterne fatturate a 30 euro l’ora, senza minimi contrattuali o costi di uscita. Il beneficio monetario è quindi 100 × 50% × 30 = 1.500 euro al mese. Le altre 50 ore restano capacità disponibile e non entrano nel beneficio economico. Se la spesa esterna non si riduce, questa ipotesi non vale.",
+          "Assumiamo un costo iniziale totale di 6.000 euro e costi ricorrenti incrementali di 600 euro al mese, comprendendo tutte le voci pertinenti. In dodici mesi, benefici = 18.000 euro; costi = 6.000 + 7.200 = 13.200 euro; beneficio netto = 4.800 euro. Il ROI del primo anno è circa il 36,4%. Il recupero semplificato è 6.000 / (1.500 − 600) = circa 6,7 mesi.",
+          "Il conto assume dodici mesi immediatamente a regime, volumi costanti e costi iniziali sostenuti prima dell’avvio. Esclude imposte, IVA, finanziamento e attualizzazione. È una prima valutazione operativa: ritardi, stagionalità o costi aggiuntivi cambiano il risultato e vanno inseriti nel piano mensile."
+        ]
+      },
+      "sourceIds": [
+        "deloitte",
+        "oecd"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Three scenarios to test the assumptions",
+        "it": "Tre scenari per capire quanto pesano le ipotesi"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Keep the example’s volumes, time savings, hourly rate and costs unchanged. Vary only the share of the 100 released hours that actually eliminates external spending. These shares are illustrative assumptions, not probabilities, forecasts or percentages drawn from the research.",
+          "Conservative scenario, 25% share: monthly benefit of €750, annual benefit of €9,000 and first-year ROI of approximately −31.8%. The monthly net benefit is only €150: payback would take 40 months if conditions stayed unchanged beyond the first year.",
+          "Central scenario, 50% share: monthly benefit of €1,500, first-year ROI of approximately 36.4% and payback of approximately 6.7 months. Favourable scenario, 75% share: monthly benefit of €2,250, annual benefit of €27,000, ROI of approximately 104.5% and payback of approximately 3.6 months.",
+          "With these costs, non-negative first-year ROI requires at least €1,100 in monthly benefits: €13,200 / 12. At the assumed €30 hourly rate, that means actually eliminating approximately 36.7 hours of external services per month. This is a threshold to test in the pilot, not an achieved result."
+        ],
+        "it": [
+          "Manteniamo identici volumi, tempo risparmiato, tariffa e costi dell’esempio. Cambiamo soltanto la quota delle 100 ore che elimina davvero spesa esterna. Le tre quote sono ipotesi illustrative, non probabilità, previsioni o percentuali ricavate dalle ricerche.",
+          "Scenario prudente, quota del 25%: beneficio di 750 euro al mese, beneficio annuo di 9.000 euro, ROI del primo anno di circa −31,8%. Il saldo mensile è positivo per soli 150 euro: il recupero richiederebbe 40 mesi, se le condizioni restassero identiche anche oltre il primo anno.",
+          "Scenario centrale, quota del 50%: beneficio di 1.500 euro al mese, ROI del primo anno di circa 36,4%, recupero in circa 6,7 mesi. Scenario favorevole, quota del 75%: beneficio di 2.250 euro al mese, beneficio annuo di 27.000 euro, ROI di circa 104,5%, recupero in circa 3,6 mesi.",
+          "Con questi costi, per un ROI non negativo nel primo anno servono almeno 1.100 euro di beneficio mensile: 13.200 / 12. Alla tariffa ipotizzata di 30 euro l’ora, significa eliminare effettivamente circa 36,7 ore mensili di prestazioni esterne. È una soglia da verificare nel pilot, non un risultato già raggiunto."
+        ]
+      },
+      "sourceIds": [
+        "deloitte",
+        "oecd"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Decide through a pilot with criteria agreed in advance",
+        "it": "Decidere con un pilot e criteri concordati prima"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before starting the pilot, assign an owner, a maximum budget and a window long enough to observe routine cases and exceptions. Agree on minimum acceptable quality and an economic criterion, such as recovering the investment within twelve months using documented costs and volumes. The threshold should reflect the company’s priorities.",
+          "During the trial, record correctly completed documents, total minutes including review, corrections and actual spending. Compare AI with the current workflow and simpler alternatives already available in the business system. A successful result requires an incremental benefit over the practical alternative.",
+          "At the end, decide whether to expand, revise or stop the project. If the trial demonstrates only additional capacity, report it as such and identify the constraint preventing its conversion into financial value. Credible ROI links each benefit to verifiable company data; external sources help frame questions and assumptions, while the decision depends on evidence from the actual workflow."
+        ],
+        "it": [
+          "Prima di avviare il pilot, definiamo un responsabile, un budget massimo e una finestra sufficiente a osservare casi ordinari ed eccezioni. Concordiamo una qualità minima accettabile e un criterio economico: per esempio, recuperare l’investimento entro dodici mesi con costi e volumi documentati. La soglia deve riflettere le priorità dell’impresa.",
+          "Durante la prova, registriamo documenti completati correttamente, minuti totali inclusa la revisione, correzioni e spese effettive. Confrontiamo l’AI con il processo attuale e con alternative più semplici già disponibili nel gestionale. Un buon risultato richiede un beneficio incrementale rispetto all’alternativa praticabile.",
+          "Alla fine scegliamo se estendere, correggere o fermare il progetto. Se il test dimostra soltanto capacità aggiuntiva, lo riportiamo come tale e cerchiamo il vincolo che impedisce di valorizzarla. Un ROI credibile collega ogni beneficio a un dato aziendale controllabile; le fonti esterne aiutano a formulare domande e ipotesi, mentre la decisione dipende dalla prova nel processo reale."
+        ]
+      },
+      "sourceIds": [
+        "deloitte",
+        "oecd",
+        "research"
+      ]
+    }
+  ],
+  "slug": "ai-pmi-calcolare-roi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-07",
+      "id": "deloitte",
+      "publishedAt": "2026-10-29",
+      "publisher": "Deloitte",
+      "title": "Enterprise AI Enters an ROI Reckoning: More Use, Uneven Value, Reveals Deloitte Survey",
+      "url": "https://www.deloitte.com/us/en/about/press-room/enterprise-ai-enters-an-roi-reckoning.html"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "oecd",
+      "publishedAt": "2025-11-05",
+      "publisher": "OECD",
+      "title": "Generative AI and the SME Workforce: New Survey Evidence",
+      "url": "https://www.oecd.org/en/publications/generative-ai-and-the-sme-workforce_2d08b99d-en.html"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "research",
+      "publishedAt": "2024-11-06",
+      "publisher": "Brynjolfsson, Li & Raymond · arXiv",
+      "title": "Generative AI at Work — revised manuscript, arXiv:2304.11771v2",
+      "url": "https://arxiv.org/abs/2304.11771v2"
+    }
+  ],
+  "summary": {
+    "en": "Deloitte, OECD and academic research help distinguish productivity from financial returns. A practical method to assess costs, benefits and payback, with three illustrative numerical scenarios.",
+    "it": "Deloitte, OCSE e ricerca accademica aiutano a distinguere produttività e ritorno economico. Un metodo pratico per valutare costi, benefici e tempo di recupero, con tre scenari numerici simulati."
+  },
+  "title": {
+    "en": "AI for SMEs: how to calculate ROI before investing",
+    "it": "AI nelle PMI: come calcolare il ROI prima di investire"
+  },
+  "topic": {
+    "en": "AI for SMEs and return on investment",
+    "it": "AI nelle PMI e ritorno sull’investimento"
+  },
+  "updatedAt": "2026-11-07"
+}
