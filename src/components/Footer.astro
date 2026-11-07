@@ -28,6 +28,7 @@ const platform = validatePlatformConfig(platformConfig);
           <li><a href={basePath || '/'} class="hover:text-primary-400 transition-colors">{t('nav.home')}</a></li>
           <li><a href={`${basePath}/about`} class="hover:text-primary-400 transition-colors">{t('nav.about')}</a></li>
           <li><a href={`${basePath}/services`} class="hover:text-primary-400 transition-colors">{t('nav.services')}</a></li>
+          <li><a href={lang === 'en' ? '/en/ai-consulting-ticino' : '/consulenza-ai-ticino'} class="hover:text-primary-400 transition-colors">{lang === 'en' ? 'AI Consulting Ticino' : 'Consulenza AI Ticino'}</a></li>
           <li><a href={`${basePath}/portfolio`} class="hover:text-primary-400 transition-colors">{t('nav.portfolio')}</a></li>
           <li><a href={`${basePath}/blog`} class="hover:text-primary-400 transition-colors">Blog</a></li>
           {platform.features.guides && <li><a href={`${basePath}/guide`} class="hover:text-primary-400 transition-colors">{lang === 'en' ? 'Guides' : 'Guide'}</a></li>}
