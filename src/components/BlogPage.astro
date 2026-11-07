@@ -4,11 +4,24 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import { type BlogPost, type Language } from '../lib/blog';
 
-interface Props { lang: Language; posts?: BlogPost[]; post?: BlogPost; }
-const { lang, posts = [], post } = Astro.props;
+interface Props { lang: Language; posts?: BlogPost[]; post?: BlogPost; allPosts?: BlogPost[]; }
+const { lang, posts = [], post, allPosts = [] } = Astro.props;
 const en = lang === 'en';
 const base = en ? '/en' : '';
 const formatDate = (value: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'it-IT', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
+
+// Related posts: match by overlapping topic keywords, newest first on ties.
+const STOP_WORDS = new Set(['e', 'ed', 'a', 'da', 'per', 'con', 'su', 'in', 'il', 'lo', 'la', 'i', 'gli', 'le', 'un', 'una', 'ai', 'alle', 'agli', 'dei', 'delle', 'degli', 'the', 'and', 'of', 'for', 'with', 'on', 'to', 'dei']);
+const topicTokens = (value: string) => value.toLowerCase().split(/[^a-zà-ù0-9]+/).filter(token => token.length > 2 && !STOP_WORDS.has(token));
+const related = post
+  ? allPosts
+      .filter(item => item.slug !== post.slug && item.published && item.publishedAt)
+      .map(item => ({ item, score: topicTokens(item.topic[lang]).filter(token => new Set(topicTokens(post.topic[lang])).has(token)).length }))
+      .sort((a, b) => b.score - a.score || (a.item.publishedAt! < b.item.publishedAt! ? 1 : -1))
+      .filter(entry => entry.score > 0)
+      .slice(0, 3)
+      .map(entry => entry.item)
+  : [];
 const title = post ? post.title[lang] : en ? 'AI in practice: news and business applications' : 'AI in pratica: novità e applicazioni per le aziende';
 const description = post ? post.summary[lang] : en
   ? 'AI news explained through primary sources, practical applications and limitations for SMEs.'
@@ -57,6 +70,19 @@ const schema = post ? {
               </li>
             ))}</ol>
           </aside>
+          {related.length > 0 && (
+            <section aria-labelledby="related-posts" class="mt-12 max-w-3xl">
+              <h2 id="related-posts" class="text-2xl font-bold text-gray-900 mb-5">{en ? 'Related articles' : 'Articoli correlati'}</h2>
+              <ul class="space-y-3">
+                {related.map(item => (
+                  <li>
+                    <a href={`${base}/blog/${item.slug}`} class="text-primary-700 font-semibold underline underline-offset-4">{item.title[lang]}</a>
+                    <span class="text-sm text-gray-500"> · {item.topic[lang]}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </article>
       ) : (
         <>
@@ -86,6 +112,7 @@ const schema = post ? {
         <h2 id="blog-next-step" class="text-2xl font-bold text-gray-900 mb-4">{en ? 'What could AI change in your workflow?' : 'Cosa potrebbe cambiare l’AI nel tuo lavoro?'}</h2>
         <div class="flex flex-col sm:flex-row gap-5">
           <a href={`${base}/services#${en ? 'document-ai' : 'ai-documentale'}`} class="text-primary-700 font-semibold underline underline-offset-4">{en ? 'Explore document AI' : 'Scopri l’AI documentale'}</a>
+          <a href={`${base}/${en ? 'async-audit' : 'audit-asincrono'}`} class="text-primary-700 font-semibold underline underline-offset-4">{en ? 'Request a free async audit' : 'Richiedi un audit asincrono gratuito'}</a>
           <a href={`${base}/${en ? 'book-call' : 'prenota'}`} class="text-primary-700 font-semibold underline underline-offset-4">{en ? 'Discuss your project' : 'Parliamo del tuo progetto'}</a>
         </div>
       </section>
