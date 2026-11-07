@@ -28,7 +28,7 @@ const siteUrl = 'https://leoneconsulting.dev';
 
 const seoDescriptions: Record<'it' | 'en', Record<string, string>> = {
   it: {
-    '/': 'Consulenza AI Engineering, sviluppo software e data engineering per PMI e startup. Audit tecnici, MVP rapidi e soluzioni misurabili.',
+    '/': 'Consulenza AI Engineering, sviluppo software e data engineering per PMI e startup in Svizzera. Audit tecnici, MVP rapidi e soluzioni misurabili.',
     '/about': 'Scopri approccio, competenze e metodo di Leone Consulting per progetti AI, software e data engineering orientati ai risultati.',
     '/services': 'Servizi di AI Engineering, data science, sviluppo software e consulenza IT per accelerare prodotti digitali e processi interni.',
     '/portfolio': 'Case study con risultati misurabili: dashboard KPI, prototipi AI, automazioni e pipeline dati implementate su progetti reali.',
@@ -42,8 +42,8 @@ const seoDescriptions: Record<'it' | 'en', Record<string, string>> = {
     '/terms': 'Termini e condizioni di utilizzo del sito e dei servizi Leone Consulting, incluse limitazioni e responsabilità.',
   },
   en: {
-    '/en': 'AI engineering, software development and data engineering consulting for SMEs and startups, focused on measurable outcomes.',
-    '/en/': 'AI engineering, software development and data engineering consulting for SMEs and startups, focused on measurable outcomes.',
+    '/en': 'AI engineering, software development and data engineering consulting for SMEs and startups in Switzerland, focused on measurable outcomes.',
+    '/en/': 'AI engineering, software development and data engineering consulting for SMEs and startups in Switzerland, focused on measurable outcomes.',
     '/en/about': 'Learn about Leone Consulting approach, expertise and delivery method for AI, software and data projects.',
     '/en/services': 'AI engineering, data science, software development and IT consulting services to accelerate digital execution.',
     '/en/portfolio': 'Case studies with measurable outcomes: KPI dashboards, AI prototypes, process automation and production data pipelines.',
@@ -67,22 +67,45 @@ const localizedDescription =
 
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
 
-const italianPath = Astro.url.pathname === '/en'
-  ? '/'
-  : Astro.url.pathname.startsWith('/en/')
-    ? Astro.url.pathname.replace('/en', '')
-    : Astro.url.pathname;
+// Explicit IT/EN pairs for pages whose slugs differ between languages.
+// Without this map, generated hreflang targets hit 301 redirects
+// (e.g. /pacchetti -> /en/pacchetti which redirects to /en/packages).
+const LANG_PAIRS = [
+  { it: '/pacchetti', en: '/en/packages' },
+  { it: '/prenota', en: '/en/book-call' },
+  { it: '/audit-asincrono', en: '/en/async-audit' },
+  { it: '/per-chi-non-sono', en: '/en/not-for-you' },
+];
+// Lookup works from either side: IT pathname (/pacchetti) or EN pathname stripped of /en (/packages).
+const SLUG_ALTERNATES: Record<string, { it: string; en: string }> = {};
+for (const pair of LANG_PAIRS) {
+  SLUG_ALTERNATES[pair.it] = pair;
+  SLUG_ALTERNATES[pair.en.replace('/en', '') || '/'] = pair;
+}
 
-const englishPath = Astro.url.pathname === '/'
-  ? '/en/'
-  : Astro.url.pathname.startsWith('/en')
-    ? Astro.url.pathname
-    : `/en${Astro.url.pathname}`;
+const barePath = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/+$/, '') : '/';
+const itKey = barePath === '/en' ? '/' : barePath.replace(/^\/en(?=\/|$)/, '') || '/';
+const mappedPair = SLUG_ALTERNATES[itKey];
 
-const alternates = [
+const italianPath = mappedPair
+  ? mappedPair.it
+  : barePath === '/en'
+    ? '/'
+    : itKey;
+
+const englishPath = mappedPair
+  ? mappedPair.en
+  : barePath === '/'
+    ? '/en/'
+    : barePath.startsWith('/en')
+      ? barePath
+      : `/en${barePath}`;
+
+// hreflang only on indexable pages; x-default points to the default-language (IT) version of the page.
+const alternates = noindex ? [] : [
   { hreflang: 'it-IT', href: new URL(italianPath, siteUrl).href },
   { hreflang: 'en-US', href: new URL(englishPath, siteUrl).href },
-  { hreflang: 'x-default', href: new URL('/', siteUrl).href },
+  { hreflang: 'x-default', href: new URL(italianPath, siteUrl).href },
 ];
 ---
 

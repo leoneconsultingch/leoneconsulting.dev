@@ -6,5 +6,6 @@ export function getStaticPaths() {
   return loadBlogPosts().map(post => ({ params: { slug: post.slug }, props: { post } }));
 }
 const { post } = Astro.props;
+const allPosts = loadBlogPosts();
 ---
-<BlogPage lang="it" post={post} />
+<BlogPage lang="it" post={post} allPosts={allPosts} />
