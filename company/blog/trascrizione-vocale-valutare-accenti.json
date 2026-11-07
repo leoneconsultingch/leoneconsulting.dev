@@ -1,0 +1,97 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-07",
+    "digest": "63ef2eb7d15633dac01abd5f09a85c756d57dbdd3750a52b030baf035b6ded14"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-07",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What changed in the evaluation",
+        "it": "La novità nella valutazione"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Hugging Face reports that the Open ASR Leaderboard has added two private sets supplied by Liva AI, containing spontaneous English conversations with Egyptian and Nigerian accents. The transcripts include punctuation, capitalization and speech disfluencies.",
+          "The leaderboard therefore offers a broader breakdown of results by accent. Its authors explain that private data and additional providers are intended to make evaluations more representative and reduce optimization aimed at benchmarks. The source describes a change to evaluation; it does not document results from use by SMEs."
+        ],
+        "it": [
+          "Hugging Face riferisce che la Open ASR Leaderboard ha aggiunto due insiemi privati forniti da Liva AI, con conversazioni spontanee in inglese pronunciate con accento egiziano e nigeriano. Le trascrizioni includono punteggiatura, maiuscole e disfluenze del parlato.",
+          "La classifica amplia così la suddivisione dei risultati per accento. Gli autori spiegano che l'uso di dati privati, insieme a nuovi fornitori, mira a rendere le valutazioni più rappresentative e a ridurre l'ottimizzazione mirata ai benchmark. La fonte descrive una modifica alla valutazione: non documenta risultati di utilizzo presso PMI."
+        ]
+      },
+      "sourceIds": [
+        "asr"
+      ]
+    },
+    {
+      "heading": {
+        "en": "From a leaderboard to everyday work",
+        "it": "Dalla classifica al lavoro quotidiano"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "An SME might use transcription as a first step toward meeting notes, searching authorized recordings or building a document archive. An overall leaderboard result, however, cannot establish whether a transcript will be useful in a particular workflow: the voices, vocabulary and conditions in actual recordings matter too.",
+          "Before integrating a system, define what the transcript must preserve. Hesitations and repetitions can help reconstruct what was said, while another task may require more readable text. These are different outputs: retaining the original transcript and clearly identifying later edits makes review easier."
+        ],
+        "it": [
+          "Una PMI potrebbe usare la trascrizione come primo passaggio per preparare appunti di riunione, cercare informazioni in registrazioni autorizzate o alimentare un archivio documentale. Un risultato aggregato in classifica, però, non basta a stabilire se il testo sarà utile nel processo specifico: contano anche le voci, il lessico e le condizioni presenti nelle registrazioni effettive.",
+          "Prima di integrare un sistema, conviene definire che cosa deve conservare la trascrizione. In alcuni casi esitazioni e ripetizioni aiutano a ricostruire ciò che è stato detto; in altri serve un testo più leggibile. Sono due prodotti diversi: mantenere l'originale e indicare chiaramente ogni successiva rielaborazione facilita la revisione."
+        ]
+      },
+      "sourceIds": [
+        "asr"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A pilot that can be checked",
+        "it": "Un pilot verificabile"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For a focused trial, select authorized, representative recordings, including the pronunciation varieties encountered in the workflow. Prepare a reference transcript and compare it with the output, paying particular attention to names, numbers, technical terms and uncertain passages. Assess word accuracy separately from the usefulness of formatting.",
+          "Involve the people who use the documents to measure review time and record errors requiring correction. If text moves into an archive or another application, include a human check before it is used for decisions or operational changes. After the trial, compare the integration with the current process and decide whether to expand it."
+        ],
+        "it": [
+          "Per una prova circoscritta, scegliere registrazioni autorizzate e rappresentative, incluse le varietà di pronuncia che il processo incontra. Preparare una trascrizione di riferimento e confrontarla con l'output, prestando particolare attenzione a nomi, numeri, termini tecnici e passaggi incerti. Valutare separatamente la fedeltà delle parole e l'utilità della formattazione.",
+          "Coinvolgere chi usa i documenti per misurare il tempo di revisione e registrare gli errori che richiedono correzione. Se il testo passa a un archivio o a un altro software, prevedere una verifica umana prima di usarlo per decisioni o modifiche operative. Solo dopo la prova ha senso confrontare l'integrazione con il lavoro attuale e decidere se estenderla."
+        ]
+      },
+      "sourceIds": [
+        "asr"
+      ]
+    }
+  ],
+  "slug": "trascrizione-vocale-valutare-accenti",
+  "sources": [
+    {
+      "checkedAt": "2026-11-07",
+      "id": "asr",
+      "publishedAt": "2026-11-06",
+      "publisher": "Hugging Face",
+      "title": "Egyptian and Nigerian English join the Open ASR Leaderboard",
+      "url": "https://huggingface.co/blog/open-asr-leaderboard-liva"
+    }
+  ],
+  "summary": {
+    "en": "The Open ASR Leaderboard adds spontaneous English speech data with Egyptian and Nigerian accents. For an SME turning audio into documents, it is a reason to test models against the voices and content encountered in its own work.",
+    "it": "La Open ASR Leaderboard aggiunge dati di parlato spontaneo in inglese con accento egiziano e nigeriano. Per una PMI che vuole trasformare audio in documenti, è un invito a provare i modelli sulle voci e sui contenuti del proprio lavoro."
+  },
+  "title": {
+    "en": "Speech transcription: why accents belong in the evaluation",
+    "it": "Trascrizione vocale: perché verificare anche gli accenti"
+  },
+  "topic": {
+    "en": "Document AI and transcription",
+    "it": "AI documentale e trascrizione"
+  },
+  "updatedAt": "2026-11-07"
+}
