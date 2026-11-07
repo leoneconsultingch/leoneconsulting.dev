@@ -1,0 +1,11 @@
+---
+import BlogPage from '../../../../components/BlogPage.astro';
+import { loadBlogPosts } from '../../../../lib/blog-content';
+import { sectionIds, type SectionRoute } from '../../../../lib/blog-editorial';
+export const prerender = true;
+export function getStaticPaths() {
+  return [...sectionIds, 'archive'].map(section => ({ params: { section }, props: { section } }));
+}
+const { section } = Astro.props as { section: SectionRoute };
+---
+<BlogPage lang="en" posts={loadBlogPosts()} sectionId={section === 'archive' ? undefined : section} archive={section === 'archive'} />

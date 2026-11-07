@@ -1,0 +1,12 @@
+---
+import { sectionIds, sectionLabels, sectionUrl, type SectionRoute } from '../lib/blog-editorial';
+import type { Language } from '../lib/blog';
+interface Props { lang: Language; active?: SectionRoute }
+const { lang, active } = Astro.props;
+---
+<nav aria-label={lang === 'en' ? 'Blog sections' : 'Sezioni del blog'} class="mb-12">
+  <ul class="grid sm:grid-cols-3 gap-3">
+    {sectionIds.map(id => <li><a href={sectionUrl(id, lang)} aria-current={active === id ? 'page' : undefined} class:list={['block h-full rounded-xl border p-5 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4', active === id ? 'border-primary-700 bg-primary-50 text-primary-700' : 'border-gray-200 text-gray-800 hover:border-primary-700 hover:text-primary-700']}>{sectionLabels[id][lang]} <span aria-hidden="true">→</span></a></li>)}
+  </ul>
+  <a href={sectionUrl('archive', lang)} aria-current={active === 'archive' ? 'page' : undefined} class="inline-block mt-5 text-primary-700 underline underline-offset-4 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">{sectionLabels.archive[lang]} →</a>
+</nav>

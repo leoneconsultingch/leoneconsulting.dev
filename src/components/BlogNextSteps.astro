@@ -1,0 +1,29 @@
+---
+import platformConfig from '../../company/platform.json';
+import { validatePlatformConfig } from '../lib/platform';
+import { sectionUrl, type SectionId } from '../lib/blog-editorial';
+import type { Language } from '../lib/blog';
+interface Props { lang: Language; article: boolean; section?: SectionId }
+const { lang, article, section } = Astro.props;
+const en = lang === 'en';
+const base = en ? '/en' : '';
+const guides = validatePlatformConfig(platformConfig).features.guides;
+const heading = article && section === 'research' ? (en ? 'Explore the foundations' : 'Approfondisci i fondamenti') : article && section === 'methods' ? (en ? 'Explore methods in practice' : 'Approfondisci i metodi') : article && section === 'applications' ? (en ? 'Explore an application' : 'Esplora un’applicazione') : (en ? 'Continue exploring' : 'Continua a esplorare');
+const links: { href: string; text: string }[] = article && section === 'research' ? [
+  { href: '#sources-title', text: en ? 'Review the sources' : 'Consulta le fonti' },
+  { href: sectionUrl('research', lang), text: en ? 'More research' : 'Altri approfondimenti di ricerca' },
+] : article && section === 'methods' ? [
+  ...(guides ? [{ href: `${base}/guide`, text: en ? 'Explore the guides' : 'Esplora le guide' }] : []),
+  { href: sectionUrl('methods', lang), text: en ? 'More methods' : 'Altri metodi' },
+] : article && section === 'applications' ? [
+  { href: `${base}/services`, text: en ? 'Explore services' : 'Esplora i servizi' },
+  { href: `${base}/contact`, text: en ? 'Discuss your project' : 'Parliamo del tuo progetto' },
+] : [
+  guides ? { href: `${base}/guide`, text: en ? 'Technical guides' : 'Guide tecniche' } : { href: sectionUrl('methods', lang), text: en ? 'Technical methods' : 'Metodi tecnici' },
+  { href: `${base}/services`, text: en ? 'Practical services' : 'Servizi e applicazioni' },
+];
+---
+<section aria-labelledby="blog-next-step" class="mt-16 rounded-xl bg-primary-50 p-8">
+  <h2 id="blog-next-step" class="text-2xl font-bold text-gray-900 mb-4">{heading}</h2>
+  <div class="flex flex-col sm:flex-row gap-5">{links.map(link => <a href={link.href} class="text-primary-700 font-semibold underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">{link.text}</a>)}</div>
+</section>

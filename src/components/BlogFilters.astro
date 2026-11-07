@@ -1,0 +1,51 @@
+---
+import BlogCard from './BlogCard.astro';
+import { metadataFor, topicLabels, levelLabels } from '../lib/blog-editorial';
+import type { BlogPost, Language } from '../lib/blog';
+interface Props { posts: BlogPost[]; lang: Language }
+const { posts, lang } = Astro.props;
+const en = lang === 'en';
+const topics = [...new Set(posts.flatMap(post => metadataFor(post.slug)?.topics ?? []))].sort((a, b) => topicLabels[a][lang].localeCompare(topicLabels[b][lang], lang));
+const levels = (['introductory', 'intermediate', 'advanced'] as const).filter(level => posts.some(post => metadataFor(post.slug)?.level === level));
+---
+<blog-filters data-count-singular={en ? 'article' : 'articolo'} data-count-plural={en ? 'articles' : 'articoli'}>
+  <form hidden class="mb-6 rounded-xl border border-gray-200 bg-gray-50 p-5">
+    <div class="flex flex-wrap items-end gap-4">
+      <div><label for="blog-topic" class="block text-sm font-semibold mb-2">{en ? 'Topic' : 'Argomento'}</label><select id="blog-topic" name="topic" class="rounded border border-gray-400 bg-white px-3 py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"><option value="">{en ? 'All topics' : 'Tutti gli argomenti'}</option>{topics.map(topic => <option value={topic}>{topicLabels[topic][lang]}</option>)}</select></div>
+      <div><label for="blog-level" class="block text-sm font-semibold mb-2">{en ? 'Level' : 'Livello'}</label><select id="blog-level" name="level" class="rounded border border-gray-400 bg-white px-3 py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"><option value="">{en ? 'All levels' : 'Tutti i livelli'}</option>{levels.map(level => <option value={level}>{levelLabels[level][lang]}</option>)}</select></div>
+      <button type="reset" class="text-primary-700 font-semibold underline underline-offset-4 py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">{en ? 'Reset filters' : 'Azzera filtri'}</button>
+    </div>
+    <p data-filter-count aria-live="polite" aria-atomic="true" class="mt-4 text-sm text-gray-700"></p>
+    <p data-filter-empty hidden class="mt-3 text-gray-700">{en ? 'No articles match these filters.' : 'Nessun articolo corrisponde ai filtri selezionati.'}</p>
+  </form>
+  <section aria-labelledby="section-articles"><h2 id="section-articles" class="sr-only">{en ? 'Articles' : 'Articoli'}</h2><div class="grid md:grid-cols-2 gap-6">{posts.map(post => <BlogCard post={post} lang={lang} />)}</div></section>
+</blog-filters>
+<script>
+  import { matchesEditorialFilters } from '../lib/blog-filter';
+  class BlogFilters extends HTMLElement {
+    connectedCallback() {
+      const form = this.querySelector('form');
+      const topic = this.querySelector<HTMLSelectElement>('[name="topic"]');
+      const level = this.querySelector<HTMLSelectElement>('[name="level"]');
+      const count = this.querySelector<HTMLElement>('[data-filter-count]');
+      const empty = this.querySelector<HTMLElement>('[data-filter-empty]');
+      const cards = [...this.querySelectorAll<HTMLElement>('[data-blog-card]')];
+      if (!form || !topic || !level || !count || !empty) return;
+      const update = () => {
+        let visible = 0;
+        for (const card of cards) {
+          const matches = matchesEditorialFilters(card.dataset.level ? { topics: (card.dataset.topics ?? '').split(' '), level: card.dataset.level } : null, topic.value, level.value);
+          card.hidden = !matches;
+          if (matches) visible++;
+        }
+        count.textContent = `${visible} ${visible === 1 ? this.dataset.countSingular : this.dataset.countPlural}`;
+        empty.hidden = visible !== 0;
+      };
+      form.addEventListener('change', update);
+      form.addEventListener('reset', () => setTimeout(update, 0));
+      update();
+      form.hidden = false;
+    }
+  }
+  if (!customElements.get('blog-filters')) customElements.define('blog-filters', BlogFilters);
+</script>

@@ -1,0 +1,17 @@
+---
+import { metadataFor, formatLabels, levelLabels, readingMinutes, sectionLabels, sectionUrl, topicLabels } from '../lib/blog-editorial';
+import type { BlogPost, Language } from '../lib/blog';
+interface Props { post: BlogPost; lang: Language }
+const { post, lang } = Astro.props;
+const meta = metadataFor(post.slug);
+const base = lang === 'en' ? '/en' : '';
+---
+<article data-blog-card data-topics={meta?.topics.join(" ") ?? ""} data-level={meta?.level ?? ""} class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm h-full">
+  {meta && <a href={sectionUrl(meta.section, lang)} class="inline-block mb-3 rounded-full bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-700 underline underline-offset-2">{sectionLabels[meta.section][lang]}</a>}
+  <p class="text-sm font-semibold text-primary-700 mb-3">{post.topic[lang]}</p>
+  {meta && <p class="text-sm text-gray-600 mb-3">{meta.topics.map(id => topicLabels[id][lang]).join(' · ')}</p>}
+  <h3 class="text-xl font-bold text-gray-900 mb-3"><a href={`${base}/blog/${post.slug}`} class="hover:text-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">{post.title[lang]}</a></h3>
+  <p class="text-gray-600 leading-relaxed mb-5">{post.summary[lang]}</p>
+  <p class="text-sm text-gray-600">{meta && <>{formatLabels[meta.format][lang]} · {levelLabels[meta.level][lang]} · </>}{readingMinutes(post, lang)} {lang === 'en' ? 'min read' : 'min di lettura'}</p>
+  <time datetime={post.publishedAt!} class="block mt-2 text-sm text-gray-500">{new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'it-IT', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${post.publishedAt}T00:00:00Z`))}</time>
+</article>

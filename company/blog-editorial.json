@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "posts": {
+    "ai-documentale-verificare-cambiamenti": {
+      "section": "methods",
+      "topics": [
+        "document-ai",
+        "evaluation"
+      ],
+      "format": "technical-note",
+      "level": "intermediate"
+    },
+    "assistente-vocale-pmi-dalla-demo-al-pilot": {
+      "section": "applications",
+      "topics": [
+        "voice-ai",
+        "pilot"
+      ],
+      "format": "application-analysis",
+      "level": "introductory"
+    },
+    "computer-use-pilot": {
+      "section": "applications",
+      "topics": [
+        "automation",
+        "pilot"
+      ],
+      "format": "application-analysis",
+      "level": "introductory"
+    },
+    "dati-riutilizzabili-ai-documentale": {
+      "section": "methods",
+      "topics": [
+        "document-ai",
+        "data"
+      ],
+      "format": "technical-note",
+      "level": "introductory"
+    },
+    "estrazione-campi-documenti-json": {
+      "section": "methods",
+      "topics": [
+        "document-ai",
+        "integration",
+        "evaluation"
+      ],
+      "format": "technical-note",
+      "level": "intermediate"
+    },
+    "granite-switch-aggiornamenti-modelli": {
+      "section": "methods",
+      "topics": [
+        "models",
+        "integration",
+        "evaluation"
+      ],
+      "format": "technical-note",
+      "level": "intermediate"
+    },
+    "mistral-large-4-documenti-valutazione-pmi": {
+      "section": "methods",
+      "topics": [
+        "document-ai",
+        "models",
+        "evaluation"
+      ],
+      "format": "technical-note",
+      "level": "intermediate"
+    },
+    "modelli-locali-test-integrazione": {
+      "section": "methods",
+      "topics": [
+        "models",
+        "integration",
+        "evaluation"
+      ],
+      "format": "technical-note",
+      "level": "intermediate"
+    },
+    "trascrizione-vocale-valutare-accenti": {
+      "section": "methods",
+      "topics": [
+        "voice-ai",
+        "evaluation"
+      ],
+      "format": "technical-note",
+      "level": "intermediate"
+    },
+    "voce-ai-locale-pmi-phonon": {
+      "section": "methods",
+      "topics": [
+        "voice-ai",
+        "models",
+        "evaluation"
+      ],
+      "format": "technical-note",
+      "level": "introductory"
+    },
+    "voce-decisioni-modelli-locali": {
+      "section": "applications",
+      "topics": [
+        "voice-ai",
+        "models",
+        "automation"
+      ],
+      "format": "application-analysis",
+      "level": "introductory"
+    },
+    "ai-pmi-calcolare-roi": {
+      "section": "applications",
+      "topics": [
+        "ai",
+        "business"
+      ],
+      "format": "application-analysis",
+      "level": "introductory"
+    },
+    "frontiere-transformer-ricerca-nuovi-modelli": {
+      "section": "research",
+      "topics": [
+        "ai",
+        "models"
+      ],
+      "format": "paper-review",
+      "level": "advanced"
+    }
+  }
+}

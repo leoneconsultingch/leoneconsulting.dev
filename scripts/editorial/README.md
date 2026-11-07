@@ -214,3 +214,11 @@ italiana e inglese prima di indicare Pubblicato e mostrare i link in Redazione.
 Non servono nuovi token Vercel o dipendenze npm per il publisher.
 
 Il publisher installato usa publisher-owner.json root-owned con UID Mario e perimetro repository/ramo. La CLI di produzione e le scritture remote richiedono questa identità; la copia sorgente priva del file non concede una pubblicazione tramite JSON. `access-check` verifica solo in lettura accesso e collegamento Vercel.
+
+### Catalogo editoriale del blog
+
+La classificazione di presentazione è in `company/blog-editorial.json`, separata dagli articoli firmati in `company/blog/`. Per un articolo revisionato, aggiungere al catalogo una voce con lo stesso slug: `section` (`research`, `methods` o `applications`), `topics` (identificatori presenti nel registro bilingue `topicLabels` in `src/lib/blog-editorial.ts`), `format` (`paper-review`, `technical-note` o `application-analysis`; sono supportati anche `analysis` e `guide`) e `level` (`introductory`, `intermediate` o `advanced`). Il tempo di lettura viene calcolato dal testo nella lingua corrente. Il catalogo viene validato al caricamento e non modifica il contenuto né il digest approvato.
+
+La pubblicazione continua a riguardare un solo JSON articolo: il publisher non aggiorna il catalogo. Un articolo pubblicato senza voce resta visibile nell'archivio completo, senza sezione assegnata; aggiungere la classificazione separatamente dopo verifica. Una voce nel catalogo non pubblica né rende visibile una bozza.
+
+Per un nuovo argomento, aggiungere prima etichette italiane e inglesi al registro `topicLabels`: gli identificatori sconosciuti sono rifiutati. Le pagine di sezione e archivio permettono di filtrare per argomento e livello; senza JavaScript mostrano tutti gli articoli.

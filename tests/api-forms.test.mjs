@@ -251,6 +251,21 @@ test('SMTP invalid configuration is rejected before creating a connection', asyn
   assert.equal(connected, false);
 });
 
+// Astro scripts are modules: preserve imports through CommonJS and supply explicit test doubles.
+function runAuditScript(script, context, trackSuccessfulLead) {
+  const compiled = ts.transpileModule(script, { compilerOptions: {
+    target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS,
+  } }).outputText;
+  vm.runInNewContext(compiled, {
+    ...context,
+    exports: {},
+    require(specifier) {
+      assert.equal(specifier, '../../lib/analytics');
+      return { trackSuccessfulLead };
+    },
+  });
+}
+
 test('English audit form sends a compatible JSON request and displays success', async () => {
   const page = await readFile(new URL('../src/pages/en/async-audit.astro', import.meta.url), 'utf8');
   const script = page.match(/<script>([\s\S]*?)<\/script>/)[1];
@@ -262,12 +277,14 @@ test('English audit form sends a compatible JSON request and displays success', 
   const values = { name: 'Alice', email: 'alice@example.com', project: 'Example',
     objective: 'Review', materials: 'https://example.com/repo', terms: 'on' };
   let submitted;
-  vm.runInNewContext(ts.transpileModule(script, { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText, {
+  const tracked = [];
+  runAuditScript(script, {
     document: { getElementById: (id) => elements[id] },
     FormData: class { entries() { return Object.entries(values); } get(key) { return values[key] ?? null; } },
     fetch: async (url, options) => { submitted = { url, ...options }; return { ok: true, json: async () => ({ success: true }) }; },
-  });
+  }, (response, type) => { tracked.push({ ok: response.ok, type }); });
   await elements['audit-form'].submit({ preventDefault() {} });
+  assert.deepEqual(tracked, [{ ok: true, type: 'audit' }]);
   assert.equal(submitted.headers?.['Content-Type'], 'application/json');
   assert.equal(submitted.url, '/api/audit-request');
   assert.equal(JSON.parse(submitted.body).objective, 'Review');
@@ -285,12 +302,14 @@ test(`English audit form explains a non-JSON WAF ${wafStatus} without resetting 
     addEventListener(_event, callback) { this.submit = callback; },
     reset() { this.wasReset = true; },
   }]));
-  vm.runInNewContext(ts.transpileModule(script, { compilerOptions: { target: ts.ScriptTarget.ES2022 } }).outputText, {
+  const tracked = [];
+  runAuditScript(script, {
     document: { getElementById: (id) => elements[id] },
     FormData: class { entries() { return []; } },
     fetch: async () => ({ status: wafStatus, ok: false, json: async () => { throw new Error('WAF HTML'); } }),
-  });
+  }, (...args) => { tracked.push(args); });
   await elements['audit-form'].submit({ preventDefault() {} });
+  assert.deepEqual(tracked, []);
   assert.match(elements['error-msg'].textContent, /10 minutes/);
   assert.equal(elements['audit-form'].wasReset, undefined);
   assert.equal(elements['submit-btn'].disabled, false);
