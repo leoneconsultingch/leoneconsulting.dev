@@ -1,8 +1,8 @@
 {
   "approval": {
-    "by": "Mario Leone",
     "at": "2026-11-07",
-    "digest": "bf238b8cbbe1afbc295b6f903d857963ed7dd76806e105482eb5405d7a949460"
+    "by": "Mario Leone",
+    "digest": "1becc6856e89be8e49a873441ea731e5a5b73cf0def3001a2e9ca199ec149bd4"
   },
   "eventDate": null,
   "published": true,
@@ -71,28 +71,33 @@
     },
     {
       "heading": {
-        "en": "Choose a workflow and measure the baseline",
-        "it": "Partire da un processo e misurare il punto di partenza"
+        "en": "Start with the Swiss SME’s actual costs",
+        "it": "Partire dai costi effettivi della PMI svizzera"
       },
       "kind": "analysis",
       "paragraphs": {
         "en": [
           "For an SME, the useful question is: what does completing a case correctly cost today, and what would it cost with AI? The approach in the following sections is Leone Consulting’s own analysis; its formulas, assumptions and simulations are not findings from the cited sources.",
+          "SECO’s SME Portal reports average Swiss labour costs of CHF 63.62 per hour in 2020, based on Federal Statistical Office data. This is a historical national reference with substantial sector differences, not a current rate, a Ticino estimate or an external service price. It provides context for the scale of costs rather than setting the project’s parameters.",
           "Consider supplier document processing. Before a pilot, record monthly volumes, minutes per document, corrections, exceptions and the cost of the work involved. Include the whole journey until usable data reaches the business system. Comparing automated extraction alone with the entire manual workflow would create an artificial advantage.",
           "Use test documents that reflect everyday difficulties and are comparable with the baseline sample. Measure both total time and quality: incorrect data, documents needing rework and cases requiring human intervention. Fast output that creates additional corrections may worsen the outcome.",
-          "Released hours become cash savings only when they reduce an actual expense, such as overtime or external services. If they allow existing staff to handle more work, they provide additional capacity. Assigning a financial benefit requires real demand and measurable contribution margin; multiplying hours by a salaried employee’s hourly cost is insufficient."
+          "Released hours become cash savings only when they reduce an actual expense, such as overtime or external services. If they allow existing staff to handle more work, they provide additional capacity. Assigning a financial benefit requires real demand and measurable contribution margin; multiplying hours by a salaried employee’s hourly cost is insufficient.",
+          "For internal staff, calculate the annual cost borne by the business, including employer contributions, and divide it by hours actually worked. Do not use take-home pay. For outsourced activities, use the actual contract’s price and constraints instead. These describe different costs and are not interchangeable."
         ],
         "it": [
           "Per una PMI, la domanda utile è: quanto costa oggi completare correttamente una pratica, e quanto costerebbe con l’AI? Il percorso proposto nelle sezioni seguenti è un’elaborazione di Leone Consulting; formule, ipotesi e simulazioni non sono risultati delle fonti citate.",
+          "Il Portale PMI della SECO riporta un costo medio del lavoro di CHF 63,62 per ora in Svizzera nel 2020, su dati UST. È un riferimento storico nazionale con forti differenze settoriali: non una tariffa attuale, ticinese o di un servizio esterno. Serve a contestualizzare l’ordine di grandezza, non a fissare i parametri del progetto.",
           "Prendiamo la gestione dei documenti fornitori. Prima del pilot, registriamo volumi mensili, minuti per documento, correzioni, eccezioni e costo del lavoro coinvolto. Il tempo deve comprendere l’intero percorso fino al dato utilizzabile nel gestionale. Confrontare la sola estrazione automatica con l’intero lavoro manuale produrrebbe un vantaggio artificiale.",
           "Nel test, usiamo documenti rappresentativi delle difficoltà quotidiane e confrontabili con il campione iniziale. Misuriamo sia il tempo complessivo sia la qualità: dati errati, documenti da rilavorare e casi che richiedono un intervento umano. Una risposta veloce che genera correzioni può peggiorare il risultato.",
-          "Le ore liberate diventano un risparmio monetario soltanto se riducono una spesa effettiva, per esempio straordinari o prestazioni esterne. Se permettono di assorbire più lavoro con lo stesso personale, rappresentano capacità aggiuntiva. Per attribuirle un beneficio economico servono domanda reale e un margine misurabile: non basta moltiplicarle per il costo orario dello stipendio."
+          "Le ore liberate diventano un risparmio monetario soltanto se riducono una spesa effettiva, per esempio straordinari o prestazioni esterne. Se permettono di assorbire più lavoro con lo stesso personale, rappresentano capacità aggiuntiva. Per attribuirle un beneficio economico servono domanda reale e un margine misurabile: non basta moltiplicarle per il costo orario dello stipendio.",
+          "Per il personale interno, calcoliamo il costo annuo a carico dell’azienda, inclusi gli oneri del datore di lavoro, e lo dividiamo per le ore effettivamente lavorate. Non usiamo lo stipendio netto. Per attività esternalizzate, usiamo invece il prezzo e i vincoli del contratto reale. I due valori descrivono costi diversi e non sono intercambiabili."
         ]
       },
       "sourceIds": [
         "deloitte",
         "oecd",
-        "research"
+        "research",
+        "seco"
       ]
     },
     {
@@ -105,42 +110,51 @@
         "en": [
           "Separate setup from recurring costs. Setup includes process analysis, data preparation, integration, acceptance testing and training. Recurring costs include licences, usage, infrastructure, maintenance, monitoring and additional review work. Internal staff time also has an economic cost even when it does not create a new invoice.",
           "For a simple 12-month comparison: ROI = (incremental economic benefits over 12 months − total incremental costs over 12 months) / total incremental costs over 12 months × 100. The denominator includes setup and operation. Value additional revenue at contribution margin after the costs needed to deliver it. Do not add saved hours to margin generated by those same hours: that would count the benefit twice.",
-          "Simplified payback is: initial cost / (monthly benefit − monthly recurring cost), provided the monthly balance is positive and constant. A zero or negative balance means no payback under this model. For a project with a ramp-up period, use actual monthly cash flows and identify when their cumulative balance recovers the initial outlay."
+          "Simplified payback is: initial cost / (monthly benefit − monthly recurring cost), provided the monthly balance is positive and constant. A zero or negative balance means no payback under this model. For a project with a ramp-up period, use actual monthly cash flows and identify when their cumulative balance recovers the initial outlay.",
+          "The budget is expressed in CHF. For cloud services billed in foreign currency, record the currency, budget exchange rate, date and fees, and test an adverse exchange-rate scenario. For VAT, the Federal Tax Administration distinguishes entitlement to input tax deduction: exclude only recoverable VAT from the model; non-recoverable VAT remains a cost. The example assumes full VAT recovery on the purchases considered, which must be checked for the individual business."
         ],
         "it": [
           "Separiamo l’avvio dai costi ricorrenti. Nell’avvio includiamo analisi del processo, preparazione dei dati, integrazione, collaudo e formazione. Nei costi ricorrenti contiamo licenze, consumi, infrastruttura, manutenzione, monitoraggio e lavoro di revisione aggiuntivo. Anche le ore interne hanno un costo economico, pur senza generare una nuova fattura.",
           "Per un confronto semplice a 12 mesi: ROI = (benefici economici incrementali nei 12 mesi − costi incrementali totali nei 12 mesi) / costi incrementali totali nei 12 mesi × 100. Il denominatore comprende avvio e gestione. Ricavi aggiuntivi vanno valorizzati al margine, sottraendo i costi necessari a produrli. Non sommiamo ore risparmiate e margine generato dalle stesse ore: sarebbe un doppio conteggio.",
-          "Il tempo di recupero semplificato è: costo iniziale / (beneficio mensile − costo ricorrente mensile), purché il saldo mensile sia positivo e costante. Con un saldo nullo o negativo non c’è recupero in questo modello. Per un progetto con mesi di avviamento, usiamo invece i flussi mensili effettivi e cerchiamo quando il cumulato recupera l’esborso iniziale."
+          "Il tempo di recupero semplificato è: costo iniziale / (beneficio mensile − costo ricorrente mensile), purché il saldo mensile sia positivo e costante. Con un saldo nullo o negativo non c’è recupero in questo modello. Per un progetto con mesi di avviamento, usiamo invece i flussi mensili effettivi e cerchiamo quando il cumulato recupera l’esborso iniziale.",
+          "Il budget è espresso in CHF. Per servizi cloud fatturati in valuta estera, annotiamo valuta, cambio di budget, data e commissioni, e proviamo uno scenario di cambio sfavorevole. Quanto all’IVA, l’AFC distingue il diritto alla deduzione dell’imposta precedente: nel modello escludiamo solo l’IVA recuperabile; quella non recuperabile resta un costo. Nell’esempio assumiamo pieno recupero dell’IVA sugli acquisti considerati, da verificare per la singola impresa."
         ]
       },
       "sourceIds": [
         "deloitte",
-        "oecd"
+        "oecd",
+        "seco",
+        "afc"
       ]
     },
     {
       "heading": {
-        "en": "Illustrative example: 1,200 documents per month",
-        "it": "Esempio simulato: 1.200 documenti al mese"
+        "en": "Illustrative example in CHF: 1,200 documents per month",
+        "it": "Esempio simulato in CHF: 1.200 documenti al mese"
       },
       "kind": "analysis",
       "paragraphs": {
         "en": [
-          "The following example is entirely illustrative: it does not describe a client, a quote or an observed return. All amounts are in euros. Assume 1,200 documents per month and five minutes saved per document after including checks and corrections: 1,200 × 5 / 60 = 100 hours released monthly.",
-          "Suppose half of those hours actually eliminate external services billed at €30 per hour, with no contractual minimum or exit cost. The cash benefit is therefore 100 × 50% × 30 = €1,500 per month. The other 50 hours remain available capacity and are excluded from the financial benefit. If external spending does not fall, this assumption does not hold.",
-          "Assume a total initial cost of €6,000 and incremental recurring costs of €600 per month, covering all relevant items. Over twelve months, benefits = €18,000; costs = €6,000 + €7,200 = €13,200; net benefit = €4,800. First-year ROI is approximately 36.4%. Simplified payback is €6,000 / (€1,500 − €600) = approximately 6.7 months.",
-          "This calculation assumes twelve months at full operation from the start, constant volumes and initial costs incurred before launch. It excludes tax, VAT, financing and discounting. It is an initial operational assessment: delays, seasonality or additional costs change the outcome and belong in the monthly plan."
+          "The following is an illustrative budget for a Swiss SME: it does not describe a client, a quote or an observed return. Amounts are in Swiss francs and rates are assumptions to replace with actual data and quotes; they are not currency conversions. Assume 1,200 documents per month and five net minutes saved per document, already including routine checks and corrections: 1,200 × 5 / 60 = 100 hours released monthly.",
+          "Suppose half of those hours actually eliminate outsourced administrative services billed at CHF 80 per hour, with no contractual minimum or exit cost. CHF 80 is an assumed invoiced rate, not the FSO average employee cost. The cash benefit is 100 × 50% × CHF 80 = CHF 4,000 per month. The other 50 hours remain available capacity, excluded from the financial benefit. If external spending does not fall, the assumed cash saving does not materialise. As one specific commercial reference, ASM Treuhand’s public price list states CHF 80 per hour for accounting and advisory services, excluding VAT and expenses. This is one provider’s price, not a national average or a recommendation; it does not establish what contract or saving this SME could obtain.",
+          "Build the initial budget as follows: 100 hours of external analysis, integration, acceptance testing and training at CHF 150 per hour = CHF 15,000; 40 internal hours for preparation and onboarding at an assumed employer cost of CHF 75 per hour = CHF 3,000. Total setup: CHF 18,000. CHF 150 and CHF 75 are also budget assumptions, not certified Swiss averages.",
+          "For monthly operation, assume CHF 600 for licences, usage and infrastructure, four hours of external maintenance at CHF 150 = CHF 600 and four internal monitoring hours at CHF 75 = CHF 300: total CHF 1,500. Monitoring is additional system oversight, separate from document checks already included in the five net minutes. Total costs include internal work; a liquidity assessment instead distinguishes additional cash outlays from staff costs already budgeted.",
+          "Over twelve months, benefits = CHF 48,000; costs = CHF 18,000 + CHF 18,000 = CHF 36,000; net benefit = CHF 12,000. First-year economic ROI is approximately 33.3%. Simplified economic payback is CHF 18,000 / (CHF 4,000 − CHF 1,500) = 7.2 months. This is not a bank balance forecast: cash payback requires incremental cash flows alone.",
+          "The calculation assumes twelve months at full operation from the start, constant volumes and initial costs incurred before launch. Amounts exclude recoverable VAT; profit taxes, financing and discounting are excluded. Delays, seasonality, additional costs and non-recoverable VAT belong in the actual plan."
         ],
         "it": [
-          "Quello che segue è un esempio interamente simulato: non descrive un cliente, un preventivo o un rendimento osservato. Tutti gli importi sono in euro. Ipotizziamo 1.200 documenti al mese e cinque minuti risparmiati per documento, dopo aver incluso controlli e correzioni: 1.200 × 5 / 60 = 100 ore mensili liberate.",
-          "Supponiamo che metà delle ore liberate elimini realmente prestazioni esterne fatturate a 30 euro l’ora, senza minimi contrattuali o costi di uscita. Il beneficio monetario è quindi 100 × 50% × 30 = 1.500 euro al mese. Le altre 50 ore restano capacità disponibile e non entrano nel beneficio economico. Se la spesa esterna non si riduce, questa ipotesi non vale.",
-          "Assumiamo un costo iniziale totale di 6.000 euro e costi ricorrenti incrementali di 600 euro al mese, comprendendo tutte le voci pertinenti. In dodici mesi, benefici = 18.000 euro; costi = 6.000 + 7.200 = 13.200 euro; beneficio netto = 4.800 euro. Il ROI del primo anno è circa il 36,4%. Il recupero semplificato è 6.000 / (1.500 − 600) = circa 6,7 mesi.",
-          "Il conto assume dodici mesi immediatamente a regime, volumi costanti e costi iniziali sostenuti prima dell’avvio. Esclude imposte, IVA, finanziamento e attualizzazione. È una prima valutazione operativa: ritardi, stagionalità o costi aggiuntivi cambiano il risultato e vanno inseriti nel piano mensile."
+          "Quello che segue è un budget simulato per una PMI svizzera: non descrive un cliente, un preventivo o un rendimento osservato. Gli importi sono espressi in franchi svizzeri e le tariffe sono ipotesi da sostituire con dati e offerte reali; non derivano da una conversione valutaria. Ipotizziamo 1.200 documenti al mese e cinque minuti netti risparmiati per documento, già inclusi i controlli ordinari e le correzioni: 1.200 × 5 / 60 = 100 ore mensili liberate.",
+          "Supponiamo che metà delle ore liberate elimini realmente prestazioni amministrative esterne fatturate a CHF 80 l’ora, senza minimi contrattuali o costi di uscita. CHF 80 è un’ipotesi di tariffa fatturata, non il costo medio del personale indicato dall’UST. Il beneficio monetario è 100 × 50% × CHF 80 = CHF 4.000 al mese. Le altre 50 ore restano capacità disponibile, esclusa dal beneficio finanziario. Se la spesa esterna non diminuisce, il risparmio monetario ipotizzato non si realizza. Come riscontro commerciale puntuale, il listino pubblico di ASM Treuhand indica CHF 80/ora per contabilità e consulenza, esclusi IVA e spese. È il prezzo di un singolo fornitore, non una media nazionale né una raccomandazione: non dimostra quale contratto o risparmio sia ottenibile per questa PMI.",
+          "Costruiamo il budget iniziale: 100 ore di analisi, integrazione, collaudo e formazione esterna a CHF 150 l’ora = CHF 15.000; 40 ore interne per preparazione e affiancamento a un costo aziendale ipotizzato di CHF 75 l’ora = CHF 3.000. Totale avvio: CHF 18.000. Anche CHF 150 e CHF 75 sono ipotesi del budget, non medie svizzere certificate.",
+          "Per la gestione mensile assumiamo CHF 600 di licenze, consumi e infrastruttura, quattro ore di manutenzione esterna a CHF 150 = CHF 600 e quattro ore interne di monitoraggio a CHF 75 = CHF 300: totale CHF 1.500. Il monitoraggio è lavoro aggiuntivo di supervisione del sistema, distinto dai controlli sui documenti già inclusi nei cinque minuti netti. Nel costo totale includiamo il lavoro interno; nell’analisi della liquidità distinguiamo invece gli esborsi aggiuntivi dai costi del personale già a budget.",
+          "In dodici mesi, benefici = CHF 48.000; costi = CHF 18.000 + CHF 18.000 = CHF 36.000; beneficio netto = CHF 12.000. Il ROI economico del primo anno è circa il 33,3%. Il recupero economico semplificato è CHF 18.000 / (CHF 4.000 − CHF 1.500) = 7,2 mesi. Non è una previsione del saldo bancario: per il recupero di cassa occorre usare soltanto i flussi monetari incrementali.",
+          "Il conto assume dodici mesi immediatamente a regime, volumi costanti e costi iniziali sostenuti prima dell’avvio. Gli importi sono al netto dell’IVA recuperabile; sono esclusi imposte sull’utile, finanziamento e attualizzazione. Ritardi, stagionalità, costi aggiuntivi e IVA non recuperabile vanno inseriti nel piano effettivo."
         ]
       },
       "sourceIds": [
-        "deloitte",
-        "oecd"
+        "seco",
+        "afc",
+        "tariff"
       ]
     },
     {
@@ -151,21 +165,21 @@
       "kind": "analysis",
       "paragraphs": {
         "en": [
-          "Keep the example’s volumes, time savings, hourly rate and costs unchanged. Vary only the share of the 100 released hours that actually eliminates external spending. These shares are illustrative assumptions, not probabilities, forecasts or percentages drawn from the research.",
-          "Conservative scenario, 25% share: monthly benefit of €750, annual benefit of €9,000 and first-year ROI of approximately −31.8%. The monthly net benefit is only €150: payback would take 40 months if conditions stayed unchanged beyond the first year.",
-          "Central scenario, 50% share: monthly benefit of €1,500, first-year ROI of approximately 36.4% and payback of approximately 6.7 months. Favourable scenario, 75% share: monthly benefit of €2,250, annual benefit of €27,000, ROI of approximately 104.5% and payback of approximately 3.6 months.",
-          "With these costs, non-negative first-year ROI requires at least €1,100 in monthly benefits: €13,200 / 12. At the assumed €30 hourly rate, that means actually eliminating approximately 36.7 hours of external services per month. This is a threshold to test in the pilot, not an achieved result."
+          "Keep the CHF budget’s volumes, time savings, rates and costs unchanged. Vary only the share of the 100 released hours that actually eliminates external spending at CHF 80 per hour. These shares are illustrative assumptions, not probabilities or percentages drawn from the research. The payback periods below include the economic cost of internal work, as in the example.",
+          "Conservative scenario, 25% share: monthly benefit of CHF 2,000, annual benefit of CHF 24,000 and first-year ROI of approximately −33.3%. Monthly benefit after costs is CHF 500: economic payback would take 36 months if conditions stayed unchanged beyond the first year.",
+          "Central scenario, 50% share: monthly benefit of CHF 4,000, first-year ROI of approximately 33.3% and economic payback of 7.2 months. Favourable scenario, 75% share: monthly benefit of CHF 6,000, annual benefit of CHF 72,000, ROI of 100% and economic payback of 4 months.",
+          "With these costs, non-negative first-year ROI requires at least CHF 3,000 in monthly benefits: CHF 36,000 / 12. At the assumed external rate of CHF 80 per hour, that means actually eliminating 37.5 invoiced hours per month. This is a threshold to test in the pilot, not an achieved result. If savings start later, the required monthly benefit rises."
         ],
         "it": [
-          "Manteniamo identici volumi, tempo risparmiato, tariffa e costi dell’esempio. Cambiamo soltanto la quota delle 100 ore che elimina davvero spesa esterna. Le tre quote sono ipotesi illustrative, non probabilità, previsioni o percentuali ricavate dalle ricerche.",
-          "Scenario prudente, quota del 25%: beneficio di 750 euro al mese, beneficio annuo di 9.000 euro, ROI del primo anno di circa −31,8%. Il saldo mensile è positivo per soli 150 euro: il recupero richiederebbe 40 mesi, se le condizioni restassero identiche anche oltre il primo anno.",
-          "Scenario centrale, quota del 50%: beneficio di 1.500 euro al mese, ROI del primo anno di circa 36,4%, recupero in circa 6,7 mesi. Scenario favorevole, quota del 75%: beneficio di 2.250 euro al mese, beneficio annuo di 27.000 euro, ROI di circa 104,5%, recupero in circa 3,6 mesi.",
-          "Con questi costi, per un ROI non negativo nel primo anno servono almeno 1.100 euro di beneficio mensile: 13.200 / 12. Alla tariffa ipotizzata di 30 euro l’ora, significa eliminare effettivamente circa 36,7 ore mensili di prestazioni esterne. È una soglia da verificare nel pilot, non un risultato già raggiunto."
+          "Manteniamo identici volumi, tempo risparmiato, tariffe e costi del budget in CHF. Cambiamo soltanto la quota delle 100 ore che elimina davvero spesa esterna a CHF 80 l’ora. Le quote sono ipotesi illustrative, non probabilità o percentuali tratte dalle ricerche. I tempi di recupero sotto riportati includono i costi economici del lavoro interno, come nell’esempio.",
+          "Scenario prudente, quota del 25%: beneficio di CHF 2.000 al mese, beneficio annuo di CHF 24.000 e ROI del primo anno di circa −33,3%. Il beneficio mensile al netto dei costi è CHF 500: il recupero economico richiederebbe 36 mesi, se le condizioni restassero identiche anche oltre il primo anno.",
+          "Scenario centrale, quota del 50%: beneficio di CHF 4.000 al mese, ROI del primo anno di circa 33,3% e recupero economico in 7,2 mesi. Scenario favorevole, quota del 75%: beneficio di CHF 6.000 al mese, beneficio annuo di CHF 72.000, ROI del 100% e recupero economico in 4 mesi.",
+          "Con questi costi, per un ROI non negativo nel primo anno servono almeno CHF 3.000 di beneficio mensile: CHF 36.000 / 12. Alla tariffa esterna ipotizzata di CHF 80 l’ora, significa eliminare effettivamente 37,5 ore mensili fatturate. È una soglia da verificare nel pilot, non un risultato già raggiunto. Se i risparmi iniziano più tardi, la soglia mensile sale."
         ]
       },
       "sourceIds": [
-        "deloitte",
-        "oecd"
+        "seco",
+        "afc"
       ]
     },
     {
@@ -218,15 +232,39 @@
       "publisher": "Brynjolfsson, Li & Raymond · arXiv",
       "title": "Generative AI at Work — revised manuscript, arXiv:2304.11771v2",
       "url": "https://arxiv.org/abs/2304.11771v2"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "seco",
+      "publishedAt": null,
+      "publisher": "SECO · Portail PME / dati OFS",
+      "title": "Chiffres sur les PME: coûts de la main-d’œuvre",
+      "url": "https://www.kmu.admin.ch/fr/chiffres-sur-les-pme-couts-de-la-main-duvre"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "afc",
+      "publishedAt": null,
+      "publisher": "AFC / Federal Tax Administration",
+      "title": "Imposta sul valore aggiunto (IVA) — domande e risposte",
+      "url": "https://www.estv.admin.ch/it/imposta-sul-valore-aggiunto"
+    },
+    {
+      "checkedAt": "2026-11-07",
+      "id": "tariff",
+      "publishedAt": null,
+      "publisher": "ASM Treuhand GmbH",
+      "title": "Preise — Buchhaltung und Beratung",
+      "url": "https://asm-treuhand.ch/preise/"
     }
   ],
   "summary": {
-    "en": "Deloitte, OECD and academic research help distinguish productivity from financial returns. A practical method to assess costs, benefits and payback, with three illustrative numerical scenarios.",
-    "it": "Deloitte, OCSE e ricerca accademica aiutano a distinguere produttività e ritorno economico. Un metodo pratico per valutare costi, benefici e tempo di recupero, con tre scenari numerici simulati."
+    "en": "Deloitte, OECD and Swiss federal sources help distinguish productivity from financial returns. Costs in CHF, three illustrative scenarios and criteria for assessing an AI investment in your SME.",
+    "it": "Deloitte, OCSE e fonti federali svizzere aiutano a distinguere produttività e ritorno economico. Costi in CHF, tre scenari simulati e criteri per valutare un investimento AI nella propria PMI."
   },
   "title": {
-    "en": "AI for SMEs: how to calculate ROI before investing",
-    "it": "AI nelle PMI: come calcolare il ROI prima di investire"
+    "en": "AI for Swiss SMEs: how to calculate ROI in Swiss francs",
+    "it": "AI nelle PMI svizzere: come calcolare il ROI in franchi"
   },
   "topic": {
     "en": "AI for SMEs and return on investment",
