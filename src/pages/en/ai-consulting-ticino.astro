@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI and software consulting for SMEs in Ticino',
+  description: 'AI consulting, software development and data engineering for SMEs in Italian-speaking Switzerland: document AI, process automation and data pipelines, based in Lugano.',
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'Leone Consulting',
+    url: 'https://leoneconsulting.dev',
+  },
+  areaServed: [
+    { '@type': 'Place', name: 'Lugano' },
+    { '@type': 'Place', name: 'Ticino' },
+    { '@type': 'Place', name: 'Italian-speaking Switzerland' },
+  ],
+  serviceType: 'AI consulting and software development',
+};
+---
+
+<Layout
+  title="AI Consulting in Lugano & Ticino for SMEs | Leone Consulting"
+  description="AI and software consulting for SMEs in Ticino: document AI, process automation and data pipelines based in Lugano. Swiss FDPA compliance, data in Switzerland, free audit within 48 hours."
+  schema={serviceSchema}
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="pt-32 pb-12 px-6 bg-gradient-to-br from-primary-50 to-white">
+      <div class="container mx-auto">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-sm font-semibold uppercase tracking-wide text-primary-700 mb-4">Lugano · Ticino · Italian-speaking Switzerland</p>
+          <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            AI consulting in Ticino
+            <span class="text-primary-600">for hands-on SMEs</span>
+          </h1>
+          <p class="text-xl text-gray-600 leading-relaxed">
+            Based in Lugano, working with companies across Italian-speaking Switzerland that want to apply
+            artificial intelligence to real processes: documents, data and automation. Engineering approach, measurable outcomes.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/en/book-call" class="inline-flex items-center justify-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">Book a free 30-minute call</a>
+            <a href="/en/async-audit" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary-600 text-primary-700 font-semibold rounded-lg hover:bg-primary-50 transition-colors">Free async audit in 48 hours</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why local -->
+    <section class="py-16 px-6 bg-white">
+      <div class="container mx-auto max-w-5xl">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Why an AI consultant based in Ticino</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">Swiss FDPA</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Projects designed for the revised Swiss Federal Act on Data Protection (revFADP): documented delivery and clear legal bases.</p>
+          </div>
+          <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">Data in Switzerland</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Where required, your data stays in Switzerland: self-hosted models and infrastructure or Swiss providers.</p>
+          </div>
+          <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-xl border border-orange-200">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">Bilingual IT / EN</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Documentation and deliverables in Italian or English, for SMEs serving both the local market and cross-border clients.</p>
+          </div>
+          <div class="bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-xl border border-purple-200">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">Nearby when it matters</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Onsite in Lugano, Mendrisio and Bellinzona; remote elsewhere. No layers: you talk directly to the person doing the work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What we solve -->
+    <section class="py-16 px-6 bg-gray-50">
+      <div class="container mx-auto max-w-5xl">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">Artificial intelligence for real processes</h2>
+        <p class="text-xl text-gray-600 text-center mb-10 max-w-3xl mx-auto">The three areas where Ticino SMEs get their first tangible results with AI.</p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Document AI</h3>
+            <p class="text-gray-600 mb-4">Contracts, invoices, forms and archives that become queryable data. Structured extraction, source verification, human oversight.</p>
+            <a href="/en/services" class="text-primary-600 font-semibold hover:text-primary-700">Explore services →</a>
+          </div>
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Process automation</h3>
+            <p class="text-gray-600 mb-4">Repetitive flows — quotes, reports, data entry — turned into controlled automations, with before/after metrics.</p>
+            <a href="/en/portfolio" class="text-primary-600 font-semibold hover:text-primary-700">Case studies →</a>
+          </div>
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Data & pipelines</h3>
+            <p class="text-gray-600 mb-4">Data scattered across systems unified into one reliable view: the foundation no serious AI works without.</p>
+            <a href="/en/packages" class="text-primary-600 font-semibold hover:text-primary-700">Packages & pricing →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to start -->
+    <section class="py-16 px-6 bg-white">
+      <div class="container mx-auto max-w-4xl">
+        <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">How to start, in three steps</h2>
+        <ol class="space-y-8">
+          <li class="flex gap-6">
+            <span class="flex-shrink-0 w-12 h-12 rounded-full bg-primary-600 text-white font-bold text-xl flex items-center justify-center">1</span>
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2"><a href="/en/async-audit" class="hover:text-primary-700">Free async audit</a> — 48 hours</h3>
+              <p class="text-gray-600">Send a brief and materials, receive a written technical assessment: feasibility, risks, quick wins. No commitment.</p>
+            </div>
+          </li>
+          <li class="flex gap-6">
+            <span class="flex-shrink-0 w-12 h-12 rounded-full bg-primary-600 text-white font-bold text-xl flex items-center justify-center">2</span>
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2"><a href="/en/book-call" class="hover:text-primary-700">30-minute call</a> — goals and constraints</h3>
+              <p class="text-gray-600">We define priorities, budget and roadmap. If the project does not make sense, I will tell you and suggest alternatives.</p>
+            </div>
+          </li>
+          <li class="flex gap-6">
+            <span class="flex-shrink-0 w-12 h-12 rounded-full bg-primary-600 text-white font-bold text-xl flex items-center justify-center">3</span>
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2"><a href="/en/packages" class="hover:text-primary-700">Pilot and production</a> — clear scope and pricing</h3>
+              <p class="text-gray-600">Tech/AI Audit from CHF 2,700, MVP Sprint CHF 5,500-13,000, Data Pipeline CHF 6,500-16,000. Defined deliverables and timelines.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 px-6 bg-gray-50">
+      <div class="container mx-auto max-w-3xl">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently asked questions</h2>
+        <div class="space-y-4">
+          <details class="group bg-white rounded-lg shadow-sm border border-gray-200">
+            <summary class="cursor-pointer p-6 text-lg font-semibold text-gray-900 list-none">How much does AI consulting cost for an SME?</summary>
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed">It depends on the phase: a Tech/AI Audit starts at CHF 2,700, an MVP Sprint ranges from CHF 5,500 to 13,000, a Data Pipeline from CHF 6,500 to 16,000. The initial async audit and the first call are free, so you can evaluate before investing.</div>
+          </details>
+          <details class="group bg-white rounded-lg shadow-sm border border-gray-200">
+            <summary class="cursor-pointer p-6 text-lg font-semibold text-gray-900 list-none">Does my data stay in Switzerland?</summary>
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed">Yes, wherever the project requires it: self-hosted solutions, Swiss providers or architectures that keep data within the Confederation. Compliance with the Swiss FDPA (revFADP) is part of the delivery, not an add-on.</div>
+          </details>
+          <details class="group bg-white rounded-lg shadow-sm border border-gray-200">
+            <summary class="cursor-pointer p-6 text-lg font-semibold text-gray-900 list-none">Do you only work with Ticino companies?</summary>
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed">No. The base is Lugano with onsite coverage of the canton, but I work with SMEs across Switzerland and north-western Italy, onsite or remotely, in Italian or English.</div>
+          </details>
+          <details class="group bg-white rounded-lg shadow-sm border border-gray-200">
+            <summary class="cursor-pointer p-6 text-lg font-semibold text-gray-900 list-none">Where do we start if we don't know what we need?</summary>
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed">With the free audit: 48 hours, written feedback on what is worth automating in your context and what is not. It is the fastest way to turn "we should use AI" into an informed decision.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-16 px-6 bg-primary-600">
+      <div class="container mx-auto max-w-3xl text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Let's talk about your project in Lugano</h2>
+        <p class="text-xl text-primary-100 mb-8">Thirty minutes, free, no commitment: bring your case, get a concrete direction.</p>
+        <a href="/en/book-call" class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-700 font-semibold rounded-lg hover:bg-primary-50 transition-colors">Book the free call</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
