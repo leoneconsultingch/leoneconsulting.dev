@@ -18,7 +18,7 @@ const {
   title,
   description,
   canonical,
-  ogImage = '/img/og-default.jpg',
+  ogImage = '/images/og-default.jpg',
   ogType = 'website',
   noindex = false,
   schema,
@@ -50,9 +50,16 @@ const organizationSchema = {
     addressRegion: 'Ticino',
   },
   sameAs: [
-    'https://github.com/AstroMarius',
+    'https://github.com/leoneconsultingch',
     'https://www.linkedin.com/in/mario-leone-data-engineer',
+    'https://maps.app.goo.gl/99JLpvT61NTgSUdg6',
   ],
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 46.0213256,
+    longitude: 8.9640696,
+  },
+  hasMap: 'https://maps.app.goo.gl/99JLpvT61NTgSUdg6',
   areaServed: [
     {
       '@type': 'Place',
@@ -70,10 +77,9 @@ const organizationSchema = {
   priceRange: 'CHF 2700-CHF 16000',
 };
 
-// Combine schemas if custom schema provided
-const finalSchema = schema 
-  ? [organizationSchema, schema]
-  : organizationSchema;
+// Combine schemas if custom schema provided (single object or array, kept flat)
+const extraSchemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+const finalSchema = [organizationSchema, ...extraSchemas];
 ---
 
 <!-- Primary Meta Tags -->
@@ -104,8 +110,7 @@ const finalSchema = schema
 
 <!-- Additional SEO -->
 <meta name="author" content="Mario Leone" />
-<meta name="language" content="Italian" />
-<meta name="revisit-after" content="7 days" />
+<meta name="language" content={lang === 'en' ? 'English' : 'Italian'} />
 
 <!-- Schema.org JSON-LD -->
 <script type="application/ld+json" is:inline set:html={JSON.stringify(finalSchema).replace(/</g, '\\u003c')} />
