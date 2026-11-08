@@ -138,9 +138,7 @@ const alternates = noindex ? [] : [
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="alternate" type="application/rss+xml" title={lang === 'en' ? 'Leone Consulting — Blog (English)' : 'Leone Consulting — Blog'} href={lang === 'en' ? '/en/rss.xml' : '/rss.xml'} />
   </head>
   <body class="bg-white text-gray-900 font-sans antialiased">
     <slot />

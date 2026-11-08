@@ -23,13 +23,24 @@ const meta = post ? metadataFor(post.slug) : null;
 const related = post ? relatedPosts(post, allPosts) : [];
 const sectionPosts = sectionId ? posts.filter(item => metadataFor(item.slug)?.section === sectionId) : posts;
 const formatDate = (value: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'it-IT', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
-const schema = post ? {
+const site = 'https://leoneconsulting.dev';
+const blogSchema = post ? {
   '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title[lang],
   description: post.summary[lang], datePublished: post.publishedAt, dateModified: post.updatedAt,
   inLanguage: lang, citation: post.sources.map(source => source.url),
   author: { '@type': 'Organization', name: 'Leone Consulting' },
-  mainEntityOfPage: `https://leoneconsulting.dev${base}/blog/${post.slug}`,
+  mainEntityOfPage: `${site}${base}/blog/${post.slug}`,
 } : undefined;
+const breadcrumbSchema = post ? {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Leone Consulting', item: `${site}${en ? '/en/' : '/'}` },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${site}${base}/blog` },
+    { '@type': 'ListItem', position: 3, name: sectionLabels[meta?.section ?? 'archive'][lang], item: `${site}${sectionUrl(meta?.section ?? 'archive', lang)}` },
+    { '@type': 'ListItem', position: 4, name: post.title[lang], item: `${site}${base}/blog/${post.slug}` },
+  ],
+} : undefined;
+const schema = post ? [blogSchema, breadcrumbSchema] : undefined;
 ---
 <Layout title={title} description={description} ogType={post ? 'article' : 'website'} noindex={!post && (sectionId ? sectionPosts.length === 0 : posts.length === 0)} schema={schema}>
   <Header />

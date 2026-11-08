@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Inter variable font, self-hosted (latin) */
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/fonts/inter-latin-var.woff2") format("woff2");
+}
+
 @theme {
     /* Colori primary (sky blue - identici a Tailwind v3 config) */
     --color-primary-50: #f0f9ff;

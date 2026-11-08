@@ -11,6 +11,17 @@ const allFAQs = [
 
 // Take first 8 for the section (can be filtered by category if needed)
 const displayedFAQs = allFAQs.slice(0, 8);
+
+const stripTags = (value: string) => value.replace(/<[^>]+>/g, '').trim();
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: displayedFAQs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: stripTags(faq.answer) },
+  })),
+};
 ---
 
 <section class="py-24 bg-gradient-to-b from-white to-gray-50">
@@ -65,6 +76,8 @@ const displayedFAQs = allFAQs.slice(0, 8);
         </svg>
       </a>
     </div>
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema).replace(/</g, '\\u003c')} />
   </div>
 </section>
 

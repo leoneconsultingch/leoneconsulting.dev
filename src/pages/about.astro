@@ -11,7 +11,7 @@ import Footer from '../components/Footer.astro';
     <section class="pt-32 pb-20 px-6 bg-gradient-to-br from-primary-50 to-white" aria-labelledby="profile-title">
       <div class="container mx-auto">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
-          <img src="/images/mario-leone-portrait.webp" alt="Ritratto professionale di Mario Leone" width="512" height="512" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover ring-4 ring-white shadow-lg shrink-0" />
+          <img src="/images/mario-leone-portrait.webp" alt="Ritratto professionale di Mario Leone" width="512" height="512" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover ring-4 ring-white shadow-lg shrink-0" fetchpriority="high" decoding="async" />
           <div>
             <h1 id="profile-title" class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Mario Leone</h1>
             <p class="text-2xl font-semibold text-primary-600 mb-8">Consulenza AI, architetture MCP e sviluppo software</p>

@@ -22,12 +22,22 @@ const levels = {
   advanced: en ? 'Advanced' : 'Avanzato',
 };
 const formatDate = (value: string) => new Intl.DateTimeFormat(en ? 'en-GB' : 'it-IT', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${value}T00:00:00Z`));
-const schema = guide ? {
+const site = 'https://leoneconsulting.dev';
+const guideSchema = guide ? {
   '@context': 'https://schema.org', '@type': 'Article', headline: title,
   description, inLanguage: lang, datePublished: guide.publishedAt, dateModified: guide.updatedAt,
   isAccessibleForFree: true, author: { '@type': 'Organization', name: 'Leone Consulting' },
-  mainEntityOfPage: `https://leoneconsulting.dev${base}/guide/${guide.slug}`,
+  mainEntityOfPage: `${site}${base}/guide/${guide.slug}`,
 } : undefined;
+const breadcrumbSchema = guide ? {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Leone Consulting', item: `${site}${en ? '/en/' : '/'}` },
+    { '@type': 'ListItem', position: 2, name: en ? 'Guides' : 'Guide', item: `${site}${base}/guide` },
+    { '@type': 'ListItem', position: 3, name: guide.title[lang], item: `${site}${base}/guide/${guide.slug}` },
+  ],
+} : undefined;
+const schema = guide ? [guideSchema, breadcrumbSchema] : undefined;
 ---
 <Layout title={title} description={description} ogType={guide ? 'article' : 'website'} schema={schema} noindex={!guide && visible.length === 0}>
   <Header />
