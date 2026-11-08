@@ -1,0 +1,101 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-08",
+    "digest": "7bbc9bce157966793c498f56782281deff673c23feff21498a6726f572a72468"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-08",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What Google announced",
+        "it": "Cosa annuncia Google"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Google introduced Gemini Omni 1.2 Flash, available through the Gemini API and Gemini for business. According to the announcement, the model can generate and edit videos up to 15 seconds long, with a selectable duration from 3 to 15 seconds.",
+          "The provider also describes successive edits through conversation and improved adherence to supplied references, such as product or style images. These are Google’s stated capabilities: their usefulness and reliability in a particular business process require practical assessment."
+        ],
+        "it": [
+          "Google ha presentato Gemini Omni 1.2 Flash, disponibile tramite Gemini API e Gemini for business. Secondo l’annuncio, il modello permette di generare e modificare video fino a 15 secondi, con durata selezionabile da 3 a 15 secondi.",
+          "Il fornitore descrive anche modifiche successive tramite conversazione e una maggiore aderenza ai riferimenti forniti, come immagini di prodotto o di stile. Sono capacità dichiarate da Google: la loro utilità e affidabilità in un processo aziendale specifico richiedono una verifica pratica."
+        ]
+      },
+      "sourceIds": [
+        "google-omni"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A focused content pilot",
+        "it": "Un pilot circoscritto per i contenuti"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "An SME could assess the model on a bounded task, such as preparing short draft videos to present a product. The first step is to choose materials the business is authorized to use, define the message and identify who will review the result.",
+          "The test should cover both the initial generation and a subsequent edit request. Someone familiar with the product can compare the video with the references, checking details, visible text and consistency of the message. If an element is unclear or inaccurate, the draft returns for revision.",
+          "It is useful to keep the instructions and assessment criteria alongside the drafts, so the team can compare attempts and see which requests need more intervention. Publication remains a decision for an accountable person: a visually convincing draft does not by itself establish that every detail is correct."
+        ],
+        "it": [
+          "Una PMI potrebbe valutare il modello su un’attività delimitata, per esempio la preparazione di brevi bozze video per presentare un prodotto. Il primo passo è scegliere materiali che l’azienda sia autorizzata a utilizzare, definire il messaggio da comunicare e stabilire chi controllerà il risultato.",
+          "La prova dovrebbe includere sia la generazione iniziale sia una richiesta di modifica successiva. Chi conosce il prodotto può confrontare il video con i riferimenti, verificando dettagli, testi visibili e coerenza del messaggio. Se un elemento è ambiguo o inesatto, la bozza torna in revisione.",
+          "Conviene conservare istruzioni e criteri di valutazione insieme alle bozze, così il team può confrontare tentativi diversi e capire quali richieste richiedono più interventi. La pubblicazione resta una decisione di una persona responsabile: una bozza visivamente convincente non dimostra da sola che ogni dettaglio sia corretto."
+        ]
+      },
+      "sourceIds": [
+        "google-omni"
+      ]
+    },
+    {
+      "heading": {
+        "en": "When to consider integration",
+        "it": "Quando valutare l’integrazione"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "API availability provides a starting point for examining an integration with the business workflow. Before building one, describe where requests originate, which materials are submitted, where drafts are collected and how the responsible reviewer communicates corrections or approval.",
+          "A comparison with the current process can consider total time, the number of revisions and the quality of accepted drafts. It should also include the work of preparing materials and reviewing outputs; no saving or outcome is guaranteed in advance.",
+          "Before using company materials, the SME should check the service terms, content permissions and applicable internal rules. If the test shows that corrections are too frequent, the process can remain manual or be reconsidered for a simpler case. The decision depends on observed results and the organization’s needs."
+        ],
+        "it": [
+          "La disponibilità di un’API offre un punto di partenza per esaminare un’integrazione con il flusso aziendale. Prima di realizzarla, è utile descrivere dove nascono le richieste, quali materiali vengono inviati, dove vengono raccolte le bozze e come il responsabile comunica correzioni o approvazione.",
+          "Un confronto con il processo attuale può considerare tempo complessivo, numero di revisioni e qualità delle bozze accettate. Occorre includere anche il lavoro di preparazione dei materiali e di controllo umano; nessun risparmio o risultato è garantito in anticipo.",
+          "Prima di usare materiali aziendali, la PMI dovrebbe verificare condizioni del servizio, autorizzazioni sui contenuti e regole interne applicabili. Se la prova mostra che le correzioni richieste sono troppo frequenti, il processo può rimanere manuale oppure essere rivisto su un caso più semplice. La decisione dipende dai risultati osservati e dalle esigenze dell’organizzazione."
+        ]
+      },
+      "sourceIds": [
+        "google-omni"
+      ]
+    }
+  ],
+  "slug": "video-generativi-integrazione-pmi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-08",
+      "id": "google-omni",
+      "publishedAt": "2026-11-05",
+      "publisher": "Google",
+      "title": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+    }
+  ],
+  "summary": {
+    "en": "Google introduces Gemini Omni 1.2 Flash for creating and editing short videos. For an SME, a potential integration calls for a test using representative materials and a review before publication.",
+    "it": "Google presenta Gemini Omni 1.2 Flash per creare e modificare brevi video. Per una PMI, un’eventuale integrazione richiede una prova su materiali rappresentativi e una revisione prima della pubblicazione."
+  },
+  "title": {
+    "en": "Generative video: how an SME can assess an integration",
+    "it": "Video generativi: come valutare un’integrazione per la PMI"
+  },
+  "topic": {
+    "en": "Content automation",
+    "it": "Automazione dei contenuti"
+  },
+  "updatedAt": "2026-11-08"
+}
