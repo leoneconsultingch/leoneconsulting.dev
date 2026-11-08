@@ -65,7 +65,14 @@ const localizedDescription =
     ? 'Leone Consulting - AI Engineering, Software Development and IT Consulting'
     : 'Leone Consulting - AI Engineering, Sviluppo Software e Consulenza IT');
 
-const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+// Convenzione trailing slash (trailingSlash: 'always' in astro.config): canonical
+// e hreflang puntano sempre all'URL finale 200, mai a un redirect.
+const withTrailingSlash = (path: string) => {
+  if (path === '/' || /\.[a-z0-9]+$/i.test(path)) return path;
+  return path.endsWith('/') ? path : `${path}/`;
+};
+
+const canonicalUrl = canonical || new URL(withTrailingSlash(Astro.url.pathname), siteUrl).href;
 
 // Explicit IT/EN pairs for pages whose slugs differ between languages.
 // Without this map, generated hreflang targets hit 301 redirects
@@ -104,9 +111,9 @@ const englishPath = mappedPair
 
 // hreflang only on indexable pages; x-default points to the default-language (IT) version of the page.
 const alternates = noindex ? [] : [
-  { hreflang: 'it-IT', href: new URL(italianPath, siteUrl).href },
-  { hreflang: 'en-US', href: new URL(englishPath, siteUrl).href },
-  { hreflang: 'x-default', href: new URL(italianPath, siteUrl).href },
+  { hreflang: 'it-IT', href: new URL(withTrailingSlash(italianPath), siteUrl).href },
+  { hreflang: 'en-US', href: new URL(withTrailingSlash(englishPath), siteUrl).href },
+  { hreflang: 'x-default', href: new URL(withTrailingSlash(italianPath), siteUrl).href },
 ];
 ---
 

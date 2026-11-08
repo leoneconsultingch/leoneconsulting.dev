@@ -66,6 +66,7 @@ const topBullets = pkg.forWhom.bullets.slice(0, 3);
     <a 
       href={`${basePath}/${packagesPath}#${pkg.slug}`}
       class="block w-full px-6 py-3 bg-white text-primary-600 text-center border-2 border-primary-600 rounded-lg hover:bg-primary-50 transition-all font-semibold"
+      aria-label={isEnglish ? `More details about ${pkg.title}` : `Maggiori dettagli su ${pkg.title}`}
     >
       {isEnglish ? 'More details' : 'Maggiori dettagli'}
     </a>

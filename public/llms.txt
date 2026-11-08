@@ -7,20 +7,20 @@ Leone Consulting is a technical consultancy by Mario Leone: applied AI (MCP arch
 ## Main pages
 
 - [Home — AI consulting for Swiss SMEs](https://leoneconsulting.dev/): services overview, packages, featured case studies
-- [About](https://leoneconsulting.dev/about): who, method (analysis → design and development → validation and deployment), expertise areas
-- [Portfolio](https://leoneconsulting.dev/portfolio): case studies with measurable outcomes
-- [Packages](https://leoneconsulting.dev/pacchetti): tech audit, MVP sprint, data pipeline
-- [AI consulting in Ticino](https://leoneconsulting.dev/consulenza-ai-ticino): geo-focused services page (Italian)
-- [Guides](https://leoneconsulting.dev/guide): practical checklists from process to first test
-- [Free async technical audit](https://leoneconsulting.dev/audit-asincrono): lead magnet, feedback in 48 hours
-- [Contact](https://leoneconsulting.dev/contact)
+- [About](https://leoneconsulting.dev/about/): who, method (analysis → design and development → validation and deployment), expertise areas
+- [Portfolio](https://leoneconsulting.dev/portfolio/): case studies with measurable outcomes
+- [Packages](https://leoneconsulting.dev/pacchetti/): tech audit, MVP sprint, data pipeline
+- [AI consulting in Ticino](https://leoneconsulting.dev/consulenza-ai-ticino/): geo-focused services page (Italian)
+- [Guides](https://leoneconsulting.dev/guide/): practical checklists from process to first test
+- [Free async technical audit](https://leoneconsulting.dev/audit-asincrono/): lead magnet, feedback in 48 hours
+- [Contact](https://leoneconsulting.dev/contact/)
 
 ## Blog
 
 Research, methods and applications — each article lists its sources.
 
-- Blog hub: [Italian](https://leoneconsulting.dev/blog) · [English](https://leoneconsulting.dev/en/blog)
-- Sections: [research](https://leoneconsulting.dev/blog/sections/research) · [methods](https://leoneconsulting.dev/blog/sections/methods) · [applications](https://leoneconsulting.dev/blog/sections/applications)
+- Blog hub: [Italian](https://leoneconsulting.dev/blog/) · [English](https://leoneconsulting.dev/en/blog/)
+- Sections: [research](https://leoneconsulting.dev/blog/sections/research/) · [methods](https://leoneconsulting.dev/blog/sections/methods/) · [applications](https://leoneconsulting.dev/blog/sections/applications/)
 
 ## Facts
 
