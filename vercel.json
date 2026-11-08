@@ -5,37 +5,37 @@
   "redirects": [
     {
       "source": "/en/pacchetti",
-      "destination": "/en/packages",
+      "destination": "/en/packages/",
       "permanent": true
     },
     {
       "source": "/en/prenota",
-      "destination": "/en/book-call",
+      "destination": "/en/book-call/",
       "permanent": true
     },
     {
       "source": "/en/audit-asincrono",
-      "destination": "/en/async-audit",
+      "destination": "/en/async-audit/",
       "permanent": true
     },
     {
       "source": "/en/per-chi-non-sono",
-      "destination": "/en/not-for-you",
+      "destination": "/en/not-for-you/",
       "permanent": true
     },
     {
       "source": "/book-call",
-      "destination": "/prenota",
+      "destination": "/prenota/",
       "permanent": true
     },
     {
       "source": "/async-audit",
-      "destination": "/audit-asincrono",
+      "destination": "/audit-asincrono/",
       "permanent": true
     },
     {
       "source": "/not-for-you",
-      "destination": "/per-chi-non-sono",
+      "destination": "/per-chi-non-sono/",
       "permanent": true
     }
   ],
