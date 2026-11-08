@@ -12,11 +12,15 @@ const currentLang = currentPath.startsWith('/en') ? 'en' : 'it';
 const buttonId = isMobile ? 'lang-switcher-mobile' : 'lang-switcher';
 const menuId = isMobile ? 'lang-menu-mobile' : 'lang-menu';
 
+// Normalizza il path (senza slash finale) per il lookup nelle mappe
+const normalizedPath = currentPath.length > 1 ? currentPath.replace(/\/+$/, '') : '/';
+
 const italianToEnglishPathMap: Record<string, string> = {
   '/': '/en',
   '/about': '/en/about',
   '/audit-asincrono': '/en/async-audit',
   '/booking': '/en/booking',
+  '/consulenza-ai-ticino': '/en/ai-consulting-ticino',
   '/contact': '/en/contact',
   '/pacchetti': '/en/packages',
   '/per-chi-non-sono': '/en/not-for-you',
@@ -32,6 +36,7 @@ const englishToItalianPathMap: Record<string, string> = {
   '/en/about': '/about',
   '/en/async-audit': '/audit-asincrono',
   '/en/booking': '/booking',
+  '/en/ai-consulting-ticino': '/consulenza-ai-ticino',
   '/en/contact': '/contact',
   '/en/packages': '/pacchetti',
   '/en/not-for-you': '/per-chi-non-sono',
@@ -44,19 +49,19 @@ const englishToItalianPathMap: Record<string, string> = {
 
 function getAlternatePath(lang: string) {
   if (lang === 'it') {
-    if (englishToItalianPathMap[currentPath]) {
-      return englishToItalianPathMap[currentPath];
+    if (englishToItalianPathMap[normalizedPath]) {
+      return englishToItalianPathMap[normalizedPath];
     }
     // Remove /en prefix
-    return currentPath.replace(/^\/en/, '') || '/';
+    return normalizedPath.replace(/^\/en/, '') || '/';
   } else {
-    if (italianToEnglishPathMap[currentPath]) {
-      return italianToEnglishPathMap[currentPath];
+    if (italianToEnglishPathMap[normalizedPath]) {
+      return italianToEnglishPathMap[normalizedPath];
     }
     // Add /en prefix
-    if (currentPath === '/') return '/en';
-    if (currentPath.startsWith('/en')) return currentPath;
-    return `/en${currentPath}`;
+    if (normalizedPath === '/') return '/en';
+    if (normalizedPath.startsWith('/en')) return normalizedPath;
+    return `/en${normalizedPath}`;
   }
 }
 ---
