@@ -10,12 +10,14 @@ import Footer from '../components/Footer.astro';
   <main>
     <section class="pt-32 pb-20 px-6 bg-gradient-to-br from-primary-50 to-white" aria-labelledby="profile-title">
       <div class="container mx-auto">
-        <div class="max-w-4xl mx-auto text-center">
-          <img src="/images/mario-leone-portrait.webp" alt="Ritratto professionale di Mario Leone" width="512" height="512" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover ring-4 ring-white shadow-lg mx-auto mb-8" />
-          <h1 id="profile-title" class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Mario Leone</h1>
-          <p class="text-2xl font-semibold text-primary-600 mb-8">Consulenza AI, architetture MCP e sviluppo software</p>
-          <p class="text-xl text-gray-600 leading-relaxed mb-6">Sono Mario Leone. Con Leone Consulting aiuto aziende e professionisti a progettare e sviluppare soluzioni di intelligenza artificiale integrate con strumenti, dati e processi di lavoro.</p>
-          <p class="text-lg text-gray-600 leading-relaxed">Seguo personalmente ogni progetto, dall’analisi iniziale alla messa in esercizio. Hai un referente diretto per definire le esigenze, discutere le scelte tecniche e verificare i risultati.</p>
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
+          <img src="/images/mario-leone-portrait.webp" alt="Ritratto professionale di Mario Leone" width="512" height="512" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover ring-4 ring-white shadow-lg shrink-0" />
+          <div>
+            <h1 id="profile-title" class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Mario Leone</h1>
+            <p class="text-2xl font-semibold text-primary-600 mb-8">Consulenza AI, architetture MCP e sviluppo software</p>
+            <p class="text-xl text-gray-600 leading-relaxed mb-6">Sono Mario Leone. Con Leone Consulting aiuto aziende e professionisti a progettare e sviluppare soluzioni di intelligenza artificiale integrate con strumenti, dati e processi di lavoro.</p>
+            <p class="text-lg text-gray-600 leading-relaxed">Seguo personalmente ogni progetto, dall’analisi iniziale alla messa in esercizio. Hai un referente diretto per definire le esigenze, discutere le scelte tecniche e verificare i risultati.</p>
+          </div>
         </div>
       </div>
     </section>

@@ -10,12 +10,14 @@ import Footer from '../../components/Footer.astro';
   <main>
     <section class="pt-32 pb-20 px-6 bg-gradient-to-br from-primary-50 to-white" aria-labelledby="profile-title">
       <div class="container mx-auto">
-        <div class="max-w-4xl mx-auto text-center">
-          <img src="/images/mario-leone-portrait.webp" alt="Professional portrait of Mario Leone" width="512" height="512" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover ring-4 ring-white shadow-lg mx-auto mb-8" />
-          <h1 id="profile-title" class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Mario Leone</h1>
-          <p class="text-2xl font-semibold text-primary-600 mb-8">AI consulting, MCP architectures and software development</p>
-          <p class="text-xl text-gray-600 leading-relaxed mb-6">I’m Mario Leone. Through Leone Consulting, I help businesses and professionals design and build AI solutions integrated with their tools, data and workflows.</p>
-          <p class="text-lg text-gray-600 leading-relaxed">I personally handle each project, from initial analysis to deployment. You work directly with me to define requirements, discuss technical choices and verify results.</p>
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 text-center md:text-left">
+          <img src="/images/mario-leone-portrait.webp" alt="Professional portrait of Mario Leone" width="512" height="512" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover ring-4 ring-white shadow-lg shrink-0" />
+          <div>
+            <h1 id="profile-title" class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Mario Leone</h1>
+            <p class="text-2xl font-semibold text-primary-600 mb-8">AI consulting, MCP architectures and software development</p>
+            <p class="text-xl text-gray-600 leading-relaxed mb-6">I’m Mario Leone. Through Leone Consulting, I help businesses and professionals design and build AI solutions integrated with their tools, data and workflows.</p>
+            <p class="text-lg text-gray-600 leading-relaxed">I personally handle each project, from initial analysis to deployment. You work directly with me to define requirements, discuss technical choices and verify results.</p>
+          </div>
         </div>
       </div>
     </section>
