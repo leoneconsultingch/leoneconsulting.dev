@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-10",
+    "digest": "101ab79c598bd5c89766a9c9aed8cd2f745d26568800e152c44837b537b7b270"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-10",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What the research proposes",
+        "it": "Che cosa propone la ricerca"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "An article published on Hugging Face describes HOPE, a method for shrinking mixture-of-experts language models by removing some experts. In these models, only a subset of experts is activated for each token, but all must occupy memory during inference. The method accounts for interactions between pairs of experts when deciding which to remove.",
+          "The authors report that, when removing 50% of experts, HOPE achieved the best average ranking among the methods compared and gains of up to 6.1 percentage points on agentic coding tasks over the next-best method. These are results reported by the authors under their evaluation conditions."
+        ],
+        "it": [
+          "Un articolo pubblicato su Hugging Face descrive HOPE, un metodo per ridurre i modelli linguistici mixture-of-experts eliminando alcuni esperti. Nei modelli di questo tipo solo una parte degli esperti viene attivata per ogni token, ma tutti devono occupare memoria durante l’inferenza. Il metodo considera le interazioni tra coppie di esperti quando decide quali rimuovere.",
+          "Gli autori riportano che, eliminando il 50% degli esperti, HOPE ha ottenuto il miglior posizionamento medio tra i metodi confrontati e vantaggi fino a 6,1 punti percentuali in attività di coding agentico rispetto al metodo successivo. Sono risultati dichiarati dagli autori nelle condizioni della loro valutazione."
+        ]
+      },
+      "sourceIds": [
+        "hope"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Why it matters to an SME",
+        "it": "Perché interessa a una PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For a business considering a local model, reducing memory requirements can be a useful criterion: it may make configurations that were previously too demanding worth examining. Model size alone, however, does not show whether answers are reliable enough for the intended work. Pruning can change behavior on tasks different from those used in the research.",
+          "A focused trial could extract fields from test documents. Before choosing a model, the business should define the required fields, how missing information is identified, and which errors require human review. The output should remain a proposal to check until the trial demonstrates an adequate level for that workflow."
+        ],
+        "it": [
+          "Per un’azienda che valuta un modello locale, ridurre la memoria necessaria può essere un criterio utile: potrebbe rendere esaminabili configurazioni prima troppo impegnative. La sola dimensione del modello, però, non dice se le risposte siano abbastanza affidabili per il lavoro previsto. La riduzione può modificare il comportamento su compiti diversi da quelli usati nella ricerca.",
+          "Un caso circoscritto potrebbe essere l’estrazione di campi da documenti di prova. Prima di scegliere il modello, conviene stabilire quali campi servono, come riconoscere informazioni mancanti e quali errori richiedono la revisione di una persona. Il risultato deve restare una proposta da controllare, finché la prova non dimostra un livello adeguato per quel processo."
+        ]
+      },
+      "sourceIds": [
+        "hope"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A comparable trial",
+        "it": "Una prova confrontabile"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "The evaluation should compare the original and pruned models on the same documents and with the same instructions. A test set prepared with people who know the workflow can include complete documents, missing fields, different formats and ambiguous information. Documents used to set up the trial should be kept separate from those used to evaluate it.",
+          "For each version, the team can record field accuracy, omissions, manual interventions, total time and resource requirements. Plausible-looking errors deserve particular attention because they can be harder to spot than a missing answer. Results observed on coding tasks do not replace this document-specific evaluation."
+        ],
+        "it": [
+          "La valutazione dovrebbe confrontare il modello originale e quello ridotto sugli stessi documenti e con le stesse istruzioni. Un insieme di prova preparato con chi conosce il processo può includere documenti completi, campi assenti, formati differenti e informazioni ambigue. È utile tenere separati i documenti impiegati per impostare la prova da quelli usati per valutarla.",
+          "Per ogni versione si possono registrare correttezza dei campi, omissioni, interventi manuali, tempo complessivo e risorse richieste. Vanno esaminati anche gli errori apparentemente plausibili, perché possono essere più difficili da individuare di una risposta mancante. I risultati osservati nel coding non sostituiscono questa verifica documentale."
+        ]
+      },
+      "sourceIds": [
+        "hope"
+      ]
+    },
+    {
+      "heading": {
+        "en": "From trial to decision",
+        "it": "Dalla prova alla decisione"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "If the pruned version meets the agreed criteria, the next step could be a limited trial with human oversight and a way to return to the previous process. If it loses important information, the team can assess a different pruning level or retain the original model. The decision depends on results for the specific use case, not the benchmark alone.",
+          "Before connecting the output to other systems, the business should define who approves the data and how incomplete or uncertain responses are handled. A controlled trial can also establish whether the resource benefit justifies the additional verification and maintenance work."
+        ],
+        "it": [
+          "Se la versione ridotta supera i criteri concordati, il passo successivo può essere una sperimentazione limitata con supervisione umana e possibilità di tornare al processo precedente. Se invece perde informazioni importanti, si può valutare un diverso livello di riduzione o mantenere il modello originale. La scelta dipende dai risultati sul caso concreto, non dal solo benchmark.",
+          "Prima di integrare l’output con altri sistemi, occorre definire chi approva i dati e come gestire risposte incomplete o incerte. Una prova controllata permette anche di capire se il beneficio sulle risorse giustifica il lavoro aggiuntivo di verifica e manutenzione."
+        ]
+      },
+      "sourceIds": [
+        "hope"
+      ]
+    }
+  ],
+  "slug": "modelli-locali-valutare-riduzione-esperti",
+  "sources": [
+    {
+      "checkedAt": "2026-11-10",
+      "id": "hope",
+      "publishedAt": "2026-11-09",
+      "publisher": "Hugging Face",
+      "title": "Your Experts Have Partners. There's HOPE for Keeping Them Together",
+      "url": "https://huggingface.co/blog/amazon/higher-order-pruning-experts"
+    }
+  ],
+  "summary": {
+    "en": "Research on Hugging Face proposes a way to shrink mixture-of-experts models while accounting for relationships between experts. For an SME considering local models, the practical task is to assess the trade-off between resource requirements and quality on its own workflow.",
+    "it": "Una ricerca su Hugging Face propone un metodo per ridurre i modelli mixture-of-experts tenendo conto delle relazioni tra esperti. Per una PMI interessata ai modelli locali, il punto è verificare sul proprio processo il compromesso tra risorse richieste e qualità."
+  },
+  "title": {
+    "en": "More compact AI models: how to evaluate expert pruning",
+    "it": "Modelli AI più compatti: come valutare la riduzione degli esperti"
+  },
+  "topic": {
+    "en": "Local AI models",
+    "it": "Modelli AI locali"
+  },
+  "updatedAt": "2026-11-10"
+}
