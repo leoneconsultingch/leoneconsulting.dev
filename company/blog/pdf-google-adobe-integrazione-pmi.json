@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-11",
+    "digest": "cbb1555437c589a789fab75a58b27829244b0b2bcfad2558f9a43b574f26f67d"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-11",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What the announcement covers",
+        "it": "Cosa prevede l’annuncio"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Google has announced an expansion of its partnership with Adobe. Among the planned changes, Acrobat will be suggested from Drive and Gmail, including through an edit entry point in file previews.",
+          "Adobe also plans to expand its connectors in Gemini and Gemini Enterprise to include Acrobat and other tools. Google presents these features as forthcoming; the announcement does not specify an availability date."
+        ],
+        "it": [
+          "Google ha annunciato un ampliamento della collaborazione con Adobe. Tra le novità previste, Acrobat sarà proposto da Drive e Gmail come applicazione suggerita, anche attraverso una voce per modificare il file presente nelle anteprime.",
+          "Adobe prevede inoltre di ampliare i propri connettori in Gemini e Gemini Enterprise, includendo Acrobat e altri strumenti. Google presenta queste funzionalità come iniziative in arrivo: l’annuncio non specifica una data di disponibilità."
+        ]
+      },
+      "sourceIds": [
+        "google-adobe"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Start with a specific step",
+        "it": "Partire da un passaggio concreto"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For an SME that receives and edits many PDFs, the useful starting point is the whole document journey: receipt, opening, editing, review and filing. More direct access to a tool may help, but it does not by itself establish that the entire process will become faster or more reliable.",
+          "A pilot could focus on sample documents resembling those used in administrative work. The team should describe who handles each step, which edits are permitted and where the approved version belongs. That makes the proposed workflow easier to compare with the current one."
+        ],
+        "it": [
+          "Per una PMI che riceve e modifica molti PDF, il punto da esaminare è il percorso completo del documento: ricezione, apertura, modifica, controllo e archiviazione. Un accesso più diretto allo strumento può essere utile, ma da solo non dimostra che l’intero processo diventi più rapido o affidabile.",
+          "Un pilot potrebbe concentrarsi su documenti di prova simili a quelli usati per le attività amministrative. Conviene descrivere chi interviene in ogni passaggio, quali modifiche sono ammesse e dove va conservata la versione approvata. Questo rende confrontabile il nuovo percorso con quello già adottato."
+        ]
+      },
+      "sourceIds": [
+        "google-adobe"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Define checks and responsibilities",
+        "it": "Definire controlli e responsabilità"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before testing, we suggest checking access permissions, sharing and version handling in the products actually available to the business. The team should also establish who can approve an edit and how to recover the previous version if the result is wrong.",
+          "If the workflow includes AI features, staff should review generated content before using or sending it. Incomplete documents, different formats and subsequent corrections are practical cases to include in the test. Data terms and feature availability should be checked for the selected services before processing real business documents."
+        ],
+        "it": [
+          "Prima della prova, suggeriamo di verificare permessi di accesso, condivisione e gestione delle versioni nei prodotti effettivamente disponibili all’azienda. È utile chiarire anche chi può approvare una modifica e come recuperare la versione precedente se il risultato non è corretto.",
+          "Se il processo include funzioni AI, il personale dovrebbe controllare il contenuto prodotto prima di usarlo o inviarlo. Documenti incompleti, formati diversi e correzioni successive sono casi pratici da includere nella prova. Le condizioni applicabili ai dati e la disponibilità delle funzioni vanno verificate sui servizi scelti prima di trattare documenti aziendali reali."
+        ]
+      },
+      "sourceIds": [
+        "google-adobe"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Decide after a comparable test",
+        "it": "Decidere dopo una prova confrontabile"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "To assess the integration, the team can use the same set of sample documents with the current method and, when available, the new workflow. Alongside total time, it should record errors, repeated steps and interventions needed to reach a correct version.",
+          "The decision involves more than the number of clicks: clear responsibilities and the ability to find the approved document also matter. If the test reveals problems, the workflow can remain manual or be revised before wider adoption. Benefits need to be checked in the context of the individual business."
+        ],
+        "it": [
+          "Per valutare l’integrazione, il team può confrontare lo stesso insieme di documenti di prova con il metodo attuale e con il nuovo percorso, quando disponibile. Oltre al tempo totale, dovrebbe registrare errori, passaggi ripetuti e interventi necessari per arrivare a una versione corretta.",
+          "La decisione non riguarda soltanto il numero di clic: conta anche la chiarezza delle responsabilità e la facilità di ritrovare il documento approvato. Se la prova evidenzia problemi, il processo può restare manuale oppure essere rivisto prima di un’adozione più ampia. I benefici vanno verificati nel contesto della singola azienda."
+        ]
+      },
+      "sourceIds": [
+        "google-adobe"
+      ]
+    }
+  ],
+  "slug": "pdf-google-adobe-integrazione-pmi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-11",
+      "id": "google-adobe",
+      "publishedAt": "2026-11-10",
+      "publisher": "Google",
+      "title": "We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps.",
+      "url": "https://blog.google/company-news/inside-google/company-announcements/adobe-google-partnership-integration/"
+    }
+  ],
+  "summary": {
+    "en": "Google has announced new Adobe integrations that bring PDF tools closer to Drive, Gmail and Gemini. For an SME, their value will depend on the document workflow selected and the checks completed before adoption.",
+    "it": "Google ha annunciato nuove integrazioni con Adobe per portare strumenti PDF più vicino a Drive, Gmail e Gemini. Per una PMI, il valore dipenderà dal processo documentale scelto e dalle verifiche svolte prima dell’adozione."
+  },
+  "title": {
+    "en": "PDFs across Google and Adobe: how an SME can assess the new integration",
+    "it": "PDF tra Google e Adobe: come valutare la nuova integrazione in una PMI"
+  },
+  "topic": {
+    "en": "Document AI and integration",
+    "it": "AI documentale e integrazione"
+  },
+  "updatedAt": "2026-11-11"
+}
