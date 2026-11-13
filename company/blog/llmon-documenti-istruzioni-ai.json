@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-13",
+    "digest": "c8adf941d13c9c0c05d9400be31c09db63993c71d41fe6d8c54eb1c3b100e4eb"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-13",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "Explicit structure for model context",
+        "it": "Una struttura esplicita per il contesto"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "The IBM Granite team presents LLMON, a markup language that identifies components and relationships in a language model’s context. The authors describe identifiers that bind instructions to the data they should act on.",
+          "Two experimental preview models derived from Granite 4.1 are available in 3B and 8B sizes, alongside tools and examples. The authors also describe converters between JSON and LLMON and integration with Mellea."
+        ],
+        "it": [
+          "Il team IBM Granite presenta LLMON, un linguaggio di markup che identifica componenti e relazioni nel contesto di un modello linguistico. Gli autori descrivono identificatori che collegano le istruzioni ai dati su cui devono agire.",
+          "Sono disponibili due modelli sperimentali in anteprima derivati da Granite 4.1, nelle dimensioni 3B e 8B, insieme a strumenti ed esempi. Gli autori descrivono anche convertitori tra JSON e LLMON e l’integrazione con Mellea."
+        ]
+      },
+      "sourceIds": [
+        "llmon"
+      ]
+    },
+    {
+      "heading": {
+        "en": "What the provider reports",
+        "it": "Che cosa dichiara il fornitore"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "The authors report that, in some benchmarks, LLMON models ignored much of the malicious instruction content embedded in data, with attack success rates close to zero in certain tests. They also report general capabilities maintained relative to Granite 4.1 Instruct models.",
+          "These observations concern the provider’s reported tests. The article does not establish that every document or business workflow is protected against unwanted instructions."
+        ],
+        "it": [
+          "Gli autori riferiscono che, in alcuni benchmark, i modelli LLMON hanno ignorato gran parte delle istruzioni malevole inserite nei dati, con tassi di successo degli attacchi vicini a zero in alcune prove. Dichiarano inoltre capacità generali mantenute rispetto ai modelli Granite 4.1 Instruct.",
+          "Queste osservazioni riguardano le prove riportate dal fornitore. L’articolo non dimostra che ogni documento o flusso aziendale sia protetto dalle istruzioni indesiderate."
+        ]
+      },
+      "sourceIds": [
+        "llmon"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A focused document pilot",
+        "it": "Un pilot documentale circoscritto"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "An SME could assess a document extraction task, such as identifying dates and references in a set of test forms. Before choosing a model, it should define the required fields, acceptable documents and results that a person must review.",
+          "The test set should include incomplete documents, conflicting instructions within the text and ordinary cases. Reviewers can compare extracted fields with a reference prepared by staff and record omissions, incorrect values and necessary interventions."
+        ],
+        "it": [
+          "Una PMI potrebbe valutare un’attività di estrazione da documenti, ad esempio individuare date e riferimenti in un insieme di moduli di prova. Prima di scegliere il modello, conviene definire quali campi servono, quali documenti sono ammessi e quale risultato deve essere verificato da una persona.",
+          "Il set di prova dovrebbe includere documenti incompleti, istruzioni contraddittorie nel testo e casi ordinari. La verifica può confrontare i campi estratti con un riferimento preparato dagli addetti e registrare omissioni, valori errati e interventi necessari."
+        ]
+      },
+      "sourceIds": [
+        "llmon"
+      ]
+    },
+    {
+      "heading": {
+        "en": "From pilot to decision",
+        "it": "Dalla prova alla decisione"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "To integrate the result into an existing process, define how fields will be validated and what happens when data is missing or the model returns an unexpected format. Actions that change records or send communications can remain subject to approval.",
+          "The decision requires a comparison with the current workflow and other available options: extraction quality, review effort and integration matter alongside behavior in adversarial cases. The models’ experimental status also calls for checking availability and suitability before operational use."
+        ],
+        "it": [
+          "Per integrare il risultato in un processo esistente, è utile stabilire come validare i campi e cosa accade quando mancano dati o il modello restituisce un formato inatteso. Le azioni che modificano archivi o inviano comunicazioni possono restare soggette ad approvazione.",
+          "La decisione richiede un confronto con il flusso attuale e con altre soluzioni disponibili: qualità delle estrazioni, lavoro di revisione e integrazione contano quanto il comportamento nei casi avversi. La natura sperimentale dei modelli suggerisce di verificare disponibilità e idoneità prima di un impiego operativo."
+        ]
+      },
+      "sourceIds": [
+        "llmon"
+      ]
+    }
+  ],
+  "slug": "llmon-documenti-istruzioni-ai",
+  "sources": [
+    {
+      "checkedAt": "2026-11-13",
+      "id": "llmon",
+      "publishedAt": "2026-11-12",
+      "publisher": "Hugging Face",
+      "title": "LLMON: An LLM-Native Markup Language, now in Granite 4.1 3B and 8B",
+      "url": "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite"
+    }
+  ],
+  "summary": {
+    "en": "The LLMON preview for Granite proposes an explicit way to distinguish instructions from data in a model’s context. For an SME, it offers a starting point for designing and testing document workflows more carefully.",
+    "it": "La preview LLMON per Granite propone un modo esplicito di distinguere istruzioni e dati nel contesto di un modello. Per una PMI è uno spunto per progettare e verificare con più attenzione i flussi documentali."
+  },
+  "title": {
+    "en": "Documents and AI instructions: what to assess with LLMON",
+    "it": "Documenti e istruzioni AI: cosa valutare con LLMON"
+  },
+  "topic": {
+    "en": "Document AI and integration",
+    "it": "AI documentale e integrazione"
+  },
+  "updatedAt": "2026-11-13"
+}
