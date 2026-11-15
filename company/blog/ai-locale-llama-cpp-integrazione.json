@@ -1,0 +1,126 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-15",
+    "digest": "c02e317fe3e56c0351eb11adbc640ed46f1b13452a4c7e3025544b49c9ebfdca"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-15",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What changed for local model integrations",
+        "it": "La novità per chi integra modelli locali"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "The ggml-org team announced version 1.0.0 of the llama.cpp and ggml libraries. The project supports running models across different classes of hardware; the release introduces versioning rules that signal public interface incompatibilities through a major version change.",
+          "Under the announced rules, compatible features and backend updates instead increment the minor version. For integration teams, those signals can help plan how updates are reviewed."
+        ],
+        "it": [
+          "Il team ggml-org ha annunciato la versione 1.0.0 delle librerie llama.cpp e ggml. Il progetto consente di eseguire modelli su diverse categorie di hardware; il rilascio introduce regole di versionamento che rendono visibili attraverso un cambio di versione principale le incompatibilità delle interfacce pubbliche.",
+          "Secondo le regole annunciate, le nuove funzionalità compatibili e gli aggiornamenti ai backend comportano invece un incremento della versione secondaria. Per chi sviluppa integrazioni, queste indicazioni aiutano a pianificare la verifica degli aggiornamenti."
+        ]
+      },
+      "sourceIds": [
+        "llamacpp"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A focused document AI pilot",
+        "it": "Un pilot documentale circoscritto"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For an SME, one initial use case could be consulting a selected set of internal procedures. The working group should choose representative documents, define who may access them and prepare questions with known answers. Local execution should be assessed alongside data access and management requirements; it does not automatically guarantee confidentiality.",
+          "Before connecting the assistant to operational business systems, check whether it finds relevant information, distinguishes a documented answer from an assumption and signals when the material is insufficient. A designated person can review answers during the pilot and record recurring errors."
+        ],
+        "it": [
+          "Per una PMI, un primo caso potrebbe essere la consultazione di un insieme selezionato di procedure interne. Il gruppo di lavoro dovrebbe scegliere documenti rappresentativi, definire chi può consultarli e preparare domande alle quali conosce già la risposta. L'esecuzione locale è una scelta da valutare insieme ai requisiti di accesso e gestione dei dati, non una garanzia automatica di riservatezza.",
+          "Prima di collegare l'assistente a sistemi operativi aziendali, conviene verificare se trova informazioni pertinenti, distingue una risposta presente nei documenti da una supposizione e segnala quando il materiale non basta. Una persona responsabile può controllare le risposte durante la prova e raccogliere gli errori ricorrenti."
+        ]
+      },
+      "sourceIds": [
+        "llamacpp"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A precise question can conceal a different problem",
+        "it": "Una domanda precisa può nascondere un problema diverso"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "The researchers presenting XYBench describe a test of 8,115 questions designed to assess whether assistants recognize mistaken assumptions and help with the underlying goal. In their evaluation, the five models examined often remained focused on the original approach, even when they suggested a solution to the problem.",
+          "That finding concerns the benchmark and the models evaluated by the researchers; it does not establish how a local model selected for a particular business will behave."
+        ],
+        "it": [
+          "I ricercatori che presentano XYBench descrivono un test su 8.115 domande progettato per valutare se gli assistenti riconoscono presupposti errati e aiutano a raggiungere l'obiettivo sottostante. Nella loro valutazione, i cinque modelli esaminati tendevano spesso a restare concentrati sull'approccio iniziale, anche quando proponevano una soluzione al problema.",
+          "Il risultato riguarda quel benchmark e i modelli valutati dai ricercatori: non dimostra come si comporterà un modello locale scelto per una specifica azienda."
+        ]
+      },
+      "sourceIds": [
+        "xybench"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to decide after the pilot",
+        "it": "Come decidere dopo la prova"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "The test set should also include requests based on a mistaken assumption: for example, a question about a procedure that does not apply to the situation described. Review should value the ability to ask for clarification or state a limitation, as well as answer correctly when the information is available.",
+          "The decision can compare observed quality, review time and the work required to maintain documents and the integration. Before expanding the pilot, assign responsibility for access, updates and error handling. Any benefits need to be verified in the actual workflow, without assuming savings or reliability."
+        ],
+        "it": [
+          "Nel set di prova includeremmo anche richieste formulate su un presupposto sbagliato: per esempio, una domanda su una procedura non applicabile al caso descritto. La revisione dovrebbe premiare la capacità di chiedere chiarimenti o indicare il limite, oltre alla correttezza della risposta quando l'informazione è disponibile.",
+          "La decisione può confrontare qualità osservata, tempo di revisione e lavoro necessario per aggiornare documenti e integrazione. Prima di estendere il pilot, è utile assegnare responsabilità per accessi, aggiornamenti e gestione degli errori. Eventuali benefici vanno verificati nel processo reale, senza presumere risparmi o affidabilità."
+        ]
+      },
+      "sourceIds": [
+        "llamacpp",
+        "xybench"
+      ]
+    }
+  ],
+  "slug": "ai-locale-llama-cpp-integrazione",
+  "sources": [
+    {
+      "checkedAt": "2026-11-15",
+      "id": "llamacpp",
+      "publishedAt": "2026-11-13",
+      "publisher": "Hugging Face",
+      "title": "llama.cpp v1.0.0 : A stronger foundation for the local AI ecosystem",
+      "url": "https://huggingface.co/blog/ggml-org/llama-cpp-v1"
+    },
+    {
+      "checkedAt": "2026-11-15",
+      "id": "xybench",
+      "publishedAt": "2026-11-13",
+      "publisher": "Hugging Face",
+      "title": "XYBench: Helping with the problem behind the question",
+      "url": "https://huggingface.co/blog/allenai/xybench"
+    }
+  ],
+  "summary": {
+    "en": "The llama.cpp and ggml 1.0 library releases bring clearer rules for changes to public interfaces. SMEs can use this opportunity to assess a local document AI pilot, starting with requirements, answer quality and maintenance.",
+    "it": "Il rilascio delle librerie llama.cpp e ggml 1.0 porta maggiore chiarezza sulle modifiche alle interfacce pubbliche. Per una PMI è un'occasione per valutare un pilot documentale locale, partendo da requisiti, qualità delle risposte e manutenzione."
+  },
+  "title": {
+    "en": "Local AI for SMEs: what to assess after llama.cpp 1.0",
+    "it": "AI locale nelle PMI: cosa valutare dopo llama.cpp 1.0"
+  },
+  "topic": {
+    "en": "Local models and integration",
+    "it": "Modelli locali e integrazione"
+  },
+  "updatedAt": "2026-11-15"
+}
