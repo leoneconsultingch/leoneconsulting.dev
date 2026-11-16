@@ -1,0 +1,99 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-16",
+    "digest": "673f746e1f980b6c3b7c9b7139da3fae0185157ee398ad17fd361e3191e6d1d4"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-16",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What Google announced",
+        "it": "Cosa annuncia Google"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Google has announced the global availability of Gemini 4 Hydrogen in Search. According to the provider, the update aims to handle questions with multiple parts and connect answers to a broader range of websites.",
+          "Google also describes more visual responses, including images, structured information and comparison tables. These are capabilities stated by the provider: the announcement does not establish that any particular answer is correct or suitable for a business decision."
+        ],
+        "it": [
+          "Google ha annunciato la disponibilità globale di Gemini 4 Hydrogen in Search. Secondo il fornitore, l’aggiornamento punta a gestire domande articolate in più parti e a collegare la risposta a una gamma più ampia di siti.",
+          "Google descrive anche risposte più visive, con immagini, informazioni strutturate e tabelle comparative. Sono caratteristiche dichiarate dal fornitore: l’annuncio non dimostra che una risposta specifica sia corretta o adatta a una decisione aziendale."
+        ]
+      },
+      "sourceIds": [
+        "google-search"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A possible use for initial research",
+        "it": "Un possibile uso nella ricerca preliminare"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "An SME could use a multipart question to get oriented on a new topic, for example by identifying aspects to examine before comparing document management solutions. The answer can help prepare a list of questions; it does not replace reading the relevant materials.",
+          "A useful request includes the necessary context without disclosing confidential information. The reader can then open the suggested links, check who publishes each document and distinguish stated product capabilities from independent assessments. If an answer includes a table, each relevant entry should be checked against its corresponding source.",
+          "Keeping the links consulted and the date of the check alongside the research gives decision makers a way to retrace the steps and assess whether the information still applies to their situation."
+        ],
+        "it": [
+          "Una PMI potrebbe usare una domanda articolata per orientarsi su un argomento nuovo, per esempio individuando aspetti da esaminare prima di confrontare soluzioni per la gestione documentale. La risposta può aiutare a preparare una lista di domande, non sostituire la lettura dei materiali pertinenti.",
+          "Conviene formulare la richiesta indicando il contesto necessario senza inserire informazioni riservate. Poi si possono aprire i collegamenti proposti, controllare chi pubblica ogni documento e distinguere le caratteristiche dichiarate dalle valutazioni indipendenti. Se una risposta presenta una tabella, ogni voce rilevante va ricontrollata nella fonte corrispondente.",
+          "È utile conservare insieme alla ricerca i collegamenti consultati e la data del controllo. Questo permette a chi deve decidere di ripercorrere i passaggi e verificare se le informazioni siano ancora applicabili al proprio caso."
+        ]
+      },
+      "sourceIds": [
+        "google-search"
+      ]
+    },
+    {
+      "heading": {
+        "en": "From answer to decision",
+        "it": "Dalla risposta alla decisione"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before choosing a tool or changing a process, we suggest turning the research into criteria that can be checked: which documents must be handled, who reviews them, which integrations are needed and which steps require approval. General answers can point to topics for further investigation, but they do not automatically know the company’s constraints.",
+          "A practical comparison can start with a limited set of non-confidential documents and cases prepared with the people who do the work. Results, errors and required interventions should be reviewed before extending a trial. The decision remains tied to evidence from the actual process, rather than the apparent quality of a search answer alone."
+        ],
+        "it": [
+          "Prima di scegliere uno strumento o cambiare un processo, suggeriamo di trasformare la ricerca in criteri verificabili: quali documenti devono essere gestiti, chi li controlla, quali integrazioni servono e quali passaggi richiedono approvazione. Le risposte generiche possono indicare temi da approfondire, ma non conoscono automaticamente i vincoli dell’impresa.",
+          "Un confronto pratico può partire da un insieme limitato di documenti non riservati e da casi preparati con le persone che svolgono il lavoro. Occorre controllare risultati, errori e interventi necessari prima di estendere una prova. La scelta resta legata alle evidenze raccolte nel processo concreto, non alla sola qualità apparente della risposta di ricerca."
+        ]
+      },
+      "sourceIds": [
+        "google-search"
+      ]
+    }
+  ],
+  "slug": "ricerca-ai-verifica-fonti-pmi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-16",
+      "id": "google-search",
+      "publishedAt": "2026-11-12",
+      "publisher": "Google",
+      "title": "Google Search gets a major upgrade with Gemini 4 Hydrogen",
+      "url": "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/"
+    }
+  ],
+  "summary": {
+    "en": "Google has announced the integration of Gemini 4 Hydrogen into Search. For an SME, structured answers can be a starting point for research, provided that relevant information is checked against its sources.",
+    "it": "Google annuncia l’integrazione di Gemini 4 Hydrogen in Search. Per una PMI, le risposte strutturate possono essere un punto di partenza per una ricerca, purché le informazioni rilevanti vengano verificate sulle fonti."
+  },
+  "title": {
+    "en": "AI-powered search: how SMEs can check useful answers",
+    "it": "Ricerca con AI: come verificare le risposte utili alla PMI"
+  },
+  "topic": {
+    "en": "AI and business research",
+    "it": "AI e ricerca aziendale"
+  },
+  "updatedAt": "2026-11-16"
+}
