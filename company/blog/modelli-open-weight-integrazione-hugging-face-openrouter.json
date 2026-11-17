@@ -1,0 +1,115 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-17",
+    "digest": "3243416ce49cc95a0836020d5ee1b70223ff268b304f478036d2c1557a803d68"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-17",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What changes for model requests",
+        "it": "Cosa cambia nelle richieste ai modelli"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Hugging Face says language model requests through Inference Providers now pass through OpenRouter’s router. According to the announcement, the router selects a provider for each request and can retry with another if a call fails; existing code remains unchanged. The change applies to models available through a provider."
+        ],
+        "it": [
+          "Hugging Face annuncia che le richieste ai modelli linguistici tramite Inference Providers passano ora dal router di OpenRouter. Secondo l’annuncio, il router seleziona un fornitore per ogni richiesta e può riprovare con un altro in caso di errore; il codice esistente resta invariato. La modifica riguarda i modelli disponibili attraverso un fornitore."
+        ]
+      },
+      "sourceIds": [
+        "huggingface-openrouter"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A useful test for an SME",
+        "it": "Una prova utile per una PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "A company handling many documents could begin with a bounded task, such as extracting fields from a set of test forms and presenting them to an operator for review. Before selecting a model, the team should agree which fields are needed, how missing values should be represented and which documents always require manual review.",
+          "The test should include readable, incomplete and ambiguous examples prepared with the people who know the workflow. Its purpose is to establish whether responses are usable in the process, not merely whether the model produces convincing text."
+        ],
+        "it": [
+          "Un’impresa che gestisce molti documenti potrebbe partire da un compito delimitato, come estrarre campi da un insieme di moduli di prova e proporli a un operatore per la verifica. Prima di scegliere il modello, conviene concordare quali campi servono, come rappresentare quelli mancanti e quali documenti richiedono sempre una revisione manuale.",
+          "Il test dovrebbe includere esempi leggibili, incompleti e ambigui, preparati con chi conosce il processo. L’obiettivo è capire se le risposte sono utilizzabili nel flusso di lavoro, non soltanto se il modello produce testo convincente."
+        ]
+      },
+      "sourceIds": [
+        "huggingface-openrouter"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Data and integration questions to ask",
+        "it": "Dati e integrazione: le domande da porre"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Open weights do not mean that an API request is processed on the company’s own systems. Before using business documents, the team should verify which providers may receive requests, where data is processed and what retention and access terms apply.",
+          "It is also worth checking how the application handles errors, retries and incomplete responses. Extracted data should remain available for review before it updates a record or triggers an external action. Approval rules should be agreed with the people responsible for the workflow."
+        ],
+        "it": [
+          "La disponibilità di pesi aperti non implica che una richiesta via API venga elaborata sui sistemi dell’impresa. Prima di usare documenti aziendali, occorre verificare quali fornitori possono ricevere le richieste, dove vengono trattati i dati e quali condizioni di conservazione e accesso si applicano.",
+          "Conviene inoltre controllare come l’applicazione gestisce errori, tentativi ripetuti e risposte incomplete. I dati estratti dovrebbero restare in uno stato verificabile prima di aggiornare un archivio o avviare un’azione esterna. Le regole di approvazione vanno definite con i responsabili del processo."
+        ]
+      },
+      "sourceIds": [
+        "huggingface-openrouter"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to decide after the pilot",
+        "it": "Come decidere dopo il pilot"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "The decision can rest on a shared review of correct fields, detected errors, cases requiring manual correction and total time, including review. The same documents can be compared against the current process and, where relevant, against a locally run model.",
+          "The pilot can help identify where automation is appropriate and where human control should remain. Before expanding its use, the company should check that availability, provider terms and observed behavior meet its requirements."
+        ],
+        "it": [
+          "La decisione può basarsi su una verifica condivisa: campi corretti, errori rilevati, casi da correggere a mano e tempo complessivo, inclusa la revisione. È utile confrontare gli stessi documenti con il processo attuale e, se pertinente, con un modello eseguito localmente.",
+          "Il risultato del pilot aiuta a stabilire dove l’automazione è appropriata e dove mantenere il controllo umano. Prima di estendere l’uso, l’impresa dovrebbe verificare che disponibilità, condizioni dei fornitori e comportamento osservato soddisfino le proprie esigenze."
+        ]
+      },
+      "sourceIds": [
+        "huggingface-openrouter"
+      ]
+    }
+  ],
+  "slug": "modelli-open-weight-integrazione-hugging-face-openrouter",
+  "sources": [
+    {
+      "checkedAt": "2026-11-17",
+      "id": "huggingface-openrouter",
+      "publishedAt": "2026-11-16",
+      "publisher": "Hugging Face",
+      "title": "Hugging Face and OpenRouter join forces to make open-weight models easy to run",
+      "url": "https://huggingface.co/blog/openrouter"
+    }
+  ],
+  "summary": {
+    "en": "Hugging Face has announced new routing for language model requests. SMEs can use the change as an opportunity to assess integration, data controls and reliability on a focused document workflow.",
+    "it": "Hugging Face annuncia un nuovo instradamento per le richieste ai modelli linguistici. Per una PMI è l’occasione di valutare integrazione, controllo dei dati e affidabilità su un processo documentale circoscritto."
+  },
+  "title": {
+    "en": "Open-weight models via API: what to assess before integrating them",
+    "it": "Modelli open-weight via API: cosa valutare prima di integrarli"
+  },
+  "topic": {
+    "en": "Document AI and integration",
+    "it": "AI documentale e integrazione"
+  },
+  "updatedAt": "2026-11-17"
+}
