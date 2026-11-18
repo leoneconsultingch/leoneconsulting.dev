@@ -1,0 +1,101 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-18",
+    "digest": "b9035db42bbe47aaeeb2599bf2f35e7a2506ff27cfeba55d3b06d1c39d658e23"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-18",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What Google announced",
+        "it": "Cosa annuncia Google"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Google describes new Gemini features for carrying out personal tasks, including scheduling appointments and analyzing utility bills. The announcement discusses connections to email and calendars and introduces Task mode in the Gemini app.",
+          "The provider says the update is rolling out in the United States, Japan, Korea, Canada, Australia and India, with some advanced features starting in the United States. Google’s example involves analyzing billing documents found in email. Availability and terms for business use require separate verification."
+        ],
+        "it": [
+          "Google descrive nuove funzioni di Gemini per svolgere attività personali, tra cui fissare appuntamenti e analizzare bollette. L’annuncio illustra collegamenti con email e calendario e presenta la modalità Task nell’app Gemini.",
+          "Il fornitore riferisce che l’aggiornamento è in distribuzione negli Stati Uniti, in Giappone, Corea, Canada, Australia e India; alcune funzioni avanzate partono dagli Stati Uniti. L’esempio riportato da Google riguarda l’analisi di documenti di fatturazione presenti nelle email. Disponibilità e condizioni per un uso aziendale vanno verificate separatamente."
+        ]
+      },
+      "sourceIds": [
+        "google-gemini-tasks"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A possible SME use case",
+        "it": "Un possibile caso d’uso per una PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For an SME, one use case to explore could be preparing a summary of information from a small group of administrative documents. The initial goal would be to assist a person with reading and checking, while keeping the subsequent operational decision separate.",
+          "Before testing, choose representative documents and define the information to extract, how to handle missing data and how to flag uncertain answers. The output should let the reviewer find the relevant document and compare each important item with the original.",
+          "This proposal is a practical interpretation of the announcement, not a business feature or an outcome guaranteed by Google. First verify that the selected tool supports the workflow, documents and access required in the specific setting."
+        ],
+        "it": [
+          "Per una PMI, un caso da esplorare potrebbe essere la preparazione di un riepilogo delle informazioni presenti in un piccolo gruppo di documenti amministrativi. L’obiettivo iniziale sarebbe assistere una persona nella lettura e nel controllo, mantenendo separata la successiva decisione operativa.",
+          "Prima della prova conviene scegliere documenti rappresentativi e stabilire quali informazioni estrarre, come trattare dati mancanti e come segnalare le risposte incerte. Il risultato dovrebbe permettere a chi controlla di risalire al documento pertinente e confrontare ogni dato rilevante con l’originale.",
+          "Questa proposta è una lettura pratica dell’annuncio, non una funzionalità aziendale o un risultato garantito da Google. Occorre prima verificare che lo strumento scelto supporti il flusso, i documenti e gli accessi necessari nel contesto specifico."
+        ]
+      },
+      "sourceIds": [
+        "google-gemini-tasks"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to set up a controlled test",
+        "it": "Come impostare una prova controllata"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "The scope should state who may start the test, which documents may be used and which systems are accessible. A starting point is to use test documents and require human review before submissions, payments or changes to data.",
+          "The assessment can compare the summary with a manual check: correct information, omissions, errors and total time, including review. Include incomplete documents or different formats, and agree in advance on what constitutes an acceptable result.",
+          "If the workflow needs integrations, check permissions, service terms and management responsibilities. Only after the test can the business decide whether to continue, change the scope or keep its existing process; no financial benefit is assumed."
+        ],
+        "it": [
+          "Il perimetro dovrebbe indicare chi può avviare la prova, quali documenti possono essere utilizzati e quali sistemi sono accessibili. Per iniziare, si possono usare documenti di prova e richiedere una revisione umana prima di invii, pagamenti o modifiche ai dati.",
+          "La valutazione può confrontare il riepilogo con una verifica manuale: informazioni corrette, omissioni, errori e tempo complessivo, incluso quello necessario alla revisione. È utile includere documenti incompleti o con formati diversi, concordando prima come riconoscere un risultato accettabile.",
+          "Se il processo richiede integrazioni, occorre verificare autorizzazioni, condizioni del servizio e responsabilità di gestione. Solo dopo la prova si può decidere se proseguire, modificare il perimetro o mantenere il procedimento esistente; nessun beneficio economico è presunto."
+        ]
+      },
+      "sourceIds": [
+        "google-gemini-tasks"
+      ]
+    }
+  ],
+  "slug": "gemini-task-automazione-documenti-pmi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-18",
+      "id": "google-gemini-tasks",
+      "publishedAt": "2026-11-17",
+      "publisher": "Google",
+      "title": "Put Gemini to work for you",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/"
+    }
+  ],
+  "summary": {
+    "en": "Google has introduced new Gemini features for tasks involving email, calendars and documents. For an SME, this is an opportunity to assess a focused workflow, with defined access, human checks and test criteria.",
+    "it": "Google presenta nuove funzioni di Gemini per gestire attività che coinvolgono email, calendario e documenti. Per una PMI, l’occasione è valutare un processo circoscritto, definendo accessi, controlli umani e criteri di prova."
+  },
+  "title": {
+    "en": "From documents to tasks: what to assess when automating with Gemini",
+    "it": "Dai documenti alle attività: cosa valutare nell’automazione con Gemini"
+  },
+  "topic": {
+    "en": "Document AI and automation",
+    "it": "AI documentale e automazione"
+  },
+  "updatedAt": "2026-11-18"
+}
