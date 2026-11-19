@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-19",
+    "digest": "ebb39bc97518b30fc782985ef1b3690c355a0485102ea798598a17012f340153"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-19",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "What was announced",
+        "it": "La novità"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Reson8 introduces Rumble-2-Flash, an open speech recognition model with 0.5 billion parameters, released under the Apache 2.0 license. The source states that it supports more than 40 languages, automatic language detection and controls for aspects of the transcript, including how numbers are represented.",
+          "The authors identify support in Transformers and vLLM. They also report evaluations using multilingual audio and telephone calls. These are results stated in the source and obtained under the respective test conditions; they do not establish quality on a particular company’s recordings."
+        ],
+        "it": [
+          "Reson8 presenta Rumble-2-Flash, un modello aperto per il riconoscimento vocale con 0,5 miliardi di parametri, pubblicato con licenza Apache 2.0. La fonte dichiara il supporto per oltre 40 lingue, il rilevamento automatico della lingua e opzioni per controllare alcuni aspetti della trascrizione, tra cui la rappresentazione dei numeri.",
+          "Gli autori indicano il supporto in Transformers e vLLM. Riportano anche valutazioni su audio multilingue e telefonate: sono risultati dichiarati nella fonte, ottenuti nei rispettivi contesti di prova, e non dimostrano la qualità su registrazioni di una specifica azienda."
+        ]
+      },
+      "sourceIds": [
+        "rumble"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A focused use case",
+        "it": "Un caso d'uso circoscritto"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For an SME, a starting point could be transcribing short internal voice notes into working notes. Before testing, identify who will use the text, what information they need to find and what human review is required. A transcript remains a draft: names, amounts and technical terms deserve particular attention.",
+          "Define which recordings are suitable and establish a procedure for incomplete audio, noise or multiple speakers. An uncertain result should return to someone who can check the original, without automatically sending communications or changing company data."
+        ],
+        "it": [
+          "Per una PMI, un punto di partenza potrebbe essere la trascrizione di brevi note vocali interne destinate a diventare appunti di lavoro. Prima della prova, conviene scegliere chi userà il testo, quali informazioni deve trovare e quale revisione umana è necessaria. La trascrizione resta una bozza: nomi, importi e termini tecnici meritano particolare attenzione.",
+          "È utile delimitare il tipo di registrazione ammesso e prevedere una procedura per audio incompleti, rumore o più persone che parlano. Una risposta incerta dovrebbe tornare a chi può verificare l'originale, senza produrre automaticamente comunicazioni o modifiche ai dati aziendali."
+        ]
+      },
+      "sourceIds": [
+        "rumble"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to check quality and integration",
+        "it": "Come verificare qualità e integrazione"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Prepare a small set of representative recordings that can be used with appropriate authorization, then compare transcripts with the audio. Beyond overall errors, check whether the model changes decision-critical information and how long corrections take. Tests should cover the languages, accents and sound conditions actually encountered in the work.",
+          "If the text feeds a document system, first define the format, fields and responsibility for review. An integration can present a draft to an operator; the next step depends on observed quality and the ability to handle errors and cases outside the agreed scope."
+        ],
+        "it": [
+          "Prepariamo un piccolo insieme di registrazioni rappresentative, utilizzabili con le autorizzazioni appropriate, e confrontiamo le trascrizioni con l'audio. Oltre agli errori complessivi, osserviamo se il modello altera informazioni decisive e quanto tempo richiede la correzione. Le prove dovrebbero includere le lingue, gli accenti e le condizioni sonore effettivamente presenti nel lavoro.",
+          "Se il testo serve a un sistema documentale, definiamo prima formato, campi e responsabilità della revisione. Un'integrazione può proporre una bozza all'operatore; il passaggio successivo dipende dalla qualità osservata e dalla possibilità di gestire errori e casi fuori perimetro."
+        ]
+      },
+      "sourceIds": [
+        "rumble"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Deciding after the pilot",
+        "it": "La decisione dopo il pilot"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Compare total time, including review, with the current method and gather feedback from the people involved. Also assess where audio and transcripts are processed and stored, for how long, and who can access them, according to business needs.",
+          "An open model provides an option to evaluate; it does not by itself guarantee quality or confidentiality. If the pilot fails to meet the agreed criteria, the use case can be narrowed or the existing process retained. Adoption requires verification in the actual working context."
+        ],
+        "it": [
+          "Confrontiamo il tempo complessivo, inclusa la revisione, con il metodo attuale e raccogliamo il giudizio delle persone coinvolte. Valutiamo anche dove vengono elaborati e conservati audio e trascrizioni, per quanto tempo e con quali accessi, secondo le esigenze aziendali.",
+          "Un modello aperto offre un'opzione da esaminare, non garantisce da solo qualità o riservatezza. Se il pilot non soddisfa i criteri concordati, possiamo restringere il caso d'uso o mantenere il processo esistente; l'adozione richiede una verifica nel contesto reale."
+        ]
+      },
+      "sourceIds": [
+        "rumble"
+      ]
+    }
+  ],
+  "slug": "trascrizione-vocale-modelli-aperti-pmi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-19",
+      "id": "rumble",
+      "publishedAt": "2026-11-18",
+      "publisher": "Hugging Face",
+      "title": "Rumble-2-Flash: an open 0.5B speech model for 40+ languages",
+      "url": "https://huggingface.co/blog/rumble-2-flash"
+    }
+  ],
+  "summary": {
+    "en": "A new speech recognition model raises a practical question: when is it useful to turn business recordings into text, and how should quality be checked before integration into workflows?",
+    "it": "Un nuovo modello di riconoscimento vocale riapre una domanda pratica: quando conviene trasformare registrazioni aziendali in testo e come verificare la qualità prima di integrarle nei processi?"
+  },
+  "title": {
+    "en": "Speech transcription with open models: how SMEs can evaluate a pilot",
+    "it": "Trascrizione vocale con modelli aperti: come valutare un pilot in PMI"
+  },
+  "topic": {
+    "en": "Document AI and automation",
+    "it": "AI documentale e automazione"
+  },
+  "updatedAt": "2026-11-19"
+}
