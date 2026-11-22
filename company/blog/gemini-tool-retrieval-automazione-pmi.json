@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-22",
+    "digest": "a26a1740a58d8a51559c8a34cff4c3fa0e9a676fd8317bdb44c7ccab32b49d15"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-22",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "The announced feature",
+        "it": "La funzione annunciata"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Google has introduced Tool Retrieval in preview in the Gemini Interactions API. The feature allows tool parameter schemas to be loaded when needed. According to the provider, the approach is designed to reduce input tokens and latency when an agent has many tools available.",
+          "The model still sees the names and descriptions of deferred tools. When it requests one, the API loads its schema within the same request; the tool search and subsequent call appear in the interaction steps. Google says frequently used tools can remain loaded from the start."
+        ],
+        "it": [
+          "Google presenta Tool Retrieval in anteprima nella Interactions API di Gemini. La funzione consente di rinviare il caricamento degli schemi dei parametri degli strumenti finché non servono. Secondo il fornitore, questo approccio è pensato per ridurre i token in ingresso e la latenza quando un agente dispone di molti strumenti.",
+          "Il modello continua a vedere nomi e descrizioni degli strumenti differiti. Quando ne richiede uno, l’API carica il relativo schema nella stessa richiesta; la ricerca dello strumento e la successiva chiamata compaiono nei passaggi dell’interazione. Google indica che gli strumenti usati più spesso possono rimanere caricati fin dall’inizio."
+        ]
+      },
+      "sourceIds": [
+        "tool-retrieval"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Where it could help an SME",
+        "it": "Dove può essere utile a una PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "A document workflow may need to choose among different functions: finding a case, reading a customer record or preparing an entry. As the number of functions grows, it is useful to check whether the agent selects the right one and receives enough information to use it correctly.",
+          "A first experiment could prepare a case using test documents. Its output should remain a proposal for review: a person checks the extracted data, the selected function and any missing fields before a record is created. The announced feature concerns tool management; by itself, it does not establish the reliability of the whole workflow."
+        ],
+        "it": [
+          "Un’automazione documentale può dover scegliere tra funzioni diverse: cercare una pratica, leggere un’anagrafica o preparare una registrazione. Quando le funzioni aumentano, conviene verificare se l’agente seleziona quella adatta e se riceve informazioni sufficienti per usarla correttamente.",
+          "Un primo esperimento potrebbe riguardare la preparazione di una pratica a partire da documenti di prova. Il risultato dovrebbe restare una proposta da controllare: una persona verifica i dati estratti, la funzione scelta e gli eventuali campi mancanti prima di qualsiasi registrazione. La funzione annunciata riguarda la gestione degli strumenti; da sola non dimostra l’affidabilità dell’intero processo."
+        ]
+      },
+      "sourceIds": [
+        "tool-retrieval"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to set up the test",
+        "it": "Come impostare la prova"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before a pilot, the team can list available tools, clarify what each does and distinguish read operations from those that change data. Clear names and descriptions also help reviewers check whether the agent’s selection matches the requested task.",
+          "The test set should include ambiguous requests, incomplete documents and similar functions. For each case, the team can check the selection, prepared arguments and expected outcome. Actions that affect business systems need explicit boundaries and confirmations agreed with the people responsible for the process."
+        ],
+        "it": [
+          "Prima del pilot, conviene elencare gli strumenti disponibili, chiarire cosa fa ciascuno e distinguere le operazioni di consultazione da quelle che modificano dati. Nomi e descrizioni comprensibili aiutano anche il team a verificare se la scelta dell’agente corrisponde all’attività richiesta.",
+          "Il set di prova dovrebbe includere richieste ambigue, documenti incompleti e funzioni simili tra loro. Per ogni caso, il team può controllare la scelta effettuata, gli argomenti preparati e il risultato atteso. Le azioni con effetti sui sistemi aziendali richiedono limiti e conferme esplicite, definiti insieme a chi gestisce il processo."
+        ]
+      },
+      "sourceIds": [
+        "tool-retrieval"
+      ]
+    },
+    {
+      "heading": {
+        "en": "How to decide after the pilot",
+        "it": "Come decidere dopo il pilot"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "A useful comparison runs the same workflow with and without deferred loading, using comparable cases and checks. The team can observe correct selections, human interventions, tokens used and total time, including review of the results.",
+          "Because the feature is in preview, availability and current conditions should be checked before planning adoption. The decision depends on measurements from the actual workflow, ease of oversight and compatibility with existing integrations: reductions in time or resource use are not guaranteed."
+        ],
+        "it": [
+          "Il confronto utile è tra lo stesso processo con e senza caricamento differito, mantenendo casi e controlli comparabili. Si possono osservare selezioni corrette, interventi umani, token utilizzati e tempo complessivo, includendo la revisione dei risultati.",
+          "L’anteprima rende opportuno verificare disponibilità e condizioni aggiornate prima di progettare un’adozione. La decisione dipende dalle misure sul proprio flusso, dalla facilità di controllo e dalla compatibilità con le integrazioni esistenti: riduzioni di tempi o consumi non sono garantite."
+        ]
+      },
+      "sourceIds": [
+        "tool-retrieval"
+      ]
+    }
+  ],
+  "slug": "gemini-tool-retrieval-automazione-pmi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-20",
+      "id": "tool-retrieval",
+      "publishedAt": "2026-11-19",
+      "publisher": "Google",
+      "title": "Introducing Tool Retrieval in the Gemini API",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/"
+    }
+  ],
+  "summary": {
+    "en": "Google has announced a preview feature for managing tool libraries in the Gemini API. For an SME, it is an opportunity to assess how an agent selects functions and how its actions are controlled.",
+    "it": "Google ha annunciato una funzione in anteprima per gestire librerie di strumenti nelle Gemini API. Per una PMI, è uno spunto per valutare come un agente sceglie le funzioni e come controllarne le azioni."
+  },
+  "title": {
+    "en": "AI agents and business tools: what to assess with Tool Retrieval",
+    "it": "Agenti AI e strumenti aziendali: cosa valutare con Tool Retrieval"
+  },
+  "topic": {
+    "en": "Integration and automation",
+    "it": "Integrazione e automazione"
+  },
+  "updatedAt": "2026-11-20"
+}
