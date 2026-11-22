@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-22",
+    "digest": "da83608e2b73bd3943b301e04b5cc09d0ba25c26a2a7c2c8aab70495252bca15"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-22",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "Traceability in the published example",
+        "it": "La tracciabilità nell'esempio pubblicato"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "OpenAI describes a financial research workflow in which Hebbia Matrix links answers to the documents used. In the example, the model selects material to support an analysis and helps prepare slides according to the instructions provided.",
+          "The publication says users can open a citation to inspect the document and highlighted passage; slide footnotes also lead back to source material. This is a workflow described by the provider, not a guarantee of accuracy in other processes."
+        ],
+        "it": [
+          "OpenAI descrive un flusso di ricerca finanziaria in cui Hebbia Matrix collega le risposte ai documenti utilizzati. Nell'esempio, il modello seleziona materiali a supporto dell'analisi e contribuisce alla preparazione di slide secondo le indicazioni ricevute.",
+          "La pubblicazione riferisce che gli utenti possono aprire una citazione per consultare il documento e il passaggio evidenziato; anche le note nelle slide rimandano alle fonti. È un esempio di flusso descritto dal fornitore, non una garanzia di accuratezza per altri processi."
+        ]
+      },
+      "sourceIds": [
+        "openai-hebbia"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Start with a focused business question",
+        "it": "Partire da una domanda aziendale circoscritta"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "For an SME, a starting point could be finding clauses within a defined set of contracts. Before the pilot, decide who will ask questions, which documents are in scope and what decision the answer is meant to support. A clear boundary makes it easier to judge whether the tool helps with everyday work.",
+          "Prepare questions with people who know the documents so the assessment reflects the task. Alongside straightforward cases, include ambiguous wording, information spread across pages and questions the available material cannot answer. Check whether the system identifies those limits instead of producing a conclusion without support."
+        ],
+        "it": [
+          "Per una PMI, un punto di partenza potrebbe essere la ricerca di clausole in un insieme delimitato di contratti. Prima della prova conviene scegliere chi farà le domande, quali documenti sono ammessi e quale decisione dovrà sostenere la risposta. Un perimetro chiaro aiuta a capire se lo strumento serve davvero nel lavoro quotidiano.",
+          "Preparare alcune domande insieme a chi conosce i documenti rende la valutazione più concreta. Accanto ai casi semplici, includere formulazioni ambigue, informazioni distribuite su più pagine e domande per cui il materiale disponibile non contiene una risposta. In questi casi è utile verificare se il sistema segnala il limite invece di formulare una conclusione non supportata."
+        ]
+      },
+      "sourceIds": [
+        "openai-hebbia"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Check the source and its context",
+        "it": "Controllare fonte e contesto"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "A citation is a starting point for review. The reviewer should be able to compare the answer with the referenced passage and read its surrounding context: a sentence may be accurate on its own but relate to a different period, contract party or condition from the one requested.",
+          "When designing the workflow, decide how to identify a document version and handle missing or conflicting sources. For answers used in important decisions, arrange human review before use. The person responsible for the decision needs a way to correct or reject the draft."
+        ],
+        "it": [
+          "Una citazione è un punto di partenza per la verifica. Chi revisiona dovrebbe poter confrontare la risposta con il passaggio indicato e leggere anche il contesto: una frase può essere corretta da sola ma riferirsi a un periodo, a una parte contrattuale o a una condizione diversa da quella richiesta.",
+          "Nel progetto del flusso conviene stabilire come riconoscere la versione di un documento e come trattare fonti mancanti o contrastanti. Per le risposte destinate a decisioni importanti, prevedere una revisione umana prima dell'uso. La responsabilità della decisione resta alla persona incaricata, che deve poter correggere o respingere la bozza."
+        ]
+      },
+      "sourceIds": [
+        "openai-hebbia"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Assess the pilot before expanding it",
+        "it": "Valutare la prova prima di estenderla"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Compare the pilot with the current way of working. Alongside answer relevance, observe how long source checking takes, how often corrections are needed and whether relevant documents are found. Recording errors by category helps identify cases that need further checks.",
+          "Before connecting the system to other business tools, define access, responsibilities and approval steps. A verifiable answer can help prepare subsequent work; sending information or changing records requires a separate decision about the process and its controls. Expand the pilot only if the observed results are useful for the selected task."
+        ],
+        "it": [
+          "La prova dovrebbe confrontare il nuovo flusso con il modo di lavorare attuale. Oltre alla pertinenza delle risposte, osservare quanto tempo richiede controllare le fonti, quante correzioni servono e se i documenti rilevanti vengono trovati. Registrare gli errori per categoria aiuta a decidere quali casi richiedono ulteriori verifiche.",
+          "Prima di collegare il sistema ad altri strumenti aziendali, definire accessi, responsabilità e passaggi di approvazione. Una risposta verificabile può aiutare a preparare il lavoro successivo; l'eventuale invio o modifica di dati richiede una scelta separata sul processo e sui controlli. Estendere la prova solo se i risultati osservati sono utili per il caso scelto."
+        ]
+      },
+      "sourceIds": [
+        "openai-hebbia"
+      ]
+    }
+  ],
+  "slug": "ai-documentale-risposte-verificabili",
+  "sources": [
+    {
+      "checkedAt": "2026-11-22",
+      "id": "openai-hebbia",
+      "publishedAt": "2026-11-20",
+      "publisher": "OpenAI",
+      "title": "Hebbia sees improvements in financial research with GPT-6 Astra",
+      "url": "https://openai.com/business/customer-stories/hebbia"
+    }
+  ],
+  "summary": {
+    "en": "A useful answer is only the start: users also need to trace it to the documents and check its context. Here is how to design a document AI pilot for an SME.",
+    "it": "Una risposta utile non basta: chi la usa deve poter risalire ai documenti e controllare il contesto. Ecco come impostare una prova su un processo documentale di una PMI."
+  },
+  "title": {
+    "en": "Document AI: designing answers people can verify",
+    "it": "AI documentale: come progettare risposte verificabili"
+  },
+  "topic": {
+    "en": "Document AI",
+    "it": "AI documentale"
+  },
+  "updatedAt": "2026-11-22"
+}
