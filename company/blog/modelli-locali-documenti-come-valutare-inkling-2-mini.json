@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-22",
+    "digest": "207aa630af2d4015902a52a59a957db2aa680b3da53b98c6132d09df866617f4"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-22",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "A model designed for local setups",
+        "it": "Un modello pensato per ambienti locali"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "Hugging Face presents Inkling 2 Mini as a multimodal model designed for local setups. It accepts text and images and specifies a context window of up to one million tokens. The article reports support through Transformers, Llama App and MLX.",
+          "The same source says its initial comparative tests need further validation. The stated features describe the model, but do not establish how it will perform on a particular company’s documents or systems."
+        ],
+        "it": [
+          "Hugging Face presenta Inkling 2 Mini come un modello multimodale progettato per configurazioni locali. Accetta testo e immagini e dichiara una finestra di contesto fino a un milione di token. L’articolo segnala il supporto tramite Transformers, Llama App e MLX.",
+          "La stessa fonte precisa che le proprie prove comparative iniziali richiedono ulteriori verifiche. Le caratteristiche dichiarate descrivono il modello, ma non stabiliscono da sole come si comporterà sui documenti o sui sistemi di una specifica impresa."
+        ]
+      },
+      "sourceIds": [
+        "inkling"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Start with a concrete document task",
+        "it": "Partire da una domanda documentale concreta"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "An SME could evaluate the model on a focused task, such as finding passages in internal procedures that are relevant to a question. Before testing, it should select representative documents, prepare questions with verifiable answers and decide who will review the results.",
+          "The ability to provide a large amount of text does not guarantee that every detail will be interpreted correctly. The test should include long documents, similar versions and questions for which the sources contain no answer. In those cases, a response that identifies missing information may be more useful than a plausible answer that cannot be checked."
+        ],
+        "it": [
+          "Una PMI potrebbe valutare il modello su un compito circoscritto, per esempio individuare in un insieme di procedure interne i passaggi pertinenti a una domanda. Prima della prova conviene scegliere documenti rappresentativi, preparare domande con risposte verificabili e stabilire chi controllerà gli esiti.",
+          "La possibilità di inserire molto testo non garantisce che ogni informazione venga interpretata correttamente. Il test dovrebbe includere documenti lunghi, versioni simili e richieste senza una risposta presente nelle fonti. In questi casi, una risposta che segnala l’assenza di informazioni può essere più utile di una risposta plausibile ma non verificabile."
+        ]
+      },
+      "sourceIds": [
+        "inkling"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Check resources, integration and oversight",
+        "it": "Verificare risorse, integrazione e controllo"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before adopting a local solution, the company should check whether its available resources are suitable for the model and the documents it needs to process. The trial should measure response times and reliability under expected working conditions, including the steps needed to prepare documents.",
+          "The team should define how the system receives files, presents references to source material and handles errors or unreadable documents. Local execution alone does not define access permissions, data retention or responsibilities: those require explicit project decisions."
+        ],
+        "it": [
+          "Prima di adottare una soluzione locale, l’impresa dovrebbe verificare se le risorse disponibili sono adeguate al modello e ai documenti da trattare. La prova dovrebbe misurare tempi di risposta e affidabilità nelle condizioni d’uso previste, includendo anche i passaggi necessari per preparare i documenti.",
+          "È utile definire come il sistema riceverà i file, presenterà i riferimenti alle fonti e gestirà errori o documenti non leggibili. L’esecuzione locale, da sola, non definisce permessi di accesso, conservazione dei dati o responsabilità: questi aspetti richiedono scelte esplicite nel progetto."
+        ]
+      },
+      "sourceIds": [
+        "inkling"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Decide after a comparable trial",
+        "it": "Decidere dopo una prova confrontabile"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "To assess the pilot, compare answers with the original documents and record errors, missing information and the interventions needed. The same set of questions can be used to compare the current process with alternatives available to the company.",
+          "An operational decision should also account for review time and maintenance. When answers influence business decisions, keep a human check against the sources before use. The trial results can then show whether the model is suitable for the selected process."
+        ],
+        "it": [
+          "Per valutare l’utilità del pilot, confrontiamo le risposte con i documenti originali e registriamo errori, informazioni mancanti e interventi necessari. Lo stesso insieme di domande può essere usato per confrontare il processo attuale con eventuali alternative disponibili all’impresa.",
+          "Una decisione operativa dovrebbe considerare anche il tempo di revisione e la manutenzione della soluzione. Per risposte che influenzano decisioni aziendali, manteniamo una verifica umana sulle fonti prima dell’utilizzo. Solo i risultati della prova possono chiarire se il modello è adatto al processo scelto."
+        ]
+      },
+      "sourceIds": [
+        "inkling"
+      ]
+    }
+  ],
+  "slug": "modelli-locali-documenti-come-valutare-inkling-2-mini",
+  "sources": [
+    {
+      "checkedAt": "2026-11-21",
+      "id": "inkling",
+      "publishedAt": "2026-11-20",
+      "publisher": "Hugging Face",
+      "title": "Welcome Inkling 2 Mini, Cutting-edge Performance for your Local Setup",
+      "url": "https://huggingface.co/blog/inkling2mini"
+    }
+  ],
+  "summary": {
+    "en": "Hugging Face presents Inkling 2 Mini, a model designed for local setups that accepts text and images. For an SME, adoption calls for a test using its own documents, available resources and human review procedures.",
+    "it": "Hugging Face presenta Inkling 2 Mini, un modello pensato per ambienti locali che accetta testo e immagini. Per una PMI, la scelta richiede una prova sui propri documenti, sulle risorse disponibili e sui controlli umani necessari."
+  },
+  "title": {
+    "en": "Local models and documents: how an SME can evaluate Inkling 2 Mini",
+    "it": "Modelli locali e documenti: come valutare Inkling 2 Mini in una PMI"
+  },
+  "topic": {
+    "en": "Document AI and local models",
+    "it": "AI documentale e modelli locali"
+  },
+  "updatedAt": "2026-11-21"
+}
