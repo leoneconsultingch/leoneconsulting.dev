@@ -1,0 +1,131 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-26",
+    "digest": "6a4243aab9d16928488fd130c4578817bb1db13f6bd5e99010530e45a3fec27d"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-26",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "The document update",
+        "it": "La novità per i documenti"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "NVIDIA describes Nemotron 3.5 Parse as a model that turns page images into structured data. Its output includes reading order, content categories and page coordinates; tables and charts are represented as data that downstream applications can use.",
+          "The article also presents synthetic datasets and a model adaptation procedure. These capabilities are described by the authors: their usefulness for specific business documents needs to be checked case by case."
+        ],
+        "it": [
+          "NVIDIA descrive Nemotron 3.5 Parse come un modello che trasforma immagini di pagine in dati strutturati. L’output comprende ordine di lettura, categorie di contenuto e coordinate sulla pagina; tabelle e grafici vengono rappresentati come dati utilizzabili nei passaggi successivi.",
+          "L’articolo presenta anche dataset sintetici e una procedura di adattamento del modello. Le capacità descritte provengono dagli autori: la loro utilità su documenti aziendali specifici va verificata caso per caso."
+        ]
+      },
+      "sourceIds": [
+        "parse"
+      ]
+    },
+    {
+      "heading": {
+        "en": "Verification remains a human responsibility",
+        "it": "La verifica resta una responsabilità umana"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "In a separate article, Ai2 reports interviewing 17 scientists about responsible use of AI agents. The themes identified include validation, privacy, objectivity, accountability and transparency.",
+          "Interviewees point to the need to check original sources and understand how a system reached a result. The study concerns scientific research, but it also offers ideas for designing checks in other settings."
+        ],
+        "it": [
+          "In un articolo separato, Ai2 riferisce di aver intervistato 17 scienziati sull’uso responsabile degli agenti AI. Tra i temi emersi figurano verifica, privacy, obiettività, responsabilità e trasparenza.",
+          "Gli intervistati richiamano l’esigenza di controllare le fonti originali e capire come un sistema è arrivato a un risultato. Lo studio riguarda la ricerca scientifica; offre comunque spunti per progettare controlli anche in altri contesti."
+        ]
+      },
+      "sourceIds": [
+        "scientists"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A focused pilot for an SME",
+        "it": "Un pilot circoscritto per la PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "A useful starting point could be a collection of documents already used by staff, such as product sheets or operating reports. Before testing, choose the fields to extract and agree with their users on what a correct result looks like, including cases where information is missing or ambiguous.",
+          "For tables, checks should cover not only individual values but also their positions relative to rows, columns and headings. Page coordinates can help a reviewer find the original passage; they do not replace a check of its meaning.",
+          "Include documents in different formats and keep examples of observed errors. This helps distinguish reading problems from interpretation problems and shows where human intervention is still needed."
+        ],
+        "it": [
+          "Un punto di partenza può essere una raccolta di documenti già utilizzati dal personale, come schede prodotto o rapporti operativi. Prima della prova, conviene scegliere i campi da estrarre e definire con chi li usa quale risultato sia corretto, compresi i casi in cui un dato manca o è ambiguo.",
+          "Per le tabelle, il controllo dovrebbe riguardare non solo i singoli valori ma anche la loro posizione rispetto a righe, colonne e intestazioni. Le coordinate sulla pagina possono aiutare un revisore a ritrovare il passaggio originale; non sostituiscono la verifica del significato.",
+          "È utile includere documenti con formati diversi e conservare esempi degli errori osservati. Questo permette di distinguere i problemi di lettura da quelli di interpretazione e di capire dove occorre ancora intervento umano."
+        ]
+      },
+      "sourceIds": [
+        "parse",
+        "scientists"
+      ]
+    },
+    {
+      "heading": {
+        "en": "From extraction to a decision",
+        "it": "Dall’estrazione alla decisione"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "During the pilot, we would compare outputs with a manual review and record errors, corrections and total time. We would also check whether the output format fits the existing process without losing context or page references.",
+          "If extracted data will update a business system or trigger an action, we suggest a review step before confirmation. Responsibilities, document access and exception handling should be agreed with the people involved.",
+          "Only after testing does it make sense to decide whether to integrate the model, adapt it or keep the current process. Reliability and benefits depend on the documents and the actual work: they are not guaranteed by the announcement."
+        ],
+        "it": [
+          "Nel pilot confronteremmo i risultati con una revisione manuale, registrando errori, correzioni e tempo complessivo. Verificheremmo anche se il formato prodotto può essere usato nel processo esistente senza perdere contesto o riferimenti alla pagina.",
+          "Se i dati estratti devono aggiornare un gestionale o attivare un’azione, proponiamo un passaggio di revisione prima della conferma. Responsabilità, accesso ai documenti e gestione delle eccezioni vanno definiti insieme al personale coinvolto.",
+          "Solo dopo la prova ha senso decidere se integrare il modello, adattarlo o mantenere il processo attuale. Affidabilità e benefici dipendono dai documenti e dal lavoro concreto: non sono garantiti dall’annuncio."
+        ]
+      },
+      "sourceIds": [
+        "parse",
+        "scientists"
+      ]
+    }
+  ],
+  "slug": "ai-documentale-verificare-estrazione",
+  "sources": [
+    {
+      "checkedAt": "2026-11-26",
+      "id": "parse",
+      "publishedAt": "2026-11-26",
+      "publisher": "Hugging Face",
+      "title": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
+      "url": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin"
+    },
+    {
+      "checkedAt": "2026-11-26",
+      "id": "scientists",
+      "publishedAt": "2026-11-25",
+      "publisher": "Hugging Face",
+      "title": "Where scientists draw the line on AI agents",
+      "url": "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents"
+    }
+  ],
+  "summary": {
+    "en": "A new document extraction model brings attention to tables, charts and page structure. For an SME, its value depends on testing its own documents and controlling subsequent steps.",
+    "it": "Un nuovo modello per l’estrazione documentale riporta l’attenzione su tabelle, grafici e struttura delle pagine. Per una PMI, il valore dipende dalla verifica sui propri documenti e dal controllo dei passaggi successivi."
+  },
+  "title": {
+    "en": "Document AI: how to check tables and sources before automating",
+    "it": "AI documentale: come verificare tabelle e fonti prima di automatizzare"
+  },
+  "topic": {
+    "en": "Document AI",
+    "it": "AI documentale"
+  },
+  "updatedAt": "2026-11-26"
+}
