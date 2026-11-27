@@ -1,0 +1,99 @@
+{
+  "approval": {
+    "by": "Mario Leone",
+    "at": "2026-11-27",
+    "digest": "0bae1f86b3543bccd03599c99eaf14b8b842fa4f99212e708d4bcafe6abacd62"
+  },
+  "eventDate": null,
+  "published": true,
+  "publishedAt": "2026-11-27",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "heading": {
+        "en": "An example of search across languages",
+        "it": "Un esempio di ricerca tra lingue"
+      },
+      "kind": "fact",
+      "paragraphs": {
+        "en": [
+          "In an article published on Hugging Face, IBM Research describes an assistant for agricultural questions that accepts speech in regional Indian languages and consults an English handbook. The application displays the pages used, allowing the recipient to check the source.",
+          "The authors explain that search representations suited only to English retrieved the wrong passages for some questions. In their example, they then adopted a multilingual model for retrieval. This describes their solution; it does not guarantee accuracy for other documents or languages."
+        ],
+        "it": [
+          "In un articolo pubblicato su Hugging Face, IBM Research descrive un assistente per domande agricole che riceve richieste vocali in lingue regionali indiane e consulta un manuale in inglese. L'applicazione mostra le pagine utilizzate, così chi riceve la risposta può controllare la fonte.",
+          "Gli autori spiegano che una ricerca basata su rappresentazioni adatte solo all'inglese recuperava passaggi sbagliati per alcune domande. Nell'esempio hanno quindi adottato un modello multilingue per la ricerca. È una descrizione della loro soluzione, non una garanzia di accuratezza per altri documenti o lingue."
+        ]
+      },
+      "sourceIds": [
+        "cuga"
+      ]
+    },
+    {
+      "heading": {
+        "en": "A pilot for an SME",
+        "it": "Il pilot per una PMI"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "An SME with procedures, manuals or product sheets in several languages could start with a limited document collection and questions representative of everyday work. For each question, the team can first identify the pages containing the expected answer, then compare them with the passages retrieved by the system.",
+          "The test should include different phrasings of the same request, company terminology and questions that the documents cannot answer. A fluent answer alone is insufficient: if the right passage is not found, checking the answer becomes harder too. People familiar with the documents should assess whether the sources remain current."
+        ],
+        "it": [
+          "Una PMI con procedure, manuali o schede prodotto in più lingue potrebbe partire da una raccolta documentale circoscritta e da domande rappresentative del lavoro quotidiano. Per ogni domanda, il team può indicare prima quali pagine contengono la risposta attesa e poi confrontarle con quelle recuperate dal sistema.",
+          "Conviene includere formulazioni diverse della stessa richiesta, termini aziendali e domande senza risposta nei documenti. Una risposta fluida non basta: se il passaggio corretto non viene trovato, anche la verifica della risposta diventa più difficile. La prova dovrebbe coinvolgere chi conosce i documenti e ne valuta l'attualità."
+        ]
+      },
+      "sourceIds": [
+        "cuga"
+      ]
+    },
+    {
+      "heading": {
+        "en": "From search to operational use",
+        "it": "Dalla ricerca all'uso operativo"
+      },
+      "kind": "analysis",
+      "paragraphs": {
+        "en": [
+          "Before adding speech or integrating the assistant into a business application, we suggest testing retrieval and answers in text. This makes it possible to examine passage relevance, answer fidelity and the clarity of source references separately.",
+          "To decide whether to proceed, the working group can record how often questions retrieve the correct passage, how many references need correction and when the system should say that it lacks sufficient information. These are criteria to define for the specific case, not results already demonstrated.",
+          "If the pilot expands, the business also needs clear responsibility for updating documents, managing access and checking answers before they inform important decisions. The languages and documents included should reflect the actual needs of the people using the tool."
+        ],
+        "it": [
+          "Prima di aggiungere la voce o integrare l'assistente in un'applicazione aziendale, suggeriamo di provare ricerca e risposte in forma testuale. Questo permette di esaminare separatamente la pertinenza dei passaggi, la fedeltà della risposta e la chiarezza dei riferimenti alla fonte.",
+          "Per decidere se proseguire, il gruppo di lavoro può registrare quante domande trovano il passaggio corretto, quanti riferimenti richiedono correzione e quando il sistema dovrebbe dichiarare di non avere informazioni sufficienti. Sono criteri da definire sul caso concreto, non risultati già dimostrati.",
+          "Se il pilot viene esteso, servono anche responsabilità per aggiornare i documenti, gestire gli accessi e verificare le risposte prima di usarle in decisioni rilevanti. La scelta delle lingue e dei documenti da includere dovrebbe seguire le esigenze effettive delle persone che useranno lo strumento."
+        ]
+      },
+      "sourceIds": [
+        "cuga"
+      ]
+    }
+  ],
+  "slug": "ricerca-documentale-multilingue-pmi",
+  "sources": [
+    {
+      "checkedAt": "2026-11-27",
+      "id": "cuga",
+      "publishedAt": "2026-11-25",
+      "publisher": "Hugging Face",
+      "title": "An Indic Voice Agent with CUGA",
+      "url": "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga"
+    }
+  ],
+  "summary": {
+    "en": "A voice assistant example highlights a practical challenge: finding relevant passages when the question and source use different languages. For an SME, the first step is to check retrieval before assessing the answer.",
+    "it": "Un esempio di assistente vocale mostra una difficoltà concreta: trovare nei documenti i passaggi pertinenti quando domanda e fonte usano lingue diverse. Per una PMI, il primo passo è verificare la ricerca prima di valutare la risposta."
+  },
+  "title": {
+    "en": "Multilingual document AI: check the sources before the answers",
+    "it": "AI documentale multilingue: verificare le fonti prima delle risposte"
+  },
+  "topic": {
+    "en": "Document AI and integration",
+    "it": "AI documentale e integrazione"
+  },
+  "updatedAt": "2026-11-27"
+}
