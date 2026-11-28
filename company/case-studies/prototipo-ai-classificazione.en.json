@@ -83,6 +83,14 @@
     "CI/CD and monitoring setup",
     "Team training on usage and maintenance"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Low-confidence predictions go to human review, never auto-filed",
+      "snippet": "def classify(doc):\n    # Low-confidence predictions are routed\n    # to human review, never auto-filed.\n    result = model.predict(doc.text)\n    if result.confidence < 0.85:\n        return Prediction(result.label, status=\"review\")\n    return Prediction(result.label, status=\"auto\")"
+    }
+  ],
+
   "metadata": {
     "duration": "3 weeks",
     "year": 2025,

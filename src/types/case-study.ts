@@ -42,6 +42,13 @@ export interface CaseStudy {
   
   role: string[];
   
+  /** Optional illustrative code snippets (rewritten, public-safe). */
+  code?: Array<{
+    language: string;
+    caption: string;
+    snippet: string;
+  }>;
+  
   links?: {
     demo?: string;
     repository?: string;

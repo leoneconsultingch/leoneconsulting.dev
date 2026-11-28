@@ -1,0 +1,118 @@
+{
+  "slug": "security-governance",
+  "title": "Programma di governance della sicurezza per infrastruttura self-hosted",
+  "client": "Interno (Leone Consulting)",
+  "sector": "Cybersecurity",
+  "published": false,
+  "featuredImage": "/img/case-studies/security-governance.jpg",
+
+  "problem": {
+    "description": "Un'infrastruttura di sviluppo e operativa interamente self-hosted — workstation Arch Linux, repository multipli, server Docker, agenti AI locali con tool MCP — cresce senza un modello di minaccia esplicito. Le domande chiave restano senza risposta documentata: chi può conferire autorità a un agente, quali confini separano i processi, dove risiedono i segreti, come si dimostra che un controllo funziona davvero. La risposta non può essere 'installare uno scanner': serve una base documentale con inventario dichiarativo, audit ripetibili e registro dei rilievi con stato tracciato.",
+    "painPoints": [
+      "Nessun modello di minaccia esplicito per agenti AI con accesso a filesystem, Docker e Git",
+      "Superfici API locali (control plane self-hosted, tool MCP) senza autenticazione/autorizzazione verificate",
+      "Nessun registro canonico dei rilievi di sicurezza: problemi noti non tracciati con gravità, stato e owner",
+      "Difficoltà a distinguere prove confermate da ipotesi quando l'analisi è fatta da un LLM"
+    ]
+  },
+
+  "constraints": {
+    "timeline": "Programma continuativo, fondazione in 1 giornata + audit incrementali su autorizzazione",
+    "budget": "Base documentale senza servizi o scanner: zero costi di licenza e di infrastruttura dedicata",
+    "technical": [
+      "Analisi read-only statica del codice: nessun test, exploit o azione runtime non autorizzata",
+      "Assicurare la riservatezza del materiale: solo sintesi e riferimenti depurati nel repository degli audit, mai output grezzi o segreti",
+      "Il modello LLM non è autorità finale: la validazione delle prove richiede revisione umana indipendente registrata",
+      "Remediation delimitata ai rispettivi repository proprietari, non centralizzata"
+    ],
+    "compliance": [
+      "Segnalazioni riservate e incidenti gestiti tramite canale dedicato (SECURITY.md)",
+      "Non usare dati di clienti o terzi per test di sicurezza; solo asset propri autorizzati"
+    ]
+  },
+
+  "solution": {
+    "architecture": "Programma documentale di governance della sicurezza, organizzato in quattro componenti: un inventario dichiarativo degli asset (workstation, repository, server, siti — senza scansione), un registro canonico dei rilievi con ID monotoni e ciclo di stato completo (proposed → validated → planned → closed, con falsi positivi e rischi accettati documentati), un archivio di audit con scope, collection plan, indice delle prove e report, e regole di responsabilità per gli agenti AI coinvolti. Il primo audit applicativo (MC-MCP-001) ha riguardato una revisione statica read-only del server MCP del control plane self-hosted per agenti AI: modello di minaccia a 4 attori, analisi dei confini di fiducia (client → guardian, ambiente → identità policy, manifest → child process, caller HTTP → API REST) e scan di sicurezza con modello specialistico validato su baseline indipendente.",
+    "keyDecisions": [
+      "Documentazione prima degli strumenti: inventario dichiarativo e registro rilievi come base, senza servizi o monitor da mantenere",
+      "Distinzione strutturale tra gravità, evidence_state (hypothesis/confirmed) e confidence: alta confidenza non promuove mai una prova a confirmed",
+      "Nessuna promozione automatica degli stati dei rilievi: ogni transizione richiede revisione indipendente registrata",
+      "Approccio minimizzato alla raccolta: solo sintesi depurate nel repository, artefatti grezzi scartati; la redazione non è demandata all'LLM",
+      "Audit come casi ripetibili con scope, budget e criteri di stop approvati prima dell'esecuzione",
+      "Remediation sempre nel repository proprietario del componente, con owner e task assegnati"
+    ],
+    "approach": "Fondazione del programma e poi audit incrementali su autorizzazione esplicita, ciascuno con scope firmato e criteri di stop. Il primo passo non è mai avviare uno scanner: è approvare scope e canale di raccolta minimizzata."
+  },
+
+  "results": {
+    "metrics": [
+      {
+        "label": "Copertura analisi MCP control plane",
+        "value": "53/53 file in scope",
+        "isProxy": false,
+        "description": "Revisione statica read-only completata su tutto lo scope definito"
+      },
+      {
+        "label": "Rilievi dal primo audit",
+        "value": "6 rilievi di gravità media",
+        "isProxy": false,
+        "description": "MC-MCP-001: nessun rilievo critical/high, confini di autorità non dimostrati"
+      },
+      {
+        "label": "Rilievi totali registrati",
+        "value": "7 (CYB-0001..CYB-0007)",
+        "isProxy": false,
+        "description": "Registro canonico avviato con ID monotoni, tutti in stato proposed"
+      },
+      {
+        "label": "Azioni runtime non autorizzate",
+        "value": "0",
+        "isProxy": false,
+        "description": "Nessun test, processo child, richiesta di rete o exploit eseguito"
+      }
+    ],
+    "impact": "Programma in corso. La revisione statica ha dimostrato che il control plane non va considerato, nello stato esaminato, un verificatore indipendente o una sandbox di sicurezza: i rilievi registrati sono in stato proposed, in attesa di validazione indipendente e remediation nei rispettivi repository. L'audit della workstation (ARCH-001) è pianificato ma non ancora autorizzato. Il valore oggi è metodologico: inventario, modello di minaccia e registro dei rilievi rendono il rischio discutibile e tracciabile invece che implicito."
+  },
+
+  "tech": {
+    "stack": [
+      "Repository documentale Git",
+      "Inventario dichiarativo asset (JSON)",
+      "Registro rilievi strutturato (Markdown)",
+      "Audit case con scope, evidence index e report"
+    ],
+    "tools": [
+      "Scan di sicurezza con modello LLM specialistico validato su baseline indipendente",
+      "Modello di minaccia per attori e confini di fiducia",
+      "Riconciliazione manuale di cause e percorsi sorgente sui rilievi",
+      "Regole di responsabilità e task contract per agenti AI"
+    ]
+  },
+
+  "role": [
+    "Definizione dei confini del programma e del modello operativo (scope, autorizzazioni, stop)",
+    "Design del ciclo di vita dei rilievi e dei criteri di validazione delle prove",
+    "Esecuzione del primo audit statico read-only sul server MCP del control plane",
+    "Modello di minaccia e analisi dei confini di fiducia",
+    "Registrazione e priorità dei rilievi con gravità e confidenza motivate",
+    "Regole di responsabilità per gli agenti AI coinvolti nella sicurezza"
+  ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Nessuna promozione automatica dei rilievi: validazione richiede prova confermata e revisione indipendente",
+      "snippet": "def transition(finding, new_state, reviewer):\n    # No automatic promotion: \"validated\" requires confirmed\n    # evidence and a reviewer independent from the author.\n    if new_state == \"validated\":\n        assert finding.evidence_state == \"confirmed\"\n        assert reviewer != finding.author\n    finding.history.append((new_state, reviewer))\n    finding.status = new_state"
+    }
+  ],
+
+
+  "links": {
+    "screenshots": []
+  },
+
+  "metadata": {
+    "duration": "Programma continuativo (fondazione: 2026-09)",
+    "year": 2026,
+    "language": "it"
+  }
+}

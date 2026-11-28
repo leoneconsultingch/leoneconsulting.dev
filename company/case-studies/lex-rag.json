@@ -87,6 +87,14 @@
     "Pilot repertori semantici italiani con analisi licenze per risorsa",
     "Integrazione con la redazione documentale e il flusso di approvazione del legale"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Ogni affermazione deve mappare a un chunk con source hash verificato: la citazione mancante non si indovina, va in revisione umana",
+      "snippet": "def validate_citation(draft):\n    # Structural anti-hallucination: no claim ships\n    # without a traceable, hashed source.\n    for p in draft.paragraphs:\n        if p.claim and p.source_hash not in index:\n            p.status = \"pending\"       # never invent a citation\n            human_review.add(p)\n    return draft"
+    }
+  ],
+
 
   "links": {
     "screenshots": []

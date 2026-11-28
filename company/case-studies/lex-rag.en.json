@@ -87,6 +87,14 @@
     "Italian semantic repository pilot with per-resource license analysis",
     "Integration with document drafting and the lawyer approval flow"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Every claim must map to a chunk with a verified source hash: a missing citation is never guessed, it goes to human review",
+      "snippet": "def validate_citation(draft):\n    # Structural anti-hallucination: no claim ships\n    # without a traceable, hashed source.\n    for p in draft.paragraphs:\n        if p.claim and p.source_hash not in index:\n            p.status = \"pending\"       # never invent a citation\n            human_review.add(p)\n    return draft"
+    }
+  ],
+
 
   "links": {
     "screenshots": []
