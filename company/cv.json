@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated": "2026-11-04",
+  "updated": "2026-11-28",
   "name": "Mario Leone",
   "role": {
     "it": "AI & Data Engineer · Data Scientist — Leone Consulting",
@@ -352,16 +352,35 @@
       ]
     },
     {
-      "name": "opencode-observability-plugin",
+      "name": {
+        "it": "opencode-observability-plugin",
+        "description": {
+          "it": "Plugin di osservabilità open source per CLI di coding agentico.",
+          "en": "Open source observability plugin for agentic coding CLIs."
+        },
+        "tags": [
+          "TypeScript",
+          "Open Source"
+        ],
+        "url": "https://github.com/leoneconsultingch/opencode-observability-plugin"
+      }
+    },
+    {
+      "name": {
+        "it": "Governance della sicurezza per infrastruttura self-hosted",
+        "en": "Security governance for self-hosted infrastructure"
+      },
       "description": {
-        "it": "Plugin di osservabilità open source per CLI di coding agentico.",
-        "en": "Open source observability plugin for agentic coding CLIs."
+        "it": "Programma di sicurezza per l'infrastruttura self-hosted di agenti AI: inventario dichiarativo degli asset, registro dei rilievi con ciclo di stato verificabile, audit statici read-only con modello di minaccia per confini di fiducia e scan con validazione su baseline indipendente.",
+        "en": "Security program for a self-hosted AI agent infrastructure: declarative asset inventory, findings register with verifiable state lifecycle, read-only static audits with trust-boundary threat modeling, and scans validated against an independent baseline."
       },
       "tags": [
-        "TypeScript",
-        "Open Source"
+        "Cybersecurity",
+        "Threat Modeling",
+        "Audit",
+        "AI Agents"
       ],
-      "url": "https://github.com/leoneconsultingch/opencode-observability-plugin"
+      "url": "/portfolio/security-governance"
     }
   ],
   "languages": [
