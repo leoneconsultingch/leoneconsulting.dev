@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node --test tests/content-schema.test.mjs",
     "build": "astro check && astro build",
     "test": "node --test tests/*.test.mjs",
     "mcp:leone": "node mcp/leone/server.mjs",
