@@ -83,6 +83,14 @@
     "Setup CI/CD e monitoring",
     "Training del team su utilizzo e manutenzione"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Le predizioni a bassa confidenza vanno in revisione umana, mai archiviate automaticamente",
+      "snippet": "def classify(doc):\n    # Low-confidence predictions are routed\n    # to human review, never auto-filed.\n    result = model.predict(doc.text)\n    if result.confidence < 0.85:\n        return Prediction(result.label, status=\"review\")\n    return Prediction(result.label, status=\"auto\")"
+    }
+  ],
+
   "metadata": {
     "duration": "3 settimane",
     "year": 2025,

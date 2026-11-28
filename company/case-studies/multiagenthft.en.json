@@ -88,6 +88,14 @@
     "Docker/Kubernetes infrastructure setup for deployment",
     "LLM tooling integration for development assistance"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Hard risk limits checked before any order leaves the system: guardrails are code, not a prompt",
+      "snippet": "def pre_trade_check(order, account):\n    # Hard limits enforced before the order leaves the system.\n    if order.quantity * order.price > account.max_notional:\n        return Reject(\"max notional exceeded\")\n    if book.exposure(order.symbol) + order.quantity > account.max_position:\n        return Reject(\"position limit exceeded\")\n    return Approve(order)"
+    }
+  ],
+
   "metadata": {
     "duration": "Ongoing project",
     "year": 2025,

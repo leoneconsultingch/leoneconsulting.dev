@@ -1,0 +1,118 @@
+{
+  "slug": "security-governance",
+  "title": "Security governance program for self-hosted infrastructure",
+  "client": "Internal (Leone Consulting)",
+  "sector": "Cybersecurity",
+  "published": false,
+  "featuredImage": "/img/case-studies/security-governance.jpg",
+
+  "problem": {
+    "description": "A fully self-hosted development and operational infrastructure — an Arch Linux workstation, multiple repositories, Docker servers, local AI agents with MCP tools — grows without an explicit threat model. Key questions remain unanswered in documented form: who can confer authority to an agent, which boundaries separate processes, where secrets live, how to prove a control actually works. The answer cannot be 'install a scanner': it takes a documentary foundation with a declarative inventory, repeatable audits, and a findings register with tracked lifecycle state.",
+    "painPoints": [
+      "No explicit threat model for AI agents with access to filesystem, Docker and Git",
+      "Local API surfaces (self-hosted control plane, MCP tools) without verified authentication/authorization",
+      "No canonical register of security findings: known issues not tracked with severity, state and owner",
+      "Hard to separate confirmed evidence from hypotheses when the analysis is done by an LLM"
+    ]
+  },
+
+  "constraints": {
+    "timeline": "Ongoing program, foundation in 1 day + incremental audits upon authorization",
+    "budget": "Documentary base with no services or scanners: zero license and dedicated infrastructure costs",
+    "technical": [
+      "Read-only static code analysis: no tests, exploits or unauthorized runtime actions",
+      "Confidentiality of the material: only redacted summaries and references in the audit repository, never raw output or secrets",
+      "The LLM is not the final authority: evidence validation requires registered independent human review",
+      "Remediation scoped to the respective owning repositories, not centralized"
+    ],
+    "compliance": [
+      "Confidential disclosures and incidents handled via a dedicated channel (SECURITY.md)",
+      "No client or third-party data for security testing; only authorized own assets"
+    ]
+  },
+
+  "solution": {
+    "architecture": "A documentary security governance program organized in four components: a declarative asset inventory (workstation, repositories, servers, sites — no scanning), a canonical findings register with monotonic IDs and a full state cycle (proposed → validated → planned → closed, with false positives and accepted risks documented), an audit archive with scope, collection plan, evidence index and report, and rules of responsibility for the AI agents involved. The first application audit (MC-MCP-001) was a read-only static review of the MCP server of the self-hosted control plane for AI agents: a 4-actor threat model, trust boundary analysis (client → guardian, environment → policy identity, manifest → child process, HTTP caller → REST API) and a security scan with a specialist model validated against an independent baseline.",
+    "keyDecisions": [
+      "Documentation before tooling: declarative inventory and findings register as the base, with no services or monitors to maintain",
+      "Structural distinction between severity, evidence_state (hypothesis/confirmed) and confidence: high confidence never promotes evidence to confirmed",
+      "No automatic state transitions for findings: every transition requires registered independent review",
+      "Minimized collection approach: only redacted summaries in the repository, raw artifacts discarded; redaction is never delegated to the LLM",
+      "Audits as repeatable cases with scope, budget and stop criteria approved before execution",
+      "Remediation always in the component's owning repository, with assigned owner and tasks"
+    ],
+    "approach": "Program foundation first, then incremental audits upon explicit authorization, each with a signed scope and stop criteria. The first step is never to launch a scanner: it is to approve the scope and the minimized collection channel."
+  },
+
+  "results": {
+    "metrics": [
+      {
+        "label": "Control plane MCP analysis coverage",
+        "value": "53/53 files in scope",
+        "isProxy": false,
+        "description": "Read-only static review completed across the entire defined scope"
+      },
+      {
+        "label": "Findings from the first audit",
+        "value": "6 medium-severity findings",
+        "isProxy": false,
+        "description": "MC-MCP-001: no critical/high findings, authority boundaries not proven"
+      },
+      {
+        "label": "Total findings registered",
+        "value": "7 (CYB-0001..CYB-0007)",
+        "isProxy": false,
+        "description": "Canonical register started with monotonic IDs, all in proposed state"
+      },
+      {
+        "label": "Unauthorized runtime actions",
+        "value": "0",
+        "isProxy": false,
+        "description": "No tests, child processes, network requests or exploits executed"
+      }
+    ],
+    "impact": "Program in progress. The static review showed that the control plane, in the examined state, must not be considered an independent verifier or a security sandbox: the registered findings are in proposed state, awaiting independent validation and remediation in their respective repositories. The workstation audit (ARCH-001) is planned but not yet authorized. The value today is methodological: inventory, threat model and findings register make risk discussable and traceable instead of implicit."
+  },
+
+  "tech": {
+    "stack": [
+      "Git documentary repository",
+      "Declarative asset inventory (JSON)",
+      "Structured findings register (Markdown)",
+      "Audit cases with scope, evidence index and report"
+    ],
+    "tools": [
+      "Security scan with a specialist LLM model validated against an independent baseline",
+      "Threat model by actors and trust boundaries",
+      "Manual reconciliation of root causes and source paths on findings",
+      "Rules of responsibility and task contracts for AI agents"
+    ]
+  },
+
+  "role": [
+    "Definition of program boundaries and operating model (scope, authorizations, stop)",
+    "Design of the findings lifecycle and evidence validation criteria",
+    "Execution of the first read-only static audit on the control plane MCP server",
+    "Threat model and trust boundary analysis",
+    "Registration and prioritization of findings with motivated severity and confidence",
+    "Rules of responsibility for the AI agents involved in security"
+  ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "No automatic finding promotion: validation requires confirmed evidence and independent review",
+      "snippet": "def transition(finding, new_state, reviewer):\n    # No automatic promotion: \"validated\" requires confirmed\n    # evidence and a reviewer independent from the author.\n    if new_state == \"validated\":\n        assert finding.evidence_state == \"confirmed\"\n        assert reviewer != finding.author\n    finding.history.append((new_state, reviewer))\n    finding.status = new_state"
+    }
+  ],
+
+
+  "links": {
+    "screenshots": []
+  },
+
+  "metadata": {
+    "duration": "Ongoing program (foundation: 2026-09)",
+    "year": 2026,
+    "language": "en"
+  }
+}

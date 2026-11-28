@@ -90,6 +90,14 @@
     "Integrazione con trading systems esistenti (C++/Python)",
     "Monitoring e evaluation drift su financial benchmarks"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Release gate deterministico: nessun deploy del modello senza superare la baseline congelata sull'eval set",
+      "snippet": "def release_gate(model, eval_set, baseline):\n    # Frozen eval set, deterministic thresholds.\n    report = evaluate(model, eval_set)\n    for metric, threshold in baseline.items():\n        if report[metric] < threshold:\n            raise ReleaseBlocked(metric, report[metric], threshold)\n    return promote(model)"
+    }
+  ],
+
   "metadata": {
     "duration": "Progetto R&D continuativo",
     "year": 2024,

@@ -80,6 +80,14 @@
     "Co-design dashboard con stakeholders",
     "Documentazione e handover al team IT"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "ETL notturno idempotente: rieseguire un giorno sostituisce i dati, non li duplica",
+      "snippet": "def load_daily(sources, day):\n    # Idempotent nightly ETL: re-running a day\n    # replaces rows, never duplicates them.\n    with pg.transaction():\n        for source in sources:\n            df = source.extract(day)   # CSV export from legacy ERP\n            pg.execute(\n                \"DELETE FROM kpi WHERE day = %s AND source = %s\",\n                day, source.name,\n            )\n            pg.copy(df, table=\"kpi\", partition=day)"
+    }
+  ],
+
   "metadata": {
     "duration": "4 settimane",
     "year": 2025,

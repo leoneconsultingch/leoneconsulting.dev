@@ -87,6 +87,14 @@
     "Documentazione e training del team",
     "Setup monitoring e alerting"
   ],
+  "code": [
+    {
+      "language": "sql",
+      "caption": "Contract test dbt: la riconciliazione orditi/pagamenti deve tornare a zero, altrimenti la pipeline si blocca",
+      "snippet": "-- dbt contract test: blocks the pipeline if not zero\nselect\n    date_trunc('day', o.created_at) as day,\n    count(*)                        as orders,\n    count(*) - count(p.payment_id)  as missing_payments  -- = 0\nfrom {{ ref('stg_orders') }} o\nleft join {{ ref('stg_payments') }} p using (order_id)\ngroup by 1\nhaving count(*) - count(p.payment_id) != 0"
+    }
+  ],
+
   "metadata": {
     "duration": "6 settimane",
     "year": 2025,

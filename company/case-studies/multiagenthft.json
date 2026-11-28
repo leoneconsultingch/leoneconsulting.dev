@@ -88,6 +88,14 @@
     "Setup infrastruttura Docker/Kubernetes per deployment",
     "Integrazione LLM tooling per assistenza sviluppo"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Limiti di rischio hard-checked prima che l'ordine lasci il sistema: i guardrail non sono un prompt, sono codice",
+      "snippet": "def pre_trade_check(order, account):\n    # Hard limits enforced before the order leaves the system.\n    if order.quantity * order.price > account.max_notional:\n        return Reject(\"max notional exceeded\")\n    if book.exposure(order.symbol) + order.quantity > account.max_position:\n        return Reject(\"position limit exceeded\")\n    return Approve(order)"
+    }
+  ],
+
   "metadata": {
     "duration": "Progetto continuativo",
     "year": 2025,

@@ -87,6 +87,14 @@
     "Containerization Docker per ambienti reproducibili",
     "Setup CI/CD per retraining automatico"
   ],
+  "code": [
+    {
+      "language": "python",
+      "caption": "Walk-forward split: mai addestrare sul futuro che si predice; ogni fold misura il MAPE out-of-sample",
+      "snippet": "def backtest(model, data, horizon=30):\n    # Temporal folds only: no leakage from the future.\n    for fold in time_folds(data, horizon):\n        model.fit(fold.train)\n        pred = model.predict(fold.test)\n        yield mape(pred, fold.test.target)"
+    }
+  ],
+
   "metadata": {
     "duration": "Progetti multipli",
     "year": 2024,
