@@ -352,18 +352,16 @@
       ]
     },
     {
-      "name": {
-        "it": "opencode-observability-plugin",
-        "description": {
-          "it": "Plugin di osservabilità open source per CLI di coding agentico.",
-          "en": "Open source observability plugin for agentic coding CLIs."
-        },
-        "tags": [
-          "TypeScript",
-          "Open Source"
-        ],
-        "url": "https://github.com/leoneconsultingch/opencode-observability-plugin"
-      }
+      "name": "opencode-observability-plugin",
+      "description": {
+        "it": "Plugin di osservabilità open source per CLI di coding agentico.",
+        "en": "Open source observability plugin for agentic coding CLIs."
+      },
+      "tags": [
+        "TypeScript",
+        "Open Source"
+      ],
+      "url": "https://github.com/leoneconsultingch/opencode-observability-plugin"
     },
     {
       "name": {
